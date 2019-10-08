@@ -32,10 +32,24 @@ namespace L02_C_
         Wie groß ist jeweils der größte und der kleinste Wert? 
         Wie groß ist der kleinste positive mit float darstellbare Wert? */
         public String Todo_3(){
-            String text = "3 TODO - value range<\n";
-            text += "\tOne char has 2 byte -> The String has 2*12 = 24 byte + Overhead Information\n";
+            String text = "3 TODO - value range\n";
+            text += "\tint   := {x € N | -2147483648 <= x <= 2147483647} \n";
+            text += "\tshort := {x € N | -32768 <= x <= 32767} \n";
+            text += "\tdouble := {x |(-1.7*10^308 <= x <= 1.7*10^308) to (-5.0*10^−324 <= x <= 5.0*10^−324)}\n";
+            text += "\tfloat  := {x |(-3.4*10^38 <= x <= 3.4*10^38) to (-1.5*10^−45 <= x <= 1.5*10^−45)}\n";
             return text;
         }
+        //TODO 4
+        /*Was heißt Fließkommazahl und was heißt Festkommazahl? 
+        Für welchen Anwendungsbereich ist decimal besonders geeignet? Warum?*/
+        public String Todo_4(){
+            String text = "4 TODO - floating point numbers and fixed point numbers\n";
+            text += "\tFixed point numbers have a fixed position for the decimal point\n";
+            text += "\tFloating point numbers have no fixed position for the decimal point\n";
+            text += "\tInstead they save two numbers e and m (using m * 10^e = x)\n";
+            text += "\tBecause the decimal type has more precision and a smaller range, \n\tit's appropriate for financial and monetary calculations.\n";
+            return text;
+        }      
         //TODO 1
         /* Erzeugt in Visual Studio Code ein neues C#-Projekt 
         und fügt oben stehende Deklarationen und Initialisierungen 
