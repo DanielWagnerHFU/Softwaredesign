@@ -7,7 +7,8 @@ namespace L02_C_
         //TODO 1
         /* Wieviel bytes Speicherplatz benötigen die 
         o.a. numerischen Datentypen jeweils? */
-        public String Todo_1(){
+        public String Todo_1()
+        {
             String text = "1 TODO - memory of numeric datatypes\n";
             text += "\tbyte  = 1byte = 8bit\n";
             text += "\tshort = 2byte = 16bit\n";
@@ -21,7 +22,8 @@ namespace L02_C_
         //TODO 2
         /* Wieviel Speicherplatz in bytes benötigt 
         die Zeichenkette "Hello, World" ? */
-        public String Todo_2(){
+        public String Todo_2()
+        {
             String text = "2 TODO - memory of the String >Hello, World<\n";
             text += "\tOne char has 2 byte -> The String has 2*12 = 24 byte + Overhead Information\n";
             return text;
@@ -31,7 +33,8 @@ namespace L02_C_
         zwischen int und short, sowie zwischen float und double. 
         Wie groß ist jeweils der größte und der kleinste Wert? 
         Wie groß ist der kleinste positive mit float darstellbare Wert? */
-        public String Todo_3(){
+        public String Todo_3()
+        {
             String text = "3 TODO - value range\n";
             text += "\tint   := {x € N | -2147483648 <= x <= 2147483647} \n";
             text += "\tshort := {x € N | -32768 <= x <= 32767} \n";
@@ -42,41 +45,46 @@ namespace L02_C_
         //TODO 4
         /*Was heißt Fließkommazahl und was heißt Festkommazahl? 
         Für welchen Anwendungsbereich ist decimal besonders geeignet? Warum?*/
-        public String Todo_4(){
+        public String Todo_4()
+        {
             String text = "4 TODO - floating point numbers and fixed point numbers\n";
             text += "\tFixed point numbers have a fixed position for the decimal point\n";
             text += "\tFloating point numbers have no fixed position for the decimal point\n";
             text += "\tInstead they save two numbers e and m (using m * 10^e = x)\n";
             text += "\tBecause the decimal type has more precision and a smaller range, \n\tit's appropriate for financial and monetary calculations.\n";
             return text;
-        }      
-        //TODO 1
+        }
+        //TODO 5
         /* Erzeugt in Visual Studio Code ein neues C#-Projekt 
         und fügt oben stehende Deklarationen und Initialisierungen 
         der Variablen i, pi, und salute ein. */
-        public void Todo_a()
+        public String Todo_5()
         {
             int i = 42;
             double pi = 3.1415;
             string salute = "Hello, World";
 
-            Console.WriteLine("1 TODO - variables (int, double, string)");
-            Console.WriteLine("i: " + i + " - pi: " + pi + " - salute: " + salute + "\n");
+            String text;
+            text = "5 TODO - variables (int, double, string)\n";
+            text += "\ti:      " + i + "\n\tpi:     " + pi + "\n\tsalute: " + salute + "\n";
+            return text;
         }
-        //TODO 2
+        //TODO 6
         /* Verändert die Deklarationen so, 
         dass var statt der Typen verwendet wird und überzeugt Euch, 
         dass der Compiler den Code korrekt übersetzt. */
-        public void Todo_b()
+        public String Todo_6()
         {
             var i = 42;
             var pi = 3.1415;
             var salute = "Hello, World";
 
-            Console.WriteLine("2 TODO - variables with var");
-            Console.WriteLine("i: " + i + " of Type " + i.GetType() + " - pi: " + pi + " of Type " + pi.GetType() + " - salute: " + salute + " of Type " + salute.GetType() + "\n");
+            String text;
+            text = "6 TODO - variables declared with var\n";
+            text += "\ti:      " + i + " of Type " + i.GetType() + "\n\tpi:     " + pi + " of Type " + pi.GetType() + "\n\tsalute: " + salute + " of Type " + salute.GetType() + "\n";
+            return text;
         }
-        //TODO 3
+        //TODO 7
         /* Mit der Deklaration/Initialisierung var variable = 0; 
         wird variable durch Typ Inferenz zu einer int-Variablen. 
         Wie muss die Initialisierung lauten, 
@@ -88,15 +96,21 @@ namespace L02_C_
         und lest Euch durch, wie zu den jeweiligen Typen die Konstanten 
         (englisch Literals) gebildet werden: 
         Was unterscheidet eine int-Konstante von einer double-Konstanten? */
-        public void Todo_c()
+        public String Todo_7()
         {
-            var var_1 = 0D;
-            var var_2 = 0F;
-            var var_3 = (short)0;
+            var nullDouble = 0D;
+            var nullFloat = 0F;
+            var nullShort = (short)0;
 
-            Console.WriteLine("3 TODO - variables with var and explicit Type");
-            Console.WriteLine("var_1: " + var_1 + " of Type " + var_1.GetType() + " - var_2: " + var_2 + " of Type " + var_2.GetType() + " - var_3: " + var_3 + " of Type " + var_3.GetType() + "\n");
+            String text;
+            text = "7 TODO - variables with var and explicit Type\n";
+            text += "\tnullDouble: " + nullDouble + " of Type " + nullDouble.GetType() + "\n\tnullFloat:  " + nullFloat + " of Type " + nullFloat.GetType() + "\n\tnullShort:  " + nullShort + " of Type " + nullShort.GetType() + "\n";
+            return text;
         }
-        
+
+        public override String ToString()
+        {
+            return Todo_1() + Todo_2() + Todo_3() + Todo_4() + Todo_5() + Todo_6() + Todo_7();
+        }
     }
 }
