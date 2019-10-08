@@ -7,13 +7,40 @@ namespace L02_C_
         //TODO 1
         /* Wieviel bytes Speicherplatz benötigen die 
         o.a. numerischen Datentypen jeweils? */
-        
-
+        public String Todo_1(){
+            String text = "1 TODO - memory of numeric datatypes\n";
+            text += "\tbyte  = 1byte = 8bit\n";
+            text += "\tshort = 2byte = 16bit\n";
+            text += "\tint   = 4byte = 32bit\n";
+            text += "\tlong  = 8byte = 64bit\n\n";
+            text += "\tfloat   = 4byte  = 32bit\n";
+            text += "\tdouble  = 8byte  = 64bit\n";
+            text += "\tdecimal = 16byte = 128bit\n";
+            return text;
+        }
+        //TODO 2
+        /* Wieviel Speicherplatz in bytes benötigt 
+        die Zeichenkette "Hello, World" ? */
+        public String Todo_2(){
+            String text = "2 TODO - memory of the String >Hello, World<\n";
+            text += "\tOne char has 2 byte -> The String has 2*12 = 24 byte + Overhead Information\n";
+            return text;
+        }
+        //TODO 3
+        /*Vergleicht den Umfang der darstellbaren Zahlen 
+        zwischen int und short, sowie zwischen float und double. 
+        Wie groß ist jeweils der größte und der kleinste Wert? 
+        Wie groß ist der kleinste positive mit float darstellbare Wert? */
+        public String Todo_3(){
+            String text = "3 TODO - value range<\n";
+            text += "\tOne char has 2 byte -> The String has 2*12 = 24 byte + Overhead Information\n";
+            return text;
+        }
         //TODO 1
         /* Erzeugt in Visual Studio Code ein neues C#-Projekt 
         und fügt oben stehende Deklarationen und Initialisierungen 
         der Variablen i, pi, und salute ein. */
-        public void Todo_1()
+        public void Todo_a()
         {
             int i = 42;
             double pi = 3.1415;
@@ -26,7 +53,7 @@ namespace L02_C_
         /* Verändert die Deklarationen so, 
         dass var statt der Typen verwendet wird und überzeugt Euch, 
         dass der Compiler den Code korrekt übersetzt. */
-        public void Todo_2()
+        public void Todo_b()
         {
             var i = 42;
             var pi = 3.1415;
@@ -47,7 +74,7 @@ namespace L02_C_
         und lest Euch durch, wie zu den jeweiligen Typen die Konstanten 
         (englisch Literals) gebildet werden: 
         Was unterscheidet eine int-Konstante von einer double-Konstanten? */
-        public void Todo_3()
+        public void Todo_c()
         {
             var var_1 = 0D;
             var var_2 = 0F;

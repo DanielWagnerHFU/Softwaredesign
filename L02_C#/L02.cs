@@ -6,10 +6,12 @@ namespace L02_C_
     {
         static void Main(string[] args)
         {
-            Todos todo = new Todos();
-            todo.Todo_1();
-            todo.Todo_2();
-            todo.Todo_3();
+            PrintAllTodos();
+        }
+
+        public static void PrintAllTodos(){
+           Todos todos = new Todos();
+           Console.WriteLine(todos.Todo_1());
         }
     }
 }
