@@ -9,6 +9,7 @@ namespace L02_C_
             Todos todo = new Todos();
             todo.Todo_1();
             todo.Todo_2();
+            todo.Todo_3();
         }
     }
 }
