@@ -107,10 +107,104 @@ namespace L02_C_
             text += "\tnullDouble: " + nullDouble + " of Type " + nullDouble.GetType() + "\n\tnullFloat:  " + nullFloat + " of Type " + nullFloat.GetType() + "\n\tnullShort:  " + nullShort + " of Type " + nullShort.GetType() + "\n";
             return text;
         }
-
+        //TODO 8
+        /* Im o.a. Code-Schnipsel werden drei 
+        Array-Variablen deklariert und initialisiert. 
+        Wie heißen die Variablen, was ist der jeweilige Grund-Typ 
+        und wieviel Speicherplätze sind jeweils reserviert worden? */
+        public String Todo_8()
+        {
+            int[] ia = new int[10];
+            char[] ca = new char[30];
+            double[] da = new double[12];
+            String text = "8 TODO - arrays and memory\n";
+            text += "\tAll Arrays have Refereces - depending on the System 4 or 8 bytes for each element\n";
+            text += "\tOn a 64 bit System:\n";
+            text += "\tint[10]    - memory is 10*(4byte+8byte)  = 120byte\n";
+            text += "\tchar[30]   - memory is 30*(2byte+8byte)  = 300byte\n";
+            text += "\tdouble[12] - memory is 12*(16byte+8byte) = 288byte\n";
+            return text;
+        }
+        //TODO 9
+        /*Was steht in der Variablen ergebnis?*/
+        public String Todo_9()
+        {
+            int[] ia = { 1, 0, 2, 9, 3, 8, 4, 7, 5, 6 };
+            int ergebnis = ia[2] * ia[8] + ia[4];
+            String text = "9 TODO - calculating with arrays\n";
+            text += "\tint[] ia = {1, 0, 2, 9, 3, 8, 4, 7, 5, 6};\n\tint ergebnis = ia[2] * ia[8] + ia[4];\n";
+            text += "\tergebnis = " + ergebnis + "\n";
+            return text;
+        }
+        //TODO 10
+        /*Erzeugt einen Array vom Grund-Typ double, 
+        der drei Speicherplätze enthält in denen 
+        in der angegebenen Reihenfolge die Zahl PI, 
+        die Eulersche Zahl und die Kepler-Konstante enthalten sind.*/
+        public String Todo_10()
+        {
+            double[] constants = { 3.14159265359, 2.71828182846, 2.97 * Math.Pow(10, -19) };
+            String text = "10 TODO - Array of pi, e and C\n";
+            text += "\tpi = " + constants[0] + "\n";
+            text += "\te = " + constants[1] + "\n";
+            text += "\tC = " + constants[2] + "\n";
+            return text;
+        }
+        //TODO 11
+        /* Gebt nach der Initialisierung des o.A. Arrays 
+        mit Console.WriteLine(ia.Length); die Anzahl der Einträge aus. 
+        Ändert die Anzahl der Einträge und überprüft die Ausgabe. */
+        public String Todo_11()
+        {
+            int[] ia = { 1, 0, 2, 9, 3, 8, 4, 7, 5, 6 };
+            int[] ib = { 1, 0, 2, 9, 3, 8, 4, 7 };
+            String text = "11 TODO - Array length\n";
+            text += "\tLength of {1, 0, 2, 9, 3, 8, 4, 7, 5, 6} = " + ia.Length + "\n";
+            text += "\tLength of {1, 0, 2, 9, 3, 8, 4, 7} = " + ib.Length + "\n";
+            return text;
+        }
+        //TODO 12
+        /*Fügt den o.a. Beispielcode zu Strings einem C#-Projekt zu 
+        und überprüft jeweils die Variableninhalte von 
+        meinString, c, a_eq_b, a_eq_c und zeichen mit Console.WriteLine 
+        oder mit dem Debugger.*/
+        public String Todo_12()
+        {
+            string a = "eins";
+            string b = "zwei";
+            string c = "eins";
+            bool a_eq_b = (a == b);
+            bool a_eq_c = (a == c);
+            string meinString = "Dies ist ein String";
+            char zeichen = meinString[5];
+            
+            String text = "12 TODO - Strings\n";
+            text += "\tmeinString = " + meinString + "\n";
+            text += "\tc = " + c + "\n";
+            text += "\ta_eq_b = " + a_eq_b + "\n";
+            text += "\ta_eq_c = " + a_eq_c + "\n";
+            text += "\tzeichen = " + zeichen + "\n";
+            return text;
+        }
+        //TODO 12
+        /*Schreibt ein C#-Programm, das zwei Zahlen von der Konsole einliest. 
+        Diese sollen verglichen werden. Ist die erste größer als die zweite, 
+        soll der Text "a ist größer als b" ausgegeben werden, 
+        ansonsten der Text "b ist größer als a".*/
+        //Override ToString Method for outprint
+        public String Todo_13()
+        {
+            String text = "13 TODO - conditional constructs\n";
+            int[] numbers = new int[2];
+            for(int i = 0; i <= 1; i++){
+                Console.WriteLine("Input a number: ");
+                numbers[i] = int.Parse(Console.ReadLine());
+            }
+            return text += (numbers[0] <= numbers[1])? "a ist größer als b" : "b ist größer als a";
+        }
         public override String ToString()
         {
-            return Todo_1() + Todo_2() + Todo_3() + Todo_4() + Todo_5() + Todo_6() + Todo_7();
+            return Todo_1() + Todo_2() + Todo_3() + Todo_4() + Todo_5() + Todo_6() + Todo_7() + Todo_8() + Todo_9() + Todo_10() + Todo_11() + Todo_12() + Todo_13();
         }
     }
 }
