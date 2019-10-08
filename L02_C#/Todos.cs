@@ -177,7 +177,7 @@ namespace L02_C_
             bool a_eq_c = (a == c);
             string meinString = "Dies ist ein String";
             char zeichen = meinString[5];
-            
+
             String text = "12 TODO - Strings\n";
             text += "\tmeinString = " + meinString + "\n";
             text += "\tc = " + c + "\n";
@@ -186,25 +186,136 @@ namespace L02_C_
             text += "\tzeichen = " + zeichen + "\n";
             return text;
         }
-        //TODO 12
+        //TODO 13
         /*Schreibt ein C#-Programm, das zwei Zahlen von der Konsole einliest. 
         Diese sollen verglichen werden. Ist die erste größer als die zweite, 
         soll der Text "a ist größer als b" ausgegeben werden, 
         ansonsten der Text "b ist größer als a".*/
-        //Override ToString Method for outprint
         public String Todo_13()
         {
             String text = "13 TODO - conditional constructs\n";
             int[] numbers = new int[2];
-            for(int i = 0; i <= 1; i++){
-                Console.WriteLine("Input a number: ");
+            for (int i = 0; i <= 1; i++)
+            {
+                Console.WriteLine("Input a number for G1: ");
                 numbers[i] = int.Parse(Console.ReadLine());
             }
-            return text += (numbers[0] <= numbers[1])? "a ist größer als b" : "b ist größer als a";
+            text += "\ta = " + numbers[0] + "\n";
+            text += "\tb = " + numbers[1] + "\n";
+
+            return text += (numbers[0] >= numbers[1]) ? "\ta ist größer oder gleich als b" : "\tb ist größer als a";
         }
+        //TODO 14
+        /*Ändert das Programm aus dem letzten TODO so ab, 
+        dass wenn die erste Zahl größer drei und die zweite Zahl gleich 6 sechs ist, 
+        der Text "Du hast gewonnen" ausgegeben wird. 
+        Ansonsten soll "Leider verloren" ausgegeben werden. */
+        public String Todo_14()
+        {
+            String text = "14 TODO - conditional constructs\n";
+            int[] numbers = new int[2];
+            for (int i = 0; i <= 1; i++)
+            {
+                Console.WriteLine("Input a number for G2: ");
+                numbers[i] = int.Parse(Console.ReadLine());
+            }
+            text += "\ta = " + numbers[0] + "\n";
+            text += "\tb = " + numbers[1] + "\n";
+
+            return text += ((numbers[0] > 3) && (numbers[1] == 6)) ? "\tDu hast gewonnen" : "\tb Leider verloren";
+        }
+        //TODO15
+        public String Todo_15()
+        {
+            String text = "15 TODO - switch test\n\t";
+            //Mit Ints
+            Console.WriteLine("Input a Int: ");
+            int i = int.Parse(Console.ReadLine());
+            switch (i)
+            {
+                case 1:
+                    text += "Du hast EINS eingegeben";
+                    break;
+                case 2:
+                    text += "ZWEI war Deine Wahl";
+                    break;
+                case 3:
+                    text += "Du tipptest eine DREI";
+                    break;
+                case 4:
+                    text += "Du tipptest eine VIER";
+                    break;
+                default:
+                    text += "Die Zahl " + i + " kenne ich nicht";
+                    break;
+            }
+            text += "\n";
+            Console.WriteLine("Input a String: ");
+            //Mit Strings
+            string j = Console.ReadLine();
+            switch (j)
+            {
+                case "1":
+                    text += "Du hast EINS eingegeben";
+                    break;
+                case "2":
+                    text += "ZWEI war Deine Wahl";
+                    break;
+                case "3":
+                    text += "Du tipptest eine DREI";
+                    break;
+                case "4":
+                    text += "Du tipptest eine VIER";
+                    break;
+                default:
+                    text += "Den String " + i + " kenne ich nicht";
+                    break;
+            }
+            text += "\n";
+            return text;
+        }
+        //TODO 16
+        /*Versucht, die oben mit der 
+        switch / case Anweisung implementierte Funktionalität mit 
+        if/ else Anweisungen zu implementieren. */
+        public String Todo_16()
+        {
+            String text = "16 TODO - rebuild switch using if/else\n\t";
+            //Mit Ints
+            Console.WriteLine("Input a Int: ");
+            int i = int.Parse(Console.ReadLine());
+            if (i == 1)
+            {
+                text += "Du hast EINS eingegeben";
+            }
+            else if (i == 2)
+            {
+                text += "Du hast ZWEI eingegeben";
+            }
+            else if (i == 3)
+            {
+                text += "Du hast DREI eingegeben";
+            }
+            else if (i == 4)
+            {
+                text += "Du hast VIER eingegeben";
+            }
+            else
+            {
+                text += "Die Zahl " + i + " kenne ich nicht";
+            }
+            text += "\n";
+            return text;
+        }
+        //ToString Method for outprint
         public override String ToString()
         {
-            return Todo_1() + Todo_2() + Todo_3() + Todo_4() + Todo_5() + Todo_6() + Todo_7() + Todo_8() + Todo_9() + Todo_10() + Todo_11() + Todo_12() + Todo_13();
+            return Todo_1() + Todo_2() + Todo_3() + Todo_4() + Todo_5() + Todo_6() + Todo_7() + Todo_8() + Todo_9() + Todo_10() + Todo_11() + Todo_12() + Todo_13() + Todo_14() + Todo_15() + Todo_16();
+        }
+
+        public String ToStringWithoutInput()
+        {
+            return Todo_1() + Todo_2() + Todo_3() + Todo_4() + Todo_5() + Todo_6() + Todo_7() + Todo_8() + Todo_9() + Todo_10() + Todo_11() + Todo_12();
         }
     }
 }

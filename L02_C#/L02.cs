@@ -11,7 +11,11 @@ namespace L02_C_
         public static void PrintAllTodos()
         {
             Todos todos = new Todos();
-            Console.WriteLine(todos.ToString());
+            Console.WriteLine(todos.ToStringWithoutInput());
+            //Console.WriteLine(todos.Todo_13());
+            //Console.WriteLine(todos.Todo_14());
+            //Console.WriteLine(todos.Todo_15());
+            Console.WriteLine(todos.Todo_16());
         }
     }
 }
