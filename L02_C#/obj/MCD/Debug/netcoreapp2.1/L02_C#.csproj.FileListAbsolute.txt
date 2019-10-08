@@ -1,0 +1,11 @@
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\L02_C#\bin\MCD\Debug\netcoreapp2.1\L02_C#.deps.json
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\L02_C#\bin\MCD\Debug\netcoreapp2.1\L02_C#.runtimeconfig.json
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\L02_C#\bin\MCD\Debug\netcoreapp2.1\L02_C#.runtimeconfig.dev.json
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\L02_C#\bin\MCD\Debug\netcoreapp2.1\L02_C#.dll
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\L02_C#\bin\MCD\Debug\netcoreapp2.1\L02_C#.pdb
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\L02_C#\obj\MCD\Debug\netcoreapp2.1\L02_C#.csprojAssemblyReference.cache
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\L02_C#\obj\MCD\Debug\netcoreapp2.1\L02_C#.csproj.CoreCompileInputs.cache
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\L02_C#\obj\MCD\Debug\netcoreapp2.1\L02_C#.AssemblyInfoInputs.cache
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\L02_C#\obj\MCD\Debug\netcoreapp2.1\L02_C#.AssemblyInfo.cs
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\L02_C#\obj\MCD\Debug\netcoreapp2.1\L02_C#.dll
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\L02_C#\obj\MCD\Debug\netcoreapp2.1\L02_C#.pdb
