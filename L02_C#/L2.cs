@@ -6,7 +6,9 @@ namespace L02_C_
     {
         static void Main(string[] args)
         {
-            
+            Todos todo = new Todos();
+            todo.Todo_1();
+            todo.Todo_2();
         }
     }
 }
