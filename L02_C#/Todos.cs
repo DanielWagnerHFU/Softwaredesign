@@ -5,6 +5,11 @@ namespace L02_C_
     class Todos
     {
         //TODO 1
+        /* Wieviel bytes Speicherplatz benötigen die 
+        o.a. numerischen Datentypen jeweils? */
+        
+
+        //TODO 1
         /* Erzeugt in Visual Studio Code ein neues C#-Projekt 
         und fügt oben stehende Deklarationen und Initialisierungen 
         der Variablen i, pi, und salute ein. */

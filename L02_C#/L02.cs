@@ -2,7 +2,7 @@
 
 namespace L02_C_
 {
-    class L2
+    class L02
     {
         static void Main(string[] args)
         {
