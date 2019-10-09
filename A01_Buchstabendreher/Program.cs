@@ -14,18 +14,21 @@ namespace A01_Buchstabendreher
             string sentence = reverseSentence(text);
             Console.WriteLine(sentence + "\n" + words + "\n" + letters);
         }
-        //reverses the Letters of a String (shortest possible Implementation)
+        //reverses the letters of a string
         public static String reverseLetters(String text)
         {
             return (text.Length == 0)? "" : text[text.Length - 1] + reverseLetters(text.Substring(0, text.Length - 1));
         }
+        //reverses the worlds of a string
         public static String reverseWords(String text){
             return (text.Length == 0)? "" : text.Split(' ')[text.Split(' ').Length - 1] + " " + reverseWords(String.Join(" ", SubArray(text.Split(' '), 0, text.Split(' ').Length - 1)));
         }
+        //reverses a sentence
         public static String reverseSentence(String text)
         {
-            return text;
+            return reverseLetters(reverseWords(text));
         }
+        //creates a subarray of a array
         public static String[] SubArray(String[] data, int index, int length)
         {
             String[] result = new String[length];
