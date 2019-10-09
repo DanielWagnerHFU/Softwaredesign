@@ -17,11 +17,12 @@ namespace A01_Buchstabendreher
         //reverses the letters of a string
         public static String reverseLetters(String text)
         {
-            return (text.Length == 0)? "" : text[text.Length - 1] + reverseLetters(text.Substring(0, text.Length - 1));
+            return (text.Length == 0) ? "" : text[text.Length - 1] + reverseLetters(text.Substring(0, text.Length - 1));
         }
         //reverses the worlds of a string
-        public static String reverseWords(String text){
-            return (text.Length == 0)? "" : text.Split(' ')[text.Split(' ').Length - 1] + " " + reverseWords(String.Join(" ", SubArray(text.Split(' '), 0, text.Split(' ').Length - 1)));
+        public static String reverseWords(String text)
+        {
+            return (text.Length == 0) ? "" : text.Split(' ')[text.Split(' ').Length - 1] + " " + reverseWords(String.Join(" ", SubArray(text.Split(' '), 0, text.Split(' ').Length - 1)));
         }
         //reverses a sentence
         public static String reverseSentence(String text)
