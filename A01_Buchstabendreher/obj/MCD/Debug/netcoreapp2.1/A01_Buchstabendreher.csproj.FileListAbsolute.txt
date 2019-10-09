@@ -1,0 +1,11 @@
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\A01_Buchstabendreher\bin\MCD\Debug\netcoreapp2.1\A01_Buchstabendreher.deps.json
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\A01_Buchstabendreher\bin\MCD\Debug\netcoreapp2.1\A01_Buchstabendreher.runtimeconfig.json
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\A01_Buchstabendreher\bin\MCD\Debug\netcoreapp2.1\A01_Buchstabendreher.runtimeconfig.dev.json
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\A01_Buchstabendreher\bin\MCD\Debug\netcoreapp2.1\A01_Buchstabendreher.dll
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\A01_Buchstabendreher\bin\MCD\Debug\netcoreapp2.1\A01_Buchstabendreher.pdb
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\A01_Buchstabendreher\obj\MCD\Debug\netcoreapp2.1\A01_Buchstabendreher.csprojAssemblyReference.cache
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\A01_Buchstabendreher\obj\MCD\Debug\netcoreapp2.1\A01_Buchstabendreher.csproj.CoreCompileInputs.cache
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\A01_Buchstabendreher\obj\MCD\Debug\netcoreapp2.1\A01_Buchstabendreher.AssemblyInfoInputs.cache
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\A01_Buchstabendreher\obj\MCD\Debug\netcoreapp2.1\A01_Buchstabendreher.AssemblyInfo.cs
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\A01_Buchstabendreher\obj\MCD\Debug\netcoreapp2.1\A01_Buchstabendreher.dll
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\A01_Buchstabendreher\obj\MCD\Debug\netcoreapp2.1\A01_Buchstabendreher.pdb
