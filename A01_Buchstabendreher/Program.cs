@@ -26,7 +26,7 @@ namespace A01_Buchstabendreher
         //reverses a sentence
         public static String reverseSentence(String text)
         {
-            return reverseLetters(reverseWords(text));
+            return reverseWords(reverseLetters(text));
         }
         //creates a subarray of a array
         public static String[] SubArray(String[] data, int index, int length)
