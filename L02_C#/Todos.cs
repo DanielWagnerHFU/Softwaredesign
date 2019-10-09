@@ -307,15 +307,44 @@ namespace L02_C_
             text += "\n";
             return text;
         }
+        //TODO 17
+        /* Erzeugt ein C# Programm, das in einer while-Schleife 
+        die Zahlen von 1 bis 10 auf der Konsole ausgibt. 
+        Wie lauten hier die Teile <INITIALISIERUNG>, 
+        <BEDINGUNG> und <INKREMENT>? */
+        public String Todo_17()
+        {
+            String text = "17 TODO - while schleife\n\t";
+            int i = 1;
+            while (i <= 10)
+            {
+                text += i + " ";
+                i++;
+            }
+            text += "\n";
+            return text;
+        }
+        //TODO 18
+        public String Todo_18()
+        {
+            String text = "18 TODO - schleifen\n\t";
+            string[] someStrings = {"Hier", "sehen", "wir", "einen", "Array", "von", "Strings"};
+            for (int i = 0; i < someStrings.Length; i++)
+            {
+                text += someStrings[i] + " ";
+            }
+            text += "\n";
+            return text;
+        }
         //ToString Method for outprint
         public override String ToString()
         {
-            return Todo_1() + Todo_2() + Todo_3() + Todo_4() + Todo_5() + Todo_6() + Todo_7() + Todo_8() + Todo_9() + Todo_10() + Todo_11() + Todo_12() + Todo_13() + Todo_14() + Todo_15() + Todo_16();
+            return Todo_1() + Todo_2() + Todo_3() + Todo_4() + Todo_5() + Todo_6() + Todo_7() + Todo_8() + Todo_9() + Todo_10() + Todo_11() + Todo_12() + Todo_13() + Todo_14() + Todo_15() + Todo_16() + Todo_17() + Todo_18();
         }
 
         public String ToStringWithoutInput()
         {
-            return Todo_1() + Todo_2() + Todo_3() + Todo_4() + Todo_5() + Todo_6() + Todo_7() + Todo_8() + Todo_9() + Todo_10() + Todo_11() + Todo_12();
+            return Todo_1() + Todo_2() + Todo_3() + Todo_4() + Todo_5() + Todo_6() + Todo_7() + Todo_8() + Todo_9() + Todo_10() + Todo_11() + Todo_12() + Todo_17() + Todo_18();
         }
     }
 }
