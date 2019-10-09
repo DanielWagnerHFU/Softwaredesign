@@ -9,9 +9,9 @@ namespace A01_Buchstabendreher
             Console.WriteLine("Bitte einen kleinen Satz eingeben");
             Console.Write("> ");
             var text = Console.ReadLine();
-            //string letters = reverseLetters(text);
+            string letters = reverseLetters(text);
             string words = reverseWords(text);
-            //string sentence = reverseSentence(text);
+            string sentence = reverseSentence(text);
             Console.WriteLine(sentence + "\n" + words + "\n" + letters);
         }
         //reverses the Letters of a String (shortest possible Implementation)
@@ -19,21 +19,8 @@ namespace A01_Buchstabendreher
         {
             return (text.Length == 0)? "" : text[text.Length - 1] + reverseLetters(text.Substring(0, text.Length - 1));
         }
-        public static String reverseWords(String text)
-        {
-            if (text.Length == 0){
-                return "";
-            } else {
-                String [] words = text.Split(' ');
-                String [] restStrings = SubArray(words, 0, words.Length - 1);
-                String lastString = words[words.Length - 1];
-                String newText = String.Join(" ", restStrings);
-                newText = lastString + newText;
-                return newText;
-            }
-        }
-        public static String reverseWordsHelper(String[] words){
-            return null;
+        public static String reverseWords(String text){
+            return (text.Length == 0)? "" : text.Split(' ')[text.Split(' ').Length - 1] + " " + reverseWords(String.Join(" ", SubArray(text.Split(' '), 0, text.Split(' ').Length - 1)));
         }
         public static String reverseSentence(String text)
         {
