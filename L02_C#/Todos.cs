@@ -101,7 +101,6 @@ namespace L02_C_
             var nullDouble = 0D;
             var nullFloat = 0F;
             var nullShort = (short)0;
-
             String text;
             text = "7 TODO - variables with var and explicit Type\n";
             text += "\tnullDouble: " + nullDouble + " of Type " + nullDouble.GetType() + "\n\tnullFloat:  " + nullFloat + " of Type " + nullFloat.GetType() + "\n\tnullShort:  " + nullShort + " of Type " + nullShort.GetType() + "\n";
