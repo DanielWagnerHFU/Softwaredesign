@@ -27,5 +27,9 @@ namespace A01_Buchstabendreher
         {
             return text;
         }
+        public static String[] splitWords(String text)
+        {
+            return null;
+        }
     }
 }
