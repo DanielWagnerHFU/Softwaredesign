@@ -1,0 +1,11 @@
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\A03_OXO\bin\MCD\Debug\netcoreapp2.1\A03_OXO.deps.json
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\A03_OXO\bin\MCD\Debug\netcoreapp2.1\A03_OXO.runtimeconfig.json
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\A03_OXO\bin\MCD\Debug\netcoreapp2.1\A03_OXO.runtimeconfig.dev.json
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\A03_OXO\bin\MCD\Debug\netcoreapp2.1\A03_OXO.dll
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\A03_OXO\bin\MCD\Debug\netcoreapp2.1\A03_OXO.pdb
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\A03_OXO\obj\MCD\Debug\netcoreapp2.1\A03_OXO.csprojAssemblyReference.cache
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\A03_OXO\obj\MCD\Debug\netcoreapp2.1\A03_OXO.csproj.CoreCompileInputs.cache
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\A03_OXO\obj\MCD\Debug\netcoreapp2.1\A03_OXO.AssemblyInfoInputs.cache
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\A03_OXO\obj\MCD\Debug\netcoreapp2.1\A03_OXO.AssemblyInfo.cs
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\A03_OXO\obj\MCD\Debug\netcoreapp2.1\A03_OXO.dll
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\A03_OXO\obj\MCD\Debug\netcoreapp2.1\A03_OXO.pdb
