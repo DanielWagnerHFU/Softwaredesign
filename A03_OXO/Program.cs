@@ -22,3 +22,4 @@ namespace A03_OXO
             } while (choice != ConsoleKey.D1 && choice != ConsoleKey.D2);
         }
     }
+}
