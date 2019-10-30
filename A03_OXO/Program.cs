@@ -12,10 +12,10 @@ namespace A03_OXO
             choice = Console.ReadKey(true).Key;
                 switch (choice)
                 {
-                    case ConsoleKey.NumPad1:
+                    case ConsoleKey.D1:
                         Console.WriteLine("1. Choice");
                         break;
-                    case ConsoleKey.NumPad2:
+                    case ConsoleKey.D2:
                         Console.WriteLine("2. Choice");
                         break;
                 }
