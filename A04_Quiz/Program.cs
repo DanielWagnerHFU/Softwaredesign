@@ -14,8 +14,7 @@ namespace A04_Quiz
         static void Quizloop(Quiz quiz){
             ConsoleKey choice;
             do {
-                Console.Clear();
-                Console.WriteLine("Menu\n\n1. answer question\n2. create question\n3. exit\n\n press the number of your choise");
+                quiz.ShowQuizMenu();
                 do{
                     choice = Console.ReadKey(true).Key;
                 } while(choice != ConsoleKey.D1 && choice != ConsoleKey.D2 && choice != ConsoleKey.D3);
