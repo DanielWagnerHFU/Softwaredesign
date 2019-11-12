@@ -1,0 +1,11 @@
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\A04_Quiz\bin\MCD\Debug\netcoreapp2.1\A04_Quiz.deps.json
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\A04_Quiz\bin\MCD\Debug\netcoreapp2.1\A04_Quiz.runtimeconfig.json
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\A04_Quiz\bin\MCD\Debug\netcoreapp2.1\A04_Quiz.runtimeconfig.dev.json
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\A04_Quiz\bin\MCD\Debug\netcoreapp2.1\A04_Quiz.dll
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\A04_Quiz\bin\MCD\Debug\netcoreapp2.1\A04_Quiz.pdb
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\A04_Quiz\obj\MCD\Debug\netcoreapp2.1\A04_Quiz.csprojAssemblyReference.cache
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\A04_Quiz\obj\MCD\Debug\netcoreapp2.1\A04_Quiz.csproj.CoreCompileInputs.cache
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\A04_Quiz\obj\MCD\Debug\netcoreapp2.1\A04_Quiz.AssemblyInfoInputs.cache
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\A04_Quiz\obj\MCD\Debug\netcoreapp2.1\A04_Quiz.AssemblyInfo.cs
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\A04_Quiz\obj\MCD\Debug\netcoreapp2.1\A04_Quiz.dll
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\A04_Quiz\obj\MCD\Debug\netcoreapp2.1\A04_Quiz.pdb
