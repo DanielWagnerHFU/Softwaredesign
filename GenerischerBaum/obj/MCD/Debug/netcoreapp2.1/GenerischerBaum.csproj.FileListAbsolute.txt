@@ -1,0 +1,11 @@
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\GenerischerBaum\bin\MCD\Debug\netcoreapp2.1\GenerischerBaum.deps.json
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\GenerischerBaum\bin\MCD\Debug\netcoreapp2.1\GenerischerBaum.runtimeconfig.json
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\GenerischerBaum\bin\MCD\Debug\netcoreapp2.1\GenerischerBaum.runtimeconfig.dev.json
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\GenerischerBaum\bin\MCD\Debug\netcoreapp2.1\GenerischerBaum.dll
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\GenerischerBaum\bin\MCD\Debug\netcoreapp2.1\GenerischerBaum.pdb
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\GenerischerBaum\obj\MCD\Debug\netcoreapp2.1\GenerischerBaum.csprojAssemblyReference.cache
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\GenerischerBaum\obj\MCD\Debug\netcoreapp2.1\GenerischerBaum.csproj.CoreCompileInputs.cache
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\GenerischerBaum\obj\MCD\Debug\netcoreapp2.1\GenerischerBaum.AssemblyInfoInputs.cache
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\GenerischerBaum\obj\MCD\Debug\netcoreapp2.1\GenerischerBaum.AssemblyInfo.cs
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\GenerischerBaum\obj\MCD\Debug\netcoreapp2.1\GenerischerBaum.dll
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\GenerischerBaum\obj\MCD\Debug\netcoreapp2.1\GenerischerBaum.pdb
