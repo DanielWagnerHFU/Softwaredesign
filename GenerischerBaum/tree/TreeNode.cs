@@ -54,12 +54,20 @@ namespace GenerischerBaum
             this.parentNode = parentNode;
         }
         /*The method AppandChild adds a childnode to the node*/
-        public void AppandChild(TreeNode<T> childNode){
+        public void AppendChild(TreeNode<T> childNode){
             if(IsNodeInTree(childNode)){
                 throw new System.ArgumentException("the childnode is already in the tree");
             } else {
                 childNode.SetParent(this); //secures that the parent is correctly set
                 this.childNodes.Add(childNode);
+            }
+        }
+        /*The method RemoveChild removes a given childNode from the childNodes List*/
+        public void RemoveChild(TreeNode<T> childNode){
+            if(childNodes.Contains(childNode)){
+                childNodes.Remove(childNode);
+            } else {
+                throw new System.ArgumentException("The given childNode doesnt Exist in the chilNodes");
             }
         }
         /*The method ToString returns a string 
@@ -69,12 +77,20 @@ namespace GenerischerBaum
         }
         /*The method PrintTree prints the complete tree to the Console*/
         public void PrintTree(){
-            Console.WriteLine(GetTreeRoot().GetBranchInformation());
+            Console.WriteLine(GetTreeRoot().GetBranchInformation(0));
         }
         /*The method GetBranchInformation returns 
         the content and the structure of the branch*/
-        private string GetBranchInformation(){
-            return ToString();
+        private string GetBranchInformation(int layer){
+            string information = "";
+            for(int i = 0; i < layer; i++){
+                information += "*"; //shows the depthlayer of the tree
+            }
+            information += content.ToString();
+            foreach(TreeNode<T> childNode in childNodes){
+                information += "\n" + childNode.GetBranchInformation(layer + 1); //recursive method call
+            }
+            return information;
         }
 
         public void ForEach(){
