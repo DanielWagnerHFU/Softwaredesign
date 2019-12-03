@@ -23,13 +23,19 @@ namespace GenerischerBaum
         child2.AppendChild(grand21);
         child1.RemoveChild(grand12);
 
-        tree.PrintTree();
+        //tree.PrintTree();
+        tree.ForEach(Func2);
         tree.ForEach(Func);
         Thread.Sleep(50000);
         }
-        static void Func(TreeNode<string> node)
+        static void Func(TreeNode<string> treeNode)
         {
-            Console.Write(node + " | ");
+            Console.Write(treeNode + " | ");
+        }
+
+        static void Func2(TreeNode<string> treeNode)
+        {
+            treeNode.SetContent(treeNode.GetContent() + "(i bims func2 die diesen string verändert hat)");
         }
     }
 }

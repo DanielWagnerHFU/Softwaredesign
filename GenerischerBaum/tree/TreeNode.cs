@@ -54,6 +54,12 @@ namespace GenerischerBaum
         public void SetParent(TreeNode<T> parentNode){
             this.parentNode = parentNode;
         }
+        public T GetContent(){
+            return this.content;
+        }
+        public void SetContent(T content){
+            this.content = content; 
+        }
         /*The method AppandChild adds a childnode to the node*/
         public void AppendChild(TreeNode<T> childNode){
             if(IsNodeInTree(childNode)){
@@ -93,6 +99,7 @@ namespace GenerischerBaum
             }
             return information;
         }
+        /*The method ForEach executed the given delegate method for each node in the branch*/
         public void ForEach(ModifyContent method){
             method(this);
             foreach(TreeNode<T> childNode in childNodes){
