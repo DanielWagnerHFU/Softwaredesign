@@ -3,8 +3,9 @@ using System.Collections.Generic;
 
 namespace GenerischerBaum
 {
-    class TreeNode<T>
+    public class TreeNode<T>
     {
+        public delegate void ModifyContent(TreeNode<T> treeNode);
         private TreeNode<T> parentNode;
         private List<TreeNode<T>> childNodes;
         private T content;
@@ -92,9 +93,11 @@ namespace GenerischerBaum
             }
             return information;
         }
-
-        public void ForEach(){
-
+        public void ForEach(ModifyContent method){
+            method(this);
+            foreach(TreeNode<T> childNode in childNodes){
+                childNode.ForEach(method);
+            }
         }
     }
 }
