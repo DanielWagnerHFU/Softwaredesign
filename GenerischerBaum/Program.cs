@@ -23,7 +23,7 @@ namespace GenerischerBaum
         child2.AppendChild(grand21);
         child1.RemoveChild(grand12);
 
-        //tree.PrintTree();
+        tree.PrintTree();
         tree.ForEach(Func);
         Thread.Sleep(50000);
         }
