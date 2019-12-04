@@ -5,7 +5,11 @@ namespace GenerischerBaum
 {
     public class TreeNode<T>
     {
+        /*Delegate für die ForEach Methode*/
         public delegate void ModifyContent(TreeNode<T> treeNode);
+
+        /*____ATTRIBUTES____*/
+        
         private TreeNode<T> parentNode;
         private List<TreeNode<T>> childNodes;
         private T content;
@@ -15,6 +19,9 @@ namespace GenerischerBaum
             this.childNodes = new List<TreeNode<T>>();
             this.content = content;
         }
+
+        /*____METHODS____*/
+
         /*The method CreateNode returns a new treenode 
         containing the given content*/
         public TreeNode<T> CreateNode(T content){
@@ -54,9 +61,11 @@ namespace GenerischerBaum
         public void SetParent(TreeNode<T> parentNode){
             this.parentNode = parentNode;
         }
+        /*The method GetContent returns the content of the Node*/
         public T GetContent(){
             return this.content;
         }
+        /*The method SetContent sets the content of the Node*/
         public void SetContent(T content){
             this.content = content; 
         }
