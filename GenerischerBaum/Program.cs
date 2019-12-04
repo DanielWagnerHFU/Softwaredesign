@@ -38,5 +38,13 @@ namespace GenerischerBaum
         {
             treeNode.SetContent(treeNode.GetContent() + "(i bims func2 die diesen string verändert hat)");
         }
+
+        static void Test1(TreeNode<string> tree){
+            //tree.AddEventListener("AppendChild",PrintMSG);
+        }
+
+        static void PrintMSG(){
+            Console.WriteLine("Kind is da");
+        }
     }
 }
