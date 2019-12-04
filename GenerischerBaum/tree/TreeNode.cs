@@ -84,18 +84,14 @@ namespace GenerischerBaum
         }
         /*The method PrintTree prints the complete tree to the Console*/
         public void PrintTree(){
-            Console.WriteLine(GetTreeRoot().GetBranchInformation(0));
+            Console.WriteLine(GetTreeRoot().GetBranchInformation(""));
         }
         /*The method GetBranchInformation returns 
         the content and the structure of the branch*/
-        private string GetBranchInformation(int layer){
-            string information = "";
-            for(int i = 0; i < layer; i++){
-                information += "*"; //shows the depthlayer of the tree
-            }
-            information += content.ToString();
+        private string GetBranchInformation(string hierarchicalDepth){
+            string information = hierarchicalDepth + content.ToString();
             foreach(TreeNode<T> childNode in childNodes){
-                information += "\n" + childNode.GetBranchInformation(layer + 1); //recursive method call
+                information += "\n" + childNode.GetBranchInformation(hierarchicalDepth + "*"); //recursive method call
             }
             return information;
         }

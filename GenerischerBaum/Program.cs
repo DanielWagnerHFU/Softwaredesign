@@ -24,8 +24,9 @@ namespace GenerischerBaum
         child1.RemoveChild(grand12);
 
         //tree.PrintTree();
-        tree.ForEach(Func2);
-        tree.ForEach(Func);
+        //tree.ForEach(Func2);
+        //tree.ForEach(Func);
+        tree.PrintTree();
         Thread.Sleep(50000);
         }
         static void Func(TreeNode<string> treeNode)
