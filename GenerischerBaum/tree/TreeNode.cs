@@ -3,16 +3,36 @@ using System.Collections.Generic;
 
 namespace GenerischerBaum
 {
-    public class TreeNode<T>
+    class TreeNode<T>
     {
         /*____DELEGATES____*/
 
-        /*Delegate für die ForEach Methode*/
         public delegate void ModifyContent(TreeNode<T> treeNode);
         public delegate void EventMethod();
 
         /*____ATTRIBUTES____*/
 
+        private class EventListenerTouple{
+            public List<EventMethod> methodsToCall;
+            public string eventMethod;
+            public EventListenerTouple(string eventMethod)
+            {
+                this.methodsToCall = new List<EventMethod>();
+                this.eventMethod = eventMethod;
+            }
+            public void AddMethodToCall(EventMethod methodToCall){
+                methodsToCall.Add(methodToCall);
+            }
+            /*returns the combined methods for an event*/
+            public EventMethod ReturnCombinedMethods(){
+                EventMethod combinedMethods = this.methodsToCall[0];
+                for(int i = 1; i < this.methodsToCall.Count; i++){
+                    combinedMethods += this.methodsToCall[i];
+                }
+                return combinedMethods;
+            }
+        }
+        private List<EventListenerTouple> eventListenerTable;
         private TreeNode<T> parentNode;
         private List<TreeNode<T>> childNodes;
         private T content;
@@ -23,6 +43,10 @@ namespace GenerischerBaum
             this.parentNode = parentNode;
             this.childNodes = new List<TreeNode<T>>();
             this.content = content;
+            initializeEventListenerTable();
+        }
+        private void initializeEventListenerTable(){
+            this.eventListenerTable = new List<EventListenerTouple>();
         }
         /*The method CreateNode returns a new treenode 
         containing the given content*/
@@ -56,6 +80,10 @@ namespace GenerischerBaum
             TreeNode<T> root = GetTreeRoot();
             return root.IsNodeInBranch(searchNode); ;
         }
+        /*The method GetChildNodes returns the childnodes list*/
+        public List<TreeNode<T>> GetChildNodes(){
+            return this.childNodes;
+        }
         /*The method GetTreeRoot returns the rootnode of the tree*/
         public TreeNode<T> GetTreeRoot()
         {
@@ -79,6 +107,12 @@ namespace GenerischerBaum
         /*The method AppandChild adds a childnode to the node*/
         public void AppendChild(TreeNode<T> childNode)
         {
+                EventListenerTouple methods= eventListenerTable.Find((EventListenerTouple touple) => touple.eventMethod.Equals("AppendChild"));
+                if (methods != null){
+                    EventMethod thisMethod = methods.ReturnCombinedMethods();
+                    thisMethod();
+                }
+
             if (IsNodeInTree(childNode))
             {
                 throw new System.ArgumentException("The childnode is already in the tree");
@@ -132,9 +166,16 @@ namespace GenerischerBaum
                 childNode.ForEach(method);
             }
         }
-        /**/
-        public void AddEventListener(){
-
+        /*The method AddEventListener adds a method to a event of this class*/
+        public void AddEventListener(string eventMethod, EventMethod methodToCall){
+            int index = eventListenerTable.FindIndex((EventListenerTouple touple) => touple.eventMethod.Equals(eventMethod));
+            if(index != -1){
+                eventListenerTable[index].AddMethodToCall(methodToCall);
+            } else {
+                EventListenerTouple newListener = new EventListenerTouple(eventMethod);
+                newListener.AddMethodToCall(methodToCall);
+                eventListenerTable.Add(newListener);
+            }
         }
     }
 }
