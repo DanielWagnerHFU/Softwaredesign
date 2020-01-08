@@ -1,0 +1,17 @@
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\L09_UnitTesting\EmailChecker.Tests\bin\MCD\Debug\netcoreapp2.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\L09_UnitTesting\EmailChecker.Tests\bin\MCD\Debug\netcoreapp2.1\xunit.runner.reporters.netcoreapp10.dll
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\L09_UnitTesting\EmailChecker.Tests\bin\MCD\Debug\netcoreapp2.1\xunit.runner.utility.netcoreapp10.dll
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\L09_UnitTesting\EmailChecker.Tests\bin\MCD\Debug\netcoreapp2.1\EmailChecker.Tests.deps.json
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\L09_UnitTesting\EmailChecker.Tests\bin\MCD\Debug\netcoreapp2.1\EmailChecker.Tests.runtimeconfig.json
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\L09_UnitTesting\EmailChecker.Tests\bin\MCD\Debug\netcoreapp2.1\EmailChecker.Tests.runtimeconfig.dev.json
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\L09_UnitTesting\EmailChecker.Tests\bin\MCD\Debug\netcoreapp2.1\EmailChecker.Tests.dll
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\L09_UnitTesting\EmailChecker.Tests\bin\MCD\Debug\netcoreapp2.1\EmailChecker.Tests.pdb
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\L09_UnitTesting\EmailChecker.Tests\bin\MCD\Debug\netcoreapp2.1\EmailChecker.dll
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\L09_UnitTesting\EmailChecker.Tests\bin\MCD\Debug\netcoreapp2.1\EmailChecker.pdb
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\L09_UnitTesting\EmailChecker.Tests\obj\MCD\Debug\netcoreapp2.1\EmailChecker.Tests.csprojAssemblyReference.cache
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\L09_UnitTesting\EmailChecker.Tests\obj\MCD\Debug\netcoreapp2.1\EmailChecker.Tests.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\L09_UnitTesting\EmailChecker.Tests\obj\MCD\Debug\netcoreapp2.1\EmailChecker.Tests.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\L09_UnitTesting\EmailChecker.Tests\obj\MCD\Debug\netcoreapp2.1\EmailChecker.Tests.AssemblyInfo.cs
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\L09_UnitTesting\EmailChecker.Tests\obj\MCD\Debug\netcoreapp2.1\EmailChecker.Tests.csproj.CopyComplete
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\L09_UnitTesting\EmailChecker.Tests\obj\MCD\Debug\netcoreapp2.1\EmailChecker.Tests.dll
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\L09_UnitTesting\EmailChecker.Tests\obj\MCD\Debug\netcoreapp2.1\EmailChecker.Tests.pdb
