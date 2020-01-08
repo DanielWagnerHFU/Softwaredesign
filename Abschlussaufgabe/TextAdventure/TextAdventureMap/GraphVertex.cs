@@ -5,7 +5,7 @@ namespace TextAdventureMap
 {
     public class GraphVertex<T>
     {
-    private T dataElement;
-    private LinkedList<GraphEdge<T>> neighbors;
+    protected T dataElement;
+    protected LinkedList<GraphEdge<T>> neighbors;
     }
 }

@@ -5,7 +5,7 @@ namespace TextAdventureMap
 {
     public class GraphEdge<T>
     {
-        private GraphVertex<T> node1;
-        private GraphVertex<T> node2;
+        protected GraphVertex<T> node1;
+        protected GraphVertex<T> node2;
     }
 }
