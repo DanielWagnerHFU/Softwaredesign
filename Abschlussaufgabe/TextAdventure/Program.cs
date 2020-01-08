@@ -6,7 +6,7 @@ namespace TextAdventure
     {
         static void Main(string[] args)
         {
-
+            // TODO: execute Game
         }
     }
 }
