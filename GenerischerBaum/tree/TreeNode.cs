@@ -12,13 +12,13 @@ namespace GenerischerBaum
 
         /*____ATTRIBUTES____*/
 
-        private class EventListenerTouple{
+        private class EventListener{
             public List<EventMethod> methodsToCall;
-            public string eventMethod;
-            public EventListenerTouple(string eventMethod)
+            public string eventName;
+            public EventListener(string eventName)
             {
                 this.methodsToCall = new List<EventMethod>();
-                this.eventMethod = eventMethod;
+                this.eventName = eventName;
             }
             public void AddMethodToCall(EventMethod methodToCall){
                 methodsToCall.Add(methodToCall);
@@ -32,7 +32,7 @@ namespace GenerischerBaum
                 return combinedMethods;
             }
         }
-        private List<EventListenerTouple> eventListenerTable;
+        private List<EventListener> eventListenerTable;
         private TreeNode<T> parentNode;
         private List<TreeNode<T>> childNodes;
         private T content;
@@ -46,7 +46,7 @@ namespace GenerischerBaum
             initializeEventListenerTable();
         }
         private void initializeEventListenerTable(){
-            this.eventListenerTable = new List<EventListenerTouple>();
+            this.eventListenerTable = new List<EventListener>();
         }
         /*The method CreateNode returns a new treenode 
         containing the given content*/
@@ -107,18 +107,16 @@ namespace GenerischerBaum
         /*The method AppandChild adds a childnode to the node*/
         public void AppendChild(TreeNode<T> childNode)
         {
-                EventListenerTouple methods= eventListenerTable.Find((EventListenerTouple touple) => touple.eventMethod.Equals("AppendChild"));
-                if (methods != null){
-                    EventMethod thisMethod = methods.ReturnCombinedMethods();
-                    thisMethod();
-                }
+            EventListener methods= eventListenerTable.Find((EventListener eventListener) => eventListener.eventName.Equals("AppendChild"));
+            if (methods != null){
+                EventMethod thisMethod = methods.ReturnCombinedMethods();
+                thisMethod();
+            }
 
-            if (IsNodeInTree(childNode))
-            {
+            if (IsNodeInTree(childNode)){
                 throw new System.ArgumentException("The childnode is already in the tree");
             }
-            else
-            {
+            else{
                 childNode.SetParent(this); //secures that the parent is correctly set
                 this.childNodes.Add(childNode);
             }
@@ -167,12 +165,12 @@ namespace GenerischerBaum
             }
         }
         /*The method AddEventListener adds a method to a event of this class*/
-        public void AddEventListener(string eventMethod, EventMethod methodToCall){
-            int index = eventListenerTable.FindIndex((EventListenerTouple touple) => touple.eventMethod.Equals(eventMethod));
+        public void AddEventListener(string eventName, EventMethod methodToCall){
+            int index = eventListenerTable.FindIndex((EventListener eventListener) => eventListener.eventName.Equals(eventName));
             if(index != -1){
                 eventListenerTable[index].AddMethodToCall(methodToCall);
             } else {
-                EventListenerTouple newListener = new EventListenerTouple(eventMethod);
+                EventListener newListener = new EventListener(eventName);
                 newListener.AddMethodToCall(methodToCall);
                 eventListenerTable.Add(newListener);
             }

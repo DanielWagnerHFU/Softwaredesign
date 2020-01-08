@@ -42,20 +42,20 @@ namespace GenerischerBaum
             var tree = new TreeNode<string>(null, "root");
             tree.AddEventListener("AppendChild", A);
             tree.AddEventListener("AppendChild", B);
-            tree.AddEventListener("AppendChild", C);
             tree.AppendChild(tree.CreateNode("child1"));
+            tree.AddEventListener("AppendChild", C);
             tree.AppendChild(tree.CreateNode("child2"));
             tree.PrintTree();
         }
 
         static void A(){
-            Console.WriteLine("i got a child!");
+            Console.WriteLine("A");
         }
         static void B(){
-            Console.WriteLine("and i died");
+            Console.WriteLine("B");
         }
         static void C(){
-            Console.WriteLine("I BIMS DANIEL");
+            Console.WriteLine("C");
         }
     }
 }
