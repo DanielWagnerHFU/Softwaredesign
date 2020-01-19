@@ -1,0 +1,11 @@
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\Abschlussaufgabe\TextAdventure\bin\MCD\Debug\netcoreapp2.1\TextAdventure.deps.json
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\Abschlussaufgabe\TextAdventure\bin\MCD\Debug\netcoreapp2.1\TextAdventure.runtimeconfig.json
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\Abschlussaufgabe\TextAdventure\bin\MCD\Debug\netcoreapp2.1\TextAdventure.runtimeconfig.dev.json
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\Abschlussaufgabe\TextAdventure\bin\MCD\Debug\netcoreapp2.1\TextAdventure.dll
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\Abschlussaufgabe\TextAdventure\bin\MCD\Debug\netcoreapp2.1\TextAdventure.pdb
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\Abschlussaufgabe\TextAdventure\obj\MCD\Debug\netcoreapp2.1\TextAdventure.csprojAssemblyReference.cache
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\Abschlussaufgabe\TextAdventure\obj\MCD\Debug\netcoreapp2.1\TextAdventure.csproj.CoreCompileInputs.cache
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\Abschlussaufgabe\TextAdventure\obj\MCD\Debug\netcoreapp2.1\TextAdventure.AssemblyInfoInputs.cache
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\Abschlussaufgabe\TextAdventure\obj\MCD\Debug\netcoreapp2.1\TextAdventure.AssemblyInfo.cs
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\Abschlussaufgabe\TextAdventure\obj\MCD\Debug\netcoreapp2.1\TextAdventure.dll
+c:\Users\User\Desktop\Coding\GitHup\Softwaredesign\Abschlussaufgabe\TextAdventure\obj\MCD\Debug\netcoreapp2.1\TextAdventure.pdb
