@@ -22,7 +22,7 @@ namespace TextAdventureMap
         }
         public virtual void ChangeArea(Character character)
         {
-            //TODO
+            //TODO - erst wenn Charaktere implementiert sind
         }
         public virtual string GetDescription(Area callingArea)
         {
