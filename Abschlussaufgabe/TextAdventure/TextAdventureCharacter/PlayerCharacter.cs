@@ -9,5 +9,8 @@ namespace TextAdventureCharacter
         {
 
         }
+        public override void MakeAMove(){
+            //TODO
+        }
     }
 }

@@ -22,7 +22,7 @@ namespace TextAdventureMap
         public string GetDescription()
         {
             //TODO
-            return "";
+            return "TODO";
         }
         public string GetName()
         {

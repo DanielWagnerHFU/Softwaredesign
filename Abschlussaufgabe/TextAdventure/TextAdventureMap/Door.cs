@@ -22,5 +22,9 @@ namespace TextAdventureMap
                 }
             }
         }
+        public override string GetDescription(Area callingArea){
+            //TODO
+            return "TODO";
+        }
     }
 }
