@@ -43,8 +43,9 @@ namespace TextAdventureCharacter
                 this.isAlive = false;
             }
         }
-        protected void Attack(Character character){
-            character.GetHarmed(GetTotalAttackDamage());
+        protected void Attack(int characterIndex){
+            FindCharacter(characterIndex).GetHarmed(GetTotalAttackDamage());
+            //TODO Update Mood
         }
         protected List<Character> GetSupportingCharacters()
         {

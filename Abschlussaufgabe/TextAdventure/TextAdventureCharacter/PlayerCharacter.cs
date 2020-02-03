@@ -1,5 +1,6 @@
 using System;
 using TextAdventureMap;
+
 namespace TextAdventureCharacter
 {
     public class PlayerCharacter : Character
@@ -14,7 +15,11 @@ namespace TextAdventureCharacter
         }
         public override void StartDialog(Character character)
         {
-
+            character.StartDialog(this);
+        }
+        private void QuitGame()
+        {
+            System.Environment.Exit(0);
         }
     }
 }
