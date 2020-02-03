@@ -26,11 +26,11 @@ namespace TextAdventureCharacter
                 if(commandWithArgs.StartsWith(command))
                 {
                     string args = commandWithArgs.TrimStart(command);
-                    if(args[0] == ' ')
+                    if(args == "")
                     {
                         isEqual = true;
                     }
-                    else if (args == "")
+                    else if (args[0] == ' ')
                     {
                         isEqual = true;
                     }

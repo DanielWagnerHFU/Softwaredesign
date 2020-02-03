@@ -1,0 +1,17 @@
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\Abschlussaufgabe\TextAdventure.Test\bin\MCD\Debug\netcoreapp2.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\Abschlussaufgabe\TextAdventure.Test\bin\MCD\Debug\netcoreapp2.1\xunit.runner.reporters.netcoreapp10.dll
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\Abschlussaufgabe\TextAdventure.Test\bin\MCD\Debug\netcoreapp2.1\xunit.runner.utility.netcoreapp10.dll
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\Abschlussaufgabe\TextAdventure.Test\bin\MCD\Debug\netcoreapp2.1\TextAdventure.Test.deps.json
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\Abschlussaufgabe\TextAdventure.Test\bin\MCD\Debug\netcoreapp2.1\TextAdventure.Test.runtimeconfig.json
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\Abschlussaufgabe\TextAdventure.Test\bin\MCD\Debug\netcoreapp2.1\TextAdventure.Test.runtimeconfig.dev.json
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\Abschlussaufgabe\TextAdventure.Test\bin\MCD\Debug\netcoreapp2.1\TextAdventure.Test.dll
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\Abschlussaufgabe\TextAdventure.Test\bin\MCD\Debug\netcoreapp2.1\TextAdventure.Test.pdb
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\Abschlussaufgabe\TextAdventure.Test\bin\MCD\Debug\netcoreapp2.1\TextAdventure.dll
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\Abschlussaufgabe\TextAdventure.Test\bin\MCD\Debug\netcoreapp2.1\TextAdventure.pdb
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\Abschlussaufgabe\TextAdventure.Test\obj\MCD\Debug\netcoreapp2.1\TextAdventure.Test.csprojAssemblyReference.cache
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\Abschlussaufgabe\TextAdventure.Test\obj\MCD\Debug\netcoreapp2.1\TextAdventure.Test.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\Abschlussaufgabe\TextAdventure.Test\obj\MCD\Debug\netcoreapp2.1\TextAdventure.Test.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\Abschlussaufgabe\TextAdventure.Test\obj\MCD\Debug\netcoreapp2.1\TextAdventure.Test.AssemblyInfo.cs
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\Abschlussaufgabe\TextAdventure.Test\obj\MCD\Debug\netcoreapp2.1\TextAdventure.Test.csproj.CopyComplete
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\Abschlussaufgabe\TextAdventure.Test\obj\MCD\Debug\netcoreapp2.1\TextAdventure.Test.dll
+C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\Abschlussaufgabe\TextAdventure.Test\obj\MCD\Debug\netcoreapp2.1\TextAdventure.Test.pdb
