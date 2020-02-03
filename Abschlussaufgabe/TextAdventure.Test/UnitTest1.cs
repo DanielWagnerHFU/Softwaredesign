@@ -27,6 +27,13 @@ namespace TextAdventure.Test
             bool isEqual = command.IsEqualToCommandWithArgs("test");
             Assert.True(isEqual, "Fehler beim Vergleich der Befehle mit und ohne Argumente");
         }
+        [Fact]
+        public void Test4()
+        {
+            Command command = new Command(new string[]{"test"},new ParameterMethod<string>(TestDelegate),"");
+            bool isEqual = command.IsEqualToCommandWithArgs("test");
+            Assert.True(isEqual, "Fehler beim Vergleich der Befehle mit und ohne Argumente");
+        }
         private void TestDelegate(string[] args)
         {
 
