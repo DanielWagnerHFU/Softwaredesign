@@ -50,8 +50,7 @@ namespace TextAdventureCharacter
         public string[] GetArgs(string commandWithArgs)
         {
             string argsString = GetArgsString(commandWithArgs);
-            string[] args = argsString.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
-            return args;
+            return argsString.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
         }
         public ParameterMethod<string> GetMethodToCall()
         {
