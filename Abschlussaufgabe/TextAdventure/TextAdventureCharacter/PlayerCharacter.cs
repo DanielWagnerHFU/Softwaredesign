@@ -20,6 +20,8 @@ namespace TextAdventureCharacter
         }
         public override void MakeAMove(){
             //TODO
+            string input = Console.ReadLine();
+            HandleCommand(input);
         }
         private Command FindCommand(string commandWithArgs)
         {
@@ -33,7 +35,7 @@ namespace TextAdventureCharacter
             Console.WriteLine("Command not found - try to use the correct Syntax");
             return null;
         }
-        private void CommandHandler(string commandWithArgs)
+        private void HandleCommand(string commandWithArgs)
         {
             Command command = FindCommand(commandWithArgs);
             if(command != null)
@@ -46,9 +48,10 @@ namespace TextAdventureCharacter
         {
             character.StartDialog(this);
         }
-        private void QuitGame(string[] args)
+        private bool QuitGame(string[] args)
         {
             System.Environment.Exit(0);
+            return false;
         }
     }
 }
