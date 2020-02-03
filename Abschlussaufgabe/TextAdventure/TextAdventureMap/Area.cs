@@ -44,6 +44,10 @@ namespace TextAdventureMap
         {
             this.items.Remove(item);
         }
+        public Item FindItem(int itemIndex)
+        {
+            return this.items[itemIndex];
+        }
         public void AddCharacter(Character character)
         {
             this.characters.Add(character);
@@ -57,6 +61,10 @@ namespace TextAdventureMap
             List<Character> supportingCharacters = new List<Character>(this.characters);
             supportingCharacters.Remove(mainCharacter);
             return supportingCharacters;
+        }
+        public List<Item> GetItems()
+        {
+            return this.items;
         }
     }
 }

@@ -9,6 +9,7 @@ namespace TextAdventureCharacter
     {
         protected int uniqueIdentificationNumber;
         protected string name;
+        protected string description;
         protected bool isAlive;
         protected double maxHealthPoints;
         protected double healthPoints;
@@ -16,10 +17,11 @@ namespace TextAdventureCharacter
         protected List<Item> inventory;
         protected Item activeItem;
         protected Area location;
-        public Character(int uniqueIdentificationNumber, string name, Area location)
+        public Character(int uniqueIdentificationNumber, string name, string description, Area location)
         {
             this.uniqueIdentificationNumber = uniqueIdentificationNumber;
             this.name = name;
+            this.description = description;
             this.isAlive = true; 
             this.maxHealthPoints = 0;
             this.healthPoints = 0;
@@ -37,7 +39,7 @@ namespace TextAdventureCharacter
         {
             //TODO
         }
-        public void Attack(Character character){
+        protected void Attack(Character character){
             //TODO
         }
         protected List<Character> GetSupportingCharacters()
@@ -48,11 +50,15 @@ namespace TextAdventureCharacter
         {
             return strength;
         }
-        public void TakeItem(string itemName){
-            //TODO
+        protected void TakeItem(int itemAreaIndex){
+            Item item = this.location.FindItem(itemAreaIndex);
+            this.inventory.Add(item);
+            this.location.RemoveItem(item);
         }
-        public void DropItem(string itemName){
-            //TODO
+        protected void DropItem(int itemIndex){
+            Item item = this.inventory[itemIndex];
+            this.location.AddItem(item);
+            this.inventory.Remove(item);
         }
         protected void UseItemOnSomeone(int characterIndex)
         {
@@ -66,8 +72,13 @@ namespace TextAdventureCharacter
         {
             this.activeItem.UseOnCharacter(this);
         }
-        protected void SwitchActiveItem(string itemName){
-            //TODO - beachte fall wenn slot = null
+        protected void SwitchActiveItem(int itemIndex){
+            Item newActiveItem = this.inventory[itemIndex];
+            if(this.activeItem != null){
+                this.inventory.Add(this.activeItem);
+            }
+            this.activeItem = newActiveItem;
+            this.inventory.Remove(newActiveItem);
         }
         protected void UseItemOnGateway(int gatewayIndex)
         {
