@@ -22,7 +22,6 @@ namespace TextAdventureCharacter
         {
             bool isEqual = false;
             string args = GetArgsString(commandWithArgs);
-
             if(args != null)
                 {
                 if(args == "")
@@ -50,16 +49,8 @@ namespace TextAdventureCharacter
         }
         public string[] GetArgs(string commandWithArgs)
         {
-            string[] args = new string[0];
-            foreach(string command in commands)
-            {
-                if(commandWithArgs.StartsWith(command))
-                {
-                string argsString = commandWithArgs.TrimStart(command); 
-                }
-            }
-            //TODO UNFERTIG 
-            return args;
+            string argsString = GetArgsString(commandWithArgs);
+            return argsString.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
         }
         public ParameterMethod<string> GetMethodToCall()
         {
