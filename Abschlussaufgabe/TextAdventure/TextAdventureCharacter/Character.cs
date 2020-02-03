@@ -54,25 +54,28 @@ namespace TextAdventureCharacter
         public void DropItem(string itemName){
             //TODO
         }
-        protected void UseItemOnSomeone(string characterName)
+        protected void UseItemOnSomeone(int characterIndex)
         {
-            //TODO
+            this.activeItem.UseOnCharacter(FindCharacter(characterIndex));
         }
-        protected void UseItem()
+        protected Character FindCharacter(int characterIndex)
         {
-            //TODO
+            return this.location.GetSupportingCharacters(this)[characterIndex];
+        }
+        protected void UseItemOnYourself()
+        {
+            this.activeItem.UseOnCharacter(this);
         }
         protected void SwitchActiveItem(string itemName){
             //TODO - beachte fall wenn slot = null
         }
-        protected void UseItemOnGateway(string gatewayName)
+        protected void UseItemOnGateway(int gatewayIndex)
         {
-            FindGateway(gatewayName).UseItem(this.activeItem);
+            this.activeItem.UseOnGateway(FindGateway(gatewayIndex));
         }
-        protected Gateway FindGateway(string gatewayName)
+        protected Gateway FindGateway(int gatewayIndex)
         {
-            //TODO
-            return null;
+            return this.location.GetGateways()[gatewayIndex];
         }
     }
 }
