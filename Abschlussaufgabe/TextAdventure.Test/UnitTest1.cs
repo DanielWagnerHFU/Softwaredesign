@@ -65,11 +65,10 @@ namespace TextAdventure.Test
             string[] testargs = new string[0];
             Assert.True(args.SequenceEqual(testargs));
         }
-        [Fact]
 
-        private void TestDelegate(string[] args)
+        private bool TestDelegate(string[] args)
         {
-
+            return false;
         }
     }
 }
