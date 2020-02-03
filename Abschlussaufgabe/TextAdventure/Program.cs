@@ -9,10 +9,7 @@ namespace TextAdventure
         {
             Console.WriteLine("Game is starting...");
             // TODO: execute Game
-            string a = "kill";
-            if(a.TrimStart("kill") == ""){
-                Console.WriteLine("YOOO");
-            }
+
             System.Threading.Thread.Sleep(10000);
         }
     }
