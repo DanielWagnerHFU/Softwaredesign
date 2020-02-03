@@ -1,10 +1,13 @@
 using System;
 using TextAdventureMap;
+using System.Collections.Generic;
 
 namespace TextAdventureCharacter
 {
     public class PlayerCharacter : Character
     {
+        delegate void ParameterMethod<T>(params T[] args);
+        Dictionary<string, ParameterMethod<string>> commands;
         public PlayerCharacter(int uniqueIdentificationNumber, string name, string description, Area location) 
         : base(uniqueIdentificationNumber, name, description, location)
         {
