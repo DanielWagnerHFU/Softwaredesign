@@ -25,17 +25,17 @@ namespace TextAdventureCharacter
             {
                 if(commandWithArgs.StartsWith(command))
                 {
-                    if(commandWithArgs.Equals(command))
+                    string args = commandWithArgs.TrimStart(command);
+                    if(args[0] == ' ')
                     {
                         isEqual = true;
-                    } 
-                    else
+                    }
+                    else if (args == "")
                     {
-                        commandWithArgs.TrimStart(command);
+                        isEqual = true;
                     }
                 }
             }
-            //TODO
             return isEqual;
         }
         public string[] GetArgsArray(string commandWithArgs)
