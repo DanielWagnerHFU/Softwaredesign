@@ -2,7 +2,7 @@ using System;
 
 namespace TextAdventureCharacter
 {
-    public sealed class Dialog
+    public sealed class DialogNode
     {
     }
 }
