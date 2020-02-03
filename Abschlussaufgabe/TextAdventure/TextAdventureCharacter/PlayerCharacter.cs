@@ -21,16 +21,25 @@ namespace TextAdventureCharacter
         public override void MakeAMove(){
             //TODO
         }
-        private void CommandHandler(string commandWithArgs)
+        private Command FindCommand(string commandWithArgs)
         {
-            //TODO
             foreach(Command command in commands)
             {
                 if(command.IsEqualToCommandWithArgs(commandWithArgs))
                 {
-                    string[] args = command.GetArgs(commandWithArgs);
-                    command.GetMethodToCall()(args);
+                    return command;
                 }
+            }
+            Console.WriteLine("Command not found - try to use the correct Syntax");
+            return null;
+        }
+        private void CommandHandler(string commandWithArgs)
+        {
+            Command command = FindCommand(commandWithArgs);
+            if(command != null)
+            {
+                string[] args = command.GetArgs(commandWithArgs);
+                command.GetMethodToCall()(args);
             }
         }
         public override void StartDialog(Character character)
