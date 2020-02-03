@@ -23,24 +23,27 @@ namespace TextAdventureCharacter
             this.name = name;
             this.description = description;
             this.isAlive = true; 
-            this.maxHealthPoints = 0;
-            this.healthPoints = 0;
+            this.maxHealthPoints = 1;
+            this.healthPoints = 1;
             this.strength = 0;
             this.inventory = new List<Item>();
             this.location = location;
         }
         public virtual string GetDescription()
         {
-            //TODO - evtl. mehr Sinn wenn nur bei NPCs?
-            return "TODO";
+            return this.name + "\n" + this.description;
         }
         public abstract void MakeAMove();
         public virtual void GetHarmed(double damage)
         {
-            //TODO
+            this.healthPoints -= damage;
+            if(this.healthPoints <= 0)
+            {
+                this.isAlive = false;
+            }
         }
         protected void Attack(Character character){
-            //TODO
+            character.GetHarmed(GetTotalAttackDamage());
         }
         protected List<Character> GetSupportingCharacters()
         {
