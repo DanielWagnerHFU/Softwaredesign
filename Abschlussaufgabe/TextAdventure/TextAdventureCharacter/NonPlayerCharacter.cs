@@ -14,7 +14,7 @@ namespace TextAdventureCharacter
             this.dialog = dialog;
             this.moodAboutCharacters = new Dictionary<Character, double>();
         }
-        protected void StartDialog()
+        public override void StartDialog(Character character)
         {
             //TODO - erst nach DialogNode
         }

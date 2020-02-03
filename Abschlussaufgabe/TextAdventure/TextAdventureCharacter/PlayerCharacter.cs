@@ -12,5 +12,9 @@ namespace TextAdventureCharacter
         public override void MakeAMove(){
             //TODO
         }
+        public override void StartDialog(Character character)
+        {
+
+        }
     }
 }

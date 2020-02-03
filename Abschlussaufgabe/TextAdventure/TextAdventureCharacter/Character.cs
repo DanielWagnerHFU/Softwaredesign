@@ -34,6 +34,7 @@ namespace TextAdventureCharacter
             return this.name + "\n" + this.description;
         }
         public abstract void MakeAMove();
+        public abstract void StartDialog(Character character);
         public virtual void GetHarmed(double damage)
         {
             this.healthPoints -= damage;
