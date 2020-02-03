@@ -6,12 +6,18 @@ namespace TextAdventureCharacter
 {
     public class PlayerCharacter : Character
     {
-        delegate void ParameterMethod<T>(params T[] args);
-        Dictionary<string, ParameterMethod<string>> commands;
+        Dictionary<string[], Command> commands;
         public PlayerCharacter(int uniqueIdentificationNumber, string name, string description, Area location) 
         : base(uniqueIdentificationNumber, name, description, location)
         {
+            commands = new Dictionary<string[], Command>();
+            initializeCommands();
+        }
+        private void initializeCommands()
+        {
+            this.commands.Add(new string[] {"quit","q"}, new Command(QuitGame,"quit(q)"));
 
+            //TODO
         }
         public override void MakeAMove(){
             //TODO
@@ -20,7 +26,7 @@ namespace TextAdventureCharacter
         {
             character.StartDialog(this);
         }
-        private void QuitGame()
+        private void QuitGame(string[] args)
         {
             System.Environment.Exit(0);
         }
