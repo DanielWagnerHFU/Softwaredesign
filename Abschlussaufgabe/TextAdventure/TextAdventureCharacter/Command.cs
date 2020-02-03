@@ -21,28 +21,45 @@ namespace TextAdventureCharacter
         public bool IsEqualToCommandWithArgs(string commandWithArgs)
         {
             bool isEqual = false;
-            foreach(string command in commands)
-            {
-                if(commandWithArgs.StartsWith(command))
+            string args = GetArgsString(commandWithArgs);
+
+            if(args != null)
                 {
-                    string args = commandWithArgs.TrimStart(command);
-                    if(args == "")
-                    {
-                        isEqual = true;
-                    }
-                    else if (args[0] == ' ')
-                    {
-                        isEqual = true;
-                    }
+                if(args == "")
+                {
+                    isEqual = true;
+                }
+                else if (args[0] == ' ')
+                {
+                    isEqual = true;
                 }
             }
             return isEqual;
         }
-        public string[] GetArgsArray(string commandWithArgs)
+        private string GetArgsString(string commandWithArgs)
         {
-            //TODO
-            //string[] keywords = commandExpression.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
-            return null;
+            string args = null;
+            foreach(string command in commands)
+            {
+                if(commandWithArgs.StartsWith(command))
+                {
+                    args = commandWithArgs.TrimStart(command); 
+                }
+            }
+            return args;   
+        }
+        public string[] GetArgs(string commandWithArgs)
+        {
+            string[] args = new string[0];
+            foreach(string command in commands)
+            {
+                if(commandWithArgs.StartsWith(command))
+                {
+                string argsString = commandWithArgs.TrimStart(command); 
+                }
+            }
+            //TODO UNFERTIG 
+            return args;
         }
         public ParameterMethod<string> GetMethodToCall()
         {

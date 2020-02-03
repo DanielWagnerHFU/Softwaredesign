@@ -28,7 +28,7 @@ namespace TextAdventureCharacter
             {
                 if(command.IsEqualToCommandWithArgs(commandWithArgs))
                 {
-                    string[] args = command.GetArgsArray(commandWithArgs);
+                    string[] args = command.GetArgs(commandWithArgs);
                     command.GetMethodToCall()(args);
                 }
             }
