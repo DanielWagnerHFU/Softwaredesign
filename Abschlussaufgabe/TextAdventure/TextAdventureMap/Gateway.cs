@@ -24,7 +24,11 @@ namespace TextAdventureMap
         {
             //TODO - erst wenn Charaktere implementiert sind
         }
-        public virtual string GetDescription(Area callingArea)
+        public virtual string GetName(Area callingArea)
+        {
+            return GetDestination(callingArea);
+        }
+        public virtual string GetDestination(Area callingArea)
         {
             return (callingArea == areaA)? areaB.GetName() : areaA.GetName();
         }

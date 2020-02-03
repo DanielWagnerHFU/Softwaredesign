@@ -6,10 +6,14 @@ namespace TextAdventureMap
     public class Door : Gateway
     {
         private Key referenceKey;
-        public Door(Key referenceKey, Area areaA, Area areaB, int uniqueIdentificationNumber) 
+        private string name;
+        private bool isOpen;
+        public Door(Key referenceKey, Area areaA, Area areaB, int uniqueIdentificationNumber, string name, bool isOpen) 
         : base(areaA, areaB, uniqueIdentificationNumber)
         {
             this.referenceKey = referenceKey;
+            this.name = name;
+            this.isOpen = isOpen;
         }
         public override void UseItem(Item item)
         {
@@ -22,9 +26,15 @@ namespace TextAdventureMap
                 }
             }
         }
-        public override string GetDescription(Area callingArea){
-            //TODO
-            return "TODO";
+        public override string GetName(Area callingArea){
+            if(isOpen == true)
+            {
+                return GetDestination(callingArea);
+            } 
+            else 
+            {
+                return this.name;
+            }
         }
     }
 }
