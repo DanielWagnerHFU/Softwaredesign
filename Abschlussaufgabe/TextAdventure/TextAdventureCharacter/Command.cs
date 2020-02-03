@@ -2,7 +2,7 @@ using System;
 
 namespace TextAdventureCharacter
 {
-    public delegate void ParameterMethod<T>(params T[] args);
+    public delegate void ParameterMethod<T>(T[] args);
     public sealed class Command
     {
         public ParameterMethod<string> methodToCall;
