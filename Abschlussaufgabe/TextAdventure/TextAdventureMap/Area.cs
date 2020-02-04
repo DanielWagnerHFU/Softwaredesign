@@ -45,13 +45,10 @@ namespace TextAdventureMap
         {
             this.items.Remove(item);
         }
-        public Item FindItem(int itemIndex)
-        {
-            return this.items[itemIndex];
-        }
         public void AddCharacter(Character character)
         {
             this.characters.Add(character);
+            character.SetLocation(this);
         }
         public void RemoveCharacter(Character character)
         {

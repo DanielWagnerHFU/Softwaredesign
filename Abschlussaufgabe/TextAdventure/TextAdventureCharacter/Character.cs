@@ -40,6 +40,14 @@ namespace TextAdventureCharacter
         {
             return this.description;
         }
+        public void SetLocation(Area location)
+        {
+            this.location = location;
+        }
+        public Area GetLocation()
+        {
+            return this.location;
+        }
         public abstract void MakeAMove();
         public abstract void StartDialog(Character character);
         public virtual void GetHarmed(double damage)
@@ -149,6 +157,12 @@ namespace TextAdventureCharacter
             {
                 gateway.ChangeArea(this);
             }
+        }
+        public void MoveToArea(Area destination)
+        {
+            Area location = this.location;
+            destination.AddCharacter(this);
+            location.RemoveCharacter(this);
         }
         public void AddItem(Item item)
         {

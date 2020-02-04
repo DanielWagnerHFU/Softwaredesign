@@ -22,15 +22,19 @@ namespace TextAdventureMap
         }
         public virtual void ChangeArea(Character character)
         {
-            //TODO - erst wenn Charaktere implementiert sind
+            character.MoveToArea(GetDestination(character.GetLocation()));
         }
         public virtual string GetName(Area callingArea)
         {
-            return GetDestination(callingArea);
+            return GetDestinationName(callingArea);
         }
-        public virtual string GetDestination(Area callingArea)
+        protected string GetDestinationName(Area callingArea)
         {
             return (callingArea == areaA)? areaB.GetName() : areaA.GetName();
+        }
+        protected Area GetDestination(Area callingArea)
+        {
+            return (callingArea == areaA)? areaB : areaA;
         }
     }
 }

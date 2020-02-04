@@ -29,7 +29,7 @@ namespace TextAdventureMap
         public override string GetName(Area callingArea){
             if(isOpen == true)
             {
-                return GetDestination(callingArea);
+                return GetDestinationName(callingArea);
             } 
             else 
             {
