@@ -13,7 +13,7 @@ namespace TextAdventure
         {
             Area area = new Area(0, "area", "You are in a endless space.");
             PlayerCharacter player = new PlayerCharacter(0,"player","test",area);
-            StaticNonPlayerCharacter npc = new StaticNonPlayerCharacter(1,"npc","A old npc",area,null);
+            NonPlayerCharacter npc = new NonPlayerCharacter(1,"npc","A old npc",area);
             Key key = new Key(0,1,"key","A old Key");
             player.AddItem(key);
             List<Character> characters = new List<Character>();
