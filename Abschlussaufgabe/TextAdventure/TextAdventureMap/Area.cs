@@ -8,11 +8,12 @@ namespace TextAdventureMap
     public class Area
     {
         protected int uniqueIdentificationNumber;
-        protected string name; 
+        protected string name;
+        protected string description;
         protected List<Gateway> gateways;
         protected List<Character> characters;
         protected List<Item> items;
-        public Area(int uniqueIdentificationNumber, string name){
+        public Area(int uniqueIdentificationNumber, string name, string description){
             this.uniqueIdentificationNumber = uniqueIdentificationNumber;
             this.name = name;
             this.gateways = new List<Gateway>();
@@ -21,8 +22,7 @@ namespace TextAdventureMap
         }
         public string GetDescription()
         {
-            //TODO
-            return "TODO";
+            return this.description;
         }
         public string GetName()
         {
