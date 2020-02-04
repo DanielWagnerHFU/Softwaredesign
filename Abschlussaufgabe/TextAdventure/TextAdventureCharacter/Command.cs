@@ -44,7 +44,8 @@ namespace TextAdventureCharacter
             {
                 if(commandWithArgs.StartsWith(command))
                 {
-                    args = commandWithArgs.TrimStart(command); 
+                    args = commandWithArgs.TrimStart(command);
+                    break; 
                 }
             }
             return args;   
