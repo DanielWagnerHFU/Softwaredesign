@@ -5,7 +5,7 @@ namespace TextAdventureCharacter
 {
     public class RoamingNonPlayerCharacter : NonPlayerCharacter
     {
-        public RoamingNonPlayerCharacter(int uniqueIdentificationNumber, string name, string description, Area location, DialogNode dialog) 
+        public RoamingNonPlayerCharacter(int uniqueIdentificationNumber, string name, string description, Area location) 
         : base(uniqueIdentificationNumber, name, description, location)
         {
 
