@@ -16,6 +16,7 @@ namespace TextAdventureMap
         public Area(int uniqueIdentificationNumber, string name, string description){
             this.uniqueIdentificationNumber = uniqueIdentificationNumber;
             this.name = name;
+            this.description = description;
             this.gateways = new List<Gateway>();
             this.characters = new List<Character>();
             this.items = new List<Item>();

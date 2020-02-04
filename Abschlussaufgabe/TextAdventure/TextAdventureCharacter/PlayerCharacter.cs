@@ -94,31 +94,39 @@ namespace TextAdventureCharacter
         }
         private void CommandHandlerLook(string[] args)
         {
-            Console.WriteLine(this.location.GetDescription() + " You see");
+            Console.WriteLine(this.location.GetDescription());
             WriteItems();
-            Console.WriteLine("With you in the room are");
             WriteSupportingCharacters();
             //TODO add next rooms
         }
         private void WriteSupportingCharacters()
         {
             List<Character> supportingCharacters = GetSupportingCharacters();
-            foreach(Character character in supportingCharacters)
+            if(supportingCharacters.Count != 0)
             {
-                Console.WriteLine(character.GetName());
-                Console.WriteLine(character.GetDescription());
+                Console.WriteLine("Characters:");
+                foreach(Character character in supportingCharacters)
+                {
+                    Console.WriteLine(character.GetName());
+                    Console.WriteLine(character.GetDescription());
+                }
+                Console.WriteLine();
             }
-            Console.WriteLine();
         }
         private void WriteItems()
         {
             List<Item> items = this.location.GetItems();
-            foreach(Item item in items)
+            if(items.Count != 0)
             {
-                Console.WriteLine(item.GetName());
-                Console.WriteLine(item.GetDescription());
+                Console.WriteLine("Items:");
+                foreach(Item item in items)
+                {
+                    Console.WriteLine(item.GetName());
+                    if(item.GetDescription()!="")
+                        Console.WriteLine(item.GetDescription());
+                }
+                Console.WriteLine();
             }
-            Console.WriteLine();
         }
         private void CommandHandlerInventory(string[] args)
         {
