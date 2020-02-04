@@ -57,10 +57,6 @@ namespace TextAdventureCharacter
             {
                character.GetHarmed(GetTotalAttackDamage());
             }
-            else
-            {
-                Console.WriteLine("ERROR: no such character found");
-            }
         }
         protected List<Character> GetSupportingCharacters()
         {
@@ -71,27 +67,19 @@ namespace TextAdventureCharacter
             return strength;
         }
         protected void TakeItem(string itemname){
-            Item itemToTake = this.location.GetItems().Find(item => item.GetName() == itemname);
+            Item itemToTake = FindItemInLocation(itemname);
             if(itemToTake != null)
             {
                 this.inventory.Add(itemToTake);
                 this.location.RemoveItem(itemToTake);
             }
-            else
-            {
-                Console.WriteLine("ERROR: no such item found");
-            }
         }
         protected void DropItem(string itemname){
-            Item itemToDrop = this.inventory.Find(item => item.GetName() == itemname);
+            Item itemToDrop = FindItemInInventory(itemname);
             if(itemToDrop != null)
             {
                 this.location.AddItem(itemToDrop);
                 this.inventory.Remove(itemToDrop);
-            }
-            else
-            {
-                Console.WriteLine("ERROR: no such item found");
             }
         }
         protected void UseItemOnSomeone(string charactername)
@@ -101,35 +89,66 @@ namespace TextAdventureCharacter
             {
                this.activeItem.UseOnCharacter(character); 
             }
-            else
-            {
-                Console.WriteLine("ERROR: no such character found");
-            }
+        }
+        protected Item FindItemInInventory(string itemname)
+        {
+            Item item = this.inventory.Find(_item => _item.GetName() == itemname);
+            if(item == null)
+                Console.WriteLine("ERROR: no such item found");
+            return item;
+        }
+        protected Item FindItemInLocation(string itemname)
+        {
+            Item item = this.location.GetItems().Find(_item => _item.GetName() == itemname);
+            if(item == null)
+                Console.WriteLine("ERROR: no such item found");
+            return item;
         }
         protected Character FindCharacter(string charactername)
         {
-            return GetSupportingCharacters().Find(character => character.GetName() == charactername);
+            Character character = GetSupportingCharacters().Find(_character => _character.GetName() == charactername);
+            if(character == null)
+                Console.WriteLine("ERROR: no such character found");
+            return character;
         }
         protected void UseItemOnYourself()
         {
             this.activeItem.UseOnCharacter(this);
         }
         protected void SwitchActiveItem(string itemname){
-            Item newActiveItem = this.inventory.Find(item => item.GetName() == itemname);
-            if(this.activeItem != null){
-                this.inventory.Add(this.activeItem);
+            Item newActiveItem = FindItemInInventory(itemname);
+            if(newActiveItem != null)
+            {
+                if(this.activeItem != null){
+                    this.inventory.Add(this.activeItem);
+                }
+                this.activeItem = newActiveItem;
+                this.inventory.Remove(newActiveItem);
             }
-            this.activeItem = newActiveItem;
-            this.inventory.Remove(newActiveItem);
         }
         protected void UseItemOnGateway(string gatewayName)
         {
-            this.activeItem.UseOnGateway(FindGateway(gatewayName));
+            Gateway gateway = FindGateway(gatewayName);
+            if(gateway != null)
+            {
+                this.activeItem.UseOnGateway(gateway);
+            }
         }
         protected Gateway FindGateway(string gatewayName)
         {
             List<Gateway> gateways = this.location.GetGateways();
-            return gateways.Find(gateway => gateway.GetName(this.location) == gatewayName);
+            Gateway gateway = gateways.Find(_gateway => _gateway.GetName(this.location) == gatewayName);
+            if(gateway == null)
+                Console.WriteLine("ERROR: no such gateway found");
+            return gateway;
+        }
+        protected void ChangeArea(string gatewayName)
+        {
+            Gateway gateway = FindGateway(gatewayName);
+            if(gateway != null)
+            {
+                gateway.ChangeArea(this);
+            }
         }
         public void AddItem(Item item)
         {

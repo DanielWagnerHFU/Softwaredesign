@@ -82,10 +82,6 @@ namespace TextAdventureCharacter
             {
                StartDialog(character);
             }
-            else
-            {
-                Console.WriteLine("ERROR: no such character found");
-            }
         }
         public override void StartDialog(Character character)
         {
@@ -171,7 +167,7 @@ namespace TextAdventureCharacter
         }
         private void CommandHandlerGoTo(string[] args)
         {
-            
+
             //TODO
         }
         private void CommandHandlerClearChat(string[] args)
