@@ -31,9 +31,13 @@ namespace TextAdventureCharacter
             this.inventory = new List<Item>();
             this.location = location;
         }
+        public string GetName()
+        {
+            return this.name;
+        }
         public virtual string GetDescription()
         {
-            return this.name + "\n" + this.description;
+            return this.description;
         }
         public abstract void MakeAMove();
         public abstract void StartDialog(Character character);

@@ -1,6 +1,7 @@
 using System;
 using TextAdventureMap;
 using System.Collections.Generic;
+using TextAdventureItem;
 
 namespace TextAdventureCharacter
 {
@@ -16,19 +17,28 @@ namespace TextAdventureCharacter
         }
         private void initializeCommands()
         {
+            //TODO - Add new Commands here
             this.commands.Add(new Command(new string[]{"commands","c"}, CommandHandlerCommands, "commands(c)"));
             this.commands.Add(new Command(new string[]{"look","l"}, CommandHandlerLook, "look(l)"));
             this.commands.Add(new Command(new string[]{"inventory","i"}, CommandHandlerInventory, "inventory(i)"));
-            
+            this.commands.Add(new Command(new string[]{"take","t"}, CommandHandlerTake, "take(t) <item>"));
+            this.commands.Add(new Command(new string[]{"drop","d"}, CommandHandlerDrop, "drop(d) <item>"));
+            this.commands.Add(new Command(new string[]{"go to","mt"}, CommandHandlerGoTo, "go to(gt) <room>"));
             this.commands.Add(new Command(new string[]{"quit","q"}, CommandHandlerQuit, "quit(q)"));
         }
         public override void MakeAMove(){
             this.isOnMove = true;
-            while(this.isOnMove)
+            while(this.isOnMove && this.isAlive)
             {
-                string input = Console.ReadLine();
-                HandleCommand(input);
+                string userInput = EnterUserinput("What would you like to do?: ");
+                HandleCommand(userInput);
             }
+        }
+        private string EnterUserinput(string inputMessage)
+        {
+            Console.Write(inputMessage);
+            string userInput = Console.ReadLine();
+            return userInput;
         }
         private Command FindCommand(string commandWithArgs)
         {
@@ -65,11 +75,44 @@ namespace TextAdventureCharacter
         }
         private void CommandHandlerCommands(string[] args)
         {
-            //TODO
+            Console.WriteLine("[" + string.Join(", ", GetCommandDescriptions()) + "]");
+        }
+        private string[] GetCommandDescriptions()
+        {
+            string[] commandDescriptions = new string[this.commands.Count];
+            for(int i = 0; i < this.commands.Count; i++)
+            {
+                commandDescriptions[i] = this.commands[i].GetDescription();
+            }
+            return commandDescriptions;
         }
         private void CommandHandlerLook(string[] args)
         {
-            //TODO
+            Console.WriteLine(this.location.GetDescription() + " You see");
+            WriteItems();
+            Console.WriteLine("With you in the room are");
+            WriteSupportingCharacters();
+            //TODO add next rooms
+        }
+        private void WriteSupportingCharacters()
+        {
+            List<Character> supportingCharacters = GetSupportingCharacters();
+            foreach(Character character in supportingCharacters)
+            {
+                Console.WriteLine(character.GetName());
+                Console.WriteLine(character.GetDescription());
+            }
+            Console.WriteLine();
+        }
+        private void WriteItems()
+        {
+            List<Item> items = this.location.GetItems();
+            foreach(Item item in items)
+            {
+                Console.WriteLine(item.GetName());
+                Console.WriteLine(item.GetDescription());
+            }
+            Console.WriteLine();
         }
         private void CommandHandlerInventory(string[] args)
         {
@@ -80,6 +123,10 @@ namespace TextAdventureCharacter
             //TODO
         }
         private void CommandHandlerDrop(string[] args)
+        {
+            //TODO
+        }
+        private void CommandHandlerGoTo(string[] args)
         {
             //TODO
         }

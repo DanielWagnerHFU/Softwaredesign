@@ -14,9 +14,13 @@ namespace TextAdventureItem
             this.name = name;
             this.description = description;
         }
-        public string GetFullDescription()
+        public string GetName()
         {
-            return this.name + "\n" + this.description;
+            return this.name;
+        }
+        public string GetDescription()
+        {
+            return this.description;
         }
         public abstract void UseOnCharacter(Character character);
         public abstract void UseOnGateway(Gateway gateway);
