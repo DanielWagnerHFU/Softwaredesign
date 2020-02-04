@@ -14,6 +14,7 @@ namespace TextAdventure
             Area area = new Area(0, "area", "a endless space");
             PlayerCharacter player = new PlayerCharacter(0,"player","test",area);
             List<Character> characters = new List<Character>();
+            characters.Add(player);
             TextAdventureGame.TextAdventureGame game = new TextAdventureGame.TextAdventureGame(characters);
             game.StartGameLoop();
             Console.WriteLine("____TERMINATED____");
