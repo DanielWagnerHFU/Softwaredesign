@@ -10,6 +10,7 @@ namespace TextAdventureCharacter
         protected int uniqueIdentificationNumber;
         protected string name;
         protected string description;
+        protected bool isOnMove;
         protected bool isAlive;
         protected double maxHealthPoints;
         protected double healthPoints;
@@ -22,6 +23,7 @@ namespace TextAdventureCharacter
             this.uniqueIdentificationNumber = uniqueIdentificationNumber;
             this.name = name;
             this.description = description;
+            this.isOnMove = false;
             this.isAlive = true; 
             this.maxHealthPoints = 1;
             this.healthPoints = 1;

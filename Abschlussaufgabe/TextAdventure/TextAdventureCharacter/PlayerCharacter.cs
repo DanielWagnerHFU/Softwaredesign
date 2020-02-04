@@ -12,6 +12,7 @@ namespace TextAdventureCharacter
         {
             commands = new List<Command>();
             initializeCommands();
+            isOnMove = true;
         }
         private void initializeCommands()
         {
@@ -22,7 +23,7 @@ namespace TextAdventureCharacter
             bool allowedToInput = true;
             while(allowedToInput)
             {
-                //TODO
+                //TODO - über bools wird gesagt ob er weitere befehle eingeben darf
                 string input = Console.ReadLine();
                 allowedToInput = HandleCommand(input);
             }
