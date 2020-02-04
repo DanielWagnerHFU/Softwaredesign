@@ -16,8 +16,11 @@ namespace TextAdventureCharacter
         }
         private void initializeCommands()
         {
-            this.commands.Add(new Command(new string[]{"quit","q"},QuitGame,"quit(q)"));
-            //TODO
+            this.commands.Add(new Command(new string[]{"commands","c"}, CommandHandlerCommands, "commands(c)"));
+            this.commands.Add(new Command(new string[]{"look","l"}, CommandHandlerLook, "look(l)"));
+            this.commands.Add(new Command(new string[]{"inventory","i"}, CommandHandlerInventory, "inventory(i)"));
+            
+            this.commands.Add(new Command(new string[]{"quit","q"}, CommandHandlerQuit, "quit(q)"));
         }
         public override void MakeAMove(){
             this.isOnMove = true;
@@ -48,6 +51,10 @@ namespace TextAdventureCharacter
                 command.GetMethodToCall()(args);
             }
         }
+        public bool GetIsAlive()
+        {
+            return this.isAlive;
+        }        
         public override void StartDialog(Character character)
         {
             character.StartDialog(this);
@@ -56,14 +63,30 @@ namespace TextAdventureCharacter
         {
             //TODO
         }
-        private void QuitGame(string[] args)
+        private void CommandHandlerCommands(string[] args)
+        {
+            //TODO
+        }
+        private void CommandHandlerLook(string[] args)
+        {
+            //TODO
+        }
+        private void CommandHandlerInventory(string[] args)
+        {
+            //TODO
+        }
+        private void CommandHandlerTake(string[] args)
+        {
+            //TODO
+        }
+        private void CommandHandlerDrop(string[] args)
+        {
+            //TODO
+        }
+        private void CommandHandlerQuit(string[] args)
         {
             this.isAlive = false;
             this.isOnMove = false;
-        }
-        public bool GetIsAlive()
-        {
-            return this.isAlive;
         }
     }
 }
