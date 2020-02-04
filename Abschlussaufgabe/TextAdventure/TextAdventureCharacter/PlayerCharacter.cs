@@ -19,9 +19,13 @@ namespace TextAdventureCharacter
             //TODO
         }
         public override void MakeAMove(){
-            //TODO
-            string input = Console.ReadLine();
-            HandleCommand(input);
+            bool allowedToInput = true;
+            while(allowedToInput)
+            {
+                //TODO
+                string input = Console.ReadLine();
+                allowedToInput = HandleCommand(input);
+            }
         }
         private Command FindCommand(string commandWithArgs)
         {
@@ -35,18 +39,25 @@ namespace TextAdventureCharacter
             Console.WriteLine("Command not found - try to use the correct Syntax");
             return null;
         }
-        private void HandleCommand(string commandWithArgs)
+        private bool HandleCommand(string commandWithArgs)
         {
+            bool allowedToInput = true;
             Command command = FindCommand(commandWithArgs);
             if(command != null)
             {
                 string[] args = command.GetArgs(commandWithArgs);
-                command.GetMethodToCall()(args);
+                allowedToInput = command.GetMethodToCall()(args);
             }
+            return allowedToInput;
         }
         public override void StartDialog(Character character)
         {
             character.StartDialog(this);
+        }
+        private bool StartDialogWith(string[] args)
+        {
+            //TODO
+            return true;
         }
         private bool QuitGame(string[] args)
         {
