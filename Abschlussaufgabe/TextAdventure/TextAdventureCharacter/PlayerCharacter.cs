@@ -21,9 +21,9 @@ namespace TextAdventureCharacter
             this.commands.Add(new Command(new string[]{"commands","c"}, CommandHandlerCommands, "commands(c)"));
             this.commands.Add(new Command(new string[]{"look","l"}, CommandHandlerLook, "look(l)"));
             this.commands.Add(new Command(new string[]{"inventory","i"}, CommandHandlerInventory, "inventory(i)"));
-            this.commands.Add(new Command(new string[]{"take","t"}, CommandHandlerTake, "take(t) <item>"));
-            this.commands.Add(new Command(new string[]{"drop","d"}, CommandHandlerDrop, "drop(d) <item>"));
-            this.commands.Add(new Command(new string[]{"go to","mt"}, CommandHandlerGoTo, "go to(gt) <room>"));
+            this.commands.Add(new Command(new string[]{"take","t"}, CommandHandlerTake, "take(t) <item>", 1));
+            this.commands.Add(new Command(new string[]{"drop","d"}, CommandHandlerDrop, "drop(d) <item>", 1));
+            this.commands.Add(new Command(new string[]{"go to","mt"}, CommandHandlerGoTo, "go to(gt) <room>", 1));
             this.commands.Add(new Command(new string[]{"quit","q"}, CommandHandlerQuit, "quit(q)"));
         }
         public override void MakeAMove(){
@@ -58,6 +58,9 @@ namespace TextAdventureCharacter
             if(command != null)
             {
                 string[] args = command.GetArgs(commandWithArgs);
+                if(command.GetArgumentsCount() <= args.Length){
+                    
+                }
                 command.GetMethodToCall()(args);
             }
         }
@@ -116,11 +119,16 @@ namespace TextAdventureCharacter
         }
         private void CommandHandlerInventory(string[] args)
         {
-            //TODO
+            Console.WriteLine("In your inventory are the following Items:");
+            foreach(Item item in this.inventory)
+            {
+                Console.WriteLine(item.GetName());
+                Console.WriteLine(item.GetDescription());
+            }
         }
         private void CommandHandlerTake(string[] args)
         {
-            //TODO
+            string itemName = args[0];
         }
         private void CommandHandlerDrop(string[] args)
         {

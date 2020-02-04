@@ -8,11 +8,13 @@ namespace TextAdventureCharacter
         private string[] commands;
         private ParameterMethod<string> methodToCall;
         private string description;
-        public Command(string[] commands, ParameterMethod<string> methodToCall, string description)
+        private int argumentsCount;
+        public Command(string[] commands, ParameterMethod<string> methodToCall, string description, int argumentsCount = 0)
         {
             this.commands = commands;
             this.methodToCall = methodToCall;
             this.description = description;
+            this.argumentsCount = argumentsCount;
         }
         public string GetDescription()
         {
@@ -55,6 +57,10 @@ namespace TextAdventureCharacter
         public ParameterMethod<string> GetMethodToCall()
         {
             return this.methodToCall;
+        }
+        public int GetArgumentsCount()
+        {
+            return this.argumentsCount;
         }
     }
 }

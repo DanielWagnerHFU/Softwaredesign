@@ -80,6 +80,15 @@ namespace TextAdventure.Test
             bool isEqual = command.IsEqualToCommandWithArgs("go tochina");
             Assert.False(isEqual);
         }
+        [Fact]
+        public void Test11()
+        {
+            Command command = new Command(new string[]{"go to"},new ParameterMethod<string>(TestDelegate),"");
+            string[] args = command.GetArgs("go to");
+
+            bool isNull = (args.Count() == 0);
+            Assert.True(isNull);
+        }
 
         private void TestDelegate(string[] args)
         {
