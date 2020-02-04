@@ -167,8 +167,7 @@ namespace TextAdventureCharacter
         }
         private void CommandHandlerGoTo(string[] args)
         {
-
-            //TODO
+            ChangeArea(args[0]);
         }
         private void CommandHandlerClearChat(string[] args)
         {

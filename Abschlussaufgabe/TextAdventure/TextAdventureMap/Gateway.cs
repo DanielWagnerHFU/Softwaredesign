@@ -9,7 +9,7 @@ namespace TextAdventureMap
         protected int uniqueIdentificationNumber;
         protected Area areaA;
         protected Area areaB;
-        public Gateway(Area areaA, Area areaB, int uniqueIdentificationNumber)
+        public Gateway(int uniqueIdentificationNumber, Area areaA, Area areaB)
         {
             this.areaA = areaA;
             areaA.AddGateway(this);
