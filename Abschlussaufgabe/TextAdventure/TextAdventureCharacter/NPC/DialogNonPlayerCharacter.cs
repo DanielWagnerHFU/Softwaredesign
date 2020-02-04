@@ -12,6 +12,9 @@ namespace TextAdventureCharacter
             this.dialog = dialog;
         }
 
-        public override void
+        public override void StartDialog(Character character)
+        {
+            
+        }
     }
 }
