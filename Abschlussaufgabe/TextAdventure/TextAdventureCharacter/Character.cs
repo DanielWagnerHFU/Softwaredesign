@@ -52,7 +52,15 @@ namespace TextAdventureCharacter
             //TODO Update Mood for NPC
         }
         protected void Attack(string charactername){
-            FindCharacter(charactername).GetHarmed(GetTotalAttackDamage());
+            Character character = FindCharacter(charactername);
+            if(character != null)
+            {
+               character.GetHarmed(GetTotalAttackDamage());
+            }
+            else
+            {
+                Console.WriteLine("ERROR: no such character found");
+            }
         }
         protected List<Character> GetSupportingCharacters()
         {
@@ -88,7 +96,15 @@ namespace TextAdventureCharacter
         }
         protected void UseItemOnSomeone(string charactername)
         {
-            this.activeItem.UseOnCharacter(FindCharacter(charactername));
+            Character character = FindCharacter(charactername);
+            if(character != null)
+            {
+               this.activeItem.UseOnCharacter(character); 
+            }
+            else
+            {
+                Console.WriteLine("ERROR: no such character found");
+            }
         }
         protected Character FindCharacter(string charactername)
         {

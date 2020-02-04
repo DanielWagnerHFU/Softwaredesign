@@ -74,13 +74,21 @@ namespace TextAdventureCharacter
         {
             return this.isAlive;
         }        
+        private void CommandHandlerTalkTo(string[] args)
+        {
+            Character character = FindCharacter(args[0]);
+            if(character != null)
+            {
+               StartDialog(character);
+            }
+            else
+            {
+                Console.WriteLine("ERROR: no such character found");
+            }
+        }
         public override void StartDialog(Character character)
         {
             character.StartDialog(this);
-        }
-        private void StartDialogWith(string[] args)
-        {
-            //TODO
         }
         private void CommandHandlerCommands(string[] args)
         {

@@ -17,7 +17,7 @@ namespace TextAdventureCharacter
         }
         public override void StartDialog(Character character)
         {
-            //TODO - erst nach DialogNode
+            Console.WriteLine("ERROR: You cannot talk to this character");
         }
     }
 }
