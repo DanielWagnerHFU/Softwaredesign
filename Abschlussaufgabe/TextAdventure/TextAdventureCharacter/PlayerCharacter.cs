@@ -60,5 +60,9 @@ namespace TextAdventureCharacter
         {
             System.Environment.Exit(0);
         }
+        public bool GetIsAlive()
+        {
+            return this.isAlive;
+        }
     }
 }
