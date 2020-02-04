@@ -11,7 +11,7 @@ namespace TextAdventureCharacter
 
         }
         public override void MakeAMove(){
-            //TODO - Static - also kein MakeAMove?
+            //Static NPC doesnt make moves
         }
     }
 }
