@@ -20,12 +20,11 @@ namespace TextAdventureCharacter
             //TODO
         }
         public override void MakeAMove(){
-            bool allowedToInput = true;
-            while(allowedToInput)
+            this.isOnMove = true;
+            while(this.isOnMove)
             {
-                //TODO - über bools wird gesagt ob er weitere befehle eingeben darf
                 string input = Console.ReadLine();
-                allowedToInput = HandleCommand(input);
+                HandleCommand(input);
             }
         }
         private Command FindCommand(string commandWithArgs)
@@ -40,30 +39,26 @@ namespace TextAdventureCharacter
             Console.WriteLine("Command not found - try to use the correct Syntax");
             return null;
         }
-        private bool HandleCommand(string commandWithArgs)
+        private void HandleCommand(string commandWithArgs)
         {
-            bool allowedToInput = true;
             Command command = FindCommand(commandWithArgs);
             if(command != null)
             {
                 string[] args = command.GetArgs(commandWithArgs);
-                allowedToInput = command.GetMethodToCall()(args);
+                command.GetMethodToCall()(args);
             }
-            return allowedToInput;
         }
         public override void StartDialog(Character character)
         {
             character.StartDialog(this);
         }
-        private bool StartDialogWith(string[] args)
+        private void StartDialogWith(string[] args)
         {
             //TODO
-            return true;
         }
-        private bool QuitGame(string[] args)
+        private void QuitGame(string[] args)
         {
             System.Environment.Exit(0);
-            return false;
         }
     }
 }
