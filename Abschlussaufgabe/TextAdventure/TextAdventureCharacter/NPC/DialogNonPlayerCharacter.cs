@@ -14,7 +14,7 @@ namespace TextAdventureCharacter
 
         public override void StartDialog(Character character)
         {
-            
+            //TODO
         }
     }
 }
