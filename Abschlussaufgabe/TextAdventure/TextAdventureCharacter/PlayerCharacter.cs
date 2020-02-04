@@ -131,11 +131,11 @@ namespace TextAdventureCharacter
         }
         private void CommandHandlerTake(string[] args)
         {
-            string itemName = args[0];
+            TakeItem(args[0]);
         }
         private void CommandHandlerDrop(string[] args)
         {
-            //TODO
+            DropItem(args[0]);
         }
         private void CommandHandlerGoTo(string[] args)
         {
