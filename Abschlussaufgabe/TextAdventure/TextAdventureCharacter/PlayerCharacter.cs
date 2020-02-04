@@ -31,7 +31,9 @@ namespace TextAdventureCharacter
             this.isOnMove = true;
             while(this.isOnMove && this.isAlive)
             {
+                Console.WriteLine();
                 string userInput = EnterUserinput("What would you like to do?: ");
+                Console.WriteLine();
                 HandleCommand(userInput);
             }
         }
@@ -108,10 +110,10 @@ namespace TextAdventureCharacter
                 Console.WriteLine("Characters:");
                 foreach(Character character in supportingCharacters)
                 {
-                    Console.WriteLine(character.GetName());
-                    Console.WriteLine(character.GetDescription());
+                    Console.WriteLine("name: " + character.GetName());
+                    if(character.GetDescription() != "")
+                        Console.WriteLine("description: " + character.GetDescription());
                 }
-                Console.WriteLine();
             }
         }
         private void WriteItems()
@@ -122,11 +124,10 @@ namespace TextAdventureCharacter
                 Console.WriteLine("Items:");
                 foreach(Item item in items)
                 {
-                    Console.WriteLine(item.GetName());
+                    Console.WriteLine("name: " + item.GetName());
                     if(item.GetDescription()!="")
-                        Console.WriteLine(item.GetDescription());
+                        Console.WriteLine("description: " + item.GetDescription());
                 }
-                Console.WriteLine();
             }
         }
         private void CommandHandlerInventory(string[] args)
@@ -134,8 +135,9 @@ namespace TextAdventureCharacter
             Console.WriteLine("In your inventory are the following Items:");
             foreach(Item item in this.inventory)
             {
-                Console.WriteLine(item.GetName());
-                Console.WriteLine(item.GetDescription());
+                Console.WriteLine("name: " + item.GetName());
+                if(item.GetDescription() != "")
+                    Console.WriteLine("description: " + item.GetDescription());
             }
         }
         private void CommandHandlerTake(string[] args)

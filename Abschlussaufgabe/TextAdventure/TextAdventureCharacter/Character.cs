@@ -30,6 +30,7 @@ namespace TextAdventureCharacter
             this.strength = 0;
             this.inventory = new List<Item>();
             this.location = location;
+            this.location.AddCharacter(this);
         }
         public string GetName()
         {
@@ -63,13 +64,27 @@ namespace TextAdventureCharacter
         }
         protected void TakeItem(string itemname){
             Item itemToTake = this.location.GetItems().Find(item => item.GetName() == itemname);
-            this.inventory.Add(itemToTake);
-            this.location.RemoveItem(itemToTake);
+            if(itemToTake != null)
+            {
+                this.inventory.Add(itemToTake);
+                this.location.RemoveItem(itemToTake);
+            }
+            else
+            {
+                Console.WriteLine("ERROR: no such item found");
+            }
         }
         protected void DropItem(string itemname){
             Item itemToDrop = this.inventory.Find(item => item.GetName() == itemname);
-            this.location.AddItem(itemToDrop);
-            this.inventory.Remove(itemToDrop);
+            if(itemToDrop != null)
+            {
+                this.location.AddItem(itemToDrop);
+                this.inventory.Remove(itemToDrop);
+            }
+            else
+            {
+                Console.WriteLine("ERROR: no such item found");
+            }
         }
         protected void UseItemOnSomeone(string charactername)
         {
@@ -100,6 +115,10 @@ namespace TextAdventureCharacter
         {
             //TODO Change to string find name
             return this.location.GetGateways()[gatewayIndex];
+        }
+        public void AddItem(Item item)
+        {
+            this.inventory.Add(item);
         }
     }
 }
