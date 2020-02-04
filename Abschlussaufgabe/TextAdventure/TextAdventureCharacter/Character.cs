@@ -48,10 +48,10 @@ namespace TextAdventureCharacter
             {
                 this.isAlive = false;
             }
+            //TODO Update Mood for NPC
         }
-        protected void Attack(int characterIndex){
-            FindCharacter(characterIndex).GetHarmed(GetTotalAttackDamage());
-            //TODO Update Mood
+        protected void Attack(string charactername){
+            FindCharacter(charactername).GetHarmed(GetTotalAttackDamage());
         }
         protected List<Character> GetSupportingCharacters()
         {
@@ -61,30 +61,30 @@ namespace TextAdventureCharacter
         {
             return strength;
         }
-        protected void TakeItem(int itemAreaIndex){
-            Item item = this.location.FindItem(itemAreaIndex);
-            this.inventory.Add(item);
-            this.location.RemoveItem(item);
+        protected void TakeItem(string itemname){
+            Item itemToTake = this.location.GetItems().Find(item => item.GetName() == itemname);
+            this.inventory.Add(itemToTake);
+            this.location.RemoveItem(itemToTake);
         }
-        protected void DropItem(int itemIndex){
-            Item item = this.inventory[itemIndex];
-            this.location.AddItem(item);
-            this.inventory.Remove(item);
+        protected void DropItem(string itemname){
+            Item itemToDrop = this.inventory.Find(item => item.GetName() == itemname);
+            this.location.AddItem(itemToDrop);
+            this.inventory.Remove(itemToDrop);
         }
-        protected void UseItemOnSomeone(int characterIndex)
+        protected void UseItemOnSomeone(string charactername)
         {
-            this.activeItem.UseOnCharacter(FindCharacter(characterIndex));
+            this.activeItem.UseOnCharacter(FindCharacter(charactername));
         }
-        protected Character FindCharacter(int characterIndex)
+        protected Character FindCharacter(string charactername)
         {
-            return this.location.GetSupportingCharacters(this)[characterIndex];
+            return GetSupportingCharacters().Find(character => character.GetName() == charactername);
         }
         protected void UseItemOnYourself()
         {
             this.activeItem.UseOnCharacter(this);
         }
-        protected void SwitchActiveItem(int itemIndex){
-            Item newActiveItem = this.inventory[itemIndex];
+        protected void SwitchActiveItem(string itemname){
+            Item newActiveItem = this.inventory.Find(item => item.GetName() == itemname);
             if(this.activeItem != null){
                 this.inventory.Add(this.activeItem);
             }
@@ -93,10 +93,12 @@ namespace TextAdventureCharacter
         }
         protected void UseItemOnGateway(int gatewayIndex)
         {
+            //TODO Change to string find name
             this.activeItem.UseOnGateway(FindGateway(gatewayIndex));
         }
         protected Gateway FindGateway(int gatewayIndex)
         {
+            //TODO Change to string find name
             return this.location.GetGateways()[gatewayIndex];
         }
     }

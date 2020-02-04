@@ -59,9 +59,12 @@ namespace TextAdventureCharacter
             {
                 string[] args = command.GetArgs(commandWithArgs);
                 if(command.GetArgumentsCount() <= args.Length){
-                    
+                    command.GetMethodToCall()(args);
+                } 
+                else 
+                {
+                    Console.WriteLine("Error: not enough arguments");
                 }
-                command.GetMethodToCall()(args);
             }
         }
         public bool GetIsAlive()
