@@ -25,6 +25,7 @@ namespace TextAdventureCharacter
             this.commands.Add(new Command(new string[]{"drop","d"}, CommandHandlerDrop, "drop(d) <item>", 1));
             this.commands.Add(new Command(new string[]{"go to","mt"}, CommandHandlerGoTo, "go to(gt) <room>", 1));
             this.commands.Add(new Command(new string[]{"clear chat","cc"}, CommandHandlerClearChat, "clear chat(cc)"));
+            this.commands.Add(new Command(new string[]{"talk to","tt"}, CommandHandlerTalkTo, "talk to(tt) <character>"));
             this.commands.Add(new Command(new string[]{"quit","q"}, CommandHandlerQuit, "quit(q)"));
         }
         public override void MakeAMove(){
@@ -108,7 +109,19 @@ namespace TextAdventureCharacter
             Console.WriteLine(this.location.GetDescription());
             WriteItems();
             WriteSupportingCharacters();
-            //TODO add next rooms
+            WriteAdjacenAreas();
+        }
+        private void WriteAdjacenAreas()
+        {
+            List<Gateway> gateways = this.location.GetGateways();
+            if(gateways.Count != 0)
+            {
+                Console.WriteLine("You can go to:");
+                foreach(Gateway gateway in gateways)
+                {
+                    Console.WriteLine(gateway.GetName(this.location));
+                }
+            }
         }
         private void WriteSupportingCharacters()
         {
@@ -158,6 +171,7 @@ namespace TextAdventureCharacter
         }
         private void CommandHandlerGoTo(string[] args)
         {
+            
             //TODO
         }
         private void CommandHandlerClearChat(string[] args)

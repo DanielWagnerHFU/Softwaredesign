@@ -122,15 +122,14 @@ namespace TextAdventureCharacter
             this.activeItem = newActiveItem;
             this.inventory.Remove(newActiveItem);
         }
-        protected void UseItemOnGateway(int gatewayIndex)
+        protected void UseItemOnGateway(string gatewayName)
         {
-            //TODO Change to string find name
-            this.activeItem.UseOnGateway(FindGateway(gatewayIndex));
+            this.activeItem.UseOnGateway(FindGateway(gatewayName));
         }
-        protected Gateway FindGateway(int gatewayIndex)
+        protected Gateway FindGateway(string gatewayName)
         {
-            //TODO Change to string find name
-            return this.location.GetGateways()[gatewayIndex];
+            List<Gateway> gateways = this.location.GetGateways();
+            return gateways.Find(gateway => gateway.GetName(this.location) == gatewayName);
         }
         public void AddItem(Item item)
         {
