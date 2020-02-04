@@ -58,7 +58,8 @@ namespace TextAdventureCharacter
         }
         private void QuitGame(string[] args)
         {
-            System.Environment.Exit(0);
+            this.isAlive = false;
+            this.isOnMove = false;
         }
         public bool GetIsAlive()
         {

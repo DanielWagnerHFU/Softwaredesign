@@ -65,10 +65,24 @@ namespace TextAdventure.Test
             string[] testargs = new string[0];
             Assert.True(args.SequenceEqual(testargs));
         }
-
-        private bool TestDelegate(string[] args)
+        [Fact]
+        public void Test9()
         {
-            return false;
+            Command command = new Command(new string[]{"go to"},new ParameterMethod<string>(TestDelegate),"");
+            string[] args = command.GetArgs("go to china");
+            string[] testargs = new string[]{"china"};
+            Assert.True(args.SequenceEqual(testargs));
+        }
+        [Fact]
+        public void Test10()
+        {
+            Command command = new Command(new string[]{"go to"},new ParameterMethod<string>(TestDelegate),"");
+            bool isEqual = command.IsEqualToCommandWithArgs("go tochina");
+            Assert.False(isEqual);
+        }
+
+        private void TestDelegate(string[] args)
+        {
         }
     }
 }
