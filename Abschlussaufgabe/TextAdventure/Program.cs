@@ -17,8 +17,6 @@ namespace TextAdventure
             characters.Add(player);
             TextAdventureGame.TextAdventureGame game = new TextAdventureGame.TextAdventureGame(characters);
             game.StartGameLoop();
-            Console.WriteLine("____TERMINATED____");
-            System.Threading.Thread.Sleep(100000);
         }
     }
 }

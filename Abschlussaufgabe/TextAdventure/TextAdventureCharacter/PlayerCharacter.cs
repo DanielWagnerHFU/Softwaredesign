@@ -24,6 +24,7 @@ namespace TextAdventureCharacter
             this.commands.Add(new Command(new string[]{"take","t"}, CommandHandlerTake, "take(t) <item>", 1));
             this.commands.Add(new Command(new string[]{"drop","d"}, CommandHandlerDrop, "drop(d) <item>", 1));
             this.commands.Add(new Command(new string[]{"go to","mt"}, CommandHandlerGoTo, "go to(gt) <room>", 1));
+            this.commands.Add(new Command(new string[]{"clear chat","cc"}, CommandHandlerClearChat, "clear chat(cc)"));
             this.commands.Add(new Command(new string[]{"quit","q"}, CommandHandlerQuit, "quit(q)"));
         }
         public override void MakeAMove(){
@@ -148,6 +149,10 @@ namespace TextAdventureCharacter
         private void CommandHandlerGoTo(string[] args)
         {
             //TODO
+        }
+        private void CommandHandlerClearChat(string[] args)
+        {
+            Console.Clear();
         }
         private void CommandHandlerQuit(string[] args)
         {
