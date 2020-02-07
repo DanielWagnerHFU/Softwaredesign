@@ -50,6 +50,10 @@ namespace TextAdventureCharacter
         }
         public abstract void MakeAMove();
         public abstract void StartDialog(Character character);
+        public virtual void GetAttacked(double damage, Character attacker)
+        {
+            GetHarmed(damage);
+        }
         public virtual void GetHarmed(double damage)
         {
             this.healthPoints -= damage;
@@ -67,7 +71,7 @@ namespace TextAdventureCharacter
             Character character = FindCharacter(charactername);
             if(character != null)
             {
-               character.GetHarmed(GetTotalAttackDamage());
+               character.GetAttacked(GetTotalAttackDamage(), this);
             }
         }
         protected List<Character> GetSupportingCharacters()

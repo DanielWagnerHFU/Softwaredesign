@@ -75,10 +75,6 @@ namespace TextAdventureCharacter
                     Console.WriteLine("Error: not enough arguments");
                 }
             }
-        }
-        public bool GetIsAlive()
-        {
-            return this.isAlive;
         }        
         private void CommandHandlerTalkTo(string[] args)
         {
@@ -207,6 +203,11 @@ namespace TextAdventureCharacter
         {
             Attack(args[0]);
             this.isOnMove = false;
+        }
+        public override void GetAttacked(double damage, Character attacker)
+        {
+            GetHarmed(damage);
+            Console.WriteLine("You have been attacked by " + attacker.GetName());
         }
         private void CommandHandlerQuit(string[] args)
         {

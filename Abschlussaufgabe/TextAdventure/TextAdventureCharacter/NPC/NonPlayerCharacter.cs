@@ -6,11 +6,29 @@ namespace TextAdventureCharacter
 {
     public class NonPlayerCharacter : Character
     {
+        protected double attackMoodChange = -100;
+        protected double moodAgressionThreshold = -10;
         protected Dictionary<Character,double> moodAboutCharacters;
         public NonPlayerCharacter(int uniqueIdentificationNumber, string name, string description, Area location) 
         : base(uniqueIdentificationNumber, name, description, location)
         {
             this.moodAboutCharacters = new Dictionary<Character, double>();
+        }
+        public override void GetAttacked(double damage, Character attacker)
+        {
+            GetHarmed(damage);
+            ChangeMood(attacker, -100);
+        }
+        protected void ChangeMood(Character character, double moodChange)
+        {
+            if(moodAboutCharacters.ContainsKey(character))
+            {
+                moodAboutCharacters[character] += moodChange;
+            }
+            else
+            {
+                moodAboutCharacters.Add(character, moodChange);
+            }
         }
         public override void MakeAMove(){
         }
