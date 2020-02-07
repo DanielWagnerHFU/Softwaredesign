@@ -53,7 +53,7 @@ namespace TextAdventureCharacter
         public virtual void GetHarmed(double damage)
         {
             this.healthPoints -= damage;
-            //TODO Update Mood for NPC
+            UpdateIsAlive();
         }
         protected void UpdateIsAlive()
         {
@@ -68,7 +68,6 @@ namespace TextAdventureCharacter
             if(character != null)
             {
                character.GetHarmed(GetTotalAttackDamage());
-               character.UpdateIsAlive();
             }
         }
         protected List<Character> GetSupportingCharacters()
@@ -169,9 +168,32 @@ namespace TextAdventureCharacter
             destination.AddCharacter(this);
             location.RemoveCharacter(this);
         }
+        public bool GetIsAlive()
+        {
+            return this.isAlive;
+        }
         public void AddItem(Item item)
         {
             this.inventory.Add(item);
+        }
+        private void WriteSupportingCharacters()
+        {
+            List<Character> supportingCharacters = GetSupportingCharacters();
+            if(supportingCharacters.Count != 0)
+            {
+                Console.WriteLine("Characters:");
+                foreach(Character character in supportingCharacters)
+                {
+                    if(character.GetIsAlive())
+                    {
+                        Console.WriteLine("name: " + character.GetName());
+                    } 
+                    else 
+                    {
+                        Console.WriteLine("name: " + character.GetName() + " (dead)");
+                    }
+                }
+            }
         }
     }
 }

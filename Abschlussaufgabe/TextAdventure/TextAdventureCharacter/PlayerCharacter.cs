@@ -133,7 +133,14 @@ namespace TextAdventureCharacter
                 Console.WriteLine("Characters:");
                 foreach(Character character in supportingCharacters)
                 {
-                    Console.WriteLine("name: " + character.GetName());
+                    if(character.GetIsAlive())
+                    {
+                        Console.WriteLine("name: " + character.GetName());
+                    } 
+                    else 
+                    {
+                        Console.WriteLine("name: " + character.GetName() + " (dead)");
+                    }
                 }
             }
         }

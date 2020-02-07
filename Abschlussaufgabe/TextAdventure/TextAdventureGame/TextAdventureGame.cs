@@ -26,7 +26,10 @@ namespace TextAdventureGame
                 for(int i = 0; (i < characters.Count) && (playerCharacter.GetIsAlive()); i++)
                 {
                     characterOnMove = characters[i];
-                    characterOnMove.MakeAMove();
+                    if(characterOnMove.GetIsAlive())
+                    {
+                        characterOnMove.MakeAMove();
+                    }
                 }
             }
         }
