@@ -20,6 +20,8 @@ namespace TextAdventureCharacter
             //TODO - Add new Commands here
             this.commands.Add(new Command(new string[]{"commands","c"}, CommandHandlerCommands, "commands(c)"));
             this.commands.Add(new Command(new string[]{"look","l"}, CommandHandlerLook, "look(l)"));
+            this.commands.Add(new Command(new string[]{"get description of","gdo"}, CommandHandlerLookAt, "get description of(gdo)"));
+            this.commands.Add(new Command(new string[]{"quit","q"}, CommandHandlerQuit, "quit(q)"));
             this.commands.Add(new Command(new string[]{"inventory","i"}, CommandHandlerInventory, "inventory(i)"));
             this.commands.Add(new Command(new string[]{"take","t"}, CommandHandlerTake, "take(t) <item>", 1));
             this.commands.Add(new Command(new string[]{"drop","d"}, CommandHandlerDrop, "drop(d) <item>", 1));
@@ -35,7 +37,7 @@ namespace TextAdventureCharacter
             while(this.isOnMove && this.isAlive)
             {
                 Console.WriteLine();
-                string userInput = EnterUserinput("What would you like to do?: ");
+                string userInput = EnterUserinput("What would you like to do? (write 'commands' for all options):");
                 Console.WriteLine();
                 HandleCommand(userInput);
             }
@@ -131,8 +133,6 @@ namespace TextAdventureCharacter
                 foreach(Character character in supportingCharacters)
                 {
                     Console.WriteLine("name: " + character.GetName());
-                    if(character.GetDescription() != "")
-                        Console.WriteLine("description: " + character.GetDescription());
                 }
             }
         }
@@ -145,8 +145,6 @@ namespace TextAdventureCharacter
                 foreach(Item item in items)
                 {
                     Console.WriteLine("name: " + item.GetName());
-                    if(item.GetDescription()!="")
-                        Console.WriteLine("description: " + item.GetDescription());
                 }
             }
         }
@@ -156,8 +154,6 @@ namespace TextAdventureCharacter
             foreach(Item item in this.inventory)
             {
                 Console.WriteLine("name: " + item.GetName());
-                if(item.GetDescription() != "")
-                    Console.WriteLine("description: " + item.GetDescription());
             }
         }
         private void CommandHandlerTake(string[] args)
@@ -176,6 +172,28 @@ namespace TextAdventureCharacter
         private void CommandHandlerClearChat(string[] args)
         {
             Console.Clear();
+        }
+        private void CommandHandlerLookAt(string[] args)
+        {
+            Character character = GetSupportingCharacters().Find(_character => _character.GetName() == args[0]);
+            Item itemL = this.location.GetItems().Find(_itemL => _itemL.GetName() == args[0]);
+            Item itemI = this.inventory.Find(_itemI => _itemI.GetName() == args[0]);
+            if(character != null)
+            {
+                Console.WriteLine("Character description: " + character.GetDescription());
+            } 
+            else if(itemI != null) 
+            {
+                Console.WriteLine("Item description: " + itemI.GetDescription());
+            } 
+            else if(itemL != null) 
+            {
+                Console.WriteLine("Item description: " + itemL.GetDescription());
+            }
+            else 
+            {
+                Console.WriteLine("ERROR: Not found");
+            }
         }
         private void CommandHandlerQuit(string[] args)
         {
