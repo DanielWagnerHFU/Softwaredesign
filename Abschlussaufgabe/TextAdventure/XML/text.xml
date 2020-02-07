@@ -1,0 +1,28 @@
+<TextAdventureGame>
+    <Areas>
+        <Area type="Area1" uin="1">
+            <Characters>
+                <Character type="player">
+                </Character>
+            </Characters>
+            <Items>
+                <Item type="key">
+                </Item>
+            </Items>
+        </Area>
+        <Area type="Area2" uin="2">
+            <Characters>
+                <Character type="npc1">
+                </Character>
+            </Characters>
+            <Items>
+                <Item type="key">
+                </Item>
+            </Items>
+        </Area>
+    </Areas>
+    <Gateways>
+        <Gateway type="gateway" uinAreaA="1" uinAreaB="2">
+        </Gateway>
+    </Gateways>
+</TextAdventureGame>
