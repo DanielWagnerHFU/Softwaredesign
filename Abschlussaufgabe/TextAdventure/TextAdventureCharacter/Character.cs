@@ -60,7 +60,7 @@ namespace TextAdventureCharacter
             if(this.healthPoints <= 0)
             {
                 this.isAlive = false;
-                Console.WriteLine(this.name + "just died");
+                Console.WriteLine(this.name + " died\n");
             }            
         }
         protected void Attack(string charactername){
@@ -68,6 +68,7 @@ namespace TextAdventureCharacter
             if(character != null)
             {
                character.GetHarmed(GetTotalAttackDamage());
+               character.UpdateIsAlive();
             }
         }
         protected List<Character> GetSupportingCharacters()

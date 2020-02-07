@@ -13,7 +13,6 @@ namespace TextAdventureCharacter
             this.moodAboutCharacters = new Dictionary<Character, double>();
         }
         public override void MakeAMove(){
-            UpdateIsAlive();
         }
         public override void StartDialog(Character character)
         {

@@ -14,6 +14,7 @@ namespace TextAdventureCharacter
             commands = new List<Command>();
             initializeCommands();
             isOnMove = true;
+            this.strength = 1;
         }
         private void initializeCommands()
         {
@@ -28,16 +29,14 @@ namespace TextAdventureCharacter
             this.commands.Add(new Command(new string[]{"go to","gt"}, CommandHandlerGoTo, "go to(gt): <room>", 1));
             this.commands.Add(new Command(new string[]{"clear chat","cc"}, CommandHandlerClearChat, "clear chat(cc)"));
             this.commands.Add(new Command(new string[]{"talk to","tt"}, CommandHandlerTalkTo, "talk to(tt): <character>"));
-            this.commands.Add(new Command(new string[]{"attack","a"}, CommandHandlerAttack, "attack(a): <character>"));
+            this.commands.Add(new Command(new string[]{"attack","a"}, CommandHandlerAttack, "attack(a): <character>", 1));
             this.commands.Add(new Command(new string[]{"quit","q"}, CommandHandlerQuit, "quit(q)"));
         }
         public override void MakeAMove(){
             this.isOnMove = true;
-            Console.Clear();
             CommandHandlerLook(new string[]{});
             while(this.isOnMove && this.isAlive)
             {
-                UpdateIsAlive();
                 Console.WriteLine();
                 string userInput = EnterUserinput("What would you like to do? (write 'commands' for all options):");
                 Console.WriteLine();
