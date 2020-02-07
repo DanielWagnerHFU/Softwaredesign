@@ -20,10 +20,10 @@ namespace TextAdventureCharacter
         {
             return this.description;
         }
-        public bool IsEqualToCommand(string commandString)
+        public bool IsEqualToCommandWithArgs(string commandString)
         {
             string[] commandSplitString = commandString.Split(":", StringSplitOptions.None);
-            if(Array.Exists(this.commands, command => command == commandSplitString[0]))
+            if(Array.Exists(this.commands, command => command == commandSplitString[0].TrimEnd(' ')))
             {
                 return true;
             } 
@@ -32,35 +32,17 @@ namespace TextAdventureCharacter
                 return false;
             }
         }
-        public bool IsEqualToCommandWithArgs(string commandWithArgs)
+        private string GetArgsString(string commandString)
         {
-            bool isEqual = false;
-            string args = GetArgsString(commandWithArgs);
-            if(args != null)
-                {
-                if(args == "")
-                {
-                    isEqual = true;
-                }
-                else if (args[0] == ' ')
-                {
-                    isEqual = true;
-                }
-            }
-            return isEqual;
-        }
-        private string GetArgsString(string commandWithArgs)
-        {
-            string args = null;
-            foreach(string command in commands)
+            string[] commandSplitString = commandString.Split(":", StringSplitOptions.None);
+            if(commandSplitString.Length == 1)
             {
-                if(commandWithArgs.StartsWith(command))
-                {
-                    args = commandWithArgs.TrimStart(command);
-                    break; 
-                }
+                return null;
+            } 
+            else
+            {
+                return commandSplitString[1];
             }
-            return args;   
         }
         public string[] GetArgs(string commandWithArgs)
         {
