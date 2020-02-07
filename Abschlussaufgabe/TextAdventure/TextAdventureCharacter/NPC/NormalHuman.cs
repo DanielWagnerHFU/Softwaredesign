@@ -4,12 +4,15 @@ using System.Collections.Generic;
 
 namespace TextAdventureCharacter
 {
-    public class NormalNonPlayerCharacter : NonPlayerCharacter
+    public class NormalHuman : NonPlayerCharacter
     {
-        public NormalNonPlayerCharacter(int uniqueIdentificationNumber, string name, string description, Area location) 
+        public NormalHuman(int uniqueIdentificationNumber, string name, string description, Area location) 
         : base(uniqueIdentificationNumber, name, description, location)
         {
             this.moodAboutCharacters = new Dictionary<Character, double>();
+            this.maxHealthPoints = 50;
+            this.healthPoints = 50;
+            this.strength = 10;
         }
         public override void GetAttacked(double damage, Character attacker)
         {

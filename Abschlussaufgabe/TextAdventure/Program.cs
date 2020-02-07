@@ -19,11 +19,13 @@ namespace TextAdventure
             Gateway gateway2 = new Gateway(0, area2, area);
             PlayerCharacter player = new PlayerCharacter(0,"player","test",area);
             NonPlayerCharacter npc = new NonPlayerCharacter(1,"npc","A old npc",area);
+            NonPlayerCharacter human = new NormalHuman(2,"human","A human",area);
             Key key = new Key(0,1,"key","A old Key");
             player.AddItem(key);
             List<Character> characters = new List<Character>();
             characters.Add(player);
             characters.Add(npc);
+            characters.Add(human);
             TextAdventureGame.TextAdventureGame game = new TextAdventureGame.TextAdventureGame(characters);
             game.StartGameLoop();
         }

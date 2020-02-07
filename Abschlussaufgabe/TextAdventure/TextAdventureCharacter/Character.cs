@@ -26,7 +26,7 @@ namespace TextAdventureCharacter
             this.isOnMove = false;
             this.isAlive = true; 
             this.maxHealthPoints = 1;
-            this.healthPoints = 1;
+            this.healthPoints = maxHealthPoints;
             this.strength = 0;
             this.inventory = new List<Item>();
             this.location = location;
@@ -35,6 +35,10 @@ namespace TextAdventureCharacter
         public string GetName()
         {
             return this.name;
+        }
+        public string GetStatusString()
+        {
+            return new String("[" + this.healthPoints + "/" + this.maxHealthPoints + "]");
         }
         public virtual string GetDescription()
         {

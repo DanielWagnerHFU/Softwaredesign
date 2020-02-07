@@ -14,7 +14,9 @@ namespace TextAdventureCharacter
             commands = new List<Command>();
             initializeCommands();
             isOnMove = true;
-            this.strength = 1;
+            this.strength = 10;
+            this.maxHealthPoints = 100;
+            this.healthPoints = maxHealthPoints;
         }
         private void initializeCommands()
         {
@@ -31,9 +33,12 @@ namespace TextAdventureCharacter
             this.commands.Add(new Command(new string[]{"talk to","tt"}, CommandHandlerTalkTo, "talk to(tt): <character>"));
             this.commands.Add(new Command(new string[]{"attack","a"}, CommandHandlerAttack, "attack(a): <character>", 1));
             this.commands.Add(new Command(new string[]{"quit","q"}, CommandHandlerQuit, "quit(q)"));
+            this.commands.Add(new Command(new string[]{"status","s"}, CommandHandlerStatus, "status(s)"));
         }
         public override void MakeAMove(){
             this.isOnMove = true;
+            Console.WriteLine();
+            CommandHandlerStatus(new string[]{});
             CommandHandlerLook(new string[]{});
             while(this.isOnMove && this.isAlive)
             {
@@ -102,6 +107,10 @@ namespace TextAdventureCharacter
             }
             return commandDescriptions;
         }
+        private void CommandHandlerStatus(string[] args)
+        {
+            Console.WriteLine(GetStatusString());
+        }
         private void CommandHandlerLook(string[] args)
         {
             Console.WriteLine(this.location.GetDescription());
@@ -131,7 +140,7 @@ namespace TextAdventureCharacter
                 {
                     if(character.GetIsAlive())
                     {
-                        Console.WriteLine("name: " + character.GetName());
+                        Console.WriteLine("name: " + character.GetName() + " " + character.GetStatusString());
                     } 
                     else 
                     {
