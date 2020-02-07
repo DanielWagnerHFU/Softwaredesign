@@ -23,13 +23,15 @@ namespace TextAdventureCharacter
             this.commands.Add(new Command(new string[]{"inventory","i"}, CommandHandlerInventory, "inventory(i)"));
             this.commands.Add(new Command(new string[]{"take","t"}, CommandHandlerTake, "take(t) <item>", 1));
             this.commands.Add(new Command(new string[]{"drop","d"}, CommandHandlerDrop, "drop(d) <item>", 1));
-            this.commands.Add(new Command(new string[]{"go to","mt"}, CommandHandlerGoTo, "go to(gt) <room>", 1));
+            this.commands.Add(new Command(new string[]{"go to","gt"}, CommandHandlerGoTo, "go to(gt) <room>", 1));
             this.commands.Add(new Command(new string[]{"clear chat","cc"}, CommandHandlerClearChat, "clear chat(cc)"));
             this.commands.Add(new Command(new string[]{"talk to","tt"}, CommandHandlerTalkTo, "talk to(tt) <character>"));
             this.commands.Add(new Command(new string[]{"quit","q"}, CommandHandlerQuit, "quit(q)"));
         }
         public override void MakeAMove(){
             this.isOnMove = true;
+            Console.Clear();
+            CommandHandlerLook(new string[]{});
             while(this.isOnMove && this.isAlive)
             {
                 Console.WriteLine();
@@ -81,6 +83,7 @@ namespace TextAdventureCharacter
             if(character != null)
             {
                StartDialog(character);
+               this.isOnMove = false;
             }
         }
         public override void StartDialog(Character character)
@@ -168,6 +171,7 @@ namespace TextAdventureCharacter
         private void CommandHandlerGoTo(string[] args)
         {
             ChangeArea(args[0]);
+            this.isOnMove = false;
         }
         private void CommandHandlerClearChat(string[] args)
         {
