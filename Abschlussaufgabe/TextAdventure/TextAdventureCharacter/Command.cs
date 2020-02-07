@@ -20,6 +20,18 @@ namespace TextAdventureCharacter
         {
             return this.description;
         }
+        public bool IsEqualToCommand(string commandString)
+        {
+            string[] commandSplitString = commandString.Split(":", StringSplitOptions.None);
+            if(Array.Exists(this.commands, command => command == commandSplitString[0]))
+            {
+                return true;
+            } 
+            else
+            {
+                return false;
+            }
+        }
         public bool IsEqualToCommandWithArgs(string commandWithArgs)
         {
             bool isEqual = false;
