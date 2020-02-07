@@ -37,7 +37,7 @@ namespace TextAdventureCharacter
             string[] commandSplitString = commandString.Split(":", StringSplitOptions.None);
             if(commandSplitString.Length == 1)
             {
-                return null;
+                return "";
             } 
             else
             {

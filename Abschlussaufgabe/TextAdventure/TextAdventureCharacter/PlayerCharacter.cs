@@ -28,6 +28,7 @@ namespace TextAdventureCharacter
             this.commands.Add(new Command(new string[]{"go to","gt"}, CommandHandlerGoTo, "go to(gt): <room>", 1));
             this.commands.Add(new Command(new string[]{"clear chat","cc"}, CommandHandlerClearChat, "clear chat(cc)"));
             this.commands.Add(new Command(new string[]{"talk to","tt"}, CommandHandlerTalkTo, "talk to(tt): <character>"));
+            this.commands.Add(new Command(new string[]{"attack","a"}, CommandHandlerAttack, "attack(a): <character>"));
             this.commands.Add(new Command(new string[]{"quit","q"}, CommandHandlerQuit, "quit(q)"));
         }
         public override void MakeAMove(){
@@ -36,6 +37,7 @@ namespace TextAdventureCharacter
             CommandHandlerLook(new string[]{});
             while(this.isOnMove && this.isAlive)
             {
+                UpdateIsAlive();
                 Console.WriteLine();
                 string userInput = EnterUserinput("What would you like to do? (write 'commands' for all options):");
                 Console.WriteLine();
@@ -197,7 +199,8 @@ namespace TextAdventureCharacter
         }
         private void CommandHandlerAttack(string[] args)
         {
-            //TODO
+            Attack(args[0]);
+            this.isOnMove = false;
         }
         private void CommandHandlerQuit(string[] args)
         {

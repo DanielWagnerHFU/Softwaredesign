@@ -13,7 +13,7 @@ namespace TextAdventureCharacter
             this.moodAboutCharacters = new Dictionary<Character, double>();
         }
         public override void MakeAMove(){
-            //Static NPC doesnt make moves
+            UpdateIsAlive();
         }
         public override void StartDialog(Character character)
         {

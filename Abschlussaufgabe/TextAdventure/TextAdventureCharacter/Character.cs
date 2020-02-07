@@ -53,11 +53,15 @@ namespace TextAdventureCharacter
         public virtual void GetHarmed(double damage)
         {
             this.healthPoints -= damage;
+            //TODO Update Mood for NPC
+        }
+        protected void UpdateIsAlive()
+        {
             if(this.healthPoints <= 0)
             {
                 this.isAlive = false;
-            }
-            //TODO Update Mood for NPC
+                Console.WriteLine(this.name + "just died");
+            }            
         }
         protected void Attack(string charactername){
             Character character = FindCharacter(charactername);
