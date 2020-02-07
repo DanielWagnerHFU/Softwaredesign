@@ -20,7 +20,7 @@ namespace TextAdventureCharacter
             //TODO - Add new Commands here
             this.commands.Add(new Command(new string[]{"commands","c"}, CommandHandlerCommands, "commands(c)"));
             this.commands.Add(new Command(new string[]{"look","l"}, CommandHandlerLook, "look(l)"));
-            this.commands.Add(new Command(new string[]{"get description of","gdo"}, CommandHandlerLookAt, "get description of(gdo)"));
+            this.commands.Add(new Command(new string[]{"get description of","gdo"}, CommandHandlerLookAt, "get description of(gdo) <item or character>"));
             this.commands.Add(new Command(new string[]{"quit","q"}, CommandHandlerQuit, "quit(q)"));
             this.commands.Add(new Command(new string[]{"inventory","i"}, CommandHandlerInventory, "inventory(i)"));
             this.commands.Add(new Command(new string[]{"take","t"}, CommandHandlerTake, "take(t) <item>", 1));
@@ -194,6 +194,10 @@ namespace TextAdventureCharacter
             {
                 Console.WriteLine("ERROR: Not found");
             }
+        }
+        private void CommandHandlerAttack(string[] args)
+        {
+            //TODO
         }
         private void CommandHandlerQuit(string[] args)
         {
