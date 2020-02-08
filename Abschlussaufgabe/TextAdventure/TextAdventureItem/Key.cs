@@ -28,10 +28,9 @@ namespace TextAdventureItem
         public static Key BuildFromXmlNode(XmlNode itemNode)
         {
             XmlAttributeCollection attributes = itemNode.Attributes;
-            int uin = Int32.Parse(attributes[1].Value);
-            string name = attributes[2].Value;
-            string description = attributes[3].Value;
-            int key = Int32.Parse(attributes[4].Value);
+            string name = attributes[1].Value;
+            string description = attributes[2].Value;
+            int key = Int32.Parse(attributes[3].Value);
             return new Key(name, description, key);
         }
     }
