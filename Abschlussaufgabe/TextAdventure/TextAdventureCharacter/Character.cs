@@ -7,6 +7,9 @@ namespace TextAdventureCharacter
 {
     public abstract class Character
     {
+        /*---------------------------------------
+        ---------------ATTRIBUTES---------------- 
+        ---------------------------------------*/
         protected string name;
         protected string description;
         protected bool isOnMove;
@@ -17,6 +20,9 @@ namespace TextAdventureCharacter
         protected List<Item> inventory;
         protected Item activeItem;
         protected Area location;
+        /*---------------------------------------
+        ----------------METHODS------------------ 
+        ---------------------------------------*/
         public Character(string name, string description, double strength = 0, double healthPoints = 1, double maxHealthPoints = 1)
         {
             this.name = name;
@@ -193,25 +199,6 @@ namespace TextAdventureCharacter
         public void AddItem(Item item)
         {
             this.inventory.Add(item);
-        }
-        private void WriteSupportingCharacters()
-        {
-            List<Character> supportingCharacters = GetSupportingCharacters();
-            if(supportingCharacters.Count != 0)
-            {
-                Console.WriteLine("Characters:");
-                foreach(Character character in supportingCharacters)
-                {
-                    if(character.GetIsAlive())
-                    {
-                        Console.WriteLine("name: " + character.GetName());
-                    } 
-                    else 
-                    {
-                        Console.WriteLine("name: " + character.GetName() + " (dead)");
-                    }
-                }
-            }
         }
     }
 }

@@ -11,7 +11,6 @@ namespace TextAdventureCharacter
         {
             this.dialog = dialog;
         }
-
         public override void StartDialog(Character character)
         {
             //TODO
