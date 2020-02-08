@@ -1,6 +1,7 @@
 using System;
 using TextAdventureMap;
 using System.Collections.Generic;
+using System.Xml;
 
 namespace TextAdventureCharacter
 {
@@ -49,5 +50,13 @@ namespace TextAdventureCharacter
         {
             Console.WriteLine("Hello, i dont wanne talk");
         }
+        public static HumanNPC BuildFromXmlNode(XmlNode characterNode)
+        {
+            XmlAttributeCollection attributes = characterNode.Attributes;
+            int uin = Int32.Parse(attributes[1].Value);
+            string name = attributes[2].Value;
+            string description = attributes[3].Value;
+            return new HumanNPC(uin, name, description);
+        }  
     }
 }

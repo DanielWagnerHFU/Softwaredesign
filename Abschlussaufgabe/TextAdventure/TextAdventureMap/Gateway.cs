@@ -1,6 +1,9 @@
 using System;
 using TextAdventureItem;
 using TextAdventureCharacter;
+using System.Xml;
+using System.Collections.Generic;
+using TextAdventureMap;
 
 namespace TextAdventureMap
 {
@@ -35,6 +38,15 @@ namespace TextAdventureMap
         protected Area GetDestination(Area callingArea)
         {
             return (callingArea == areaA)? areaB : areaA;
+        }
+        public static Gateway BuildFromXmlNode(XmlNode gatewayNode, List<Area> areaList){
+            XmlAttributeCollection attributes = gatewayNode.Attributes;
+            int uin = Int32.Parse(attributes[1].Value);
+            int uinAreaA = Int32.Parse(attributes[2].Value);
+            int uinAreaB = Int32.Parse(attributes[3].Value);
+            Area areaA = areaList.Find(area => area.GetUIN() == uinAreaA);
+            Area areaB = areaList.Find(area => area.GetUIN() == uinAreaB);
+            return new Gateway(uin, areaA, areaB);
         }
     }
 }

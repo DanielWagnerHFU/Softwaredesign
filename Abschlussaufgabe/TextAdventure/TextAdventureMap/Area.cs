@@ -65,6 +65,10 @@ namespace TextAdventureMap
         {
             return this.items;
         }
+        public int GetUIN()
+        {
+            return this.uniqueIdentificationNumber;
+        }
         public static Area BuildFromXmlNode(XmlNode areaNode)
         {
             XmlAttributeCollection attributes = areaNode.Attributes;

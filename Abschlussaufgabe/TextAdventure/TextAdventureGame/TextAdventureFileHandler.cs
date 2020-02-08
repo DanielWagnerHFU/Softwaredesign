@@ -11,6 +11,7 @@ namespace TextAdventureGame
     {
         private string filepath;
         private XmlNode xmlRootNode;
+        private List<Character> characters;
         public TextAdventureFileHandler(string filepath)
         {
             this.filepath = filepath;
@@ -30,13 +31,26 @@ namespace TextAdventureGame
             XmlNode areasNode = GetAreasNode();
             List<Area> areaList = BuildAreaObjects(areasNode.SelectNodes("//Area"));
             XmlNode gatewaysNode = GetGatewaysNode();
-            List<Gateway> gatewayList = BuildGatewayObjects(gatewaysNode.SelectNodes("//Gateways"));
+            List<Gateway> gatewayList = BuildGatewayObjects(gatewaysNode.SelectNodes("//Gateways"), areaList);
         }
-        private List<Gateway> BuildGatewayObjects(XmlNodeList gatewayNodeList)
+        private List<Gateway> BuildGatewayObjects(XmlNodeList gatewayNodeList, List<Area> areaList)
         {
-            return null;
-            //TODO
-            //CONNECT GATEWAYS WITH AREAS BASED ON UIN
+            List<Gateway> gateways = new List<Gateway>();
+            foreach(XmlNode gatewayNode in gatewayNodeList)
+            {
+                gateways.Add(BuildGatewayObject(gatewayNode, areaList));
+            }
+            return gateways;
+        }
+        private Gateway BuildGatewayObject(XmlNode gatewayNode, List<Area> areaList)
+        {
+            switch(gatewayNode.Attributes[0].Value)
+            {
+                case "Gateway":
+                    return Gateway.BuildFromXmlNode(gatewayNode, areaList);
+                default:
+                    throw new Exception("Gateway build failed - No type");
+            }
         }
         private List<Area> BuildAreaObjects(XmlNodeList areaNodeList)
         {
@@ -88,7 +102,10 @@ namespace TextAdventureGame
                 XmlNodeList characterNodeList = charactersNode.SelectNodes("//Character");
                 foreach(XmlNode characterNode in characterNodeList)
                 {
-                    area.AddCharacter(BuildCharacterObject(characterNode));
+                    Character character = BuildCharacterObject(characterNode);
+                    BuildItemsForCharacter(character, characterNode);
+                    area.AddCharacter(character);
+                    this.characters.Add(character);
                 }
             }
         }
@@ -96,27 +113,24 @@ namespace TextAdventureGame
         {
             switch(characterNode.Attributes[0].Value)
             {
-                // case "Player":
-                //     return PlayerCharacter.BuildFromXmlNode(characterNode);
-                // case "HumanNPC":
-                //     return PlayerCharacter.BuildFromXmlNode(characterNode);            
+                case "Player":
+                    return PlayerCharacter.BuildFromXmlNode(characterNode);
+                case "HumanNPC":
+                    return PlayerCharacter.BuildFromXmlNode(characterNode);            
                 default:
                     throw new Exception("Character build failed - No type");
             }
         }
         private void BuildItemsForCharacter(Character character, XmlNode itemsNode)
         {
-            //TODO
-        }
-        private List<Item> BuildItemObjects(XmlNodeList itemNodeList)
-        {
-            return null;
-            //TODO
-        }
-        private List<Character> BuildCharacterObjects(XmlNodeList characterNodeList)
-        {
-            return null;
-            //TODO;
+            if(itemsNode != null)
+            {
+                XmlNodeList itemNodeList = itemsNode.SelectNodes("//Item");
+                foreach(XmlNode itemNode in itemNodeList)
+                {
+                    character.AddItem(BuildItemObject(itemNode));
+                }
+            }
         }
         private XmlNode GetRootNode(string filepath)
         {
@@ -126,8 +140,7 @@ namespace TextAdventureGame
         }
         public List<Character> GetCharacters()
         {
-            return null;
-            //TODO
+            return this.characters;
         }
     }
 }
