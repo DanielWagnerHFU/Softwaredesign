@@ -20,7 +20,7 @@ namespace TextAdventureItem
         {
             return this.description;
         }
-        public abstract void UseOnCharacter(Character character);
-        public abstract void UseOnGateway(Gateway gateway);
+        public abstract void UseOnCharacter(Character character, Character user);
+        public abstract void UseOnGateway(Gateway gateway, Character user);
     }
 }

@@ -17,12 +17,13 @@ namespace TextAdventureItem
         {
             return this.key;
         }
-        public override void UseOnCharacter(Character character)
+        public override void UseOnCharacter(Character character, Character user)
         {
-            Console.WriteLine("This item cannot be used on a character");
+            //TODO
         }
-        public override void UseOnGateway(Gateway gateway)
+        public override void UseOnGateway(Gateway gateway, Character user)
         {
+            //TODO
             gateway.UseItem(this);
         }
         public static Key BuildFromXmlNode(XmlNode itemNode)

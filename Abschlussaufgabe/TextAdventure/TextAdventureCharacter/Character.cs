@@ -99,14 +99,6 @@ namespace TextAdventureCharacter
                 this.inventory.Remove(itemToDrop);
             }
         }
-        protected void UseItemOnSomeone(string charactername)
-        {
-            Character character = FindCharacter(charactername);
-            if(character != null)
-            {
-               this.activeItem.UseOnCharacter(character); 
-            }
-        }
         protected Item FindItemInInventory(string itemname)
         {
             Item item = this.inventory.Find(_item => _item.GetName() == itemname);
@@ -128,10 +120,6 @@ namespace TextAdventureCharacter
                 Console.WriteLine("ERROR: no such character found");
             return character;
         }
-        protected void UseItemOnYourself()
-        {
-            this.activeItem.UseOnCharacter(this);
-        }
         protected void SwitchActiveItem(string itemname){
             Item newActiveItem = FindItemInInventory(itemname);
             if(newActiveItem != null)
@@ -143,12 +131,21 @@ namespace TextAdventureCharacter
                 this.inventory.Remove(newActiveItem);
             }
         }
-        protected void UseItemOnGateway(string gatewayName)
+        protected void UseItem()
         {
-            Gateway gateway = FindGateway(gatewayName);
+            this.activeItem.UseOnCharacter(this, this);
+        }
+        protected void UseItemOn(string target)
+        {
+            Gateway gateway = this.location.GetGateways().Find(_gateway => _gateway.GetName(this.location) == target);
+            Character character = this.location.GetCharacters().Find(_character => _character.GetName() == target);
             if(gateway != null)
             {
-                this.activeItem.UseOnGateway(gateway);
+                this.activeItem.UseOnGateway(gateway, this);
+            }
+            else if(character != null)
+            {
+                this.activeItem.UseOnCharacter(character, this);
             }
         }
         protected Gateway FindGateway(string gatewayName)

@@ -13,7 +13,7 @@
             <Characters>
                 <Character type="Player" name="player" description="the main player" strength="1.0" hp="100" maxhp="100">
                     <Items>
-                        <Item type="Key" name="key2" description="" key="124"></Item>
+                        <Item type="Text" name="text1" description="" text="Hello secret message"></Item>
                     </Items>
                 </Character>
             </Characters>

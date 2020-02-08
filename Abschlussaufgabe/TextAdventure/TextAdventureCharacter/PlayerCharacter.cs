@@ -25,10 +25,11 @@ namespace TextAdventureCharacter
             this.commands.Add(new Command(new string[]{"commands","c"}, CommandHandlerCommands, "commands(c)"));
             this.commands.Add(new Command(new string[]{"look","l"}, CommandHandlerLook, "look(l)"));
             this.commands.Add(new Command(new string[]{"get description of","gdo"}, CommandHandlerLookAt, "get description of(gdo): <item or character>"));
-            this.commands.Add(new Command(new string[]{"quit","q"}, CommandHandlerQuit, "quit(q)"));
             this.commands.Add(new Command(new string[]{"inventory","i"}, CommandHandlerInventory, "inventory(i)"));
             this.commands.Add(new Command(new string[]{"take","t"}, CommandHandlerTake, "take(t): <item>", 1));
             this.commands.Add(new Command(new string[]{"drop","d"}, CommandHandlerDrop, "drop(d): <item>", 1));
+            this.commands.Add(new Command(new string[]{"equip","e"}, CommandHandlerDrop, "equip(e): <item>", 1));
+            this.commands.Add(new Command(new string[]{"use item","ui"}, CommandHandlerUseItem, "use item(ui)"));
             this.commands.Add(new Command(new string[]{"go to","gt"}, CommandHandlerGoTo, "go to(gt): <room>", 1));
             this.commands.Add(new Command(new string[]{"clear chat","cc"}, CommandHandlerClearChat, "clear chat(cc)"));
             this.commands.Add(new Command(new string[]{"talk to","tt"}, CommandHandlerTalkTo, "talk to(tt): <character>"));
@@ -214,10 +215,38 @@ namespace TextAdventureCharacter
             Attack(args[0]);
             this.isOnMove = false;
         }
+        private void CommandHandlerEquip(string[] args)
+        {
+            SwitchActiveItem(args[0]);
+        }
         public override void GetAttacked(double damage, Character attacker)
         {
             GetHarmed(damage);
             Console.WriteLine("You have been attacked by " + attacker.GetName());
+        }
+        private void CommandHandlerUseItemOn(string[] args)
+        {
+            if(this.activeItem != null)
+            {
+                UseItemOn(args[0]);
+            }
+            else
+            {
+                Console.WriteLine("No item equipped");
+            }
+            this.isOnMove = false;
+        }
+        private void CommandHandlerUseItem(string[] args)
+        {
+            if(this.activeItem != null)
+            {
+                UseItem();
+            }
+            else
+            {
+                Console.WriteLine("No item equipped");
+            }
+            this.isOnMove = false;
         }
         private void CommandHandlerQuit(string[] args)
         {

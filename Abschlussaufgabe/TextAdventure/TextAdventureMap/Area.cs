@@ -65,6 +65,10 @@ namespace TextAdventureMap
         {
             return this.items;
         }
+        public List<Character> GetCharacters()
+        {
+            return this.characters;
+        }
         public int GetUIN()
         {
             return this.uniqueIdentificationNumber;
