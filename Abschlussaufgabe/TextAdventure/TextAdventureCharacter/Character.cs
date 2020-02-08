@@ -35,7 +35,15 @@ namespace TextAdventureCharacter
         }
         public string GetStatusString()
         {
-            return new String("[" + this.healthPoints + "/" + this.maxHealthPoints + "]");
+            String status = "|HP [" + this.healthPoints + "/" + this.maxHealthPoints + "]";
+            if(this.activeItem == null)
+            {
+                return status += " right hand [empty]|";
+            }
+            else
+            {
+                return status += " right hand [" + this.activeItem.GetName() +"]|";
+            }
         }
         public virtual string GetDescription()
         {

@@ -23,8 +23,8 @@ namespace TextAdventureCharacter
         {
             //TODO - Add new Commands here
             this.commands.Add(new Command(new string[]{"commands","c"}, CommandHandlerCommands, "commands(c)"));
+            this.commands.Add(new Command(new string[]{"look at","la"}, CommandHandlerLookAt, "look at(la): <item or character>"));
             this.commands.Add(new Command(new string[]{"look","l"}, CommandHandlerLook, "look(l)"));
-            this.commands.Add(new Command(new string[]{"get description of","gdo"}, CommandHandlerLookAt, "get description of(gdo): <item or character>"));
             this.commands.Add(new Command(new string[]{"inventory","i"}, CommandHandlerInventory, "inventory(i)"));
             this.commands.Add(new Command(new string[]{"take","t"}, CommandHandlerTake, "take(t): <item>", 1));
             this.commands.Add(new Command(new string[]{"drop","d"}, CommandHandlerDrop, "drop(d): <item>", 1));
@@ -41,10 +41,8 @@ namespace TextAdventureCharacter
         public override void MakeAMove(){
             this.isOnMove = true;
             Console.WriteLine();
-            Console.ForegroundColor = ConsoleColor.Yellow;
             CommandHandlerStatus(new string[]{});
             CommandHandlerLook(new string[]{});
-            Console.ForegroundColor = ConsoleColor.White;
             while(this.isOnMove && this.isAlive)
             {
                 Console.WriteLine();
@@ -120,20 +118,23 @@ namespace TextAdventureCharacter
         }
         private void CommandHandlerLook(string[] args)
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine(this.location.GetDescription());
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             WriteItems();
             WriteSupportingCharacters();
             WriteAdjacenAreas();
+            Console.ForegroundColor = ConsoleColor.White;
         }
         private void WriteAdjacenAreas()
         {
             List<Gateway> gateways = this.location.GetGateways();
             if(gateways.Count != 0)
             {
-                Console.WriteLine("You can go to:");
+                Console.WriteLine("A list of gateways:");
                 foreach(Gateway gateway in gateways)
                 {
-                    Console.WriteLine(gateway.GetDescription(this.location));
+                    Console.WriteLine("  " + gateway.GetDescription(this.location));
                 }
             }
         }
@@ -142,16 +143,16 @@ namespace TextAdventureCharacter
             List<Character> supportingCharacters = GetSupportingCharacters();
             if(supportingCharacters.Count != 0)
             {
-                Console.WriteLine("Characters:");
+                Console.WriteLine("A list of characters:");
                 foreach(Character character in supportingCharacters)
                 {
                     if(character.GetIsAlive())
                     {
-                        Console.WriteLine("name: " + character.GetName() + " " + character.GetStatusString());
+                        Console.WriteLine("  " + character.GetName() + " " + character.GetStatusString());
                     } 
                     else 
                     {
-                        Console.WriteLine("name: " + character.GetName() + " (dead)");
+                        Console.WriteLine("  " + character.GetName() + " (dead)");
                     }
                 }
             }
@@ -161,10 +162,10 @@ namespace TextAdventureCharacter
             List<Item> items = this.location.GetItems();
             if(items.Count != 0)
             {
-                Console.WriteLine("Items:");
+                Console.WriteLine("A list of items:");
                 foreach(Item item in items)
                 {
-                    Console.WriteLine("name: " + item.GetName());
+                    Console.WriteLine("  " + item.GetName());
                 }
             }
         }
@@ -197,7 +198,11 @@ namespace TextAdventureCharacter
             Character character = GetSupportingCharacters().Find(_character => _character.GetName() == args[0]);
             Item itemL = this.location.GetItems().Find(_itemL => _itemL.GetName() == args[0]);
             Item itemI = this.inventory.Find(_itemI => _itemI.GetName() == args[0]);
-            if(character != null)
+            if((this.activeItem != null) && (this.activeItem.GetName() == args[0]))
+            {
+                Console.WriteLine("Item description: " + this.activeItem.GetDescription());
+            }
+            else if(character != null)
             {
                 Console.WriteLine("Character description: " + character.GetDescription());
             } 
