@@ -44,8 +44,8 @@ namespace TextAdventureGame
             foreach(XmlNode areaNode in areaNodeList)
             {
                 Area area = BuildAreaObject(areaNode);
-                BuildCharactersForArea(area, areaNode);
-                BuildItemsForArea(area, areaNode);
+                BuildCharactersForArea(area, areaNode.SelectSingleNode("//Characters"));
+                BuildItemsForArea(area, areaNode.SelectSingleNode("//Items"));
                 areaList.Add(area);
             }
             return areaList;
@@ -55,18 +55,54 @@ namespace TextAdventureGame
             switch(areaNode.Attributes[0].Value)
             {
                 case "Area":
-                    return Area.BuildAreaFromXmlNode(areaNode);
+                    return Area.BuildFromXmlNode(areaNode);
                 default:
                     throw new Exception("Area build failed - No type");
             }
         }
         private void BuildItemsForArea(Area area, XmlNode itemsNode)
         {
-
+            if(itemsNode != null)
+            {
+                XmlNodeList itemNodeList = itemsNode.SelectNodes("//Item");
+                foreach(XmlNode itemNode in itemNodeList)
+                {
+                    area.AddItem(BuildItemObject(itemNode));
+                }
+            }
+        }
+        private Item BuildItemObject(XmlNode itemNode)
+        {
+            switch(itemNode.Attributes[0].Value)
+            {
+                case "Key":
+                    return Key.BuildFromXmlNode(itemNode);
+                default:
+                    throw new Exception("Item build failed - No type");
+            }
         }
         private void BuildCharactersForArea(Area area, XmlNode charactersNode)
         {
-            //TODO - calling BuildItemsForCharacter
+            if(charactersNode != null)
+            {
+                XmlNodeList characterNodeList = charactersNode.SelectNodes("//Character");
+                foreach(XmlNode characterNode in characterNodeList)
+                {
+                    area.AddCharacter(BuildCharacterObject(characterNode));
+                }
+            }
+        }
+        private Character BuildCharacterObject(XmlNode characterNode)
+        {
+            switch(characterNode.Attributes[0].Value)
+            {
+                case "Player":
+                    return PlayerCharacter.BuildFromXmlNode(characterNode);
+                case "HumanNPC":
+                    return PlayerCharacter.BuildFromXmlNode(characterNode);            
+                default:
+                    throw new Exception("Character build failed - No type");
+            }
         }
         private void BuildItemsForCharacter(Character character, XmlNode itemsNode)
         {
