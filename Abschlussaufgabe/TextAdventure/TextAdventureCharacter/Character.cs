@@ -18,19 +18,18 @@ namespace TextAdventureCharacter
         protected List<Item> inventory;
         protected Item activeItem;
         protected Area location;
-        public Character(int uniqueIdentificationNumber, string name, string description, Area location)
+        public Character(int uniqueIdentificationNumber, string name, string description, double strength = 0, double healthPoints = 1, double maxHealthPoints = 1)
         {
             this.uniqueIdentificationNumber = uniqueIdentificationNumber;
             this.name = name;
             this.description = description;
             this.isOnMove = false;
             this.isAlive = true; 
-            this.maxHealthPoints = 1;
-            this.healthPoints = maxHealthPoints;
-            this.strength = 0;
+            this.maxHealthPoints = maxHealthPoints;
+            this.healthPoints = healthPoints;
+            this.strength = strength;
             this.inventory = new List<Item>();
-            this.location = location;
-            this.location.AddCharacter(this);
+            this.location = null;
         }
         public string GetName()
         {

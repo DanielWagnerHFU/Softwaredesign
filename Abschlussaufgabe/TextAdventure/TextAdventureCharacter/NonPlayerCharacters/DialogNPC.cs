@@ -6,8 +6,8 @@ namespace TextAdventureCharacter
     public class DialogNPC : NPC
     {
         protected DialogNode dialog;
-        public DialogNPC(int uniqueIdentificationNumber, string name, string description, Area location, DialogNode dialog) 
-        : base(uniqueIdentificationNumber, name, description, location)
+        public DialogNPC(int uniqueIdentificationNumber, string name, string description, DialogNode dialog) 
+        : base(uniqueIdentificationNumber, name, description)
         {
             this.dialog = dialog;
         }

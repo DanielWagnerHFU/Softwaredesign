@@ -2,14 +2,15 @@ using System;
 using TextAdventureMap;
 using System.Collections.Generic;
 using TextAdventureItem;
+using System.Xml;
 
 namespace TextAdventureCharacter
 {
     public class PlayerCharacter : Character
     {
         List<Command> commands;
-        public PlayerCharacter(int uniqueIdentificationNumber, string name, string description, Area location) 
-        : base(uniqueIdentificationNumber, name, description, location)
+        public PlayerCharacter(int uniqueIdentificationNumber, string name, string description, double strength = 10, double healthPoints = 100, double maxHealthPoints = 100) 
+        : base(uniqueIdentificationNumber, name, description, strength, healthPoints, maxHealthPoints)
         {
             commands = new List<Command>();
             initializeCommands();
@@ -223,5 +224,13 @@ namespace TextAdventureCharacter
             this.isAlive = false;
             this.isOnMove = false;
         }
+        public static PlayerCharacter BuildFromXmlNode(XmlNode characterNode)
+        {
+            XmlAttributeCollection attributes = characterNode.Attributes;
+            int uin = Int32.Parse(attributes[1].Value);
+            string name = attributes[2].Value;
+            string description = attributes[3].Value;
+            return new PlayerCharacter(uin, name, description);
+        }    
     }
 }

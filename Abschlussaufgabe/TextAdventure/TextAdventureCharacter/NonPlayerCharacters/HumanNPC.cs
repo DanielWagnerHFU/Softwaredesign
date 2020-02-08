@@ -6,8 +6,8 @@ namespace TextAdventureCharacter
 {
     public class HumanNPC : NPC
     {
-        public HumanNPC(int uniqueIdentificationNumber, string name, string description, Area location) 
-        : base(uniqueIdentificationNumber, name, description, location)
+        public HumanNPC(int uniqueIdentificationNumber, string name, string description) 
+        : base(uniqueIdentificationNumber, name, description)
         {
             this.moodAboutCharacters = new Dictionary<Character, double>();
             this.maxHealthPoints = 50;
