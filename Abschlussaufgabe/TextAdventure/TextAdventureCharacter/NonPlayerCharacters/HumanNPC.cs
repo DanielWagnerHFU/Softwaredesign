@@ -27,9 +27,12 @@ namespace TextAdventureCharacter
         {
             //BUG HERE SOMEHOW WHEN LOADED WITH GAMELOADER
             Character possibleAttackTarget = getLowestMoodCharacter();
-            double mood = moodAboutCharacters[possibleAttackTarget];
-            if((possibleAttackTarget != null) && (mood < moodAgressionThreshold)){
-                Attack(possibleAttackTarget.GetName());
+            if(possibleAttackTarget != null)
+            {
+                double mood = moodAboutCharacters[possibleAttackTarget];
+                if(mood < moodAgressionThreshold){
+                    Attack(possibleAttackTarget.GetName());
+                }  
             }
         }
         private Character getLowestMoodCharacter()
