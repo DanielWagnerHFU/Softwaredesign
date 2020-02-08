@@ -11,7 +11,7 @@
         </Area>
         <Area type="Area" uin="2" name="area2" description="a area 2">
             <Characters>
-                <Character type="Player" name="player" description="the main player" strength="1.0" hp="10" maxhp="10">
+                <Character type="Player" name="player" description="the main player" strength="1.0" hp="100" maxhp="100">
                     <Items>
                         <Item type="Key" name="key2" description="" key="124"></Item>
                     </Items>
