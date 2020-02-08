@@ -13,6 +13,7 @@ namespace TextAdventureGame
         }
         public void StartGameLoop()
         {
+            Console.Clear();
             PlayerCharacter playerCharacter = GetPlayerCharacter();
             Character characterOnMove;
             while(playerCharacter.GetIsAlive())

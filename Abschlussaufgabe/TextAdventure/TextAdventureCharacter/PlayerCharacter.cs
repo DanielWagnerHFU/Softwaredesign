@@ -171,11 +171,13 @@ namespace TextAdventureCharacter
         }
         private void CommandHandlerInventory(string[] args)
         {
-            Console.WriteLine("In your inventory are the following Items:");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Inventory:");
             foreach(Item item in this.inventory)
             {
-                Console.WriteLine("name: " + item.GetName());
+                Console.WriteLine("  " + item.GetName());
             }
+            Console.ForegroundColor = ConsoleColor.White;
         }
         private void CommandHandlerTake(string[] args)
         {

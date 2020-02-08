@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace TextAdventureGame
 {
@@ -16,19 +17,14 @@ namespace TextAdventureGame
         }
         public void StartMenuLoop()
         {
+            SetXmlGamepath();
             while(continueMenu)
             {
                 Console.Clear();
                 ShowOptions();
-                try
-                {
-                    int option = Int32.Parse(Console.ReadLine());
-                    Execute(option);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("Not a valid option | Exception: " + e.GetType().ToString());
-                }
+                Console.Write("Option: ");
+                int option = Int32.Parse(Console.ReadLine());
+                Execute(option);
             }
         }
         private void Execute(int option)
@@ -39,7 +35,7 @@ namespace TextAdventureGame
                     SetXmlGamepath();
                     break;
                 case 2:
-                    StartMenuLoop();
+                    StartGame();
                     break;
                 case 3:
                     Quit();
@@ -49,7 +45,7 @@ namespace TextAdventureGame
         private void ShowOptions()
         {
                 Console.WriteLine("Type in one of the following option-numbers");
-                Console.WriteLine("1: set XML gamepath");
+                Console.WriteLine("1: change XML gamepath");
                 Console.WriteLine("2: start game");
                 Console.WriteLine("3: quit");
         }
@@ -59,21 +55,18 @@ namespace TextAdventureGame
         }
         private void SetXmlGamepath()
         {
-            Console.Write("Enter the exact Path here: ");
-            string xmlGamepath = Console.ReadLine();
-            try
-            {
-                this.fileLoader = new TextAdventureFileHandler(xmlGamepath);
-            } 
-            catch (Exception e)
-            {
-                Console.WriteLine("Not a valid path | Exception: " + e.GetType().ToString());
-            }
-        }
-        private void StartGame(string xmlGamepath)
-        {
+            Console.Write("Enter the xml filename (without .xml): ");
+            string xmlpath = Directory.GetCurrentDirectory();
+            xmlpath += "/XML/";
+            string fileName = Console.ReadLine();
+            xmlpath += fileName + ".xml";
+            this.fileLoader = new TextAdventureFileHandler(xmlpath);
             this.fileLoader.BuildGameObjects();
             this.game = new TextAdventureGame(this.fileLoader.GetCharacters());
+        }
+        private void StartGame()
+        {
+            this.game.StartGameLoop();
         }
     }
 }
