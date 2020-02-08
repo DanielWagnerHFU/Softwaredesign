@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TextAdventureCharacter;
 using TextAdventureItem;
+using System.Xml;
 
 namespace TextAdventureMap
 {
@@ -63,6 +64,10 @@ namespace TextAdventureMap
         public List<Item> GetItems()
         {
             return this.items;
+        }
+        public static Area BuildAreaObject(XmlNode areaNode)
+        {
+            return new Area(1,"a","b");
         }
     }
 }

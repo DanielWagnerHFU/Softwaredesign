@@ -11,6 +11,10 @@ namespace TextAdventure
     {
         static void Main(string[] args)
         {
+            TextAdventureFileHandler fileHandler = new TextAdventureFileHandler(@"C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\Abschlussaufgabe\TextAdventure\XML\text.xml");
+        }
+        public void Test1()
+        {
             Area area = new Area(0, "area", "You are in a endless space.");
             Area area1 = new Area(1, "area1", "You are in a spaceship");
             Area area2 = new Area(2, "area2", "You are in my home");

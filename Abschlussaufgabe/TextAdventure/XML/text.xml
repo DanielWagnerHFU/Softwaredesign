@@ -13,6 +13,10 @@
         <Area type="Area2" uin="2">
             <Characters>
                 <Character type="npc1">
+                    <Inventory>
+                        <Item type="key">
+                        </Item>
+                    </Inventory>
                 </Character>
             </Characters>
             <Items>
