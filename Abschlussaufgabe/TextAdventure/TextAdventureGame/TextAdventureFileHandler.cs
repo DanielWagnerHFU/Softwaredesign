@@ -17,17 +17,17 @@ namespace TextAdventureGame
         }
         private XmlNode GetAreasNode()
         {
-            return root.SelectSingleNode("/Areas[1]");
+            return root.SelectSingleNode("//Areas");
         }
         private XmlNode GetGatewaysNode()
         {
-            return root.SelectSingleNode("/Gateways[1]");
+            return root.SelectSingleNode("//Gateways");
         }
 
         private void BuildGameObjects()
         {
             XmlNode areas = GetAreasNode();
-            List<Area> areaList = BuildAreaObjects(areas.SelectNodes("/Area"));
+            List<Area> areaList = BuildAreaObjects(areas.SelectNodes("//Area"));
             XmlNode Gateways = GetGatewaysNode();
         }
         private List<Area> BuildAreaObjects(XmlNodeList areaNodeList)

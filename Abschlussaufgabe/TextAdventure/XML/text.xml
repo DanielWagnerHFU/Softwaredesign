@@ -1,6 +1,6 @@
 <TextAdventureGame>
     <Areas>
-        <Area type="Area1" uin="1">
+        <Area type="Area" uin="1">
             <Characters>
                 <Character type="player">
                 </Character>
@@ -10,7 +10,7 @@
                 </Item>
             </Items>
         </Area>
-        <Area type="Area2" uin="2">
+        <Area type="Area" uin="2">
             <Characters>
                 <Character type="npc1">
                     <Inventory>
