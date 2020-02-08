@@ -60,7 +60,7 @@ namespace TextAdventureGame
             {
                 Area area = BuildAreaObject(areaNode);
                 BuildCharactersForArea(area, areaNode.SelectSingleNode(".//Characters"));
-                BuildItemsForArea(area, areaNode.SelectSingleNode(".//Items"));
+                BuildItemsForArea(area, areaNode.SelectSingleNode("./Items"));
                 areaList.Add(area);
             }
             return areaList;
@@ -106,7 +106,8 @@ namespace TextAdventureGame
                 foreach(XmlNode characterNode in characterNodeList)
                 {
                     Character character = BuildCharacterObject(characterNode);
-                    BuildItemsForCharacter(character, characterNode);
+                    XmlNode itemsNode = characterNode.SelectSingleNode(".//Inventory");
+                    BuildItemsForCharacter(character, itemsNode);
                     area.AddCharacter(character);
                     this.characters.Add(character);
                 }

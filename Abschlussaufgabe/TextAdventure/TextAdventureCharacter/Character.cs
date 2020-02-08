@@ -73,6 +73,7 @@ namespace TextAdventureCharacter
             if(character != null)
             {
                character.GetAttacked(GetTotalAttackDamage(), this);
+               this.isOnMove = false;
             }
         }
         protected List<Character> GetSupportingCharacters()
@@ -162,6 +163,7 @@ namespace TextAdventureCharacter
             if(gateway != null)
             {
                 gateway.ChangeArea(this);
+                this.isOnMove = false;
             }
         }
         public void MoveToArea(Area destination)
