@@ -230,7 +230,10 @@ namespace TextAdventureCharacter
             int uin = Int32.Parse(attributes[1].Value);
             string name = attributes[2].Value;
             string description = attributes[3].Value;
-            return new PlayerCharacter(uin, name, description);
+            double strength = Double.Parse(attributes[4].Value);
+            double healthPoints = Double.Parse(attributes[4].Value);
+            double maxHealthPoints = Double.Parse(attributes[4].Value);
+            return new PlayerCharacter(uin, name, description, strength, healthPoints, maxHealthPoints);
         }    
     }
 }
