@@ -65,9 +65,13 @@ namespace TextAdventureMap
         {
             return this.items;
         }
-        public static Area BuildAreaObject(XmlNode areaNode)
+        public static Area BuildAreaFromXmlNode(XmlNode areaNode)
         {
-            return new Area(1,"a","b");
+            XmlAttributeCollection attributes = areaNode.Attributes;
+            int uin = Int32.Parse(attributes[1].Value);
+            string name = attributes[2].Value;
+            string description = attributes[3].Value;
+            return new Area(uin, name, description);
         }
     }
 }

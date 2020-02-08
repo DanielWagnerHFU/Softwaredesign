@@ -1,41 +1,52 @@
 using System;
 using System.Collections.Generic;
 using TextAdventureCharacter;
-using System.Xml;
 using TextAdventureMap;
+using TextAdventureItem;
+using System.Xml;
 
 namespace TextAdventureGame
 {
     public class TextAdventureFileHandler
     {
-        protected List<Character> characterList;
-        protected XmlNode root;
+        private string filepath;
+        private XmlNode xmlRootNode;
         public TextAdventureFileHandler(string filepath)
         {
-            SetRoot(filepath);
-            BuildGameObjects();
+            this.filepath = filepath;
+            this.xmlRootNode = GetRootNode(filepath);
         }
         private XmlNode GetAreasNode()
         {
-            return root.SelectSingleNode("//Areas");
+            return this.xmlRootNode.SelectSingleNode("//Areas");
         }
         private XmlNode GetGatewaysNode()
         {
-            return root.SelectSingleNode("//Gateways");
+            return xmlRootNode.SelectSingleNode("//Gateways");
         }
 
         private void BuildGameObjects()
         {
-            XmlNode areas = GetAreasNode();
-            List<Area> areaList = BuildAreaObjects(areas.SelectNodes("//Area"));
-            XmlNode Gateways = GetGatewaysNode();
+            XmlNode areasNode = GetAreasNode();
+            List<Area> areaList = BuildAreaObjects(areasNode.SelectNodes("//Area"));
+            XmlNode gatewaysNode = GetGatewaysNode();
+            List<Gateway> gatewayList = BuildGatewayObjects(gatewaysNode.SelectNodes("//Gateways"));
+        }
+        private List<Gateway> BuildGatewayObjects(XmlNodeList gatewayNodeList)
+        {
+            return null;
+            //TODO
+            //CONNECT GATEWAYS WITH AREAS BASED ON UIN
         }
         private List<Area> BuildAreaObjects(XmlNodeList areaNodeList)
         {
             List<Area> areaList = new List<Area>();
             foreach(XmlNode areaNode in areaNodeList)
             {
-                areaList.Add(BuildAreaObject(areaNode));
+                Area area = BuildAreaObject(areaNode);
+                BuildCharactersForArea(area, areaNode);
+                BuildItemsForArea(area, areaNode);
+                areaList.Add(area);
             }
             return areaList;
         }
@@ -44,21 +55,43 @@ namespace TextAdventureGame
             switch(areaNode.Attributes[0].Value)
             {
                 case "Area":
-                    return Area.BuildAreaObject(areaNode);
+                    return Area.BuildAreaFromXmlNode(areaNode);
                 default:
-                    return null;
+                    throw new Exception("Area build failed - No type");
             }
-            //TODO weitere Areas anfügen
         }
-        private void SetRoot(string filepath)
+        private void BuildItemsForArea(Area area, XmlNode itemsNode)
+        {
+
+        }
+        private void BuildCharactersForArea(Area area, XmlNode charactersNode)
+        {
+            //TODO - calling BuildItemsForCharacter
+        }
+        private void BuildItemsForCharacter(Character character, XmlNode itemsNode)
+        {
+            //TODO
+        }
+        private List<Item> BuildItemObjects(XmlNodeList itemNodeList)
+        {
+            return null;
+            //TODO
+        }
+        private List<Character> BuildCharacterObjects(XmlNodeList characterNodeList)
+        {
+            return null;
+            //TODO;
+        }
+        private XmlNode GetRootNode(string filepath)
         {
             XmlDocument xmlDocument = new XmlDocument();
             xmlDocument.Load(filepath);
-            this.root = xmlDocument.DocumentElement;
+            return xmlDocument.DocumentElement;
         }
         public List<Character> GetCharacters()
         {
-            return this.characterList;
+            return null;
+            //TODO
         }
     }
 }

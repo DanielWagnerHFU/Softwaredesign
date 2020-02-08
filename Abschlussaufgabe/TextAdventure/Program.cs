@@ -11,7 +11,7 @@ namespace TextAdventure
     {
         static void Main(string[] args)
         {
-            TextAdventureFileHandler fileHandler = new TextAdventureFileHandler(@"C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\Abschlussaufgabe\TextAdventure\XML\text.xml");
+            TextAdventureGame.TextAdventureGame game = new TextAdventureGame.TextAdventureGame(@"C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\Abschlussaufgabe\TextAdventure\XML\text.xml");
         }
         public void Test1()
         {
@@ -21,10 +21,10 @@ namespace TextAdventure
             Gateway gateway = new Gateway(0, area, area1);
             Gateway gateway1 = new Gateway(0, area1, area2);
             Gateway gateway2 = new Gateway(0, area2, area);
-            PlayerCharacter player = new PlayerCharacter(0,"player","test",area);
-            NonPlayerCharacter npc = new NonPlayerCharacter(1,"npc","A old npc",area);
-            NonPlayerCharacter human = new NormalHuman(2,"human","A human",area);
-            Key key = new Key(0,1,"key","A old Key");
+            PlayerCharacter player = new PlayerCharacter(0, "player", "test", area);
+            NonPlayerCharacter npc = new NonPlayerCharacter(1, "npc", "A old npc", area);
+            NonPlayerCharacter human = new NormalHuman(2, "human", "A human", area);
+            Key key = new Key(0, 1, "key", "A old Key");
             player.AddItem(key);
             List<Character> characters = new List<Character>();
             characters.Add(player);
