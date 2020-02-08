@@ -25,6 +25,7 @@ namespace TextAdventureCharacter
         }
         protected void ManageAttackBehaviour()
         {
+            //BUG HERE SOMEHOW WHEN LOADED WITH GAMELOADER
             Character possibleAttackTarget = getLowestMoodCharacter();
             double mood = moodAboutCharacters[possibleAttackTarget];
             if((possibleAttackTarget != null) && (mood < moodAgressionThreshold)){
