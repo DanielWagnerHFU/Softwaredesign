@@ -1,32 +1,16 @@
 <TextAdventureGame>
     <Areas>
-        <Area type="Area" uin="1" name="area1" description="a area">
-            <Characters>
-                <Character type="player">
-                </Character>
-            </Characters>
-            <Items>
-                <Item type="key">
-                </Item>
-            </Items>
+        <Area type="Area" uin="1" name="area1" description="a area 1">
         </Area>
-        <Area type="Area" uin="2" name="area2" description="a area">
+        <Area type="Area" uin="2" name="area2" description="a area 2">
             <Characters>
-                <Character type="npc1">
-                    <Inventory>
-                        <Item type="key">
-                        </Item>
-                    </Inventory>
+                <Character type="Player">
                 </Character>
             </Characters>
-            <Items>
-                <Item type="key">
-                </Item>
-            </Items>
         </Area>
     </Areas>
     <Gateways>
-        <Gateway type="gateway" uinAreaA="1" uinAreaB="2">
+        <Gateway type="Gateway" uinAreaA="1" uinAreaB="2">
         </Gateway>
     </Gateways>
 </TextAdventureGame>

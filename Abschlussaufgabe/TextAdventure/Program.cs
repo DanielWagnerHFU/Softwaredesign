@@ -12,6 +12,7 @@ namespace TextAdventure
         static void Main(string[] args)
         {
             TextAdventureGame.TextAdventureGame game = new TextAdventureGame.TextAdventureGame(@"C:\Users\User\Desktop\Coding\GitHup\Softwaredesign\Abschlussaufgabe\TextAdventure\XML\text.xml");
+            game.StartGameLoop();
         }
         public void Test1()
         {

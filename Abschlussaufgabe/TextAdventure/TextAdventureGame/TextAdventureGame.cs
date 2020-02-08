@@ -10,6 +10,7 @@ namespace TextAdventureGame
         public TextAdventureGame(string filepath)
         {
             TextAdventureFileHandler fileHandler = new TextAdventureFileHandler(filepath);
+            fileHandler.BuildGameObjects();
             this.characters = fileHandler.GetCharacters();
         }
         public TextAdventureGame(List<Character> characters)

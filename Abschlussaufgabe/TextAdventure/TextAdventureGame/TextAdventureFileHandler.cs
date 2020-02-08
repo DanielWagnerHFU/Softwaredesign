@@ -26,7 +26,7 @@ namespace TextAdventureGame
             return xmlRootNode.SelectSingleNode("//Gateways");
         }
 
-        private void BuildGameObjects()
+        public void BuildGameObjects()
         {
             XmlNode areasNode = GetAreasNode();
             List<Area> areaList = BuildAreaObjects(areasNode.SelectNodes("//Area"));
