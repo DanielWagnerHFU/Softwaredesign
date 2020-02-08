@@ -18,9 +18,6 @@ namespace TextAdventureMap
             this.areaB = areaB;
             areaB.AddGateway(this);
         }
-        public virtual void UseItem(Item item){
-            Console.WriteLine("Nothing happend");
-        }
         public virtual void ChangeArea(Character character)
         {
             character.MoveToArea(GetDestination(character.GetLocation()));

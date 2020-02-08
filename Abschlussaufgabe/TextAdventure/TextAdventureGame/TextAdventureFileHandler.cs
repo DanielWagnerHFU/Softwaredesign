@@ -49,6 +49,8 @@ namespace TextAdventureGame
             {
                 case "Gateway":
                     return Gateway.BuildFromXmlNode(gatewayNode, areaList);
+                case "Door":
+                    return Door.BuildFromXmlNode(gatewayNode, areaList);
                 default:
                     throw new Exception("Gateway build failed - No type");
             }

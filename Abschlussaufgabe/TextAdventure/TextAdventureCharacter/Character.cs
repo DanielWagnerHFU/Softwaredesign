@@ -121,7 +121,7 @@ namespace TextAdventureCharacter
                 Console.WriteLine("ERROR: no such character found");
             return character;
         }
-        protected void SwitchActiveItem(string itemname){
+        protected bool SwitchActiveItem(string itemname){
             Item newActiveItem = FindItemInInventory(itemname);
             if(newActiveItem != null)
             {
@@ -130,7 +130,9 @@ namespace TextAdventureCharacter
                 }
                 this.activeItem = newActiveItem;
                 this.inventory.Remove(newActiveItem);
+                return true;
             }
+            return false;
         }
         protected void UseItem()
         {

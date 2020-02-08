@@ -19,12 +19,44 @@ namespace TextAdventureItem
         }
         public override void UseOnCharacter(Character character, Character user)
         {
-            //TODO
+            if(CharacterIsPlayer(user))
+            {
+                Console.WriteLine("ERROR: You cannot use the item on this character");
+            }   
+        }
+        private void SwitchDoorIsOpen(Door door)
+        {
+            if(door.IsOpen())
+            {
+                door.SetIsOpen(false);
+            }
+            else
+            {
+                door.SetIsOpen(true);
+            }
+        }
+        private void UseKey(Door door)
+        {
+            if(this.key == door.GetKeyHole())
+            {
+                SwitchDoorIsOpen(door);
+            }
+            else
+            {
+                Console.WriteLine("Thats the wrong key");
+            }
         }
         public override void UseOnGateway(Gateway gateway, Character user)
         {
-            //TODO
-            gateway.UseItem(this);
+            if(gateway.GetType() == typeof(Door))
+            {
+                Door door = (Door)gateway;
+                UseKey(door);
+            }
+            else
+            {
+                Console.WriteLine("ERROR: This is not a door");
+            }
         }
         public static Key BuildFromXmlNode(XmlNode itemNode)
         {

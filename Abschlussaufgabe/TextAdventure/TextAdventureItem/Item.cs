@@ -20,6 +20,10 @@ namespace TextAdventureItem
         {
             return this.description;
         }
+        protected bool CharacterIsPlayer(Character character)
+        {
+            return(character.GetType() == typeof(PlayerCharacter))? true : false;
+        }
         public abstract void UseOnCharacter(Character character, Character user);
         public abstract void UseOnGateway(Gateway gateway, Character user);
     }

@@ -27,10 +27,6 @@ namespace TextAdventureItem
                 Console.WriteLine("You cannot use the item on this gateway");
             }            
         }
-        private bool CharacterIsPlayer(Character character)
-        {
-            return(character.GetType() == typeof(PlayerCharacter))? true : false;
-        }
         public static Text BuildFromXmlNode(XmlNode itemNode)
         {
             XmlAttributeCollection attributes = itemNode.Attributes;

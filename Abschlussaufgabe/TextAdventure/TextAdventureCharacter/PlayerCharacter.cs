@@ -41,8 +41,10 @@ namespace TextAdventureCharacter
         public override void MakeAMove(){
             this.isOnMove = true;
             Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Yellow;
             CommandHandlerStatus(new string[]{});
             CommandHandlerLook(new string[]{});
+            Console.ForegroundColor = ConsoleColor.White;
             while(this.isOnMove && this.isAlive)
             {
                 Console.WriteLine();
@@ -53,7 +55,9 @@ namespace TextAdventureCharacter
         }
         private string EnterUserinput(string inputMessage)
         {
+            Console.ForegroundColor = ConsoleColor.Magenta;
             Console.Write(inputMessage);
+            Console.ForegroundColor = ConsoleColor.White;
             string userInput = Console.ReadLine();
             return userInput;
         }
@@ -216,7 +220,11 @@ namespace TextAdventureCharacter
         }
         private void CommandHandlerEquip(string[] args)
         {
-            SwitchActiveItem(args[0]);
+            bool isSwitched = SwitchActiveItem(args[0]);
+            if(isSwitched)
+            {
+                Console.WriteLine("item equipped");
+            }
         }
         public override void GetAttacked(double damage, Character attacker)
         {
