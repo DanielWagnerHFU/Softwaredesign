@@ -96,10 +96,10 @@ namespace TextAdventureGame
         {
             switch(characterNode.Attributes[0].Value)
             {
-                case "Player":
-                    return PlayerCharacter.BuildFromXmlNode(characterNode);
-                case "HumanNPC":
-                    return PlayerCharacter.BuildFromXmlNode(characterNode);            
+                // case "Player":
+                //     return PlayerCharacter.BuildFromXmlNode(characterNode);
+                // case "HumanNPC":
+                //     return PlayerCharacter.BuildFromXmlNode(characterNode);            
                 default:
                     throw new Exception("Character build failed - No type");
             }

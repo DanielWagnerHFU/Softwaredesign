@@ -3,9 +3,9 @@ using TextAdventureMap;
 
 namespace TextAdventureCharacter
 {
-    public class RoamingNonPlayerCharacter : NonPlayerCharacter
+    public class RoamingNPC : NonPlayerCharacter
     {
-        public RoamingNonPlayerCharacter(int uniqueIdentificationNumber, string name, string description, Area location) 
+        public RoamingNPC(int uniqueIdentificationNumber, string name, string description, Area location) 
         : base(uniqueIdentificationNumber, name, description, location)
         {
 

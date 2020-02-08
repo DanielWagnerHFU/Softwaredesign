@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 namespace TextAdventureCharacter
 {
-    public class NormalHuman : NonPlayerCharacter
+    public class HumanNPC : NonPlayerCharacter
     {
-        public NormalHuman(int uniqueIdentificationNumber, string name, string description, Area location) 
+        public HumanNPC(int uniqueIdentificationNumber, string name, string description, Area location) 
         : base(uniqueIdentificationNumber, name, description, location)
         {
             this.moodAboutCharacters = new Dictionary<Character, double>();
