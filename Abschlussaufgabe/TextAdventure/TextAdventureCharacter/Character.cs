@@ -149,12 +149,13 @@ namespace TextAdventureCharacter
             else if(character != null)
             {
                 this.activeItem.UseOnCharacter(character, this);
+                this.isOnMove = false;
             }
         }
         protected Gateway FindGateway(string gatewayName)
         {
             List<Gateway> gateways = this.location.GetGateways();
-            Gateway gateway = gateways.Find(_gateway => _gateway.GetName(this.location) == gatewayName);
+            Gateway gateway = gateways.Find(_gateway => _gateway.GetDestinationName(this.location) == gatewayName);
             if(gateway == null)
                 Console.WriteLine("ERROR: no such gateway found");
             return gateway;
@@ -165,7 +166,6 @@ namespace TextAdventureCharacter
             if(gateway != null)
             {
                 gateway.ChangeArea(this);
-                this.isOnMove = false;
             }
         }
         public void MoveToArea(Area destination)
@@ -173,6 +173,10 @@ namespace TextAdventureCharacter
             Area location = this.location;
             destination.AddCharacter(this);
             location.RemoveCharacter(this);
+        }
+        public void SetIsOnMove(bool isOnMove)
+        {
+            this.isOnMove = isOnMove;
         }
         public bool GetIsAlive()
         {

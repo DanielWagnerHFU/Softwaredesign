@@ -29,17 +29,20 @@ namespace TextAdventureItem
             if(door.IsOpen())
             {
                 door.SetIsOpen(false);
+                Console.WriteLine(door.GetName() + " just closed");
             }
             else
             {
                 door.SetIsOpen(true);
+                Console.WriteLine(door.GetName() + " just opened");
             }
         }
-        private void UseKey(Door door)
+        private void UseKey(Door door, Character user)
         {
             if(this.key == door.GetKeyHole())
             {
                 SwitchDoorIsOpen(door);
+                user.SetIsOnMove(false);
             }
             else
             {
@@ -51,7 +54,7 @@ namespace TextAdventureItem
             if(gateway.GetType() == typeof(Door))
             {
                 Door door = (Door)gateway;
-                UseKey(door);
+                UseKey(door, user);
             }
             else
             {

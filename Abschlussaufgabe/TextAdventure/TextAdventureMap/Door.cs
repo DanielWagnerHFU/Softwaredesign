@@ -2,6 +2,7 @@ using System;
 using TextAdventureItem;
 using System.Xml;
 using TextAdventureMap;
+using TextAdventureCharacter;
 using System.Collections.Generic;
 
 namespace TextAdventureMap
@@ -18,15 +19,22 @@ namespace TextAdventureMap
             this.name = name;
             this.isOpen = isOpen;
         }
-        public override string GetName(Area callingArea){
+        public override string GetDescription(Area callingArea){
             if(isOpen == true)
             {
                 return this.name + " open to " + GetDestinationName(callingArea);
             } 
             else 
             {
-                return this.name + " | closed";
+                return "closed " + this.name + " to " + GetDestinationName(callingArea);
             }
+        }
+        public override string GetName(Area callingArea){
+            return this.name;
+        }
+        public string GetName()
+        {
+            return this.name;
         }
         public bool IsOpen()
         {
@@ -40,7 +48,19 @@ namespace TextAdventureMap
         {
             return this.keyHole;
         }
-        public static Door BuildFromXmlNode(XmlNode gatewayNode, List<Area> areaList){
+        public override void ChangeArea(Character character)
+        {
+            if(isOpen)
+            {
+                character.MoveToArea(GetDestination(character.GetLocation()));
+                character.SetIsOnMove(false);
+            }
+            else
+            {
+                Console.WriteLine("This door is closed");
+            }
+        }
+        new public static Door BuildFromXmlNode(XmlNode gatewayNode, List<Area> areaList){
             XmlAttributeCollection attributes = gatewayNode.Attributes;
             int uinAreaA = Int32.Parse(attributes[1].Value);
             int uinAreaB = Int32.Parse(attributes[2].Value);

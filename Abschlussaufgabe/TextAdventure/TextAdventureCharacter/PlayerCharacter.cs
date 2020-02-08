@@ -29,7 +29,7 @@ namespace TextAdventureCharacter
             this.commands.Add(new Command(new string[]{"take","t"}, CommandHandlerTake, "take(t): <item>", 1));
             this.commands.Add(new Command(new string[]{"drop","d"}, CommandHandlerDrop, "drop(d): <item>", 1));
             this.commands.Add(new Command(new string[]{"equip","e"}, CommandHandlerEquip, "equip(e): <item>", 1));
-            this.commands.Add(new Command(new string[]{"use item on","ui"}, CommandHandlerUseItemOn, "use item on(uio) <gateway or character>", 1));
+            this.commands.Add(new Command(new string[]{"use item on","uio"}, CommandHandlerUseItemOn, "use item on(uio) <gateway or character>", 1));
             this.commands.Add(new Command(new string[]{"use item","ui"}, CommandHandlerUseItem, "use item(ui)"));
             this.commands.Add(new Command(new string[]{"go to","gt"}, CommandHandlerGoTo, "go to(gt): <room>", 1));
             this.commands.Add(new Command(new string[]{"clear chat","cc"}, CommandHandlerClearChat, "clear chat(cc)"));
@@ -133,7 +133,7 @@ namespace TextAdventureCharacter
                 Console.WriteLine("You can go to:");
                 foreach(Gateway gateway in gateways)
                 {
-                    Console.WriteLine(gateway.GetName(this.location));
+                    Console.WriteLine(gateway.GetDescription(this.location));
                 }
             }
         }
@@ -236,7 +236,6 @@ namespace TextAdventureCharacter
             if(this.activeItem != null)
             {
                 UseItemOn(args[0]);
-                this.isOnMove = false;
             }
             else
             {

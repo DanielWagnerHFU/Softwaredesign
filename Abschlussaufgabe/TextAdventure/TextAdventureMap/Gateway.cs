@@ -21,12 +21,17 @@ namespace TextAdventureMap
         public virtual void ChangeArea(Character character)
         {
             character.MoveToArea(GetDestination(character.GetLocation()));
+            character.SetIsOnMove(false);
         }
         public virtual string GetName(Area callingArea)
         {
             return GetDestinationName(callingArea);
         }
-        protected string GetDestinationName(Area callingArea)
+        public virtual string GetDescription(Area callingArea)
+        {
+            return GetName(callingArea);
+        }
+        public string GetDestinationName(Area callingArea)
         {
             return (callingArea == areaA)? areaB.GetName() : areaA.GetName();
         }
