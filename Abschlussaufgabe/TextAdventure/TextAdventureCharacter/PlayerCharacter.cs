@@ -9,8 +9,8 @@ namespace TextAdventureCharacter
     public class PlayerCharacter : Character
     {
         List<Command> commands;
-        public PlayerCharacter(int uniqueIdentificationNumber, string name, string description, double strength = 10, double healthPoints = 100, double maxHealthPoints = 100) 
-        : base(uniqueIdentificationNumber, name, description, strength, healthPoints, maxHealthPoints)
+        public PlayerCharacter(string name, string description, double strength = 10, double healthPoints = 100, double maxHealthPoints = 100) 
+        : base(name, description, strength, healthPoints, maxHealthPoints)
         {
             commands = new List<Command>();
             initializeCommands();
@@ -227,13 +227,12 @@ namespace TextAdventureCharacter
         public static PlayerCharacter BuildFromXmlNode(XmlNode characterNode)
         {
             XmlAttributeCollection attributes = characterNode.Attributes;
-            int uin = Int32.Parse(attributes[1].Value);
-            string name = attributes[2].Value;
-            string description = attributes[3].Value;
-            double strength = Double.Parse(attributes[4].Value);
+            string name = attributes[1].Value;
+            string description = attributes[2].Value;
+            double strength = Double.Parse(attributes[3].Value);
             double healthPoints = Double.Parse(attributes[4].Value);
-            double maxHealthPoints = Double.Parse(attributes[4].Value);
-            return new PlayerCharacter(uin, name, description, strength, healthPoints, maxHealthPoints);
+            double maxHealthPoints = Double.Parse(attributes[5].Value);
+            return new PlayerCharacter(name, description, strength, healthPoints, maxHealthPoints);
         }    
     }
 }

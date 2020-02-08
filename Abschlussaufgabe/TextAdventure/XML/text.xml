@@ -4,13 +4,14 @@
         </Area>
         <Area type="Area" uin="2" name="area2" description="a area 2">
             <Characters>
-                <Character type="Player">
+                <Character type="Player" name="player" description="the main player" strength="1.0" hp="10" maxhp="10">
+
                 </Character>
             </Characters>
         </Area>
     </Areas>
     <Gateways>
-        <Gateway type="Gateway" uinAreaA="1" uinAreaB="2">
+        <Gateway type="Gateway" uinA="1" uinB="2">
         </Gateway>
     </Gateways>
 </TextAdventureGame>

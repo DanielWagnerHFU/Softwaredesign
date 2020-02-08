@@ -7,7 +7,6 @@ namespace TextAdventureCharacter
 {
     public abstract class Character
     {
-        protected int uniqueIdentificationNumber;
         protected string name;
         protected string description;
         protected bool isOnMove;
@@ -18,9 +17,8 @@ namespace TextAdventureCharacter
         protected List<Item> inventory;
         protected Item activeItem;
         protected Area location;
-        public Character(int uniqueIdentificationNumber, string name, string description, double strength = 0, double healthPoints = 1, double maxHealthPoints = 1)
+        public Character(string name, string description, double strength = 0, double healthPoints = 1, double maxHealthPoints = 1)
         {
-            this.uniqueIdentificationNumber = uniqueIdentificationNumber;
             this.name = name;
             this.description = description;
             this.isOnMove = false;

@@ -6,11 +6,9 @@ namespace TextAdventureItem
 {
     public abstract class Item
     {
-        protected int uniqueIdentificationNumber;
         protected string name;
         protected string description;
-        public Item(int uniqueIdentificationNumber, string name, string description){
-            this.uniqueIdentificationNumber = uniqueIdentificationNumber;
+        public Item(string name, string description){
             this.name = name;
             this.description = description;
         }

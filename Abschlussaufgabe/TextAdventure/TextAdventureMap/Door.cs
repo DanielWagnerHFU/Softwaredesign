@@ -8,8 +8,8 @@ namespace TextAdventureMap
         private Key referenceKey;
         private string name;
         private bool isOpen;
-        public Door(int uniqueIdentificationNumber, Area areaA, Area areaB, Key referenceKey, string name, bool isOpen) 
-        : base(uniqueIdentificationNumber, areaA, areaB)
+        public Door(Area areaA, Area areaB, Key referenceKey, string name, bool isOpen) 
+        : base(areaA, areaB)
         {
             this.referenceKey = referenceKey;
             this.name = name;

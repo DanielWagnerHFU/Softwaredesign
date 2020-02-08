@@ -7,8 +7,8 @@ namespace TextAdventureCharacter
 {
     public class HumanNPC : NPC
     {
-        public HumanNPC(int uniqueIdentificationNumber, string name, string description) 
-        : base(uniqueIdentificationNumber, name, description)
+        public HumanNPC(string name, string description) 
+        : base(name, description)
         {
             this.moodAboutCharacters = new Dictionary<Character, double>();
             this.maxHealthPoints = 50;
@@ -53,10 +53,9 @@ namespace TextAdventureCharacter
         public static HumanNPC BuildFromXmlNode(XmlNode characterNode)
         {
             XmlAttributeCollection attributes = characterNode.Attributes;
-            int uin = Int32.Parse(attributes[1].Value);
-            string name = attributes[2].Value;
-            string description = attributes[3].Value;
-            return new HumanNPC(uin, name, description);
+            string name = attributes[1].Value;
+            string description = attributes[2].Value;
+            return new HumanNPC(name, description);
         }  
     }
 }

@@ -16,22 +16,23 @@ namespace TextAdventureGame
         {
             this.filepath = filepath;
             this.xmlRootNode = GetRootNode(filepath);
+            this.characters = new List<Character>();
         }
         private XmlNode GetAreasNode()
         {
-            return this.xmlRootNode.SelectSingleNode("//Areas");
+            return this.xmlRootNode.SelectSingleNode(".//Areas");
         }
         private XmlNode GetGatewaysNode()
         {
-            return xmlRootNode.SelectSingleNode("//Gateways");
+            return xmlRootNode.SelectSingleNode(".//Gateways");
         }
 
         public void BuildGameObjects()
         {
             XmlNode areasNode = GetAreasNode();
-            List<Area> areaList = BuildAreaObjects(areasNode.SelectNodes("//Area"));
+            List<Area> areaList = BuildAreaObjects(areasNode.SelectNodes(".//Area"));
             XmlNode gatewaysNode = GetGatewaysNode();
-            List<Gateway> gatewayList = BuildGatewayObjects(gatewaysNode.SelectNodes("//Gateways"), areaList);
+            List<Gateway> gatewayList = BuildGatewayObjects(gatewaysNode.SelectNodes(".//Gateway"), areaList);
         }
         private List<Gateway> BuildGatewayObjects(XmlNodeList gatewayNodeList, List<Area> areaList)
         {
@@ -58,8 +59,8 @@ namespace TextAdventureGame
             foreach(XmlNode areaNode in areaNodeList)
             {
                 Area area = BuildAreaObject(areaNode);
-                BuildCharactersForArea(area, areaNode.SelectSingleNode("//Characters"));
-                BuildItemsForArea(area, areaNode.SelectSingleNode("//Items"));
+                BuildCharactersForArea(area, areaNode.SelectSingleNode(".//Characters"));
+                BuildItemsForArea(area, areaNode.SelectSingleNode(".//Items"));
                 areaList.Add(area);
             }
             return areaList;
@@ -78,7 +79,7 @@ namespace TextAdventureGame
         {
             if(itemsNode != null)
             {
-                XmlNodeList itemNodeList = itemsNode.SelectNodes("//Item");
+                XmlNodeList itemNodeList = itemsNode.SelectNodes(".//Item");
                 foreach(XmlNode itemNode in itemNodeList)
                 {
                     area.AddItem(BuildItemObject(itemNode));
@@ -99,7 +100,7 @@ namespace TextAdventureGame
         {
             if(charactersNode != null)
             {
-                XmlNodeList characterNodeList = charactersNode.SelectNodes("//Character");
+                XmlNodeList characterNodeList = charactersNode.SelectNodes(".//Character");
                 foreach(XmlNode characterNode in characterNodeList)
                 {
                     Character character = BuildCharacterObject(characterNode);
@@ -125,7 +126,7 @@ namespace TextAdventureGame
         {
             if(itemsNode != null)
             {
-                XmlNodeList itemNodeList = itemsNode.SelectNodes("//Item");
+                XmlNodeList itemNodeList = itemsNode.SelectNodes(".//Item");
                 foreach(XmlNode itemNode in itemNodeList)
                 {
                     character.AddItem(BuildItemObject(itemNode));

@@ -9,8 +9,8 @@ namespace TextAdventureCharacter
         protected double attackMoodChange = -100;
         protected double moodAgressionThreshold = -10;
         protected Dictionary<Character,double> moodAboutCharacters;
-        public NPC(int uniqueIdentificationNumber, string name, string description) 
-        : base(uniqueIdentificationNumber, name, description)
+        public NPC(string name, string description) 
+        : base(name, description)
         {
             this.moodAboutCharacters = new Dictionary<Character, double>();
         }

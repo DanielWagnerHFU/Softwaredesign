@@ -5,8 +5,8 @@ namespace TextAdventureCharacter
 {
     public class RoamingNPC : NPC
     {
-        public RoamingNPC(int uniqueIdentificationNumber, string name, string description) 
-        : base(uniqueIdentificationNumber, name, description)
+        public RoamingNPC(string name, string description) 
+        : base(name, description)
         {
 
         }

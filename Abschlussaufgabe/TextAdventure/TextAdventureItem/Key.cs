@@ -8,7 +8,9 @@ namespace TextAdventureItem
     public class Key : Item
     {
         private int key;
-        public Key(int uniqueIdentificationNumber, string name, string description, int key) : base(uniqueIdentificationNumber, name, description){
+        public Key(string name, string description, int key) 
+        : base(name, description)
+        {
             this.key = key;
         }
         public int GetKey()
@@ -30,7 +32,7 @@ namespace TextAdventureItem
             string name = attributes[2].Value;
             string description = attributes[3].Value;
             int key = Int32.Parse(attributes[4].Value);
-            return new Key(uin, name, description, key);
+            return new Key(name, description, key);
         }
     }
 }
