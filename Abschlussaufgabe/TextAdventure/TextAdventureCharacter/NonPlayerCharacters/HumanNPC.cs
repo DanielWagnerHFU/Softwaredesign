@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace TextAdventureCharacter
 {
-    public class HumanNPC : NonPlayerCharacter
+    public class HumanNPC : NPC
     {
         public HumanNPC(int uniqueIdentificationNumber, string name, string description, Area location) 
         : base(uniqueIdentificationNumber, name, description, location)

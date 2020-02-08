@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 namespace TextAdventureCharacter
 {
-    public class NonPlayerCharacter : Character
+    public class NPC : Character
     {
         protected double attackMoodChange = -100;
         protected double moodAgressionThreshold = -10;
         protected Dictionary<Character,double> moodAboutCharacters;
-        public NonPlayerCharacter(int uniqueIdentificationNumber, string name, string description, Area location) 
+        public NPC(int uniqueIdentificationNumber, string name, string description, Area location) 
         : base(uniqueIdentificationNumber, name, description, location)
         {
             this.moodAboutCharacters = new Dictionary<Character, double>();

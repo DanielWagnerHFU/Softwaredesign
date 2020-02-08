@@ -3,7 +3,7 @@ using TextAdventureMap;
 
 namespace TextAdventureCharacter
 {
-    public class DialogNPC : NonPlayerCharacter
+    public class DialogNPC : NPC
     {
         protected DialogNode dialog;
         public DialogNPC(int uniqueIdentificationNumber, string name, string description, Area location, DialogNode dialog) 
