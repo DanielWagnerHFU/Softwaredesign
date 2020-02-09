@@ -23,9 +23,9 @@
         </Area>
     </Areas>
     <Gateways>
-        <Gateway type="Gateway" uinA="1" uinB="2">
+        <Gateway type="Gateway" uin ="4" uinA="1" uinB="2">
         </Gateway>
-        <Gateway type="Door" uinA="2" uinB="3" name="door" keyHole="123" isOpen="false">
+        <Gateway type="Door" uin="5" uinA="2" uinB="3" name="door" keyHole="123" isOpen="false">
         </Gateway>
     </Gateways>
 </TextAdventureGame>
