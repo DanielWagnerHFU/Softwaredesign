@@ -23,10 +23,9 @@ namespace TextAdventureCharacter
         public override void MakeAMove(){
             ManageAttackBehaviour();
         }
-        protected void ManageAttackBehaviour()
+        private void ManageAttackBehaviour()
         {
-            //BUG HERE SOMEHOW WHEN LOADED WITH GAMELOADER
-            Character possibleAttackTarget = getLowestMoodCharacter();
+            Character possibleAttackTarget = GetLowestMoodCharacter();
             if(possibleAttackTarget != null)
             {
                 double mood = moodAboutCharacters[possibleAttackTarget];
@@ -35,7 +34,7 @@ namespace TextAdventureCharacter
                 }  
             }
         }
-        private Character getLowestMoodCharacter()
+        private Character GetLowestMoodCharacter()
         {
             if(moodAboutCharacters.Count != 0)
             {

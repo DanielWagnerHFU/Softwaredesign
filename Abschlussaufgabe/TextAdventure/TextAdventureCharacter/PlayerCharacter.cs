@@ -8,18 +8,18 @@ namespace TextAdventureCharacter
 {
     public sealed class PlayerCharacter : Character
     {
-        List<Command> _commandList;
+        private List<Command> _commandList;
         public PlayerCharacter(string name, string description, double strength = 10, double healthPoints = 100, double maxHealthPoints = 100) 
         : base(name, description, strength, healthPoints, maxHealthPoints)
         {
             _commandList = new List<Command>();
-            initializeCommands();
+            InitializeCommands();
             _isOnMove = true;
             this._strength = 10;
             this._maxHealthPoints = 100;
             this._healthPoints = maxHealthPoints;
         }
-        private void initializeCommands()
+        private void InitializeCommands()
         {
             //TODO - Add new Commands here
             this._commandList.Add(new Command(new string[]{"commands","c"}, CommandHandlerCommands, "commands(c)"));
@@ -63,7 +63,7 @@ namespace TextAdventureCharacter
         {
             foreach(Command command in _commandList)
             {
-                if(command.IsEqualToCommandWithArgs(commandWithArgs))
+                if(command.IsEqualToCommand(commandWithArgs))
                 {
                     return command;
                 }

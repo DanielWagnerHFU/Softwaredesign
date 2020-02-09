@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace TextAdventureCharacter
 {
-    public class NPC : Character
+    public abstract class NPC : Character
     {
         protected double _attackMoodChange = -100;
         protected double _moodAgressionThreshold = -10;
@@ -30,7 +30,8 @@ namespace TextAdventureCharacter
                 moodAboutCharacters.Add(character, moodChange);
             }
         }
-        public override void MakeAMove(){
+        public override void MakeAMove()
+        {
         }
         public override void StartDialog(Character character)
         {

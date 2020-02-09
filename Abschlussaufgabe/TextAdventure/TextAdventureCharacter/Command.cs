@@ -20,7 +20,7 @@ namespace TextAdventureCharacter
         {
             return this._description;
         }
-        public bool IsEqualToCommandWithArgs(string commandString)
+        public bool IsEqualToCommand(string commandString)
         {
             string[] commandSplitString = commandString.Split(":", StringSplitOptions.None);
             if(Array.Exists(this._commandList, command => command == commandSplitString[0].TrimEnd(' ')))
