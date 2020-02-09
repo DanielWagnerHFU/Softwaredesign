@@ -33,6 +33,16 @@ namespace TextAdventureCharacter
         public override void MakeAMove()
         {
         }
+        protected virtual void ManageRoamingBehaviour()
+        {
+           List<Gateway> gateways = this._location.GetGateways();
+           if (gateways.Count != 0)
+           {
+               Random random = new Random();
+               int randomUIN = gateways[random.Next(gateways.Count)].GetUIN(this._location);
+               ChangeArea(Convert.ToString(randomUIN));
+           }
+        }
         public override void StartDialog(Character character)
         {
             Console.WriteLine("ERROR: You cannot talk to this character");

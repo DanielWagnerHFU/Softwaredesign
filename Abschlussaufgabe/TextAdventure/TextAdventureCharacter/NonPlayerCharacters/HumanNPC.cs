@@ -21,7 +21,12 @@ namespace TextAdventureCharacter
             ChangeMood(attacker, _attackMoodChange);
         }
         public override void MakeAMove(){
+            this._isOnMove = true;
             ManageAttackBehaviour();
+            if(this._isOnMove)
+            {
+                ManageRoamingBehaviour();
+            }
         }
         private void ManageAttackBehaviour()
         {
@@ -31,6 +36,7 @@ namespace TextAdventureCharacter
                 double mood = moodAboutCharacters[possibleAttackTarget];
                 if(mood < _moodAgressionThreshold){
                     Attack(possibleAttackTarget.GetName());
+                    this._isOnMove = false;
                 }  
             }
         }
