@@ -13,10 +13,6 @@ namespace TextAdventureItem
         {
             this.key = key;
         }
-        public int GetKey()
-        {
-            return this.key;
-        }
         public override void UseOnCharacter(Character character, Character user)
         {
             if(CharacterIsPlayer(user))

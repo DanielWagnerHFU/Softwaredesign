@@ -7,7 +7,7 @@ using System.Xml;
 
 namespace TextAdventureGame
 {
-    public class TextAdventureFileHandler
+    public sealed class TextAdventureFileHandler
     {
         private string filepath;
         private XmlNode xmlRootNode;

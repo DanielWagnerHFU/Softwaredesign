@@ -6,7 +6,7 @@ using System.Xml;
 
 namespace TextAdventureCharacter
 {
-    public class PlayerCharacter : Character
+    public sealed class PlayerCharacter : Character
     {
         List<Command> commands;
         public PlayerCharacter(string name, string description, double strength = 10, double healthPoints = 100, double maxHealthPoints = 100) 
