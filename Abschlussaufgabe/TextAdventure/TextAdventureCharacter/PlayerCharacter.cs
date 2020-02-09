@@ -181,7 +181,14 @@ namespace TextAdventureCharacter
         }
         private void CommandHandlerTake(string[] args)
         {
-            TakeItem(args[0]);
+            if(this._inventory.Count <= this._maxInventorySlots)
+            {
+                TakeItem(args[0]);
+            }
+            else
+            {
+                Console.WriteLine("Your inventory is full. You only have " + this._maxInventorySlots + " free itemslots!");
+            }
         }
         private void CommandHandlerDrop(string[] args)
         {

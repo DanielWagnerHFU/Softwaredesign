@@ -18,6 +18,7 @@ namespace TextAdventureCharacter
         protected double _healthPoints;
         protected double _strength;
         protected List<Item> _inventory;
+        protected int _maxInventorySlots = 3;
         protected Item _activeItem;
         protected Area _location;
         /*---------------------------------------
@@ -99,11 +100,14 @@ namespace TextAdventureCharacter
             return _strength;
         }
         protected void TakeItem(string itemname){
-            Item itemToTake = FindItemInLocation(itemname);
-            if(itemToTake != null)
+            if(this._inventory.Count <= this._maxInventorySlots)
             {
-                this._inventory.Add(itemToTake);
-                this._location.RemoveItem(itemToTake);
+                Item itemToTake = FindItemInLocation(itemname);
+                if(itemToTake != null)
+                {
+                    this._inventory.Add(itemToTake);
+                    this._location.RemoveItem(itemToTake);
+                }
             }
         }
         protected void DropItem(string itemname){

@@ -6,7 +6,7 @@ namespace TextAdventureGame
 {
     public sealed class TextAdventureMenu
     {
-        private TextAdventureFileHandler _fileLoader;
+        private TextAdventureFileLoader _fileLoader;
         private TextAdventureGame _game;
         private bool _continueMenu;
         public TextAdventureMenu()
@@ -60,7 +60,7 @@ namespace TextAdventureGame
             xmlpath += "/XML/";
             string fileName = Console.ReadLine();
             xmlpath += fileName + ".xml";
-            this._fileLoader = new TextAdventureFileHandler(xmlpath);
+            this._fileLoader = new TextAdventureFileLoader(xmlpath);
             this._fileLoader.BuildGameObjects();
             this._game = new TextAdventureGame(this._fileLoader.GetCharacters());
         }

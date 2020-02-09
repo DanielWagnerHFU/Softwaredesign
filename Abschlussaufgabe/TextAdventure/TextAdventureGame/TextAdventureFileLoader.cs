@@ -7,12 +7,12 @@ using System.Xml;
 
 namespace TextAdventureGame
 {
-    public sealed class TextAdventureFileHandler
+    public sealed class TextAdventureFileLoader
     {
         private string _filepath;
         private XmlNode _xmlRootNode;
         private List<Character> _characterList;
-        public TextAdventureFileHandler(string filepath)
+        public TextAdventureFileLoader(string filepath)
         {
             this._filepath = filepath;
             this._xmlRootNode = GetRootNode(filepath);
