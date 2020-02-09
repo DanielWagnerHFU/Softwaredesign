@@ -59,7 +59,7 @@ namespace TextAdventureMap
                 character.MoveToArea(GetDestination(character.GetLocation()));
                 character.SetIsOnMove(false);
             }
-            else
+            else if(character.GetType() == typeof(PlayerCharacter))
             {
                 Console.WriteLine("This door is closed");
             }

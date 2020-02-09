@@ -190,7 +190,7 @@ namespace TextAdventureCharacter
                 gateway.ChangeArea(this);
             }
         }
-        private Gateway FindGateway(string gatewayName)
+        protected virtual Gateway FindGateway(string gatewayName)
         {
             List<Gateway> gateways = this._location.GetGateways();
             Gateway gateway = gateways.Find(_gateway => _gateway.GetDestinationName(this._location) == gatewayName);
@@ -198,7 +198,7 @@ namespace TextAdventureCharacter
             {
                 gateway = gateways.Find(_gateway => Convert.ToString(_gateway.GetUIN(this._location)) == gatewayName);
             }
-            if(gateway == null)
+            if((gateway == null) && (this.GetType() == typeof(PlayerCharacter)))
                 Console.WriteLine("ERROR: no such gateway found");
             return gateway;
         }        
