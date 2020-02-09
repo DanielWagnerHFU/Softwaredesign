@@ -114,7 +114,7 @@ namespace TextAdventureCharacter
         }
         private void CommandHandlerStatus(string[] args)
         {
-            Console.WriteLine(GetStatusString());
+            Console.WriteLine(GetStatus());
         }
         private void CommandHandlerLook(string[] args)
         {
@@ -148,7 +148,7 @@ namespace TextAdventureCharacter
                 {
                     if(character.GetIsAlive())
                     {
-                        Console.WriteLine("  " + character.GetName() + " " + character.GetStatusString());
+                        Console.WriteLine("  " + character.GetName() + " " + character.GetStatus());
                     } 
                     else 
                     {
@@ -207,9 +207,9 @@ namespace TextAdventureCharacter
             Character character = GetSupportingCharacters().Find(_character => _character.GetName() == args[0]);
             Item itemL = this._location.GetItems().Find(_itemL => _itemL.GetName() == args[0]);
             Item itemI = this._inventory.Find(_itemI => _itemI.GetName() == args[0]);
-            if((this._activeItem != null) && (this._activeItem.GetName() == args[0]))
+            if((this._equippedItem != null) && (this._equippedItem.GetName() == args[0]))
             {
-                Console.WriteLine("Item description: " + this._activeItem.GetDescription());
+                Console.WriteLine("Item description: " + this._equippedItem.GetDescription());
             }
             else if(character != null)
             {
@@ -247,9 +247,9 @@ namespace TextAdventureCharacter
         }
         private void CommandHandlerUseItemOn(string[] args)
         {
-            if(this._activeItem != null)
+            if(this._equippedItem != null)
             {
-                UseItemOn(args[0]);
+                UseEquippedItemOn(args[0]);
             }
             else
             {
@@ -258,9 +258,9 @@ namespace TextAdventureCharacter
         }
         private void CommandHandlerUseItem(string[] args)
         {
-            if(this._activeItem != null)
+            if(this._equippedItem != null)
             {
-                UseItem();
+                UseEquippedItem();
                 this._isOnMove = false;
             }
             else

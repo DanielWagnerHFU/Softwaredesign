@@ -9,7 +9,13 @@ namespace TextAdventureGame
         private List<Character> _characterList;
         public TextAdventureGame(List<Character> characters)
         {
-            this._characterList = characters;
+            if(characters.Count == 0)
+            {
+                throw new Exception("Not enough characters");
+            }
+            else{
+                this._characterList = characters;
+            }
         }
         public void StartGameLoop()
         {
@@ -35,10 +41,10 @@ namespace TextAdventureGame
         }
         private PlayerCharacter GetPlayerCharacter()
         {
-            PlayerCharacter playerCharacter = (PlayerCharacter)this._characterList.Find(isPlayerCharacter);
+            PlayerCharacter playerCharacter = (PlayerCharacter)this._characterList.Find(IsPlayerCharacter);
             return playerCharacter;
         }
-        private bool isPlayerCharacter(Character character)
+        private bool IsPlayerCharacter(Character character)
         {
             return (character.GetType() == typeof(PlayerCharacter))? true : false;
         }

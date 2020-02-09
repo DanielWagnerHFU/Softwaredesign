@@ -18,6 +18,23 @@ namespace TextAdventureGame
             this._xmlRootNode = GetRootNode(filepath);
             this._characterList = new List<Character>();
         }
+        public List<Character> GetCharacters()
+        {
+            return this._characterList;
+        }        
+        public void BuildGameObjects()
+        {
+            XmlNode areasNode = GetAreasNode();
+            List<Area> areaList = BuildAreaObjects(areasNode.SelectNodes(".//Area"));
+            XmlNode gatewaysNode = GetGatewaysNode();
+            List<Gateway> gatewayList = BuildGatewayObjects(gatewaysNode.SelectNodes(".//Gateway"), areaList);
+        }
+        private XmlNode GetRootNode(string filepath)
+        {
+            XmlDocument xmlDocument = new XmlDocument();
+            xmlDocument.Load(filepath);
+            return xmlDocument.DocumentElement;
+        }
         private XmlNode GetAreasNode()
         {
             return this._xmlRootNode.SelectSingleNode(".//Areas");
@@ -25,14 +42,6 @@ namespace TextAdventureGame
         private XmlNode GetGatewaysNode()
         {
             return _xmlRootNode.SelectSingleNode(".//Gateways");
-        }
-
-        public void BuildGameObjects()
-        {
-            XmlNode areasNode = GetAreasNode();
-            List<Area> areaList = BuildAreaObjects(areasNode.SelectNodes(".//Area"));
-            XmlNode gatewaysNode = GetGatewaysNode();
-            List<Gateway> gatewayList = BuildGatewayObjects(gatewaysNode.SelectNodes(".//Gateway"), areaList);
         }
         private List<Gateway> BuildGatewayObjects(XmlNodeList gatewayNodeList, List<Area> areaList)
         {
@@ -137,16 +146,6 @@ namespace TextAdventureGame
                     character.AddItem(BuildItemObject(itemNode));
                 }
             }
-        }
-        private XmlNode GetRootNode(string filepath)
-        {
-            XmlDocument xmlDocument = new XmlDocument();
-            xmlDocument.Load(filepath);
-            return xmlDocument.DocumentElement;
-        }
-        public List<Character> GetCharacters()
-        {
-            return this._characterList;
         }
     }
 }
