@@ -40,7 +40,7 @@ namespace TextAdventureMap
         {
             return this._name;
         }
-        public bool IsOpen()
+        public bool GetIsOpen()
         {
             return _isOpen;
         }

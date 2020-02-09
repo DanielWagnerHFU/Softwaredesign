@@ -22,7 +22,7 @@ namespace TextAdventureItem
         }
         private void SwitchDoorIsOpen(Door door)
         {
-            if(door.IsOpen())
+            if(door.GetIsOpen())
             {
                 door.SetIsOpen(false);
                 Console.WriteLine(door.GetName() + " just closed");
