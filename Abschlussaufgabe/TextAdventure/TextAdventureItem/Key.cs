@@ -7,11 +7,11 @@ namespace TextAdventureItem
 {
     public class Key : Item
     {
-        private int key;
+        private int _key;
         public Key(string name, string description, int key) 
         : base(name, description)
         {
-            this.key = key;
+            this._key = key;
         }
         public override void UseOnCharacter(Character character, Character user)
         {
@@ -35,7 +35,7 @@ namespace TextAdventureItem
         }
         private void UseKey(Door door, Character user)
         {
-            if(this.key == door.GetKeyHole())
+            if(this._key == door.GetKeyHole())
             {
                 SwitchDoorIsOpen(door);
                 user.SetIsOnMove(false);

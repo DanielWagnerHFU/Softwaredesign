@@ -5,14 +5,14 @@ namespace TextAdventureCharacter
 {
     public sealed class DialogNode
     {
-        private double nonPlayerMood;
-        private string nonPlayerMessage;
-        private Dictionary<string, DialogNode> playerAnswers;
+        private double _nonPlayerMood;
+        private string _nonPlayerMessage;
+        private Dictionary<string, DialogNode> _playerAnswers;
         public DialogNode(double nonPlayerMood, string nonPlayerMessage, Dictionary<string, DialogNode> playerAnswers)
         {
-            this.nonPlayerMood = nonPlayerMood;
-            this.nonPlayerMessage = nonPlayerMessage;
-            this.playerAnswers = playerAnswers;
+            this._nonPlayerMood = nonPlayerMood;
+            this._nonPlayerMessage = nonPlayerMessage;
+            this._playerAnswers = playerAnswers;
         }
         public void ActivateDialogNode()
         {

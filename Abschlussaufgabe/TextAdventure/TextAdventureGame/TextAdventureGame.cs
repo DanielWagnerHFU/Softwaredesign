@@ -6,10 +6,10 @@ namespace TextAdventureGame
 {
     public sealed class TextAdventureGame
     {
-        private List<Character> characters;
+        private List<Character> _characterList;
         public TextAdventureGame(List<Character> characters)
         {
-            this.characters = characters;
+            this._characterList = characters;
         }
         public void StartGameLoop()
         {
@@ -19,9 +19,9 @@ namespace TextAdventureGame
             Character characterOnMove;
             while(playerCharacter.GetIsAlive())
             {
-                for(int i = 0; (i < characters.Count) && (playerCharacter.GetIsAlive()); i++)
+                for(int i = 0; (i < _characterList.Count) && (playerCharacter.GetIsAlive()); i++)
                 {
-                    characterOnMove = characters[i];
+                    characterOnMove = _characterList[i];
                     if(characterOnMove.GetIsAlive())
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
@@ -35,7 +35,7 @@ namespace TextAdventureGame
         }
         private PlayerCharacter GetPlayerCharacter()
         {
-            PlayerCharacter playerCharacter = (PlayerCharacter)this.characters.Find(isPlayerCharacter);
+            PlayerCharacter playerCharacter = (PlayerCharacter)this._characterList.Find(isPlayerCharacter);
             return playerCharacter;
         }
         private bool isPlayerCharacter(Character character)

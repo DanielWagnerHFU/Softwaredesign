@@ -10,58 +10,58 @@ namespace TextAdventureCharacter
         /*---------------------------------------
         ---------------ATTRIBUTES---------------- 
         ---------------------------------------*/
-        protected string name;
-        protected string description;
-        protected bool isOnMove;
-        protected bool isAlive;
-        protected double maxHealthPoints;
-        protected double healthPoints;
-        protected double strength;
-        protected List<Item> inventory;
-        protected Item activeItem;
-        protected Area location;
+        protected string _name;
+        protected string _description;
+        protected bool _isOnMove;
+        protected bool _isAlive;
+        protected double _maxHealthPoints;
+        protected double _healthPoints;
+        protected double _strength;
+        protected List<Item> _inventory;
+        protected Item _activeItem;
+        protected Area _location;
         /*---------------------------------------
         ----------------METHODS------------------ 
         ---------------------------------------*/
         public Character(string name, string description, double strength = 0, double healthPoints = 1, double maxHealthPoints = 1)
         {
-            this.name = name;
-            this.description = description;
-            this.isOnMove = false;
-            this.isAlive = true; 
-            this.maxHealthPoints = maxHealthPoints;
-            this.healthPoints = healthPoints;
-            this.strength = strength;
-            this.inventory = new List<Item>();
-            this.location = null;
+            this._name = name;
+            this._description = description;
+            this._isOnMove = false;
+            this._isAlive = true; 
+            this._maxHealthPoints = maxHealthPoints;
+            this._healthPoints = healthPoints;
+            this._strength = strength;
+            this._inventory = new List<Item>();
+            this._location = null;
         }
         public string GetName()
         {
-            return this.name;
+            return this._name;
         }
         public string GetStatusString()
         {
-            String status = "|HP [" + this.healthPoints + "/" + this.maxHealthPoints + "]";
-            if(this.activeItem == null)
+            String status = "|HP [" + this._healthPoints + "/" + this._maxHealthPoints + "]";
+            if(this._activeItem == null)
             {
                 return status += " right hand [empty]|";
             }
             else
             {
-                return status += " right hand [" + this.activeItem.GetName() +"]|";
+                return status += " right hand [" + this._activeItem.GetName() +"]|";
             }
         }
         public virtual string GetDescription()
         {
-            return this.description;
+            return this._description;
         }
         public void SetLocation(Area location)
         {
-            this.location = location;
+            this._location = location;
         }
         public Area GetLocation()
         {
-            return this.location;
+            return this._location;
         }
         public abstract void MakeAMove();
         public abstract void StartDialog(Character character);
@@ -71,15 +71,15 @@ namespace TextAdventureCharacter
         }
         public virtual void GetHarmed(double damage)
         {
-            this.healthPoints -= damage;
+            this._healthPoints -= damage;
             UpdateIsAlive();
         }
         protected void UpdateIsAlive()
         {
-            if(this.healthPoints <= 0)
+            if(this._healthPoints <= 0)
             {
-                this.isAlive = false;
-                Console.WriteLine(this.name + " died\n");
+                this._isAlive = false;
+                Console.WriteLine(this._name + " died\n");
             }            
         }
         protected void Attack(string charactername){
@@ -87,43 +87,43 @@ namespace TextAdventureCharacter
             if(character != null && character.GetIsAlive())
             {
                character.GetAttacked(GetTotalAttackDamage(), this);
-               this.isOnMove = false;
+               this._isOnMove = false;
             }
         }
         protected List<Character> GetSupportingCharacters()
         {
-            return this.location.GetSupportingCharacters(this);
+            return this._location.GetSupportingCharacters(this);
         }
         protected virtual double GetTotalAttackDamage()
         {
-            return strength;
+            return _strength;
         }
         protected void TakeItem(string itemname){
             Item itemToTake = FindItemInLocation(itemname);
             if(itemToTake != null)
             {
-                this.inventory.Add(itemToTake);
-                this.location.RemoveItem(itemToTake);
+                this._inventory.Add(itemToTake);
+                this._location.RemoveItem(itemToTake);
             }
         }
         protected void DropItem(string itemname){
             Item itemToDrop = FindItemInInventory(itemname);
             if(itemToDrop != null)
             {
-                this.location.AddItem(itemToDrop);
-                this.inventory.Remove(itemToDrop);
+                this._location.AddItem(itemToDrop);
+                this._inventory.Remove(itemToDrop);
             }
         }
         protected Item FindItemInInventory(string itemname)
         {
-            Item item = this.inventory.Find(_item => _item.GetName() == itemname);
+            Item item = this._inventory.Find(_item => _item.GetName() == itemname);
             if(item == null)
                 Console.WriteLine("ERROR: no such item found");
             return item;
         }
         protected Item FindItemInLocation(string itemname)
         {
-            Item item = this.location.GetItems().Find(_item => _item.GetName() == itemname);
+            Item item = this._location.GetItems().Find(_item => _item.GetName() == itemname);
             if(item == null)
                 Console.WriteLine("ERROR: no such item found");
             return item;
@@ -139,44 +139,44 @@ namespace TextAdventureCharacter
             Item newActiveItem = FindItemInInventory(itemname);
             if(newActiveItem != null)
             {
-                if(this.activeItem != null){
-                    this.inventory.Add(this.activeItem);
+                if(this._activeItem != null){
+                    this._inventory.Add(this._activeItem);
                 }
-                this.activeItem = newActiveItem;
-                this.inventory.Remove(newActiveItem);
+                this._activeItem = newActiveItem;
+                this._inventory.Remove(newActiveItem);
                 return true;
             }
             return false;
         }
         protected void UseItem()
         {
-            this.activeItem.UseOnCharacter(this, this);
+            this._activeItem.UseOnCharacter(this, this);
         }
         protected void UseItemOn(string target)
         {
-            Gateway gateway = this.location.GetGateways().Find(_gateway => _gateway.GetName(this.location) == target);
+            Gateway gateway = this._location.GetGateways().Find(_gateway => _gateway.GetName(this._location) == target);
             if(gateway == null)
             {
-                gateway = this.location.GetGateways().Find(_gateway => Convert.ToString(_gateway.GetUIN(this.location)) == target);
+                gateway = this._location.GetGateways().Find(_gateway => Convert.ToString(_gateway.GetUIN(this._location)) == target);
             }
-            Character character = this.location.GetCharacters().Find(_character => _character.GetName() == target);
+            Character character = this._location.GetCharacters().Find(_character => _character.GetName() == target);
             if(gateway != null)
             {
-                this.activeItem.UseOnGateway(gateway, this);
+                this._activeItem.UseOnGateway(gateway, this);
             }
             else if(character != null)
             {
-                this.activeItem.UseOnCharacter(character, this);
-                this.isOnMove = false;
+                this._activeItem.UseOnCharacter(character, this);
+                this._isOnMove = false;
             }
         }
         protected Gateway FindGateway(string gatewayName)
         {
-            List<Gateway> gateways = this.location.GetGateways();
-            Gateway gateway = gateways.Find(_gateway => _gateway.GetDestinationName(this.location) == gatewayName);
+            List<Gateway> gateways = this._location.GetGateways();
+            Gateway gateway = gateways.Find(_gateway => _gateway.GetDestinationName(this._location) == gatewayName);
             if(gateway == null)
             {
-                gateway = gateways.Find(_gateway => Convert.ToString(_gateway.GetUIN(this.location)) == gatewayName);
+                gateway = gateways.Find(_gateway => Convert.ToString(_gateway.GetUIN(this._location)) == gatewayName);
             }
             if(gateway == null)
                 Console.WriteLine("ERROR: no such gateway found");
@@ -192,25 +192,25 @@ namespace TextAdventureCharacter
         }
         public void MoveToArea(Area destination)
         {
-            Area location = this.location;
+            Area location = this._location;
             destination.AddCharacter(this);
             location.RemoveCharacter(this);
         }
         public void SetIsAlive(bool isAlive)
         {
-            this.isAlive = isAlive;
+            this._isAlive = isAlive;
         }
         public void SetIsOnMove(bool isOnMove)
         {
-            this.isOnMove = isOnMove;
+            this._isOnMove = isOnMove;
         }
         public bool GetIsAlive()
         {
-            return this.isAlive;
+            return this._isAlive;
         }
         public void AddItem(Item item)
         {
-            this.inventory.Add(item);
+            this._inventory.Add(item);
         }
     }
 }

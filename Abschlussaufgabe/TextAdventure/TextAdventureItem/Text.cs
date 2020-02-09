@@ -7,17 +7,17 @@ namespace TextAdventureItem
 {
     public class Text : Item
     {
-        private string text;
+        private string _text;
         public Text(string name, string description, string text) 
         : base(name, description)
         {
-            this.text = text;
+            this._text = text;
         }
         public override void UseOnCharacter(Character character, Character user)
         {
             if(CharacterIsPlayer(character) && CharacterIsPlayer(user))
             {
-                Console.WriteLine(this.text);
+                Console.WriteLine(this._text);
             }
         }
         public override void UseOnGateway(Gateway gateway, Character user)

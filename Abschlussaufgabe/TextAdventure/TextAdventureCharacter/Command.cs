@@ -5,25 +5,25 @@ namespace TextAdventureCharacter
     public delegate void ParameterMethod<T>(T[] args);
     public sealed class Command
     {
-        private string[] commands;
-        private ParameterMethod<string> methodToCall;
-        private string description;
-        private int argumentsCount;
+        private string[] _commandList;
+        private ParameterMethod<string> _methodToCall;
+        private string _description;
+        private int _argumentsCount;
         public Command(string[] commands, ParameterMethod<string> methodToCall, string description, int argumentsCount = 0)
         {
-            this.commands = commands;
-            this.methodToCall = methodToCall;
-            this.description = description;
-            this.argumentsCount = argumentsCount;
+            this._commandList = commands;
+            this._methodToCall = methodToCall;
+            this._description = description;
+            this._argumentsCount = argumentsCount;
         }
         public string GetDescription()
         {
-            return this.description;
+            return this._description;
         }
         public bool IsEqualToCommandWithArgs(string commandString)
         {
             string[] commandSplitString = commandString.Split(":", StringSplitOptions.None);
-            if(Array.Exists(this.commands, command => command == commandSplitString[0].TrimEnd(' ')))
+            if(Array.Exists(this._commandList, command => command == commandSplitString[0].TrimEnd(' ')))
             {
                 return true;
             } 
@@ -51,11 +51,11 @@ namespace TextAdventureCharacter
         }
         public ParameterMethod<string> GetMethodToCall()
         {
-            return this.methodToCall;
+            return this._methodToCall;
         }
         public int GetArgumentsCount()
         {
-            return this.argumentsCount;
+            return this._argumentsCount;
         }
     }
 }

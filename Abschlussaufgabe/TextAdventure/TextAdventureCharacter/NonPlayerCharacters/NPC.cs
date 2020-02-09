@@ -6,8 +6,8 @@ namespace TextAdventureCharacter
 {
     public class NPC : Character
     {
-        protected double attackMoodChange = -100;
-        protected double moodAgressionThreshold = -10;
+        protected double _attackMoodChange = -100;
+        protected double _moodAgressionThreshold = -10;
         protected Dictionary<Character,double> moodAboutCharacters;
         public NPC(string name, string description) 
         : base(name, description)

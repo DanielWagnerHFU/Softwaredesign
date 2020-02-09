@@ -6,19 +6,19 @@ namespace TextAdventureItem
 {
     public abstract class Item
     {
-        protected string name;
-        protected string description;
+        protected string _name;
+        protected string _description;
         public Item(string name, string description){
-            this.name = name;
-            this.description = description;
+            this._name = name;
+            this._description = description;
         }
         public string GetName()
         {
-            return this.name;
+            return this._name;
         }
         public string GetDescription()
         {
-            return this.description;
+            return this._description;
         }
         protected bool CharacterIsPlayer(Character character)
         {

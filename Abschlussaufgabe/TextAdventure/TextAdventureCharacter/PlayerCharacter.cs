@@ -8,42 +8,42 @@ namespace TextAdventureCharacter
 {
     public sealed class PlayerCharacter : Character
     {
-        List<Command> commands;
+        List<Command> _commandList;
         public PlayerCharacter(string name, string description, double strength = 10, double healthPoints = 100, double maxHealthPoints = 100) 
         : base(name, description, strength, healthPoints, maxHealthPoints)
         {
-            commands = new List<Command>();
+            _commandList = new List<Command>();
             initializeCommands();
-            isOnMove = true;
-            this.strength = 10;
-            this.maxHealthPoints = 100;
-            this.healthPoints = maxHealthPoints;
+            _isOnMove = true;
+            this._strength = 10;
+            this._maxHealthPoints = 100;
+            this._healthPoints = maxHealthPoints;
         }
         private void initializeCommands()
         {
             //TODO - Add new Commands here
-            this.commands.Add(new Command(new string[]{"commands","c"}, CommandHandlerCommands, "commands(c)"));
-            this.commands.Add(new Command(new string[]{"look at","la"}, CommandHandlerLookAt, "look at(la): <item or character>"));
-            this.commands.Add(new Command(new string[]{"look","l"}, CommandHandlerLook, "look(l)"));
-            this.commands.Add(new Command(new string[]{"inventory","i"}, CommandHandlerInventory, "inventory(i)"));
-            this.commands.Add(new Command(new string[]{"take","t"}, CommandHandlerTake, "take(t): <item>", 1));
-            this.commands.Add(new Command(new string[]{"drop","d"}, CommandHandlerDrop, "drop(d): <item>", 1));
-            this.commands.Add(new Command(new string[]{"equip","e"}, CommandHandlerEquip, "equip(e): <item>", 1));
-            this.commands.Add(new Command(new string[]{"use item on","uio"}, CommandHandlerUseItemOn, "use item on(uio) <gateway[name or uin] or character>", 1));
-            this.commands.Add(new Command(new string[]{"use item","ui"}, CommandHandlerUseItem, "use item(ui)"));
-            this.commands.Add(new Command(new string[]{"go to","gt"}, CommandHandlerGoTo, "go to(gt): <room[name or uin]>", 1));
-            this.commands.Add(new Command(new string[]{"clear chat","cc"}, CommandHandlerClearChat, "clear chat(cc)"));
-            this.commands.Add(new Command(new string[]{"talk to","tt"}, CommandHandlerTalkTo, "talk to(tt): <character>"));
-            this.commands.Add(new Command(new string[]{"attack","a"}, CommandHandlerAttack, "attack(a): <character>", 1));
-            this.commands.Add(new Command(new string[]{"quit","q"}, CommandHandlerQuit, "quit(q)"));
-            this.commands.Add(new Command(new string[]{"status","s"}, CommandHandlerStatus, "status(s)"));
+            this._commandList.Add(new Command(new string[]{"commands","c"}, CommandHandlerCommands, "commands(c)"));
+            this._commandList.Add(new Command(new string[]{"look at","la"}, CommandHandlerLookAt, "look at(la): <item or character>"));
+            this._commandList.Add(new Command(new string[]{"look","l"}, CommandHandlerLook, "look(l)"));
+            this._commandList.Add(new Command(new string[]{"inventory","i"}, CommandHandlerInventory, "inventory(i)"));
+            this._commandList.Add(new Command(new string[]{"take","t"}, CommandHandlerTake, "take(t): <item>", 1));
+            this._commandList.Add(new Command(new string[]{"drop","d"}, CommandHandlerDrop, "drop(d): <item>", 1));
+            this._commandList.Add(new Command(new string[]{"equip","e"}, CommandHandlerEquip, "equip(e): <item>", 1));
+            this._commandList.Add(new Command(new string[]{"use item on","uio"}, CommandHandlerUseItemOn, "use item on(uio) <gateway[name or uin] or character>", 1));
+            this._commandList.Add(new Command(new string[]{"use item","ui"}, CommandHandlerUseItem, "use item(ui)"));
+            this._commandList.Add(new Command(new string[]{"go to","gt"}, CommandHandlerGoTo, "go to(gt): <room[name or uin]>", 1));
+            this._commandList.Add(new Command(new string[]{"clear chat","cc"}, CommandHandlerClearChat, "clear chat(cc)"));
+            this._commandList.Add(new Command(new string[]{"talk to","tt"}, CommandHandlerTalkTo, "talk to(tt): <character>"));
+            this._commandList.Add(new Command(new string[]{"attack","a"}, CommandHandlerAttack, "attack(a): <character>", 1));
+            this._commandList.Add(new Command(new string[]{"quit","q"}, CommandHandlerQuit, "quit(q)"));
+            this._commandList.Add(new Command(new string[]{"status","s"}, CommandHandlerStatus, "status(s)"));
         }
         public override void MakeAMove(){
-            this.isOnMove = true;
+            this._isOnMove = true;
             Console.WriteLine();
             CommandHandlerStatus(new string[]{});
             CommandHandlerLook(new string[]{});
-            while(this.isOnMove && this.isAlive)
+            while(this._isOnMove && this._isAlive)
             {
                 Console.WriteLine();
                 string userInput = EnterUserinput("What would you like to do? (write 'commands' for all options):");
@@ -61,7 +61,7 @@ namespace TextAdventureCharacter
         }
         private Command FindCommand(string commandWithArgs)
         {
-            foreach(Command command in commands)
+            foreach(Command command in _commandList)
             {
                 if(command.IsEqualToCommandWithArgs(commandWithArgs))
                 {
@@ -92,7 +92,7 @@ namespace TextAdventureCharacter
             if(character != null)
             {
                StartDialog(character);
-               this.isOnMove = false;
+               this._isOnMove = false;
             }
         }
         public override void StartDialog(Character character)
@@ -105,10 +105,10 @@ namespace TextAdventureCharacter
         }
         private string[] GetCommandDescriptions()
         {
-            string[] commandDescriptions = new string[this.commands.Count];
-            for(int i = 0; i < this.commands.Count; i++)
+            string[] commandDescriptions = new string[this._commandList.Count];
+            for(int i = 0; i < this._commandList.Count; i++)
             {
-                commandDescriptions[i] = this.commands[i].GetDescription();
+                commandDescriptions[i] = this._commandList[i].GetDescription();
             }
             return commandDescriptions;
         }
@@ -119,7 +119,7 @@ namespace TextAdventureCharacter
         private void CommandHandlerLook(string[] args)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine(this.location.GetDescription());
+            Console.WriteLine(this._location.GetDescription());
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             WriteItems();
             WriteSupportingCharacters();
@@ -128,13 +128,13 @@ namespace TextAdventureCharacter
         }
         private void WriteAdjacenAreas()
         {
-            List<Gateway> gateways = this.location.GetGateways();
+            List<Gateway> gateways = this._location.GetGateways();
             if(gateways.Count != 0)
             {
                 Console.WriteLine("A list of gateways:");
                 foreach(Gateway gateway in gateways)
                 {
-                    Console.WriteLine("  " + gateway.GetDescription(this.location));
+                    Console.WriteLine("  " + gateway.GetDescription(this._location));
                 }
             }
         }
@@ -159,7 +159,7 @@ namespace TextAdventureCharacter
         }
         private void WriteItems()
         {
-            List<Item> items = this.location.GetItems();
+            List<Item> items = this._location.GetItems();
             if(items.Count != 0)
             {
                 Console.WriteLine("A list of items:");
@@ -173,7 +173,7 @@ namespace TextAdventureCharacter
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Inventory:");
-            foreach(Item item in this.inventory)
+            foreach(Item item in this._inventory)
             {
                 Console.WriteLine("  " + item.GetName());
             }
@@ -198,11 +198,11 @@ namespace TextAdventureCharacter
         private void CommandHandlerLookAt(string[] args)
         {
             Character character = GetSupportingCharacters().Find(_character => _character.GetName() == args[0]);
-            Item itemL = this.location.GetItems().Find(_itemL => _itemL.GetName() == args[0]);
-            Item itemI = this.inventory.Find(_itemI => _itemI.GetName() == args[0]);
-            if((this.activeItem != null) && (this.activeItem.GetName() == args[0]))
+            Item itemL = this._location.GetItems().Find(_itemL => _itemL.GetName() == args[0]);
+            Item itemI = this._inventory.Find(_itemI => _itemI.GetName() == args[0]);
+            if((this._activeItem != null) && (this._activeItem.GetName() == args[0]))
             {
-                Console.WriteLine("Item description: " + this.activeItem.GetDescription());
+                Console.WriteLine("Item description: " + this._activeItem.GetDescription());
             }
             else if(character != null)
             {
@@ -240,7 +240,7 @@ namespace TextAdventureCharacter
         }
         private void CommandHandlerUseItemOn(string[] args)
         {
-            if(this.activeItem != null)
+            if(this._activeItem != null)
             {
                 UseItemOn(args[0]);
             }
@@ -251,10 +251,10 @@ namespace TextAdventureCharacter
         }
         private void CommandHandlerUseItem(string[] args)
         {
-            if(this.activeItem != null)
+            if(this._activeItem != null)
             {
                 UseItem();
-                this.isOnMove = false;
+                this._isOnMove = false;
             }
             else
             {
@@ -263,8 +263,8 @@ namespace TextAdventureCharacter
         }
         private void CommandHandlerQuit(string[] args)
         {
-            this.isAlive = false;
-            this.isOnMove = false;
+            this._isAlive = false;
+            this._isOnMove = false;
         }
         public static PlayerCharacter BuildFromXmlNode(XmlNode characterNode)
         {

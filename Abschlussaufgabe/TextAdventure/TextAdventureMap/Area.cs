@@ -8,70 +8,70 @@ namespace TextAdventureMap
 {
     public class Area
     {
-        protected int uniqueIdentificationNumber;
-        protected string name;
-        protected string description;
-        protected List<Gateway> gateways;
-        protected List<Character> characters;
-        protected List<Item> items;
+        protected int _uniqueIdentificationNumber;
+        protected string _name;
+        protected string _description;
+        protected List<Gateway> _gateways;
+        protected List<Character> _characters;
+        protected List<Item> _items;
         public Area(int uniqueIdentificationNumber, string name, string description){
-            this.uniqueIdentificationNumber = uniqueIdentificationNumber;
-            this.name = name;
-            this.description = description;
-            this.gateways = new List<Gateway>();
-            this.characters = new List<Character>();
-            this.items = new List<Item>();
+            this._uniqueIdentificationNumber = uniqueIdentificationNumber;
+            this._name = name;
+            this._description = description;
+            this._gateways = new List<Gateway>();
+            this._characters = new List<Character>();
+            this._items = new List<Item>();
         }
         public string GetDescription()
         {
-            return this.description;
+            return this._description;
         }
         public string GetName()
         {
-            return this.name;
+            return this._name;
         }
         public List<Gateway> GetGateways()
         {
-            return this.gateways;
+            return this._gateways;
         }
         public void AddGateway(Gateway gateway)
         {
-            this.gateways.Add(gateway);
+            this._gateways.Add(gateway);
         }
         public void AddItem(Item item)
         {
-            this.items.Add(item);
+            this._items.Add(item);
         }
         public void RemoveItem(Item item)
         {
-            this.items.Remove(item);
+            this._items.Remove(item);
         }
         public void AddCharacter(Character character)
         {
-            this.characters.Add(character);
+            this._characters.Add(character);
             character.SetLocation(this);
         }
         public void RemoveCharacter(Character character)
         {
-            this.characters.Remove(character);
+            this._characters.Remove(character);
         }
         public List<Character> GetSupportingCharacters(Character mainCharacter)
         {
-            List<Character> supportingCharacters = new List<Character>(this.characters);
+            List<Character> supportingCharacters = new List<Character>(this._characters);
             supportingCharacters.Remove(mainCharacter);
             return supportingCharacters;
         }
         public List<Item> GetItems()
         {
-            return this.items;
+            return this._items;
         }
         public List<Character> GetCharacters()
         {
-            return this.characters;
+            return this._characters;
         }
         public int GetUIN()
         {
-            return this.uniqueIdentificationNumber;
+            return this._uniqueIdentificationNumber;
         }
         public static Area BuildFromXmlNode(XmlNode areaNode)
         {

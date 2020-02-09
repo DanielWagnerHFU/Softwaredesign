@@ -9,52 +9,52 @@ namespace TextAdventureMap
 {
     public class Door : Gateway
     {
-        private int keyHole;
-        private string name;
-        private bool isOpen;
+        private int _keyHole;
+        private string _name;
+        private bool _isOpen;
         public Door(int uniqueIdentificationNumber, Area areaA, Area areaB, string name, int keyHole, bool isOpen) 
         : base(uniqueIdentificationNumber, areaA, areaB)
         {
-            this.keyHole = keyHole;
-            this.name = name;
-            this.isOpen = isOpen;
+            this._keyHole = keyHole;
+            this._name = name;
+            this._isOpen = isOpen;
         }
         public override string GetDescription(Area callingArea){
-            if(isOpen == true)
+            if(_isOpen == true)
             {
-                return this.name + " open to " + GetDestinationName(callingArea) + " [" + callingArea.GetUIN() + "]";
+                return this._name + " open to " + GetDestinationName(callingArea) + " [" + callingArea.GetUIN() + "]";
             } 
             else 
             {
-                return "closed " + this.name + " [" + this.uniqueIdentificationNumber + "]";
+                return "closed " + this._name + " [" + this._uniqueIdentificationNumber + "]";
             }
         }
         public override string GetName(Area callingArea){
-            return this.name;
+            return this._name;
         }
         public override int GetUIN(Area callingArea)
         {
-            return this.uniqueIdentificationNumber;
+            return this._uniqueIdentificationNumber;
         }
         public string GetName()
         {
-            return this.name;
+            return this._name;
         }
         public bool IsOpen()
         {
-            return isOpen;
+            return _isOpen;
         }
         public void SetIsOpen(bool isOpen)
         {
-            this.isOpen = isOpen;
+            this._isOpen = isOpen;
         }
         public int GetKeyHole()
         {
-            return this.keyHole;
+            return this._keyHole;
         }
         public override void ChangeArea(Character character)
         {
-            if(isOpen)
+            if(_isOpen)
             {
                 character.MoveToArea(GetDestination(character.GetLocation()));
                 character.SetIsOnMove(false);

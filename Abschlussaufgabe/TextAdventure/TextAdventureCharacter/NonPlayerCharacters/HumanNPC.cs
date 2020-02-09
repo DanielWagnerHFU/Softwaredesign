@@ -11,14 +11,14 @@ namespace TextAdventureCharacter
         : base(name, description)
         {
             this.moodAboutCharacters = new Dictionary<Character, double>();
-            this.maxHealthPoints = 50;
-            this.healthPoints = 50;
-            this.strength = 10;
+            this._maxHealthPoints = 50;
+            this._healthPoints = 50;
+            this._strength = 10;
         }
         public override void GetAttacked(double damage, Character attacker)
         {
             GetHarmed(damage);
-            ChangeMood(attacker, attackMoodChange);
+            ChangeMood(attacker, _attackMoodChange);
         }
         public override void MakeAMove(){
             ManageAttackBehaviour();
@@ -30,7 +30,7 @@ namespace TextAdventureCharacter
             if(possibleAttackTarget != null)
             {
                 double mood = moodAboutCharacters[possibleAttackTarget];
-                if(mood < moodAgressionThreshold){
+                if(mood < _moodAgressionThreshold){
                     Attack(possibleAttackTarget.GetName());
                 }  
             }
