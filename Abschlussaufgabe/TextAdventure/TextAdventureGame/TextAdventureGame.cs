@@ -15,6 +15,7 @@ namespace TextAdventureGame
         {
             Console.Clear();
             PlayerCharacter playerCharacter = GetPlayerCharacter();
+            playerCharacter.SetIsAlive(true);
             Character characterOnMove;
             while(playerCharacter.GetIsAlive())
             {

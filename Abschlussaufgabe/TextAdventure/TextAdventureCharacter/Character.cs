@@ -84,7 +84,7 @@ namespace TextAdventureCharacter
         }
         protected void Attack(string charactername){
             Character character = FindCharacter(charactername);
-            if(character != null)
+            if(character != null && character.GetIsAlive())
             {
                character.GetAttacked(GetTotalAttackDamage(), this);
                this.isOnMove = false;
@@ -195,6 +195,10 @@ namespace TextAdventureCharacter
             Area location = this.location;
             destination.AddCharacter(this);
             location.RemoveCharacter(this);
+        }
+        public void SetIsAlive(bool isAlive)
+        {
+            this.isAlive = isAlive;
         }
         public void SetIsOnMove(bool isOnMove)
         {
