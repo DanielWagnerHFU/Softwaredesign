@@ -35,7 +35,7 @@ namespace TextAdventureMap
         }
         public virtual string GetDescription(Area callingArea)
         {
-            return GetName(callingArea) + " [" + callingArea.GetUIN() + "]";
+            return GetName(callingArea) + " [" + GetUIN(callingArea) + "]";
         }
         public string GetDestinationName(Area callingArea)
         {

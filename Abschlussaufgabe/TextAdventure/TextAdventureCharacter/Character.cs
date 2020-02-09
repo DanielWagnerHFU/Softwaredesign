@@ -155,6 +155,10 @@ namespace TextAdventureCharacter
         protected void UseItemOn(string target)
         {
             Gateway gateway = this.location.GetGateways().Find(_gateway => _gateway.GetName(this.location) == target);
+            if(gateway == null)
+            {
+                gateway = this.location.GetGateways().Find(_gateway => Convert.ToString(_gateway.GetUIN(this.location)) == target);
+            }
             Character character = this.location.GetCharacters().Find(_character => _character.GetName() == target);
             if(gateway != null)
             {
@@ -170,6 +174,10 @@ namespace TextAdventureCharacter
         {
             List<Gateway> gateways = this.location.GetGateways();
             Gateway gateway = gateways.Find(_gateway => _gateway.GetDestinationName(this.location) == gatewayName);
+            if(gateway == null)
+            {
+                gateway = gateways.Find(_gateway => Convert.ToString(_gateway.GetUIN(this.location)) == gatewayName);
+            }
             if(gateway == null)
                 Console.WriteLine("ERROR: no such gateway found");
             return gateway;

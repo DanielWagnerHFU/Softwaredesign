@@ -29,9 +29,9 @@ namespace TextAdventureCharacter
             this.commands.Add(new Command(new string[]{"take","t"}, CommandHandlerTake, "take(t): <item>", 1));
             this.commands.Add(new Command(new string[]{"drop","d"}, CommandHandlerDrop, "drop(d): <item>", 1));
             this.commands.Add(new Command(new string[]{"equip","e"}, CommandHandlerEquip, "equip(e): <item>", 1));
-            this.commands.Add(new Command(new string[]{"use item on","uio"}, CommandHandlerUseItemOn, "use item on(uio) <gateway or character>", 1));
+            this.commands.Add(new Command(new string[]{"use item on","uio"}, CommandHandlerUseItemOn, "use item on(uio) <gateway[name or uin] or character>", 1));
             this.commands.Add(new Command(new string[]{"use item","ui"}, CommandHandlerUseItem, "use item(ui)"));
-            this.commands.Add(new Command(new string[]{"go to","gt"}, CommandHandlerGoTo, "go to(gt): <room>", 1));
+            this.commands.Add(new Command(new string[]{"go to","gt"}, CommandHandlerGoTo, "go to(gt): <room[name or uin]>", 1));
             this.commands.Add(new Command(new string[]{"clear chat","cc"}, CommandHandlerClearChat, "clear chat(cc)"));
             this.commands.Add(new Command(new string[]{"talk to","tt"}, CommandHandlerTalkTo, "talk to(tt): <character>"));
             this.commands.Add(new Command(new string[]{"attack","a"}, CommandHandlerAttack, "attack(a): <character>", 1));
