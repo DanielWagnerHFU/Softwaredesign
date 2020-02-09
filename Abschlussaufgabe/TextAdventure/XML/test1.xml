@@ -1,31 +1,35 @@
 <TextAdventureGame>
     <Areas>
-        <Area type="Area" uin="1" name="area1" description="a area 1">
+        <Area type="Area" uin="1" name="Aula" description="You are in the Aula">
             <Characters>
-                <Character type="HumanNPC" name="Felix" description="Its a Felix">
+                <Character type="HumanNPC" name="Felix" description="This is Felix your friend">
                 </Character>
             </Characters>
             <Items>
-                <Item type="Key" name="key1" description="" key="1234"></Item>
+                <Item type="Key" name="key" description="A old looking key. Maybe use it on a door?" key="1"></Item>
             </Items>
         </Area>
-        <Area type="Area" uin="2" name="area2" description="a area 2">
+        <Area type="Area" uin="2" name="HFU B-Building" description="This is the B-Building of the HFU. There are so many rooms connected but they are locked...">
             <Characters>
                 <Character type="Player" name="player" description="the main player" strength="1.0" hp="100" maxhp="100">
                     <Inventory>
-                        <Item type="Text" name="text1" description="" text="Hello secret message"></Item>
-                        <Item type="Key" name="key1" description="" key="123"></Item>
+                        <Item type="Text" name="paper" description="A paper you might use to read its text." text="Tip: the HFU-Card opens the Aula"></Item>
+                        <Item type="Key" name="HFUCard" description="You might be able to use this to open rooms." key="2"></Item>
                     </Inventory>
                 </Character>
             </Characters>
         </Area>
-        <Area type="Area" uin="3" name="area3" description="a area 3">
+        <Area type="Area" uin="3" name="Room-B1.01" description="Just a room ;D">
+        </Area>
+        <Area type="Area" uin="4" name="Room-B2.01" description="The room you wanted to get to all the time!. ADMIT IT!">
         </Area>
     </Areas>
     <Gateways>
-        <Gateway type="Gateway" uin ="4" uinA="1" uinB="2">
+        <Gateway type="Gateway" uin ="6" uinA="3" uinB="2">
         </Gateway>
-        <Gateway type="Door" uin="5" uinA="2" uinB="3" name="door" keyHole="123" isOpen="false">
+        <Gateway type="Door" uin="5" uinA="1" uinB="2" name="Door for Aula" keyHole="2" isOpen="false">
+        </Gateway>
+        <Gateway type="Door" uin="7" uinA="4" uinB="2" name="Door for Room-B1.01" keyHole="1" isOpen="false">
         </Gateway>
     </Gateways>
 </TextAdventureGame>
