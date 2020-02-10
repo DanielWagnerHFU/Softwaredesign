@@ -67,7 +67,7 @@ namespace TextAdventureCharacter
         }
         public override void StartDialog(Character character)
         {
-            Console.WriteLine("Hello, i dont wanne talk");
+            
         }
         public static HumanNPC BuildFromXmlNode(XmlNode characterNode)
         {

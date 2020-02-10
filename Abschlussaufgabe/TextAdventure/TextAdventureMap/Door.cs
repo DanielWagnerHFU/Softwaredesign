@@ -22,7 +22,7 @@ namespace TextAdventureMap
         public override string GetDescription(Area callingArea){
             if(_isOpen == true)
             {
-                return this._name + " open to " + GetDestinationName(callingArea);
+                return "open " + this._name;
             } 
             else 
             {

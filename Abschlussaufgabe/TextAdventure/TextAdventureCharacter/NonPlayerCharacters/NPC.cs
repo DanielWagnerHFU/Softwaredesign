@@ -6,6 +6,7 @@ namespace TextAdventureCharacter
 {
     public abstract class NPC : Character
     {
+        protected DialogNode _dialog;
         protected double _attackMoodChange = -100;
         protected double _moodAgressionThreshold = -10;
         protected Dictionary<Character,double> moodAboutCharacters;
@@ -19,7 +20,7 @@ namespace TextAdventureCharacter
             GetHarmed(damage);
             ChangeMood(attacker, -100);
         }
-        protected void ChangeMood(Character character, double moodChange)
+        public void ChangeMood(Character character, double moodChange)
         {
             if(moodAboutCharacters.ContainsKey(character))
             {
@@ -49,6 +50,10 @@ namespace TextAdventureCharacter
         protected int CorrectIndexPlus(int index)
         {
             return index+1;
+        }
+        public void AddDialogNode(DialogNode dialogNode)
+        {
+            _dialog = dialogNode;
         }
         public override void StartDialog(Character character)
         {

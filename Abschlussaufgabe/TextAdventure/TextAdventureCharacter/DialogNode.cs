@@ -5,18 +5,57 @@ namespace TextAdventureCharacter
 {
     public sealed class DialogNode
     {
-        private double _nonPlayerMood;
-        private string _nonPlayerMessage;
-        private Dictionary<string, DialogNode> _playerAnswers;
-        public DialogNode(double nonPlayerMood, string nonPlayerMessage, Dictionary<string, DialogNode> playerAnswers)
+        private double _moodChange;
+        private string _playerText;
+
+        private string _npcText;
+        List<DialogNode> _dialogChildren;
+        public DialogNode(double moodChange, string playerText, string npcText)
         {
-            this._nonPlayerMood = nonPlayerMood;
-            this._nonPlayerMessage = nonPlayerMessage;
-            this._playerAnswers = playerAnswers;
+            _moodChange = moodChange;
+            _playerText = playerText;
+            _npcText = npcText;
+            _dialogChildren = new List<DialogNode>();
         }
-        public void ActivateDialogNode()
+        public void AddDialogChild(DialogNode dialogNode)
         {
-            //TODO
+            _dialogChildren.Add(dialogNode);
+        }
+        public string GetPlayerText()
+        {
+            return _playerText;
+        }
+        public void UseDialogNode(PlayerCharacter player, NPC talkPartner)
+        {
+            talkPartner.ChangeMood(player, _moodChange);
+            if(_playerText != "")
+                Console.WriteLine(player.GetName() + ": " +_playerText);
+            if(_npcText != "")
+                Console.WriteLine(talkPartner.GetName() + ": " +_npcText);
+            Answers(player, talkPartner);
+        }
+        private void Answers(PlayerCharacter player, NPC talkPartner)
+        {
+            if(_dialogChildren.Count != 0)
+            {
+                Console.WriteLine("Answers: ");
+                for(int i = 0; i < _dialogChildren.Count; i++)
+                {
+                    Console.WriteLine("  " + (i+1) + ": " + _dialogChildren[i].GetPlayerText());
+                }
+                Console.Write("Type in a number for your answer: ");
+                string input = Console.ReadLine();
+                try
+                {
+                    DialogNode nextDialog = _dialogChildren[Convert.ToInt32(input)-1];
+                    nextDialog.UseDialogNode(player, talkPartner);
+                }
+                catch
+                {
+                    Console.WriteLine("ERROR: Not a valid Answer - try again");
+                    UseDialogNode(player, talkPartner);
+                }
+            }
         }
     }
 }

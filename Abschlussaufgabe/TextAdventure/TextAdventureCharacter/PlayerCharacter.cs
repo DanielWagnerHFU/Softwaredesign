@@ -99,6 +99,7 @@ namespace TextAdventureCharacter
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 this._isAlive = false;
+                Console.WriteLine("\n\n\n");
                 Console.WriteLine("You died and so you lost! But just restart the game to get alive again ;D");
                 Console.ForegroundColor = ConsoleColor.White;
                 Thread.Sleep(10000);
@@ -275,8 +276,8 @@ namespace TextAdventureCharacter
         }
         public override void GetAttacked(double damage, Character attacker)
         {
-            GetHarmed(damage);
             Console.WriteLine("You have been attacked by " + attacker.GetName());
+            GetHarmed(damage);
         }
         private void CommandHandlerUseItemOnGateway(string[] args)
         {

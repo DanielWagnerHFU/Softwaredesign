@@ -1,0 +1,15 @@
+<TextAdventureGame>
+    <Areas>
+        <Area type="Area" uin="1" name="HFU B-Building" description="This is the B-Building of the HFU.">           
+            <Characters>
+                <Character type="Player" name="player" description="the main player" strength="1.0" hp="100" maxhp="100">
+                </Character>
+            </Characters>
+        </Area>
+        <Area type="Area" uin="2" name="HFU A-Building" description="This is the A-Building of the HFU.">
+        </Area>
+    </Areas>
+    <Gateways>
+        <Gateway type="Spawner" uinA="1" uinB="2"></Gateway>
+    </Gateways>
+</TextAdventureGame>
