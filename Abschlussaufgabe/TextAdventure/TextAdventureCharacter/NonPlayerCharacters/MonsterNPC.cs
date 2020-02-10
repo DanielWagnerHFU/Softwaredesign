@@ -5,7 +5,7 @@ using System.Xml;
 
 namespace TextAdventureCharacter
 {
-    public class MonsterNPC : NPC
+    public sealed class MonsterNPC : AttackerNPC
     {
         
         public MonsterNPC(string name, string description) 
@@ -29,16 +29,7 @@ namespace TextAdventureCharacter
                 ManageRoamingBehaviour(20);
             }
         }
-        private void ManageAttackBehaviour()
-        {
-            Character possibleAttackTarget = GetRandomCharacter();
-            if(possibleAttackTarget != null)
-            {
-                Attack(possibleAttackTarget.GetName());
-                this._isOnMove = false;
-            }
-        }
-        private Character GetRandomCharacter()
+        protected override Character GetAttackTarget()
         {
             List<Character> targets = GetSupportingCharacters();
             if(targets.Count > 0)

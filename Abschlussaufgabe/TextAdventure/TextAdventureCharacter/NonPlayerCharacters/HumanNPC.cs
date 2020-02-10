@@ -5,7 +5,7 @@ using System.Xml;
 
 namespace TextAdventureCharacter
 {
-    public class HumanNPC : NPC
+    public sealed class HumanNPC : AttackerNPC
     {
         public HumanNPC(string name, string description) 
         : base(name, description)
@@ -28,17 +28,17 @@ namespace TextAdventureCharacter
                 ManageRoamingBehaviour(50);
             }
         }
-        private void ManageAttackBehaviour()
+        protected override Character GetAttackTarget()
         {
             Character possibleAttackTarget = GetLowestMoodCharacter();
             if(possibleAttackTarget != null && possibleAttackTarget.GetIsAlive())
             {
                 double mood = moodAboutCharacters[possibleAttackTarget];
                 if(mood < _moodAgressionThreshold){
-                    Attack(possibleAttackTarget.GetName());
-                    this._isOnMove = false;
+                    return possibleAttackTarget;
                 }  
             }
+            return null;
         }
         private Character GetLowestMoodCharacter()
         {
