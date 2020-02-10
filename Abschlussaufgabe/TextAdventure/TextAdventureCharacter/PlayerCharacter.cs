@@ -118,7 +118,7 @@ namespace TextAdventureCharacter
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine(this._location.GetDescription());
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.ForegroundColor = ConsoleColor.Green;
             WriteItems();
             CommandHandlerInventory(new string[]{});
             WriteSupportingCharacters();

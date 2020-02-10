@@ -45,11 +45,11 @@ namespace TextAdventureCharacter
             String status = "|HP [" + this._healthPoints + "/" + this._maxHealthPoints + "]";
             if (this._equippedItem == null)
             {
-                return status += " right hand [empty]|";
+                return status += " item slot [empty]|";
             }
             else
             {
-                return status += " right hand [" + this._equippedItem.GetName() + "]|";
+                return status += " item slot [" + this._equippedItem.GetName() + "]|";
             }
         }
         public virtual string GetDescription()
