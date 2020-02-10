@@ -131,7 +131,9 @@ namespace TextAdventureGame
                 case "Player":
                     return PlayerCharacter.BuildFromXmlNode(characterNode);
                 case "HumanNPC":
-                    return HumanNPC.BuildFromXmlNode(characterNode);            
+                    return HumanNPC.BuildFromXmlNode(characterNode);
+                case "MonsterNPC":
+                    return MonsterNPC.BuildFromXmlNode(characterNode);
                 default:
                     throw new Exception("Character build failed - No type");
             }

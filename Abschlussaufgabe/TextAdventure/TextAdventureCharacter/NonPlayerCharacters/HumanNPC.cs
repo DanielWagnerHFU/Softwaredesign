@@ -25,13 +25,13 @@ namespace TextAdventureCharacter
             ManageAttackBehaviour();
             if(this._isOnMove)
             {
-                ManageRoamingBehaviour();
+                ManageRoamingBehaviour(50);
             }
         }
         private void ManageAttackBehaviour()
         {
             Character possibleAttackTarget = GetLowestMoodCharacter();
-            if(possibleAttackTarget != null)
+            if(possibleAttackTarget != null && possibleAttackTarget.GetIsAlive())
             {
                 double mood = moodAboutCharacters[possibleAttackTarget];
                 if(mood < _moodAgressionThreshold){
@@ -44,7 +44,7 @@ namespace TextAdventureCharacter
         {
             if(moodAboutCharacters.Count != 0)
             {
-                List<Character> characters = _location.GetSupportingCharacters(this);
+                List<Character> characters = GetSupportingCharacters();
                 List<double> moods = new List<double>();
                 foreach(Character character in characters)
                 {
@@ -56,7 +56,8 @@ namespace TextAdventureCharacter
                 {
                     if (mood < lowestMood) lowestMood = mood;
                 }
-                return characters[moods.IndexOf(lowestMood)];
+                Character target = characters[moods.IndexOf(lowestMood)];
+                return (target.GetIsAlive())? target : null;
             }
             return null;
         }
