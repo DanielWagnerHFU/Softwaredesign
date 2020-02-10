@@ -21,6 +21,7 @@ namespace TextAdventureGame
             while(_continueMenu)
             {
                 Console.Clear();
+                Console.WriteLine("Gamepath: " + _fileLoader.GetPath());
                 ShowOptions();
                 Console.Write("Option: ");
                 try

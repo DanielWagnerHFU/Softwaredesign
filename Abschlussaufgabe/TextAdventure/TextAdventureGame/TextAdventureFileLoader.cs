@@ -18,6 +18,10 @@ namespace TextAdventureGame
             _xmlRootNode = GetRootNode(filepath);
             _characterList = new List<Character>();
         }
+        public string GetPath()
+        {
+            return _filepath;
+        }
         public List<Character> GetCharacters()
         {
             return _characterList;
