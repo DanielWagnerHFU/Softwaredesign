@@ -9,16 +9,14 @@ namespace TextAdventureMap
 {
     public class Gateway
     {
-        protected int _uniqueIdentificationNumber;
         protected Area _areaA;
         protected Area _areaB;
-        public Gateway(int uniqueIdentificationNumber, Area areaA, Area areaB)
+        public Gateway(Area areaA, Area areaB)
         {
             this._areaA = areaA;
             areaA.AddGateway(this);
             this._areaB = areaB;
             areaB.AddGateway(this);
-            this._uniqueIdentificationNumber = uniqueIdentificationNumber;
         }
         public virtual void ChangeArea(Character character)
         {
@@ -43,12 +41,11 @@ namespace TextAdventureMap
         }
         public static Gateway BuildFromXmlNode(XmlNode gatewayNode, List<Area> areaList){
             XmlAttributeCollection attributes = gatewayNode.Attributes;
-            int uin = Int32.Parse(attributes[1].Value);
-            int uinAreaA = Int32.Parse(attributes[2].Value);
-            int uinAreaB = Int32.Parse(attributes[3].Value);
+            int uinAreaA = Int32.Parse(attributes[1].Value);
+            int uinAreaB = Int32.Parse(attributes[2].Value);
             Area areaA = areaList.Find(area => area.GetUIN() == uinAreaA);
             Area areaB = areaList.Find(area => area.GetUIN() == uinAreaB);
-            return new Gateway(uin, areaA, areaB);
+            return new Gateway(areaA, areaB);
         }
     }
 }

@@ -29,11 +29,11 @@
         </Area>
     </Areas>
     <Gateways>
-        <Gateway type="Gateway" uin ="6" uinA="3" uinB="2">
+        <Gateway type="Gateway" uinA="3" uinB="2">
         </Gateway>
-        <Gateway type="Door" uin="5" uinA="1" uinB="2" name="Door for Aula" keyHole="2" isOpen="false">
+        <Gateway type="Door" uinA="1" uinB="2" name="Door for Aula" keyHole="2" isOpen="false">
         </Gateway>
-        <Gateway type="Door" uin="7" uinA="4" uinB="2" name="Door for Room-B1.01" keyHole="1" isOpen="false">
+        <Gateway type="Door" uinA="4" uinB="2" name="Door for Room-B1.01" keyHole="1" isOpen="false">
         </Gateway>
     </Gateways>
 </TextAdventureGame>

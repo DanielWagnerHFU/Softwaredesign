@@ -29,7 +29,7 @@ namespace TextAdventureCharacter
             this._name = name;
             this._description = description;
             this._isOnMove = false;
-            this._isAlive = true; 
+            this._isAlive = true;
             this._maxHealthPoints = maxHealthPoints;
             this._healthPoints = healthPoints;
             this._strength = strength;
@@ -43,13 +43,13 @@ namespace TextAdventureCharacter
         public string GetStatus()
         {
             String status = "|HP [" + this._healthPoints + "/" + this._maxHealthPoints + "]";
-            if(this._equippedItem == null)
+            if (this._equippedItem == null)
             {
                 return status += " right hand [empty]|";
             }
             else
             {
-                return status += " right hand [" + this._equippedItem.GetName() +"]|";
+                return status += " right hand [" + this._equippedItem.GetName() + "]|";
             }
         }
         public virtual string GetDescription()
@@ -99,18 +99,26 @@ namespace TextAdventureCharacter
         }
         protected void UpdateIsAlive()
         {
-            if(this._healthPoints <= 0)
+            if (this._healthPoints <= 0)
             {
                 this._isAlive = false;
                 Console.WriteLine(this._name + " died\n");
-            }            
+            }
         }
-        protected void Attack(int characterIndex){
-            Character character = GetSupportingCharacters()[CorrectIndex(characterIndex)];
-            if(character != null && character.GetIsAlive())
+        protected void Attack(int characterIndex)
+        {
+            try
             {
-               character.GetAttacked(GetTotalAttackDamage(), this);
-               this._isOnMove = false;
+                Character character = GetSupportingCharacters()[CorrectIndex(characterIndex)];
+                if (character != null && character.GetIsAlive())
+                {
+                    character.GetAttacked(GetTotalAttackDamage(), this);
+                    this._isOnMove = false;
+                }
+            }
+            catch (System.ArgumentOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message);
             }
         }
         protected List<Character> GetSupportingCharacters()
@@ -121,31 +129,47 @@ namespace TextAdventureCharacter
         {
             return _strength;
         }
-        protected void TakeItem(int itemIndex){
-            if(this._inventory.Count <= this._maxInventorySlots)
+        protected void TakeItem(int itemIndex)
+        {
+            if (this._inventory.Count <= this._maxInventorySlots)
             {
-                Item itemToTake = FindItem(CorrectIndex(itemIndex));
-                this._inventory.Add(itemToTake);
-                this._location.RemoveItem(itemToTake);
+                try
+                {
+                    Item itemToTake = FindItem(CorrectIndex(itemIndex));
+                    this._inventory.Add(itemToTake);
+                    this._location.RemoveItem(itemToTake);
+                }
+                catch (System.ArgumentOutOfRangeException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
             }
         }
-        protected void DropItem(int itemIndex){
-            Item itemToDrop = FindItem(CorrectIndex(itemIndex));
-            this._location.AddItem(itemToDrop);
-            this._inventory.Remove(itemToDrop);
+        protected void DropItem(int itemIndex)
+        {
+            try
+            {
+                Item itemToDrop = FindItem(CorrectIndex(itemIndex));
+                this._location.AddItem(itemToDrop);
+                this._inventory.Remove(itemToDrop);
+            }
+            catch (System.ArgumentOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
         protected Character FindCharacter(string charactername)
         {
             Character character = GetSupportingCharacters().Find(_character => _character.GetName() == charactername);
-            if(character == null)
+            if (character == null)
                 Console.WriteLine("ERROR: no such character found");
             return character;
         }
         private Item FindItem(int itemIndex)
         {
-            if(itemIndex >= _location.GetItems().Count)
+            if (itemIndex >= _location.GetItems().Count)
             {
-                itemIndex = itemIndex-_location.GetItems().Count;
+                itemIndex = itemIndex - _location.GetItems().Count;
                 return _inventory[itemIndex];
             }
             else
@@ -153,14 +177,27 @@ namespace TextAdventureCharacter
                 return _location.GetItems()[itemIndex];
             }
         }
-        protected void SwitchActiveItem(int itemIndex){
-            itemIndex = CorrectIndex(itemIndex);
-            Item newActiveItem = FindItem(itemIndex);
-            if(this._equippedItem != null){
-                this._inventory.Add(this._equippedItem);
+        protected void SwitchActiveItem(int itemIndex)
+        {
+            try
+            {
+                itemIndex = CorrectIndex(itemIndex);
+                Item newActiveItem = FindItem(itemIndex);
+                if (this._equippedItem != null)
+                {
+                    this._inventory.Add(this._equippedItem);
+                }
+                this._equippedItem = newActiveItem;
+                this._inventory.Remove(newActiveItem);
+                if (this.GetType() == typeof(PlayerCharacter))
+                {
+                    Console.WriteLine("You equipped: " + _equippedItem.GetName());
+                }
             }
-            this._equippedItem = newActiveItem;
-            this._inventory.Remove(newActiveItem);
+            catch (System.ArgumentOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
         protected void UseEquippedItem()
         {
@@ -168,42 +205,64 @@ namespace TextAdventureCharacter
         }
         protected void UseEquippedItemOnCharacter(int characterIndex)
         {
-            characterIndex = CorrectIndex(characterIndex);
-            List<Character> characters = GetSupportingCharacters();
-            this._equippedItem.UseOnCharacter(characters[characterIndex], this);
-        }        
+            try
+            {
+                characterIndex = CorrectIndex(characterIndex);
+                List<Character> characters = GetSupportingCharacters();
+                this._equippedItem.UseOnCharacter(characters[characterIndex], this);
+            }
+            catch (System.ArgumentOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
         protected void UseEquippedItemOnGateway(int gatewayIndex)
         {
-            gatewayIndex = CorrectIndex(gatewayIndex);
-            List<Gateway> gateways = this._location.GetGateways();
-            this._equippedItem.UseOnGateway(gateways[gatewayIndex], this);
+            try
+            {
+                gatewayIndex = CorrectIndex(gatewayIndex);
+                List<Gateway> gateways = this._location.GetGateways();
+                this._equippedItem.UseOnGateway(gateways[gatewayIndex], this);
+            }
+            catch (System.ArgumentOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
         }
         protected void ChangeArea(int gatewayIndex)
         {
             gatewayIndex = CorrectIndex(gatewayIndex);
-            Gateway gateway = this._location.GetGateways()[gatewayIndex];
-            if(gateway != null)
+            try
             {
-                gateway.ChangeArea(this);
-            }  
-        }        
+                Gateway gateway = this._location.GetGateways()[gatewayIndex];
+                if (gateway != null)
+                {
+                    gateway.ChangeArea(this);
+                }
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
         private Item FindItemInInventory(string itemname)
         {
             Item item = this._inventory.Find(_item => _item.GetName() == itemname);
-            if(item == null)
+            if (item == null)
                 Console.WriteLine("ERROR: no such item found");
             return item;
         }
         protected int CorrectIndex(int index)
         {
-            return index-1;
+            return index - 1;
         }
         private Item FindItemInLocation(string itemname)
         {
             Item item = this._location.GetItems().Find(_item => _item.GetName() == itemname);
-            if(item == null)
+            if (item == null)
                 Console.WriteLine("ERROR: no such item found");
             return item;
-        }    
+        }
     }
 }

@@ -12,8 +12,8 @@ namespace TextAdventureMap
         private int _keyHole;
         private string _name;
         private bool _isOpen;
-        public Door(int uniqueIdentificationNumber, Area areaA, Area areaB, string name, int keyHole, bool isOpen) 
-        : base(uniqueIdentificationNumber, areaA, areaB)
+        public Door(Area areaA, Area areaB, string name, int keyHole, bool isOpen) 
+        : base(areaA, areaB)
         {
             this._keyHole = keyHole;
             this._name = name;
@@ -62,15 +62,14 @@ namespace TextAdventureMap
         }
         new public static Door BuildFromXmlNode(XmlNode gatewayNode, List<Area> areaList){
             XmlAttributeCollection attributes = gatewayNode.Attributes;
-            int uin = Int32.Parse(attributes[1].Value);
-            int uinAreaA = Int32.Parse(attributes[2].Value);
-            int uinAreaB = Int32.Parse(attributes[3].Value);
+            int uinAreaA = Int32.Parse(attributes[1].Value);
+            int uinAreaB = Int32.Parse(attributes[2].Value);
             Area areaA = areaList.Find(area => area.GetUIN() == uinAreaA);
             Area areaB = areaList.Find(area => area.GetUIN() == uinAreaB);
-            string name = attributes[4].Value;
-            int keyHole = Int32.Parse(attributes[5].Value);
-            bool isOpen = Boolean.Parse(attributes[6].Value);
-            return new Door(uin, areaA, areaB, name, keyHole, isOpen);
+            string name = attributes[3].Value;
+            int keyHole = Int32.Parse(attributes[4].Value);
+            bool isOpen = Boolean.Parse(attributes[5].Value);
+            return new Door(areaA, areaB, name, keyHole, isOpen);
         }
     }
 }

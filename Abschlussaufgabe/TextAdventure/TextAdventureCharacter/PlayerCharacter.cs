@@ -187,7 +187,14 @@ namespace TextAdventureCharacter
         {
             if(this._inventory.Count <= this._maxInventorySlots)
             {
-                TakeItem(Convert.ToInt32(args[0]));
+                try
+                {
+                    TakeItem(Convert.ToInt32(args[0]));
+                }
+                catch (System.FormatException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
             }
             else
             {
@@ -196,11 +203,25 @@ namespace TextAdventureCharacter
         }
         private void CommandHandlerDrop(string[] args)
         {
-            DropItem(Convert.ToInt32(args[0]));
+            try
+            {
+                DropItem(Convert.ToInt32(args[0]));
+            }
+            catch (System.FormatException e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
         private void CommandHandlerGoTo(string[] args)
         {
-            ChangeArea(Convert.ToInt32(args[0]));
+            try
+            {
+                ChangeArea(Convert.ToInt32(args[0]));
+            }
+            catch (System.FormatException e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
         private void CommandHandlerClearChat(string[] args)
         {
@@ -215,11 +236,25 @@ namespace TextAdventureCharacter
         }
         private void CommandHandlerAttack(string[] args)
         {
-            Attack(Convert.ToInt32(args[0]));
+            try
+            {
+                Attack(Convert.ToInt32(args[0]));
+            }
+            catch (System.FormatException e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
         private void CommandHandlerEquip(string[] args)
         {
-            SwitchActiveItem(Convert.ToInt32(args[0]));
+            try
+            {
+                SwitchActiveItem(Convert.ToInt32(args[0]));
+            }
+            catch (System.FormatException e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
         public override void GetAttacked(double damage, Character attacker)
         {
@@ -230,7 +265,14 @@ namespace TextAdventureCharacter
         {
             if(this._equippedItem != null)
             {
-                UseEquippedItemOnGateway(Convert.ToInt32(args[0]));
+                try
+                {
+                    UseEquippedItemOnGateway(Convert.ToInt32(args[0]));
+                }
+                catch (System.FormatException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
             }
             else
             {
@@ -241,7 +283,14 @@ namespace TextAdventureCharacter
         {
             if(this._equippedItem != null)
             {
-                UseEquippedItemOnCharacter(Convert.ToInt32(args[0]));
+                try
+                {
+                    UseEquippedItemOnCharacter(Convert.ToInt32(args[0]));
+                }
+                catch (System.FormatException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
             }
             else
             {
