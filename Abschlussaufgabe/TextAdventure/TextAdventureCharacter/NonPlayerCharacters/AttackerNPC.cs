@@ -15,8 +15,9 @@ namespace TextAdventureCharacter
             Character attackTarget = GetAttackTarget();
             if(attackTarget != null)
             {
-                    Attack(attackTarget.GetName());
-                    this._isOnMove = false;
+                int attackTargetIndex = GetSupportingCharacters().FindIndex(c => c == attackTarget);
+                Attack(attackTargetIndex);
+                this._isOnMove = false;
             }
         }
         protected abstract Character GetAttackTarget();

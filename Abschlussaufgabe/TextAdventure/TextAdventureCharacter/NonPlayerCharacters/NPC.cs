@@ -41,12 +41,11 @@ namespace TextAdventureCharacter
                 Random random = new Random();
                 if (random.Next(1, 101) <= changeProbability)
                 {
-                    int randomUIN = gateways[random.Next(gateways.Count)].GetUIN(this._location);
-                    ChangeArea(Convert.ToString(randomUIN));
+                    int gatewayIndex = random.Next(gateways.Count);
+                    ChangeArea(gatewayIndex);
                 }
            }
         }
-
         public override void StartDialog(Character character)
         {
             Console.WriteLine("ERROR: You cannot talk to this character");

@@ -23,18 +23,19 @@ namespace TextAdventureCharacter
         {
             //TODO - Add new Commands here
             this._commandList.Add(new Command(new string[]{"commands","c"}, CommandHandlerCommands, "commands(c)"));
-            this._commandList.Add(new Command(new string[]{"look at","la"}, CommandHandlerLookAt, "look at(la): <item or character>"));
+            this._commandList.Add(new Command(new string[]{"get item description","gid"}, CommandHandlerGetItemDescription, "get item description(gid)"));
             this._commandList.Add(new Command(new string[]{"look","l"}, CommandHandlerLook, "look(l)"));
             this._commandList.Add(new Command(new string[]{"inventory","i"}, CommandHandlerInventory, "inventory(i)"));
-            this._commandList.Add(new Command(new string[]{"take","t"}, CommandHandlerTake, "take(t): <item>", 1));
-            this._commandList.Add(new Command(new string[]{"drop","d"}, CommandHandlerDrop, "drop(d): <item>", 1));
-            this._commandList.Add(new Command(new string[]{"equip","e"}, CommandHandlerEquip, "equip(e): <item>", 1));
-            this._commandList.Add(new Command(new string[]{"use item on","uio"}, CommandHandlerUseItemOn, "use item on(uio) <gateway[name or uin] or character>", 1));
+            this._commandList.Add(new Command(new string[]{"take","t"}, CommandHandlerTake, "take(t): <index>", 1));
+            this._commandList.Add(new Command(new string[]{"drop","d"}, CommandHandlerDrop, "drop(d): <index>", 1));
+            this._commandList.Add(new Command(new string[]{"equip","e"}, CommandHandlerEquip, "equip(e): <index>", 1));
+            this._commandList.Add(new Command(new string[]{"use item on gateway","uiog"}, CommandHandlerUseItemOnGateway, "use item on gateway(uiog): <index>", 1));
+            this._commandList.Add(new Command(new string[]{"use item on character","uioc"}, CommandHandlerUseItemOnCharacter, "use item on character(uioc): <index>", 1));
             this._commandList.Add(new Command(new string[]{"use item","ui"}, CommandHandlerUseItem, "use item(ui)"));
-            this._commandList.Add(new Command(new string[]{"go to","gt"}, CommandHandlerGoTo, "go to(gt): <room[name or uin]>", 1));
+            this._commandList.Add(new Command(new string[]{"go to","gt"}, CommandHandlerGoTo, "go to(gt): <index>", 1));
             this._commandList.Add(new Command(new string[]{"clear chat","cc"}, CommandHandlerClearChat, "clear chat(cc)"));
-            this._commandList.Add(new Command(new string[]{"talk to","tt"}, CommandHandlerTalkTo, "talk to(tt): <character>"));
-            this._commandList.Add(new Command(new string[]{"attack","a"}, CommandHandlerAttack, "attack(a): <character>", 1));
+            this._commandList.Add(new Command(new string[]{"talk to","tt"}, CommandHandlerTalkTo, "talk to(tt): <index>"));
+            this._commandList.Add(new Command(new string[]{"attack","a"}, CommandHandlerAttack, "attack(a): <index>", 1));
             this._commandList.Add(new Command(new string[]{"quit","q"}, CommandHandlerQuit, "quit(q)"));
             this._commandList.Add(new Command(new string[]{"status","s"}, CommandHandlerStatus, "status(s)"));
         }
@@ -88,12 +89,9 @@ namespace TextAdventureCharacter
         }        
         private void CommandHandlerTalkTo(string[] args)
         {
-            Character character = FindCharacter(args[0]);
-            if(character != null)
-            {
-               StartDialog(character);
-               this._isOnMove = false;
-            }
+            Character character = GetSupportingCharacters()[Convert.ToInt32(args[0])+1];
+            StartDialog(character);
+            this._isOnMove = false;
         }
         public override void StartDialog(Character character)
         {
@@ -122,6 +120,7 @@ namespace TextAdventureCharacter
             Console.WriteLine(this._location.GetDescription());
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             WriteItems();
+            CommandHandlerInventory(new string[]{});
             WriteSupportingCharacters();
             WriteAdjacenAreas();
             Console.ForegroundColor = ConsoleColor.White;
@@ -132,9 +131,9 @@ namespace TextAdventureCharacter
             if(gateways.Count != 0)
             {
                 Console.WriteLine("A list of gateways:");
-                foreach(Gateway gateway in gateways)
+                for(int i = 0; i < gateways.Count; i++)
                 {
-                    Console.WriteLine("  " + gateway.GetDescription(this._location));
+                    Console.WriteLine(" " + (i+1) + ":" + gateways[i].GetDescription(this._location));
                 }
             }
         }
@@ -144,15 +143,15 @@ namespace TextAdventureCharacter
             if(supportingCharacters.Count != 0)
             {
                 Console.WriteLine("A list of characters:");
-                foreach(Character character in supportingCharacters)
+                for(int i = 0; i < supportingCharacters.Count; i++)
                 {
-                    if(character.GetIsAlive())
+                    if(supportingCharacters[i].GetIsAlive())
                     {
-                        Console.WriteLine("  " + character.GetName() + " " + character.GetStatus());
+                        Console.WriteLine(" " + (i+1) + ":" + supportingCharacters[i].GetName() + " " + supportingCharacters[i].GetStatus());
                     } 
                     else 
                     {
-                        Console.WriteLine("  " + character.GetName() + " (dead)");
+                        Console.WriteLine(" " + i + ":" + supportingCharacters[i].GetName() + " (dead)");
                     }
                 }
             }
@@ -163,27 +162,32 @@ namespace TextAdventureCharacter
             if(items.Count != 0)
             {
                 Console.WriteLine("A list of items:");
-                foreach(Item item in items)
+                for(int i = 0; i < items.Count; i++)
                 {
-                    Console.WriteLine("  " + item.GetName());
+                    Console.WriteLine(" " + (i+1) + ":" + items[i].GetName());
                 }
             }
         }
         private void CommandHandlerInventory(string[] args)
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Inventory:");
-            foreach(Item item in this._inventory)
+            Console.WriteLine("A list of items in your inventory:");
+            if(_inventory.Count != 0)
             {
-                Console.WriteLine("  " + item.GetName());
+                for(int i = 0; i < _inventory.Count; i++)
+                {
+                    Console.WriteLine(" " + (i+_location.GetItems().Count+1) + ":" + _inventory[i].GetName());
+                }
             }
-            Console.ForegroundColor = ConsoleColor.White;
+            else
+            {
+                Console.WriteLine(" Empty - use command take to fill your inventory");
+            }
         }
         private void CommandHandlerTake(string[] args)
         {
             if(this._inventory.Count <= this._maxInventorySlots)
             {
-                TakeItem(args[0]);
+                TakeItem(Convert.ToInt32(args[0]));
             }
             else
             {
@@ -192,64 +196,52 @@ namespace TextAdventureCharacter
         }
         private void CommandHandlerDrop(string[] args)
         {
-            DropItem(args[0]);
+            DropItem(Convert.ToInt32(args[0]));
         }
         private void CommandHandlerGoTo(string[] args)
         {
-            ChangeArea(args[0]);
+            ChangeArea(Convert.ToInt32(args[0]));
         }
         private void CommandHandlerClearChat(string[] args)
         {
             Console.Clear();
         }
-        private void CommandHandlerLookAt(string[] args)
+        private void CommandHandlerGetItemDescription(string[] args)
         {
-            Character character = GetSupportingCharacters().Find(_character => _character.GetName() == args[0]);
-            Item itemL = this._location.GetItems().Find(_itemL => _itemL.GetName() == args[0]);
-            Item itemI = this._inventory.Find(_itemI => _itemI.GetName() == args[0]);
-            if((this._equippedItem != null) && (this._equippedItem.GetName() == args[0]))
+            if(_equippedItem != null)
             {
-                Console.WriteLine("Item description: " + this._equippedItem.GetDescription());
-            }
-            else if(character != null)
-            {
-                Console.WriteLine("Character description: " + character.GetDescription());
-            } 
-            else if(itemI != null) 
-            {
-                Console.WriteLine("Item description: " + itemI.GetDescription());
-            } 
-            else if(itemL != null) 
-            {
-                Console.WriteLine("Item description: " + itemL.GetDescription());
-            }
-            else 
-            {
-                Console.WriteLine("ERROR: Not found");
+            Console.WriteLine("Description of " + _equippedItem.GetName() + ": " + _equippedItem.GetDescription());
             }
         }
         private void CommandHandlerAttack(string[] args)
         {
-            Attack(args[0]);
+            Attack(Convert.ToInt32(args[0]));
         }
         private void CommandHandlerEquip(string[] args)
         {
-            bool isSwitched = SwitchActiveItem(args[0]);
-            if(isSwitched)
-            {
-                Console.WriteLine("item equipped");
-            }
+            SwitchActiveItem(Convert.ToInt32(args[0]));
         }
         public override void GetAttacked(double damage, Character attacker)
         {
             GetHarmed(damage);
             Console.WriteLine("You have been attacked by " + attacker.GetName());
         }
-        private void CommandHandlerUseItemOn(string[] args)
+        private void CommandHandlerUseItemOnGateway(string[] args)
         {
             if(this._equippedItem != null)
             {
-                UseEquippedItemOn(args[0]);
+                UseEquippedItemOnGateway(Convert.ToInt32(args[0]));
+            }
+            else
+            {
+                Console.WriteLine("No item equipped");
+            }
+        }
+        private void CommandHandlerUseItemOnCharacter(string[] args)
+        {
+            if(this._equippedItem != null)
+            {
+                UseEquippedItemOnCharacter(Convert.ToInt32(args[0]));
             }
             else
             {

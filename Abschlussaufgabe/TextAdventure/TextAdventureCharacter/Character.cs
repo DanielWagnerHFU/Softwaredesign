@@ -105,8 +105,8 @@ namespace TextAdventureCharacter
                 Console.WriteLine(this._name + " died\n");
             }            
         }
-        protected void Attack(string charactername){
-            Character character = FindCharacter(charactername);
+        protected void Attack(int characterIndex){
+            Character character = GetSupportingCharacters()[characterIndex];
             if(character != null && character.GetIsAlive())
             {
                character.GetAttacked(GetTotalAttackDamage(), this);
@@ -121,24 +121,18 @@ namespace TextAdventureCharacter
         {
             return _strength;
         }
-        protected void TakeItem(string itemname){
+        protected void TakeItem(int itemIndex){
             if(this._inventory.Count <= this._maxInventorySlots)
             {
-                Item itemToTake = FindItemInLocation(itemname);
-                if(itemToTake != null)
-                {
-                    this._inventory.Add(itemToTake);
-                    this._location.RemoveItem(itemToTake);
-                }
+                Item itemToTake = FindItem(CorrectIndex(itemIndex));
+                this._inventory.Add(itemToTake);
+                this._location.RemoveItem(itemToTake);
             }
         }
-        protected void DropItem(string itemname){
-            Item itemToDrop = FindItemInInventory(itemname);
-            if(itemToDrop != null)
-            {
-                this._location.AddItem(itemToDrop);
-                this._inventory.Remove(itemToDrop);
-            }
+        protected void DropItem(int itemIndex){
+            Item itemToDrop = FindItem(CorrectIndex(itemIndex));
+            this._location.AddItem(itemToDrop);
+            this._inventory.Remove(itemToDrop);
         }
         protected Character FindCharacter(string charactername)
         {
@@ -147,60 +141,51 @@ namespace TextAdventureCharacter
                 Console.WriteLine("ERROR: no such character found");
             return character;
         }
-        protected bool SwitchActiveItem(string itemname){
-            Item newActiveItem = FindItemInInventory(itemname);
-            if(newActiveItem != null)
+        private Item FindItem(int itemIndex)
+        {
+            if(itemIndex > _location.GetItems().Count)
             {
-                if(this._equippedItem != null){
-                    this._inventory.Add(this._equippedItem);
-                }
-                this._equippedItem = newActiveItem;
-                this._inventory.Remove(newActiveItem);
-                return true;
+                itemIndex = itemIndex-_location.GetItems().Count;
+                return _inventory[itemIndex];
             }
-            return false;
+            else
+            {
+                return _location.GetItems()[itemIndex];
+            }
+        }
+        protected void SwitchActiveItem(int itemIndex){
+            itemIndex = CorrectIndex(itemIndex);
+            Item newActiveItem = FindItem(itemIndex);
+            if(this._equippedItem != null){
+                this._inventory.Add(this._equippedItem);
+            }
+            this._equippedItem = newActiveItem;
+            this._inventory.Remove(newActiveItem);
         }
         protected void UseEquippedItem()
         {
             this._equippedItem.UseOnCharacter(this, this);
         }
-        protected void UseEquippedItemOn(string target)
+        protected void UseEquippedItemOnCharacter(int characterIndex)
         {
-            Gateway gateway = this._location.GetGateways().Find(_gateway => _gateway.GetName(this._location) == target);
-            if(gateway == null)
-            {
-                gateway = this._location.GetGateways().Find(_gateway => Convert.ToString(_gateway.GetUIN(this._location)) == target);
-            }
-            Character character = this._location.GetCharacters().Find(_character => _character.GetName() == target);
-            if(gateway != null)
-            {
-                this._equippedItem.UseOnGateway(gateway, this);
-            }
-            else if(character != null)
-            {
-                this._equippedItem.UseOnCharacter(character, this);
-                this._isOnMove = false;
-            }
+            characterIndex = CorrectIndex(characterIndex);
+            List<Character> characters = GetSupportingCharacters();
+            this._equippedItem.UseOnCharacter(characters[characterIndex], this);
+        }        
+        protected void UseEquippedItemOnGateway(int gatewayIndex)
+        {
+            gatewayIndex = CorrectIndex(gatewayIndex);
+            List<Gateway> gateways = this._location.GetGateways();
+            this._equippedItem.UseOnGateway(gateways[gatewayIndex], this);
         }
-        protected void ChangeArea(string gatewayName)
+        protected void ChangeArea(int gatewayIndex)
         {
-            Gateway gateway = FindGateway(gatewayName);
+            gatewayIndex = CorrectIndex(gatewayIndex);
+            Gateway gateway = this._location.GetGateways()[gatewayIndex];
             if(gateway != null)
             {
                 gateway.ChangeArea(this);
             }  
-        }
-        protected virtual Gateway FindGateway(string gatewayName)
-        {
-            List<Gateway> gateways = this._location.GetGateways();
-            Gateway gateway = gateways.Find(_gateway => _gateway.GetDestinationName(this._location) == gatewayName);
-            if(gateway == null)
-            {
-                gateway = gateways.Find(_gateway => Convert.ToString(_gateway.GetUIN(this._location)) == gatewayName);
-            }
-            if((gateway == null) && (this.GetType() == typeof(PlayerCharacter)))
-                Console.WriteLine("ERROR: no such gateway found");
-            return gateway;
         }        
         private Item FindItemInInventory(string itemname)
         {
@@ -208,6 +193,10 @@ namespace TextAdventureCharacter
             if(item == null)
                 Console.WriteLine("ERROR: no such item found");
             return item;
+        }
+        private int CorrectIndex(int index)
+        {
+            return index+1;
         }
         private Item FindItemInLocation(string itemname)
         {
