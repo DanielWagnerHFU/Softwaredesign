@@ -1,9 +1,5 @@
 <TextAdventureGame>
-    <Areas>
-        <Area type="Area" uin="1" name="A dark room" description="You are in a dark room and there seems to be no way out. Maybe you should read the text on the paper">           
-            <Character type="Player" name="player" description="" strength="10" hp="100" maxhp="100"></Character>
-        </Area>
-    </Areas>
-    <Gateways>
-    </Gateways>
+    <Area type="Area" uin="1" name="A dark room" description="You are in a dark room and there seems to be no way out. Maybe you should read the text on the paper">           
+        <Character type="Player" name="player" description="" strength="10" hp="100" maxhp="100"></Character>
+    </Area>
 </TextAdventureGame>

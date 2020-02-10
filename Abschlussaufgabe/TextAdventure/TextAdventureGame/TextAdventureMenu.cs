@@ -78,11 +78,6 @@ namespace TextAdventureGame
                 Console.WriteLine(e.Message);
                 SetXmlGamepath();
             }
-            catch(Exception e)
-            {
-                Console.WriteLine(e.Message);
-                SetXmlGamepath();
-            }
         }
         private void StartGame()
         {

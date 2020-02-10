@@ -24,10 +24,10 @@ namespace TextAdventureGame
         }        
         public void BuildGameObjects()
         {
-            XmlNode areasNode = GetAreasNode();
-            List<Area> areaList = BuildAreaObjects(areasNode.SelectNodes(".//Area"));
-            XmlNode gatewaysNode = GetGatewaysNode();
-            List<Gateway> gatewayList = BuildGatewayObjects(gatewaysNode.SelectNodes(".//Gateway"), areaList);
+            XmlNodeList areas = GetAreasNode();
+            List<Area> areaList = BuildAreaObjects(areas);
+            XmlNodeList gateways = GetGatewaysNode();
+            List<Gateway> gatewayList = BuildGatewayObjects(gateways, areaList);
         }
         private XmlNode GetRootNode(string filepath)
         {
@@ -35,13 +35,13 @@ namespace TextAdventureGame
             xmlDocument.Load(filepath);
             return xmlDocument.DocumentElement;
         }
-        private XmlNode GetAreasNode()
+        private XmlNodeList GetAreasNode()
         {
-            return _xmlRootNode.SelectSingleNode(".//Areas");
+            return _xmlRootNode.SelectNodes(".//Area");
         }
-        private XmlNode GetGatewaysNode()
+        private XmlNodeList GetGatewaysNode()
         {
-            return _xmlRootNode.SelectSingleNode(".//Gateways");
+            return _xmlRootNode.SelectNodes(".//Gateway");
         }
         private List<Gateway> BuildGatewayObjects(XmlNodeList gatewayNodeList, List<Area> areaList)
         {
