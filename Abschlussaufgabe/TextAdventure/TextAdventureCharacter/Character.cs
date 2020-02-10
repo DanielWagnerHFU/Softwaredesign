@@ -257,6 +257,14 @@ namespace TextAdventureCharacter
         {
             return index - 1;
         }
+        public void GetHealed(double hpBoost)
+        {
+            _healthPoints += hpBoost;
+            if(_healthPoints > _maxHealthPoints)
+            {
+                _healthPoints = _maxHealthPoints;
+            }
+        }
         private Item FindItemInLocation(string itemname)
         {
             Item item = this._location.GetItems().Find(_item => _item.GetName() == itemname);

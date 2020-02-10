@@ -107,6 +107,8 @@ namespace TextAdventureGame
                     return Key.BuildFromXmlNode(itemNode);
                 case "Text":
                     return Text.BuildFromXmlNode(itemNode);
+                case "Potion":
+                    return Potion.BuildFromXmlNode(itemNode);
                 default:
                     throw new Exception("Item build failed - No type");
             }
