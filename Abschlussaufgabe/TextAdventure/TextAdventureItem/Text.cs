@@ -18,6 +18,8 @@ namespace TextAdventureItem
             if(CharacterIsPlayer(character) && CharacterIsPlayer(user))
             {
                 Console.WriteLine(_text);
+                Console.WriteLine("\nPress a key to continue");
+                Console.ReadKey(false);
                 UpdateItem(user);
             }
         }

@@ -24,7 +24,7 @@ namespace TextAdventureCharacter
         {
             //TODO - Add new Commands here
             _commandList.Add(new Command(new string[]{"commands","c"}, CommandHandlerCommands, "commands(c)"));
-            _commandList.Add(new Command(new string[]{"get item description","gid"}, CommandHandlerGetItemDescription, "get item description(gid)"));
+            _commandList.Add(new Command(new string[]{"get item description","gid"}, CommandHandlerGetItemDescription, "get item description(gid): <index>", 1));
             _commandList.Add(new Command(new string[]{"look","l"}, CommandHandlerLook, "look(l)"));
             _commandList.Add(new Command(new string[]{"inventory","i"}, CommandHandlerInventory, "inventory(i)"));
             _commandList.Add(new Command(new string[]{"take","t"}, CommandHandlerTake, "take(t): <index>", 1));
@@ -35,7 +35,7 @@ namespace TextAdventureCharacter
             _commandList.Add(new Command(new string[]{"use item","ui"}, CommandHandlerUseItem, "use item(ui)"));
             _commandList.Add(new Command(new string[]{"go to","gt"}, CommandHandlerGoTo, "go to(gt): <index>", 1));
             _commandList.Add(new Command(new string[]{"clear chat","cc"}, CommandHandlerClearChat, "clear chat(cc)"));
-            _commandList.Add(new Command(new string[]{"talk to","tt"}, CommandHandlerTalkTo, "talk to(tt): <index>"));
+            _commandList.Add(new Command(new string[]{"talk to","tt"}, CommandHandlerTalkTo, "talk to(tt): <index>", 1));
             _commandList.Add(new Command(new string[]{"attack","a"}, CommandHandlerAttack, "attack(a): <index>", 1));
             _commandList.Add(new Command(new string[]{"quit","q"}, CommandHandlerQuit, "quit(q)"));
             _commandList.Add(new Command(new string[]{"status","s"}, CommandHandlerStatus, "status(s)"));
@@ -107,9 +107,16 @@ namespace TextAdventureCharacter
         }        
         private void CommandHandlerTalkTo(string[] args)
         {
-            Character character = GetSupportingCharacters()[CorrectIndex(Convert.ToInt32(args[0]))];
-            StartDialog(character);
-            _isOnMove = false;
+            try
+            {
+                Character character = GetSupportingCharacters()[CorrectIndex(Convert.ToInt32(args[0]))];
+                StartDialog(character);
+                _isOnMove = false;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
         public override void StartDialog(Character character)
         {
@@ -247,9 +254,13 @@ namespace TextAdventureCharacter
         }
         private void CommandHandlerGetItemDescription(string[] args)
         {
-            if(_equippedItem != null)
+            try
             {
-            Console.WriteLine("Description of " + _equippedItem.GetName() + ": " + _equippedItem.GetDescription());
+                Console.WriteLine("Description of " + _equippedItem.GetName() + ": " + _equippedItem.GetDescription());
+            }
+            catch (System.FormatException e)
+            {
+                Console.WriteLine(e.Message);
             }
         }
         private void CommandHandlerAttack(string[] args)

@@ -173,7 +173,7 @@ namespace TextAdventureCharacter
                 Console.WriteLine("ERROR: no such character found");
             return character;
         }
-        private Item FindItem(int itemIndex)
+        protected Item FindItem(int itemIndex)
         {
             if (itemIndex >= _location.GetItems().Count)
             {

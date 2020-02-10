@@ -1,5 +1,10 @@
 <TextAdventureGame>
-    <Area type="Area" uin="1" name="A dark room" description="You are in a dark room and there seems to be no way out. Maybe you should read the text on the paper">           
-        <Character type="Player" name="player" description="" strength="10" hp="100" maxhp="100"></Character>
+    <Area type="Area" uin="1" name="Dark room" description="You are in a dark room and there seems to be no way out because the door is closed">
+        <Item type="Text" name="paper" description="There might be userful information on this paper..." text="Welcome to this game Friedl. You think you cant get out of here? Well i think your blind! Look closer">
+            <Item type="Key" name="Friedls HFUCard" description="I guess you know what to do with your HFUCard? Puhh" key="1"></Item>
+        </Item>         
+        <Character type="Player" name="Friedl" description="A professor of the HFU" strength="10" hp="100" maxhp="100"></Character>
     </Area>
+    <Gateway type="Door" uinA="1" uinB="2" name="Solid door" keyHole="1" isOpen="false"></Gateway>
+    <Area type="Area" uin="2" name="HFU L building" description="You are in the HFU L Building second floor."></Area>
 </TextAdventureGame>
