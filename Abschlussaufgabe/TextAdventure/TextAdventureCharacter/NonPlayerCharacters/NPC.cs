@@ -7,6 +7,7 @@ namespace TextAdventureCharacter
     public abstract class NPC : Character
     {
         protected double _attackMoodChange = -100;
+        protected int _changeProbability = 25; //100% is max
         protected double _moodAgressionThreshold = -10;
         protected Dictionary<Character,double> moodAboutCharacters;
         public NPC(string name, string description) 
@@ -38,11 +39,15 @@ namespace TextAdventureCharacter
            List<Gateway> gateways = this._location.GetGateways();
            if (gateways.Count != 0)
            {
-               Random random = new Random();
-               int randomUIN = gateways[random.Next(gateways.Count)].GetUIN(this._location);
-               ChangeArea(Convert.ToString(randomUIN));
+                Random random = new Random();
+                if (random.Next(1, 101) <= this._changeProbability)
+                {
+                    int randomUIN = gateways[random.Next(gateways.Count)].GetUIN(this._location);
+                    ChangeArea(Convert.ToString(randomUIN));
+                }
            }
         }
+
         public override void StartDialog(Character character)
         {
             Console.WriteLine("ERROR: You cannot talk to this character");

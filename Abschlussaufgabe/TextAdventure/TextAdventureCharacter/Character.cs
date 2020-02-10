@@ -188,7 +188,7 @@ namespace TextAdventureCharacter
             if(gateway != null)
             {
                 gateway.ChangeArea(this);
-            }
+            }  
         }
         protected virtual Gateway FindGateway(string gatewayName)
         {
