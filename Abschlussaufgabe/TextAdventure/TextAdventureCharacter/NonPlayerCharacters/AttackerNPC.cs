@@ -16,7 +16,7 @@ namespace TextAdventureCharacter
             if(attackTarget != null)
             {
                 int attackTargetIndex = GetSupportingCharacters().FindIndex(c => c == attackTarget);
-                Attack(attackTargetIndex);
+                Attack(CorrectIndexPlus(attackTargetIndex));
                 this._isOnMove = false;
             }
         }

@@ -22,19 +22,15 @@ namespace TextAdventureMap
         public override string GetDescription(Area callingArea){
             if(_isOpen == true)
             {
-                return this._name + " open to " + GetDestinationName(callingArea) + " [" + callingArea.GetUIN() + "]";
+                return this._name + " open to " + GetDestinationName(callingArea);
             } 
             else 
             {
-                return "closed " + this._name + " [" + this._uniqueIdentificationNumber + "]";
+                return "closed " + this._name;
             }
         }
         public override string GetName(Area callingArea){
             return this._name;
-        }
-        public override int GetUIN(Area callingArea)
-        {
-            return this._uniqueIdentificationNumber;
         }
         public string GetName()
         {

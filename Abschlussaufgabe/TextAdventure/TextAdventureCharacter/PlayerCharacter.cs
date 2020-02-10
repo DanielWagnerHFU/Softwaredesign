@@ -89,7 +89,7 @@ namespace TextAdventureCharacter
         }        
         private void CommandHandlerTalkTo(string[] args)
         {
-            Character character = GetSupportingCharacters()[Convert.ToInt32(args[0])+1];
+            Character character = GetSupportingCharacters()[CorrectIndex(Convert.ToInt32(args[0]))];
             StartDialog(character);
             this._isOnMove = false;
         }
@@ -161,7 +161,7 @@ namespace TextAdventureCharacter
             List<Item> items = this._location.GetItems();
             if(items.Count != 0)
             {
-                Console.WriteLine("A list of items:");
+                Console.WriteLine("A list of items in the area:");
                 for(int i = 0; i < items.Count; i++)
                 {
                     Console.WriteLine(" " + (i+1) + ":" + items[i].GetName());

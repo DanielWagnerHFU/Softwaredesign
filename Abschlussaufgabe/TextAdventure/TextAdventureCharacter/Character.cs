@@ -106,7 +106,7 @@ namespace TextAdventureCharacter
             }            
         }
         protected void Attack(int characterIndex){
-            Character character = GetSupportingCharacters()[characterIndex];
+            Character character = GetSupportingCharacters()[CorrectIndex(characterIndex)];
             if(character != null && character.GetIsAlive())
             {
                character.GetAttacked(GetTotalAttackDamage(), this);
@@ -143,7 +143,7 @@ namespace TextAdventureCharacter
         }
         private Item FindItem(int itemIndex)
         {
-            if(itemIndex > _location.GetItems().Count)
+            if(itemIndex >= _location.GetItems().Count)
             {
                 itemIndex = itemIndex-_location.GetItems().Count;
                 return _inventory[itemIndex];
@@ -194,9 +194,9 @@ namespace TextAdventureCharacter
                 Console.WriteLine("ERROR: no such item found");
             return item;
         }
-        private int CorrectIndex(int index)
+        protected int CorrectIndex(int index)
         {
-            return index+1;
+            return index-1;
         }
         private Item FindItemInLocation(string itemname)
         {

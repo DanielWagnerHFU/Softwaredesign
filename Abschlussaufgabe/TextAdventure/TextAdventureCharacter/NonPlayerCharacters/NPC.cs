@@ -42,9 +42,13 @@ namespace TextAdventureCharacter
                 if (random.Next(1, 101) <= changeProbability)
                 {
                     int gatewayIndex = random.Next(gateways.Count);
-                    ChangeArea(gatewayIndex);
+                    ChangeArea(CorrectIndexPlus(gatewayIndex));
                 }
            }
+        }
+        protected int CorrectIndexPlus(int index)
+        {
+            return index+1;
         }
         public override void StartDialog(Character character)
         {

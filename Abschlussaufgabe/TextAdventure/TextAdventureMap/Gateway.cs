@@ -25,17 +25,13 @@ namespace TextAdventureMap
             character.MoveToArea(GetDestination(character.GetLocation()));
             character.SetIsOnMove(false);
         }
-        public virtual int GetUIN(Area callingArea)
-        {
-            return (callingArea == _areaA)? _areaB.GetUIN() : _areaA.GetUIN();
-        }
         public virtual string GetName(Area callingArea)
         {
             return GetDestinationName(callingArea);
         }
         public virtual string GetDescription(Area callingArea)
         {
-            return GetName(callingArea) + " [" + GetUIN(callingArea) + "]";
+            return GetName(callingArea);
         }
         public string GetDestinationName(Area callingArea)
         {
