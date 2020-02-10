@@ -3,6 +3,7 @@ using TextAdventureMap;
 using System.Collections.Generic;
 using TextAdventureItem;
 using System.Xml;
+using System.Threading;
 
 namespace TextAdventureCharacter
 {
@@ -85,6 +86,22 @@ namespace TextAdventureCharacter
                 {
                     Console.WriteLine("Error: not enough arguments");
                 }
+            }
+        }        
+        public override void GetHarmed(double damage)
+        {
+            this._healthPoints -= damage;
+            UpdateIsAlive();
+        }
+        protected override void UpdateIsAlive()
+        {
+            if (this._healthPoints <= 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                this._isAlive = false;
+                Console.WriteLine("You died and so you lost! But just restart the game to get alive again ;D");
+                Console.ForegroundColor = ConsoleColor.White;
+                Thread.Sleep(10000);
             }
         }        
         private void CommandHandlerTalkTo(string[] args)

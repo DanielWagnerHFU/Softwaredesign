@@ -97,7 +97,7 @@ namespace TextAdventureCharacter
             this._healthPoints -= damage;
             UpdateIsAlive();
         }
-        protected void UpdateIsAlive()
+        protected virtual void UpdateIsAlive()
         {
             if (this._healthPoints <= 0)
             {

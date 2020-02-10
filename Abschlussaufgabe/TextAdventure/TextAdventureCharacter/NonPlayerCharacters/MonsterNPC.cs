@@ -32,11 +32,12 @@ namespace TextAdventureCharacter
         protected override Character GetAttackTarget()
         {
             List<Character> targets = GetSupportingCharacters();
-            if(targets.Count > 0)
+            List<Character> aliveTargets = targets.FindAll(t => t.GetIsAlive() == true);
+            if(aliveTargets.Count > 0)
             {
                 Random random = new Random();
-                Character target = targets[random.Next(targets.Count)];
-                return (target.GetIsAlive())? target : null;
+                Character target = aliveTargets[random.Next(aliveTargets.Count)];
+                return target;
             }
             else
             {
