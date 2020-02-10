@@ -1,20 +1,14 @@
 <TextAdventureGame>
-    <Areas>
-        <Area type="Area" uin="1" name="1" description="1">           
-            <Characters>
-                <Character type="Player" name="player" description="" strength="1" hp="100" maxhp="100"></Character>
-            </Characters>
-        </Area>
-        <Area type="Area" uin="2" name="2" description="2"></Area>
-        <Area type="Area" uin="3" name="3" description="3"></Area>
-        <Area type="Area" uin="4" name="3" description="4"></Area>
-        <Area type="Area" uin="5" name="3" description="5"></Area>
-    </Areas>
-    <Gateways>
-        <Gateway type="Portal" uin="1" name ="portal"></Gateway>
-        <Gateway type="Portal" uin="2" name ="portal"></Gateway>
-        <Gateway type="Portal" uin="3" name ="portal"></Gateway>
-        <Gateway type="Portal" uin="4" name ="portal"></Gateway>
-        <Gateway type="Portal" uin="5" name ="portal"></Gateway>
-    </Gateways>
+    <Area type="Area" uin="1" name="1" description="1">           
+            <Character type="Player" name="player" description="" strength="1" hp="100" maxhp="100"></Character>
+    </Area>
+    <Area type="Area" uin="2" name="2" description="2"></Area>
+    <Area type="Area" uin="3" name="3" description="3"></Area>
+    <Area type="Area" uin="4" name="3" description="4"></Area>
+    <Area type="Area" uin="5" name="3" description="5"></Area>
+    <Gateway type="Portal" uin="1" name ="portal"></Gateway>
+    <Gateway type="Portal" uin="2" name ="portal"></Gateway>
+    <Gateway type="Portal" uin="3" name ="portal"></Gateway>
+    <Gateway type="Portal" uin="4" name ="portal"></Gateway>
+    <Gateway type="Portal" uin="5" name ="portal"></Gateway>
 </TextAdventureGame>
