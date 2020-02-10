@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Xml;
 
 namespace TextAdventureCharacter
 {
@@ -56,6 +57,14 @@ namespace TextAdventureCharacter
                     UseDialogNode(player, talkPartner);
                 }
             }
+        }
+        public static DialogNode BuildFromXmlNode(XmlNode dialogNode)
+        {
+            XmlAttributeCollection attributes = dialogNode.Attributes;
+            double moodChange = Convert.ToDouble(attributes[0].Value);
+            string playerText = attributes[1].Value;
+            string npcText = attributes[2].Value;
+            return new DialogNode(moodChange, playerText, npcText);
         }
     }
 }

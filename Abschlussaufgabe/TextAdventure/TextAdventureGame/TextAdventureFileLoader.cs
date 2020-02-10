@@ -132,13 +132,38 @@ namespace TextAdventureGame
             {
                 case "Player":
                     return PlayerCharacter.BuildFromXmlNode(characterNode);
+                default:
+                    return BuildNPCObjectWithDialogNodes(characterNode);
+            }
+        }
+        private NPC BuildNPCObjectWithDialogNodes(XmlNode characterNode)
+        {
+            NPC character;
+            switch(characterNode.Attributes[0].Value)
+            {
                 case "HumanNPC":
-                    return HumanNPC.BuildFromXmlNode(characterNode);
+                    character = HumanNPC.BuildFromXmlNode(characterNode);
+                    break;
                 case "MonsterNPC":
-                    return MonsterNPC.BuildFromXmlNode(characterNode);
+                    character = MonsterNPC.BuildFromXmlNode(characterNode);
+                    break;
                 default:
                     throw new Exception("Character build failed - No type");
             }
+            XmlNode dialogNode = characterNode.SelectSingleNode("child::*");
+            if(dialogNode != null)
+                character.AddDialogNode(BuildDialogNodeObject(dialogNode));
+            return character;
+        }
+        private DialogNode BuildDialogNodeObject(XmlNode dialogNode)
+        {
+            DialogNode dialog = DialogNode.BuildFromXmlNode(dialogNode);
+            XmlNodeList dialogNodes = dialogNode.SelectNodes("child::*");
+            foreach(XmlNode xmlDialogNode in dialogNodes)
+            {
+                dialog.AddDialogChild(BuildDialogNodeObject(xmlDialogNode));
+            }
+            return dialog;
         }
         private void BuildItemsForCharacter(Character character, XmlNode itemsNode)
         {

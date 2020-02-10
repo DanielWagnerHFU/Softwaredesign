@@ -65,10 +65,6 @@ namespace TextAdventureCharacter
             }
             return null;
         }
-        public override void StartDialog(Character character)
-        {
-            
-        }
         public static HumanNPC BuildFromXmlNode(XmlNode characterNode)
         {
             XmlAttributeCollection attributes = characterNode.Attributes;

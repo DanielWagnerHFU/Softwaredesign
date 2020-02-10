@@ -57,7 +57,14 @@ namespace TextAdventureCharacter
         }
         public override void StartDialog(Character character)
         {
-            Console.WriteLine("ERROR: You cannot talk to this character");
+            if(_dialog != null)
+            {
+                _dialog.UseDialogNode((PlayerCharacter)character, this);
+            }
+            else
+            {
+                Console.WriteLine("This character cannot talk");
+            }
         }
     }
 }
