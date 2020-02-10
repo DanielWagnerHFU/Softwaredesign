@@ -11,10 +11,10 @@ namespace TextAdventureCharacter
         public MonsterNPC(string name, string description) 
         : base(name, description)
         {
-            this.moodAboutCharacters = new Dictionary<Character, double>();
-            this._maxHealthPoints = 25;
-            this._healthPoints = 25;
-            this._strength = 5;
+            _moodAboutCharacters = new Dictionary<Character, double>();
+            _maxHealthPoints = 25;
+            _healthPoints = 25;
+            _strength = 5;
         }
         public override void GetAttacked(double damage, Character attacker)
         {
@@ -22,9 +22,9 @@ namespace TextAdventureCharacter
             ChangeMood(attacker, _attackMoodChange);
         }
         public override void MakeAMove(){
-            this._isOnMove = true;
+            _isOnMove = true;
             ManageAttackBehaviour();
-            if(this._isOnMove)
+            if(_isOnMove)
             {
                 ManageRoamingBehaviour(20);
             }

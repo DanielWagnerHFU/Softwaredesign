@@ -14,7 +14,7 @@ namespace TextAdventureGame
                 throw new Exception("Not enough characters");
             }
             else{
-                this._characterList = characters;
+                _characterList = characters;
             }
         }
         public void StartGameLoop()
@@ -41,7 +41,7 @@ namespace TextAdventureGame
         }
         private PlayerCharacter GetPlayerCharacter()
         {
-            PlayerCharacter playerCharacter = (PlayerCharacter)this._characterList.Find(IsPlayerCharacter);
+            PlayerCharacter playerCharacter = (PlayerCharacter)_characterList.Find(IsPlayerCharacter);
             return playerCharacter;
         }
         private bool IsPlayerCharacter(Character character)

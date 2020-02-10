@@ -17,7 +17,7 @@ namespace TextAdventureCharacter
             {
                 int attackTargetIndex = GetSupportingCharacters().FindIndex(c => c == attackTarget);
                 Attack(CorrectIndexPlus(attackTargetIndex));
-                this._isOnMove = false;
+                _isOnMove = false;
             }
         }
         protected abstract Character GetAttackTarget();

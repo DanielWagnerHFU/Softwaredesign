@@ -13,9 +13,9 @@ namespace TextAdventureMap
         protected Area _areaB;
         public Gateway(Area areaA, Area areaB)
         {
-            this._areaA = areaA;
+            _areaA = areaA;
             areaA.AddGateway(this);
-            this._areaB = areaB;
+            _areaB = areaB;
             areaB.AddGateway(this);
         }
         public virtual void ChangeArea(Character character)

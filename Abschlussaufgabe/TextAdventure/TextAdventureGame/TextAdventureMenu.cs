@@ -11,9 +11,9 @@ namespace TextAdventureGame
         private bool _continueMenu;
         public TextAdventureMenu()
         {
-            this._fileLoader = null;
-            this._game = null;
-            this._continueMenu = true;
+            _fileLoader = null;
+            _game = null;
+            _continueMenu = true;
         }
         public void StartMenuLoop()
         {
@@ -51,7 +51,7 @@ namespace TextAdventureGame
         }
         private void Quit()
         {
-            this._continueMenu = false;
+            _continueMenu = false;
         }
         private void SetXmlGamepath()
         {
@@ -62,9 +62,9 @@ namespace TextAdventureGame
             xmlpath += "/XML/";
             string fileName = Console.ReadLine();
             xmlpath += fileName + ".xml";
-            this._fileLoader = new TextAdventureFileLoader(xmlpath);
-            this._fileLoader.BuildGameObjects();
-            this._game = new TextAdventureGame(this._fileLoader.GetCharacters());
+            _fileLoader = new TextAdventureFileLoader(xmlpath);
+            _fileLoader.BuildGameObjects();
+            _game = new TextAdventureGame(_fileLoader.GetCharacters());
             }
             catch(System.IO.FileNotFoundException e)
             {
@@ -74,7 +74,7 @@ namespace TextAdventureGame
         }
         private void StartGame()
         {
-            this._game.StartGameLoop();
+            _game.StartGameLoop();
         }
     }
 }

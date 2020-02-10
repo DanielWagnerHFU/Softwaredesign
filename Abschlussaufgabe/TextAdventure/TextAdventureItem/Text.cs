@@ -11,13 +11,13 @@ namespace TextAdventureItem
         public Text(string name, string description, string text) 
         : base(name, description)
         {
-            this._text = text;
+            _text = text;
         }
         public override void UseOnCharacter(Character character, Character user)
         {
             if(CharacterIsPlayer(character) && CharacterIsPlayer(user))
             {
-                Console.WriteLine(this._text);
+                Console.WriteLine(_text);
             }
         }
         public override void UseOnGateway(Gateway gateway, Character user)

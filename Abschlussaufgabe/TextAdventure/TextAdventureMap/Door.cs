@@ -15,26 +15,26 @@ namespace TextAdventureMap
         public Door(Area areaA, Area areaB, string name, int keyHole, bool isOpen) 
         : base(areaA, areaB)
         {
-            this._keyHole = keyHole;
-            this._name = name;
-            this._isOpen = isOpen;
+            _keyHole = keyHole;
+            _name = name;
+            _isOpen = isOpen;
         }
         public override string GetDescription(Area callingArea){
             if(_isOpen == true)
             {
-                return "open " + this._name;
+                return "open " + _name;
             } 
             else 
             {
-                return "closed " + this._name;
+                return "closed " + _name;
             }
         }
         public override string GetName(Area callingArea){
-            return this._name;
+            return _name;
         }
         public string GetName()
         {
-            return this._name;
+            return _name;
         }
         public bool GetIsOpen()
         {
@@ -42,11 +42,11 @@ namespace TextAdventureMap
         }
         public void SetIsOpen(bool isOpen)
         {
-            this._isOpen = isOpen;
+            _isOpen = isOpen;
         }
         public int GetKeyHole()
         {
-            return this._keyHole;
+            return _keyHole;
         }
         public override void ChangeArea(Character character)
         {

@@ -13,7 +13,7 @@ namespace TextAdventureMap
         public Spawner(Area areaA, Area areaB, List<Character> characters) 
         : base(areaA, areaB)
         {
-            this._characters = characters;
+            _characters = characters;
         }
         public override void ChangeArea(Character character)
         {
@@ -24,7 +24,7 @@ namespace TextAdventureMap
             {
                 Character toSpawn = new MonsterNPC("Monster", "A Monster which will atack anyone! Be aware.");
                 destination.AddCharacter(toSpawn);
-                this._characters.Add(toSpawn);
+                _characters.Add(toSpawn);
             }
             character.MoveToArea(destination);
             character.SetIsOnMove(false);            

@@ -14,13 +14,13 @@ namespace TextAdventureGame
         private List<Character> _characterList;
         public TextAdventureFileLoader(string filepath)
         {
-            this._filepath = filepath;
-            this._xmlRootNode = GetRootNode(filepath);
-            this._characterList = new List<Character>();
+            _filepath = filepath;
+            _xmlRootNode = GetRootNode(filepath);
+            _characterList = new List<Character>();
         }
         public List<Character> GetCharacters()
         {
-            return this._characterList;
+            return _characterList;
         }        
         public void BuildGameObjects()
         {
@@ -37,7 +37,7 @@ namespace TextAdventureGame
         }
         private XmlNode GetAreasNode()
         {
-            return this._xmlRootNode.SelectSingleNode(".//Areas");
+            return _xmlRootNode.SelectSingleNode(".//Areas");
         }
         private XmlNode GetGatewaysNode()
         {
@@ -124,7 +124,7 @@ namespace TextAdventureGame
                     XmlNode itemsNode = characterNode.SelectSingleNode(".//Inventory");
                     BuildItemsForCharacter(character, itemsNode);
                     area.AddCharacter(character);
-                    this._characterList.Add(character);
+                    _characterList.Add(character);
                 }
             }
         }

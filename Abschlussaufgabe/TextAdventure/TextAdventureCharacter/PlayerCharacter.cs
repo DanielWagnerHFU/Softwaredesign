@@ -16,36 +16,36 @@ namespace TextAdventureCharacter
             _commandList = new List<Command>();
             InitializeCommands();
             _isOnMove = true;
-            this._strength = 10;
-            this._maxHealthPoints = 100;
-            this._healthPoints = maxHealthPoints;
+            _strength = 10;
+            _maxHealthPoints = 100;
+            _healthPoints = maxHealthPoints;
         }
         private void InitializeCommands()
         {
             //TODO - Add new Commands here
-            this._commandList.Add(new Command(new string[]{"commands","c"}, CommandHandlerCommands, "commands(c)"));
-            this._commandList.Add(new Command(new string[]{"get item description","gid"}, CommandHandlerGetItemDescription, "get item description(gid)"));
-            this._commandList.Add(new Command(new string[]{"look","l"}, CommandHandlerLook, "look(l)"));
-            this._commandList.Add(new Command(new string[]{"inventory","i"}, CommandHandlerInventory, "inventory(i)"));
-            this._commandList.Add(new Command(new string[]{"take","t"}, CommandHandlerTake, "take(t): <index>", 1));
-            this._commandList.Add(new Command(new string[]{"drop","d"}, CommandHandlerDrop, "drop(d): <index>", 1));
-            this._commandList.Add(new Command(new string[]{"equip","e"}, CommandHandlerEquip, "equip(e): <index>", 1));
-            this._commandList.Add(new Command(new string[]{"use item on gateway","uiog"}, CommandHandlerUseItemOnGateway, "use item on gateway(uiog): <index>", 1));
-            this._commandList.Add(new Command(new string[]{"use item on character","uioc"}, CommandHandlerUseItemOnCharacter, "use item on character(uioc): <index>", 1));
-            this._commandList.Add(new Command(new string[]{"use item","ui"}, CommandHandlerUseItem, "use item(ui)"));
-            this._commandList.Add(new Command(new string[]{"go to","gt"}, CommandHandlerGoTo, "go to(gt): <index>", 1));
-            this._commandList.Add(new Command(new string[]{"clear chat","cc"}, CommandHandlerClearChat, "clear chat(cc)"));
-            this._commandList.Add(new Command(new string[]{"talk to","tt"}, CommandHandlerTalkTo, "talk to(tt): <index>"));
-            this._commandList.Add(new Command(new string[]{"attack","a"}, CommandHandlerAttack, "attack(a): <index>", 1));
-            this._commandList.Add(new Command(new string[]{"quit","q"}, CommandHandlerQuit, "quit(q)"));
-            this._commandList.Add(new Command(new string[]{"status","s"}, CommandHandlerStatus, "status(s)"));
+            _commandList.Add(new Command(new string[]{"commands","c"}, CommandHandlerCommands, "commands(c)"));
+            _commandList.Add(new Command(new string[]{"get item description","gid"}, CommandHandlerGetItemDescription, "get item description(gid)"));
+            _commandList.Add(new Command(new string[]{"look","l"}, CommandHandlerLook, "look(l)"));
+            _commandList.Add(new Command(new string[]{"inventory","i"}, CommandHandlerInventory, "inventory(i)"));
+            _commandList.Add(new Command(new string[]{"take","t"}, CommandHandlerTake, "take(t): <index>", 1));
+            _commandList.Add(new Command(new string[]{"drop","d"}, CommandHandlerDrop, "drop(d): <index>", 1));
+            _commandList.Add(new Command(new string[]{"equip","e"}, CommandHandlerEquip, "equip(e): <index>", 1));
+            _commandList.Add(new Command(new string[]{"use item on gateway","uiog"}, CommandHandlerUseItemOnGateway, "use item on gateway(uiog): <index>", 1));
+            _commandList.Add(new Command(new string[]{"use item on character","uioc"}, CommandHandlerUseItemOnCharacter, "use item on character(uioc): <index>", 1));
+            _commandList.Add(new Command(new string[]{"use item","ui"}, CommandHandlerUseItem, "use item(ui)"));
+            _commandList.Add(new Command(new string[]{"go to","gt"}, CommandHandlerGoTo, "go to(gt): <index>", 1));
+            _commandList.Add(new Command(new string[]{"clear chat","cc"}, CommandHandlerClearChat, "clear chat(cc)"));
+            _commandList.Add(new Command(new string[]{"talk to","tt"}, CommandHandlerTalkTo, "talk to(tt): <index>"));
+            _commandList.Add(new Command(new string[]{"attack","a"}, CommandHandlerAttack, "attack(a): <index>", 1));
+            _commandList.Add(new Command(new string[]{"quit","q"}, CommandHandlerQuit, "quit(q)"));
+            _commandList.Add(new Command(new string[]{"status","s"}, CommandHandlerStatus, "status(s)"));
         }
         public override void MakeAMove(){
-            this._isOnMove = true;
+            _isOnMove = true;
             Console.WriteLine();
             CommandHandlerStatus(new string[]{});
             CommandHandlerLook(new string[]{});
-            while(this._isOnMove && this._isAlive)
+            while(_isOnMove && _isAlive)
             {
                 Console.WriteLine();
                 string userInput = EnterUserinput("What would you like to do? (write 'commands' for all options):");
@@ -90,15 +90,15 @@ namespace TextAdventureCharacter
         }        
         public override void GetHarmed(double damage)
         {
-            this._healthPoints -= damage;
+            _healthPoints -= damage;
             UpdateIsAlive();
         }
         protected override void UpdateIsAlive()
         {
-            if (this._healthPoints <= 0)
+            if (_healthPoints <= 0)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                this._isAlive = false;
+                _isAlive = false;
                 Console.WriteLine("\n\n\n");
                 Console.WriteLine("You died and so you lost! But just restart the game to get alive again ;D");
                 Console.ForegroundColor = ConsoleColor.White;
@@ -109,7 +109,7 @@ namespace TextAdventureCharacter
         {
             Character character = GetSupportingCharacters()[CorrectIndex(Convert.ToInt32(args[0]))];
             StartDialog(character);
-            this._isOnMove = false;
+            _isOnMove = false;
         }
         public override void StartDialog(Character character)
         {
@@ -121,10 +121,10 @@ namespace TextAdventureCharacter
         }
         private string[] GetCommandDescriptions()
         {
-            string[] commandDescriptions = new string[this._commandList.Count];
-            for(int i = 0; i < this._commandList.Count; i++)
+            string[] commandDescriptions = new string[_commandList.Count];
+            for(int i = 0; i < _commandList.Count; i++)
             {
-                commandDescriptions[i] = this._commandList[i].GetDescription();
+                commandDescriptions[i] = _commandList[i].GetDescription();
             }
             return commandDescriptions;
         }
@@ -135,7 +135,7 @@ namespace TextAdventureCharacter
         private void CommandHandlerLook(string[] args)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine(this._location.GetDescription());
+            Console.WriteLine(_location.GetDescription());
             Console.ForegroundColor = ConsoleColor.Green;
             WriteItems();
             CommandHandlerInventory(new string[]{});
@@ -145,13 +145,13 @@ namespace TextAdventureCharacter
         }
         private void WriteAdjacenAreas()
         {
-            List<Gateway> gateways = this._location.GetGateways();
+            List<Gateway> gateways = _location.GetGateways();
             if(gateways.Count != 0)
             {
                 Console.WriteLine("A list of gateways:");
                 for(int i = 0; i < gateways.Count; i++)
                 {
-                    Console.WriteLine(" " + (i+1) + ":" + gateways[i].GetDescription(this._location));
+                    Console.WriteLine(" " + (i+1) + ":" + gateways[i].GetDescription(_location));
                 }
             }
         }
@@ -176,7 +176,7 @@ namespace TextAdventureCharacter
         }
         private void WriteItems()
         {
-            List<Item> items = this._location.GetItems();
+            List<Item> items = _location.GetItems();
             if(items.Count != 0)
             {
                 Console.WriteLine("A list of items in the area:");
@@ -203,7 +203,7 @@ namespace TextAdventureCharacter
         }
         private void CommandHandlerTake(string[] args)
         {
-            if(this._inventory.Count <= this._maxInventorySlots)
+            if(_inventory.Count <= _maxInventorySlots)
             {
                 try
                 {
@@ -216,7 +216,7 @@ namespace TextAdventureCharacter
             }
             else
             {
-                Console.WriteLine("Your inventory is full. You only have " + this._maxInventorySlots + " free itemslots!");
+                Console.WriteLine("Your inventory is full. You only have " + _maxInventorySlots + " free itemslots!");
             }
         }
         private void CommandHandlerDrop(string[] args)
@@ -285,7 +285,7 @@ namespace TextAdventureCharacter
         }
         private void CommandHandlerUseItemOnGateway(string[] args)
         {
-            if(this._equippedItem != null)
+            if(_equippedItem != null)
             {
                 try
                 {
@@ -303,7 +303,7 @@ namespace TextAdventureCharacter
         }
         private void CommandHandlerUseItemOnCharacter(string[] args)
         {
-            if(this._equippedItem != null)
+            if(_equippedItem != null)
             {
                 try
                 {
@@ -321,10 +321,10 @@ namespace TextAdventureCharacter
         }
         private void CommandHandlerUseItem(string[] args)
         {
-            if(this._equippedItem != null)
+            if(_equippedItem != null)
             {
                 UseEquippedItem();
-                this._isOnMove = false;
+                _isOnMove = false;
             }
             else
             {
@@ -333,8 +333,8 @@ namespace TextAdventureCharacter
         }
         private void CommandHandlerQuit(string[] args)
         {
-            this._isAlive = false;
-            this._isOnMove = false;
+            _isAlive = false;
+            _isOnMove = false;
         }
         public static PlayerCharacter BuildFromXmlNode(XmlNode characterNode)
         {

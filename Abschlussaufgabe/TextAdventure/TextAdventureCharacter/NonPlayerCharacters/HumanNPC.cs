@@ -10,10 +10,10 @@ namespace TextAdventureCharacter
         public HumanNPC(string name, string description) 
         : base(name, description)
         {
-            this.moodAboutCharacters = new Dictionary<Character, double>();
-            this._maxHealthPoints = 50;
-            this._healthPoints = 50;
-            this._strength = 10;
+            _moodAboutCharacters = new Dictionary<Character, double>();
+            _maxHealthPoints = 50;
+            _healthPoints = 50;
+            _strength = 10;
         }
         public override void GetAttacked(double damage, Character attacker)
         {
@@ -21,9 +21,9 @@ namespace TextAdventureCharacter
             ChangeMood(attacker, _attackMoodChange);
         }
         public override void MakeAMove(){
-            this._isOnMove = true;
+            _isOnMove = true;
             ManageAttackBehaviour();
-            if(this._isOnMove)
+            if(_isOnMove)
             {
                 ManageRoamingBehaviour(50);
             }
@@ -31,9 +31,9 @@ namespace TextAdventureCharacter
         protected override Character GetAttackTarget()
         {
             Character possibleAttackTarget = GetLowestMoodCharacter();
-            if(possibleAttackTarget != null && moodAboutCharacters.ContainsKey(possibleAttackTarget))
+            if(possibleAttackTarget != null && _moodAboutCharacters.ContainsKey(possibleAttackTarget))
             {
-                double mood = moodAboutCharacters[possibleAttackTarget];
+                double mood = _moodAboutCharacters[possibleAttackTarget];
                 if(mood < _moodAgressionThreshold){
                     return possibleAttackTarget;
                 }  
@@ -49,7 +49,7 @@ namespace TextAdventureCharacter
                 List<Character> moodCharacters = new List<Character>();
                 foreach(Character characterAlive in charactersAlive)
                 {
-                    if(moodAboutCharacters.ContainsKey(characterAlive))
+                    if(_moodAboutCharacters.ContainsKey(characterAlive))
                         moodCharacters.Add(characterAlive);
                 }
                 if(moodCharacters.Count > 0)
@@ -57,7 +57,7 @@ namespace TextAdventureCharacter
                     Character lowestMoodCharacter = moodCharacters[0];
                     foreach(Character character in moodCharacters)
                     {
-                        if(moodAboutCharacters[character] < moodAboutCharacters[lowestMoodCharacter])
+                        if(_moodAboutCharacters[character] < _moodAboutCharacters[lowestMoodCharacter])
                             lowestMoodCharacter = character;
                     }
                     return lowestMoodCharacter;

@@ -11,19 +11,19 @@ namespace TextAdventureCharacter
         private int _argumentsCount;
         public Command(string[] commands, ParameterMethod<string> methodToCall, string description, int argumentsCount = 0)
         {
-            this._commandList = commands;
-            this._methodToCall = methodToCall;
-            this._description = description;
-            this._argumentsCount = argumentsCount;
+            _commandList = commands;
+            _methodToCall = methodToCall;
+            _description = description;
+            _argumentsCount = argumentsCount;
         }
         public string GetDescription()
         {
-            return this._description;
+            return _description;
         }
         public bool IsEqualToCommand(string commandString)
         {
             string[] commandSplitString = commandString.Split(":", StringSplitOptions.None);
-            if(Array.Exists(this._commandList, command => command == commandSplitString[0].TrimEnd(' ')))
+            if(Array.Exists(_commandList, command => command == commandSplitString[0].TrimEnd(' ')))
             {
                 return true;
             } 
@@ -51,11 +51,11 @@ namespace TextAdventureCharacter
         }
         public ParameterMethod<string> GetMethodToCall()
         {
-            return this._methodToCall;
+            return _methodToCall;
         }
         public int GetArgumentsCount()
         {
-            return this._argumentsCount;
+            return _argumentsCount;
         }
     }
 }
