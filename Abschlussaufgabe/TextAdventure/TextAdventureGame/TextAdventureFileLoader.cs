@@ -62,6 +62,8 @@ namespace TextAdventureGame
                     return Door.BuildFromXmlNode(gatewayNode, areaList);
                 case "Spawner":
                     return Spawner.BuildFromXmlNode(gatewayNode, areaList, _characterList);
+                case "Portal":
+                    return Portal.BuildFromXmlNode(gatewayNode, areaList);
                 default:
                     throw new Exception("Gateway build failed - No type");
             }
@@ -109,6 +111,8 @@ namespace TextAdventureGame
                     return Text.BuildFromXmlNode(itemNode);
                 case "Potion":
                     return Potion.BuildFromXmlNode(itemNode);
+                case "DamageAmplifier":
+                    return DamageAmplifier.BuildFromXmlNode(itemNode);
                 default:
                     throw new Exception("Item build failed - No type");
             }

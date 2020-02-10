@@ -16,9 +16,9 @@ namespace TextAdventureCharacter
             _commandList = new List<Command>();
             InitializeCommands();
             _isOnMove = true;
-            _strength = 10;
-            _maxHealthPoints = 100;
-            _healthPoints = maxHealthPoints;
+            _strength = strength;
+            _maxHealthPoints = maxHealthPoints;
+            _healthPoints = healthPoints;
         }
         private void InitializeCommands()
         {

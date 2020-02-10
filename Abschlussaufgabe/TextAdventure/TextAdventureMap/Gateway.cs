@@ -18,6 +18,12 @@ namespace TextAdventureMap
             _areaB = areaB;
             areaB.AddGateway(this);
         }
+        public Gateway(Area area)
+        {
+            _areaA = area;
+            _areaB = area;
+            area.AddGateway(this);            
+        }
         public virtual void ChangeArea(Character character)
         {
             character.MoveToArea(GetDestination(character.GetLocation()));
@@ -31,7 +37,7 @@ namespace TextAdventureMap
         {
             return GetName(callingArea);
         }
-        public string GetDestinationName(Area callingArea)
+        private string GetDestinationName(Area callingArea)
         {
             return (callingArea == _areaA)? _areaB.GetName() : _areaA.GetName();
         }

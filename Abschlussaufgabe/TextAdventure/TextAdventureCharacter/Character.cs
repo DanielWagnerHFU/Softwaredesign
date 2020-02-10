@@ -127,7 +127,7 @@ namespace TextAdventureCharacter
         }
         protected virtual double GetTotalAttackDamage()
         {
-            if (_equippedItem.GetType() == typeof(DamageAmplifier))
+            if (_equippedItem != null && _equippedItem.GetType() == typeof(DamageAmplifier))
             {
                 DamageAmplifier damageAmplifier = (DamageAmplifier)_equippedItem;
                 return _strength * damageAmplifier.GetMultiplicity();
