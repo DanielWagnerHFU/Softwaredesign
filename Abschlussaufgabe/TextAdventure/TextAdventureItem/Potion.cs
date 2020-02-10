@@ -23,6 +23,7 @@ namespace TextAdventureItem
             {
                 character.GetHealed(_hpChange);
             }
+            user.SetIsOnMove(false);
         }
         public override void UseOnGateway(Gateway gateway, Character user)
         {

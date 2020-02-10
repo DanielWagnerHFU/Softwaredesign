@@ -276,7 +276,11 @@ namespace TextAdventureCharacter
         }
         public override void GetAttacked(double damage, Character attacker)
         {
-            Console.WriteLine("You have been attacked by " + attacker.GetName());
+            GetHarmed(damage);
+            if(attacker.GetType() != typeof(PlayerCharacter))
+                Console.WriteLine("You have been attacked by " + attacker.GetName());
+            else
+                Console.WriteLine("You just harmed yourself idiot");
             GetHarmed(damage);
         }
         private void CommandHandlerUseItemOnGateway(string[] args)

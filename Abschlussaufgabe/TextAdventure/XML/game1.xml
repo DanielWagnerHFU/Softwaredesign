@@ -2,7 +2,11 @@
     <Areas>
         <Area type="Area" uin="1" name="HFU B-Building" description="This is the B-Building of the HFU.">           
             <Characters>
-                <Character type="Player" name="player" description="the main player" strength="1.0" hp="100" maxhp="100"></Character>
+                <Character type="Player" name="player" description="the main player" strength="1.0" hp="100" maxhp="100">
+                    <Inventory>
+                        <Item type="Potion" name="potion" description="use to change hp" hpChange="-1"></Item>
+                    </Inventory>
+                </Character>
                 <Character type="HumanNPC" name="Felix" description="This is Felix your friend">
                     <DialogNode mood="0" playerText="" npcText="hello">
                         <DialogNode mood="0" playerText="hello yo" npcText="bye"></DialogNode>
@@ -11,10 +15,7 @@
                 </Character>
             </Characters>
         </Area>
-        <Area type="Area" uin="2" name="HFU A-Building" description="This is the A-Building of the HFU.">
-        </Area>
     </Areas>
     <Gateways>
-        <Gateway type="Gateway" uinA="1" uinB="2"></Gateway>
     </Gateways>
 </TextAdventureGame>
