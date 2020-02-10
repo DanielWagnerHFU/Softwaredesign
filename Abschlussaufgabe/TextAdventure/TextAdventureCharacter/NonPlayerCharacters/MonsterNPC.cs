@@ -14,7 +14,7 @@ namespace TextAdventureCharacter
             this.moodAboutCharacters = new Dictionary<Character, double>();
             this._maxHealthPoints = 50;
             this._healthPoints = 50;
-            this._strength = 10;
+            this._strength = 20;
         }
         public override void GetAttacked(double damage, Character attacker)
         {
