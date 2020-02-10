@@ -55,6 +55,8 @@ namespace TextAdventureGame
         }
         private void SetXmlGamepath()
         {
+            try
+            {
             Console.Write("Enter the xml filename (without .xml): ");
             string xmlpath = Directory.GetCurrentDirectory();
             xmlpath += "/XML/";
@@ -63,6 +65,12 @@ namespace TextAdventureGame
             this._fileLoader = new TextAdventureFileLoader(xmlpath);
             this._fileLoader.BuildGameObjects();
             this._game = new TextAdventureGame(this._fileLoader.GetCharacters());
+            }
+            catch(System.IO.FileNotFoundException e)
+            {
+                Console.WriteLine(e.Message);
+                SetXmlGamepath();
+            }
         }
         private void StartGame()
         {

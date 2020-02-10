@@ -31,7 +31,7 @@ namespace TextAdventureCharacter
         protected override Character GetAttackTarget()
         {
             Character possibleAttackTarget = GetLowestMoodCharacter();
-            if(possibleAttackTarget != null && possibleAttackTarget.GetIsAlive())
+            if(possibleAttackTarget != null && moodAboutCharacters.ContainsKey(possibleAttackTarget))
             {
                 double mood = moodAboutCharacters[possibleAttackTarget];
                 if(mood < _moodAgressionThreshold){
@@ -42,22 +42,26 @@ namespace TextAdventureCharacter
         }
         private Character GetLowestMoodCharacter()
         {
-            if(moodAboutCharacters.Count != 0)
+            List<Character> characters = GetSupportingCharacters();
+            List<Character> charactersAlive = characters.FindAll(c => c.GetIsAlive() == true);
+            if(charactersAlive.Count > 0)
             {
-                List<Character> characters = GetSupportingCharacters();
-                List<double> moods = new List<double>();
-                foreach(Character character in characters)
+                List<Character> moodCharacters = new List<Character>();
+                foreach(Character characterAlive in charactersAlive)
                 {
-                    if(moodAboutCharacters.ContainsKey(character))
-                        moods.Add(moodAboutCharacters[character]);
+                    if(moodAboutCharacters.ContainsKey(characterAlive))
+                        moodCharacters.Add(characterAlive);
                 }
-                double lowestMood = moodAboutCharacters[characters[0]];
-                foreach (double mood in moodAboutCharacters.Values)
+                if(moodCharacters.Count > 0)
                 {
-                    if (mood < lowestMood) lowestMood = mood;
+                    Character lowestMoodCharacter = moodCharacters[0];
+                    foreach(Character character in moodCharacters)
+                    {
+                        if(moodAboutCharacters[character] < moodAboutCharacters[lowestMoodCharacter])
+                            lowestMoodCharacter = character;
+                    }
+                    return lowestMoodCharacter;
                 }
-                Character target = characters[moods.IndexOf(lowestMood)];
-                return (target.GetIsAlive())? target : null;
             }
             return null;
         }

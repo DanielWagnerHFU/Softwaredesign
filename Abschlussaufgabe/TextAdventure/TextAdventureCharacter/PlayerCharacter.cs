@@ -151,7 +151,7 @@ namespace TextAdventureCharacter
                     } 
                     else 
                     {
-                        Console.WriteLine(" " + i + ":" + supportingCharacters[i].GetName() + " (dead)");
+                        Console.WriteLine(" " + (i+1) + ":" + supportingCharacters[i].GetName() + " (dead)");
                     }
                 }
             }
