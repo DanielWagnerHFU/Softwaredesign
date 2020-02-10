@@ -44,8 +44,13 @@ namespace TextAdventureCharacter
         {
             if(moodAboutCharacters.Count != 0)
             {
-                List<Character> characters = new List<Character>(moodAboutCharacters.Keys);
-                List<double> moods = new List<double>(moodAboutCharacters.Values);
+                List<Character> characters = _location.GetSupportingCharacters(this);
+                List<double> moods = new List<double>();
+                foreach(Character character in characters)
+                {
+                    if(moodAboutCharacters.ContainsKey(character))
+                        moods.Add(moodAboutCharacters[character]);
+                }
                 double lowestMood = moodAboutCharacters[characters[0]];
                 foreach (double mood in moodAboutCharacters.Values)
                 {
