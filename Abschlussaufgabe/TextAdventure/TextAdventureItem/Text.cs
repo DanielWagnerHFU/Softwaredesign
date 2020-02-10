@@ -18,15 +18,10 @@ namespace TextAdventureItem
             if(CharacterIsPlayer(character) && CharacterIsPlayer(user))
             {
                 Console.WriteLine(_text);
+                UpdateItem(user);
             }
         }
-        public override void UseOnGateway(Gateway gateway, Character user)
-        {
-            if(CharacterIsPlayer(user))
-            {
-                Console.WriteLine("You cannot use the item on this gateway");
-            }            
-        }
+
         public static Text BuildFromXmlNode(XmlNode itemNode)
         {
             XmlAttributeCollection attributes = itemNode.Attributes;

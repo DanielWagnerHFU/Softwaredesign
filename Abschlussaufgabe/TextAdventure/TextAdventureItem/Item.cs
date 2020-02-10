@@ -1,6 +1,7 @@
 using System;
 using TextAdventureCharacter;
 using TextAdventureMap;
+using System.Collections.Generic;
 
 namespace TextAdventureItem
 {
@@ -8,13 +9,19 @@ namespace TextAdventureItem
     {
         protected string _name;
         protected string _description;
+        protected List<Item> _spawnOnUseItems;
         public Item(string name, string description){
             _name = name;
             _description = description;
+            _spawnOnUseItems = new List<Item>();
         }
         public string GetName()
         {
             return _name;
+        }
+        public void AddSpawnItem(Item item)
+        {
+            _spawnOnUseItems.Add(item);
         }
         public string GetDescription()
         {
@@ -23,6 +30,16 @@ namespace TextAdventureItem
         protected bool CharacterIsPlayer(Character character)
         {
             return(character.GetType() == typeof(PlayerCharacter))? true : false;
+        }
+        protected void UpdateItem(Character user)
+        {
+            if(user.GetType() == typeof(PlayerCharacter))
+            {
+                foreach(Item item in _spawnOnUseItems)
+                {
+                    user.GetLocation().GetItems().Add(item);
+                }
+            }
         }
         public virtual void UseOnGateway(Gateway gateway, Character user)
         {

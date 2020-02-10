@@ -74,8 +74,8 @@ namespace TextAdventureGame
             foreach(XmlNode areaNode in areaNodeList)
             {
                 Area area = BuildAreaObject(areaNode);
-                BuildCharactersForArea(area, areaNode.SelectSingleNode(".//Characters"));
-                BuildItemsForArea(area, areaNode.SelectSingleNode("./Items"));
+                BuildCharactersForArea(area, areaNode);
+                BuildItemsForArea(area, areaNode);
                 areaList.Add(area);
             }
             return areaList;
@@ -90,11 +90,11 @@ namespace TextAdventureGame
                     throw new Exception("Area build failed - No type");
             }
         }
-        private void BuildItemsForArea(Area area, XmlNode itemsNode)
+        private void BuildItemsForArea(Area area, XmlNode areaNode)
         {
-            if(itemsNode != null)
+            if(areaNode != null)
             {
-                XmlNodeList itemNodeList = itemsNode.SelectNodes(".//Item");
+                XmlNodeList itemNodeList = areaNode.SelectNodes("child::Item");
                 foreach(XmlNode itemNode in itemNodeList)
                 {
                     area.AddItem(BuildItemObject(itemNode));
@@ -103,30 +103,40 @@ namespace TextAdventureGame
         }
         private Item BuildItemObject(XmlNode itemNode)
         {
+            Item item;
             switch(itemNode.Attributes[0].Value)
             {
                 case "Key":
-                    return Key.BuildFromXmlNode(itemNode);
+                    item = Key.BuildFromXmlNode(itemNode);break;
                 case "Text":
-                    return Text.BuildFromXmlNode(itemNode);
+                    item = Text.BuildFromXmlNode(itemNode);break;
                 case "Potion":
-                    return Potion.BuildFromXmlNode(itemNode);
+                    item = Potion.BuildFromXmlNode(itemNode);break;
                 case "DamageAmplifier":
-                    return DamageAmplifier.BuildFromXmlNode(itemNode);
+                    item = DamageAmplifier.BuildFromXmlNode(itemNode);break;
                 default:
                     throw new Exception("Item build failed - No type");
             }
+            ItemAddSpawnItems(item, itemNode);
+            return item;
         }
-        private void BuildCharactersForArea(Area area, XmlNode charactersNode)
+        private void ItemAddSpawnItems(Item item, XmlNode itemNode)
         {
-            if(charactersNode != null)
+            XmlNodeList itemNodes = itemNode.SelectNodes("child::*");
+            foreach(XmlNode itemN in itemNodes)
             {
-                XmlNodeList characterNodeList = charactersNode.SelectNodes(".//Character");
+                item.AddSpawnItem(BuildItemObject(itemN));
+            }
+        }
+        private void BuildCharactersForArea(Area area, XmlNode areaNode)
+        {
+            if(areaNode != null)
+            {
+                XmlNodeList characterNodeList = areaNode.SelectNodes("child::Character");
                 foreach(XmlNode characterNode in characterNodeList)
                 {
                     Character character = BuildCharacterObject(characterNode);
-                    XmlNode itemsNode = characterNode.SelectSingleNode(".//Inventory");
-                    BuildItemsForCharacter(character, itemsNode);
+                    BuildItemsForCharacter(character, characterNode);
                     area.AddCharacter(character);
                     _characterList.Add(character);
                 }
@@ -164,7 +174,7 @@ namespace TextAdventureGame
         private DialogNode BuildDialogNodeObject(XmlNode dialogNode)
         {
             DialogNode dialog = DialogNode.BuildFromXmlNode(dialogNode);
-            XmlNodeList dialogNodes = dialogNode.SelectNodes("child::*");
+            XmlNodeList dialogNodes = dialogNode.SelectNodes("child::DialogNode");
             foreach(XmlNode xmlDialogNode in dialogNodes)
             {
                 dialog.AddDialogChild(BuildDialogNodeObject(xmlDialogNode));
@@ -175,7 +185,7 @@ namespace TextAdventureGame
         {
             if(itemsNode != null)
             {
-                XmlNodeList itemNodeList = itemsNode.SelectNodes(".//Item");
+                XmlNodeList itemNodeList = itemsNode.SelectNodes("child::Item");
                 foreach(XmlNode itemNode in itemNodeList)
                 {
                     character.AddItem(BuildItemObject(itemNode));

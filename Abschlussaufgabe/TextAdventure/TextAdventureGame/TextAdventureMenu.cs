@@ -23,8 +23,15 @@ namespace TextAdventureGame
                 Console.Clear();
                 ShowOptions();
                 Console.Write("Option: ");
-                int option = Int32.Parse(Console.ReadLine());
-                Execute(option);
+                try
+                {
+                    int option = Int32.Parse(Console.ReadLine());
+                    Execute(option);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
             }
         }
         private void Execute(int option)
@@ -57,7 +64,7 @@ namespace TextAdventureGame
         {
             try
             {
-            Console.Write("Enter the xml filename (without .xml): ");
+            Console.Write("Enter the xml filename: ");
             string xmlpath = Directory.GetCurrentDirectory();
             xmlpath += "/XML/";
             string fileName = Console.ReadLine();
@@ -67,6 +74,11 @@ namespace TextAdventureGame
             _game = new TextAdventureGame(_fileLoader.GetCharacters());
             }
             catch(System.IO.FileNotFoundException e)
+            {
+                Console.WriteLine(e.Message);
+                SetXmlGamepath();
+            }
+            catch(Exception e)
             {
                 Console.WriteLine(e.Message);
                 SetXmlGamepath();

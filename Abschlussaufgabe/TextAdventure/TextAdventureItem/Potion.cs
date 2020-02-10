@@ -23,14 +23,8 @@ namespace TextAdventureItem
             {
                 character.GetHealed(_hpChange);
             }
+            UpdateItem(user);
             user.SetIsOnMove(false);
-        }
-        public override void UseOnGateway(Gateway gateway, Character user)
-        {
-            if(CharacterIsPlayer(user))
-            {
-                Console.WriteLine("You cannot use the item on this gateway");
-            }            
         }
         public static Potion BuildFromXmlNode(XmlNode itemNode)
         {

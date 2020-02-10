@@ -1,19 +1,7 @@
 <TextAdventureGame>
     <Areas>
-        <Area type="Area" uin="1" name="HFU B-Building" description="This is the B-Building of the HFU.">           
-            <Characters>
-                <Character type="Player" name="player" description="the main player" strength="1.0" hp="100" maxhp="100">
-                    <Inventory>
-                        <Item type="Potion" name="potion" description="use to change hp" hpChange="-1"></Item>
-                    </Inventory>
-                </Character>
-                <Character type="HumanNPC" name="Felix" description="This is Felix your friend">
-                    <DialogNode mood="0" playerText="" npcText="hello">
-                        <DialogNode mood="0" playerText="hello yo" npcText="bye"></DialogNode>
-                        <DialogNode mood="0" playerText="hello bro" npcText="bye"></DialogNode>                       
-                    </DialogNode>
-                </Character>
-            </Characters>
+        <Area type="Area" uin="1" name="A dark room" description="You are in a dark room and there seems to be no way out. Maybe you should read the text on the paper">           
+            <Character type="Player" name="player" description="" strength="10" hp="100" maxhp="100"></Character>
         </Area>
     </Areas>
     <Gateways>

@@ -1,0 +1,18 @@
+<TextAdventureGame>
+    <Areas>
+        <Area type="Area" uin="2" name="HFU B-Building" description="This is the B-Building of the HFU. There are so many rooms connected but they are locked...">           
+            <Characters>
+                <Character type="Player" name="player" description="the main player" strength="1.0" hp="100" maxhp="100">
+                    <Inventory>
+                        <Item type="Text" name="paper" description="A paper you might use to read its text." text="Tip: 1">
+                            <Item type="Text" name="paper" description="A paper you might use to read its text." text="Tip: 2">
+                            </Item>
+                        </Item>
+                    </Inventory>
+                </Character>
+            </Characters>
+        </Area>
+    </Areas>
+    <Gateways>
+    </Gateways>
+</TextAdventureGame>

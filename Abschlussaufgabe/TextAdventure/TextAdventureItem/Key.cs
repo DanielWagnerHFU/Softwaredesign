@@ -13,13 +13,6 @@ namespace TextAdventureItem
         {
             _key = key;
         }
-        public override void UseOnCharacter(Character character, Character user)
-        {
-            if(CharacterIsPlayer(user))
-            {
-                Console.WriteLine("ERROR: You cannot use the item on this character");
-            }   
-        }
         private void SwitchDoorIsOpen(Door door)
         {
             if(door.GetIsOpen())
@@ -39,6 +32,7 @@ namespace TextAdventureItem
             {
                 SwitchDoorIsOpen(door);
                 user.SetIsOnMove(false);
+                UpdateItem(user);
             }
             else
             {
