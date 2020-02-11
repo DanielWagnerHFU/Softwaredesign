@@ -121,7 +121,7 @@ namespace TextAdventureCharacter
             try
             {
                 Character character = GetSupportingCharacters()[CorrectIndex(characterIndex)];
-                if (character != null && character.GetIsAlive())
+                if (character?.GetIsAlive() == true)
                 {
                     character.GetAttacked(GetTotalAttackDamage(), this);
                     _isOnMove = false;
@@ -132,10 +132,12 @@ namespace TextAdventureCharacter
                 Console.WriteLine(e.Message);
             }
         }
+
         protected List<Character> GetSupportingCharacters()
         {
             return _location.GetSupportingCharacters(this);
         }
+
         protected virtual double GetTotalAttackDamage()
         {
             if (_equippedItem != null && _equippedItem.GetType() == typeof(DamageAmplifier))
@@ -148,6 +150,7 @@ namespace TextAdventureCharacter
                 return _strength;
             }
         }
+
         protected void TakeItem(int itemIndex)
         {
             if (_inventory.Count <= _maxInventorySlots)
@@ -164,6 +167,7 @@ namespace TextAdventureCharacter
                 }
             }
         }
+
         protected void DropItem(int itemIndex)
         {
             try
@@ -177,6 +181,7 @@ namespace TextAdventureCharacter
                 Console.WriteLine(e.Message);
             }
         }
+
         protected Character FindCharacter(string charactername)
         {
             Character character = GetSupportingCharacters().Find(_character => _character.GetName() == charactername);
@@ -184,11 +189,12 @@ namespace TextAdventureCharacter
                 Console.WriteLine("ERROR: no such character found");
             return character;
         }
+
         protected Item FindItem(int itemIndex)
         {
             if (itemIndex >= _location.GetItems().Count)
             {
-                itemIndex = itemIndex - _location.GetItems().Count;
+                itemIndex -= _location.GetItems().Count;
                 return _inventory[itemIndex];
             }
             else
@@ -196,6 +202,7 @@ namespace TextAdventureCharacter
                 return _location.GetItems()[itemIndex];
             }
         }
+
         protected void SwitchActiveItem(int itemIndex)
         {
             try
@@ -222,10 +229,12 @@ namespace TextAdventureCharacter
                 Console.WriteLine(e.Message);
             }
         }
+
         protected void UseEquippedItem()
         {
             _equippedItem.UseOnCharacter(this, this);
         }
+
         protected void UseEquippedItemOnCharacter(int characterIndex)
         {
             try
@@ -239,6 +248,7 @@ namespace TextAdventureCharacter
                 Console.WriteLine(e.Message);
             }
         }
+
         protected void UseEquippedItemOnGateway(int gatewayIndex)
         {
             try
@@ -251,49 +261,34 @@ namespace TextAdventureCharacter
             {
                 Console.WriteLine(e.Message);
             }
-
         }
+
         protected void ChangeArea(int gatewayIndex)
         {
             gatewayIndex = CorrectIndex(gatewayIndex);
             try
             {
                 Gateway gateway = _location.GetGateways()[gatewayIndex];
-                if (gateway != null)
-                {
-                    gateway.ChangeArea(this);
-                }
+                gateway?.ChangeArea(this);
             }
             catch (ArgumentOutOfRangeException e)
             {
                 Console.WriteLine(e.Message);
             }
         }
-        private Item FindItemInInventory(string itemname)
-        {
-            Item item = _inventory.Find(_item => _item.GetName() == itemname);
-            if (item == null)
-                Console.WriteLine("ERROR: no such item found");
-            return item;
-        }
+
         protected int CorrectIndex(int index)
         {
             return index - 1;
         }
+
         public void GetHealed(double hpBoost)
         {
             _healthPoints += hpBoost;
-            if(_healthPoints > _maxHealthPoints)
+            if (_healthPoints > _maxHealthPoints)
             {
                 _healthPoints = _maxHealthPoints;
             }
-        }
-        private Item FindItemInLocation(string itemname)
-        {
-            Item item = _location.GetItems().Find(_item => _item.GetName() == itemname);
-            if (item == null)
-                Console.WriteLine("ERROR: no such item found");
-            return item;
         }
     }
 }

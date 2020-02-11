@@ -6,11 +6,12 @@ namespace TextAdventureCharacter
 {
     public sealed class DialogNode
     {
-        private double _moodChange;
-        private string _playerText;
+        private readonly double _moodChange;
+        private readonly string _playerText;
 
-        private string _npcText;
-        List<DialogNode> _dialogChildren;
+        private readonly string _npcText;
+        readonly List<DialogNode> _dialogChildren;
+
         public DialogNode(double moodChange, string playerText, string npcText)
         {
             _moodChange = moodChange;
@@ -18,14 +19,17 @@ namespace TextAdventureCharacter
             _npcText = npcText;
             _dialogChildren = new List<DialogNode>();
         }
+
         public void AddDialogChild(DialogNode dialogNode)
         {
             _dialogChildren.Add(dialogNode);
         }
+
         public string GetPlayerText()
         {
             return _playerText;
         }
+
         public void UseDialogNode(PlayerCharacter player, NPC talkPartner)
         {
             talkPartner.ChangeMood(player, _moodChange);
@@ -38,6 +42,7 @@ namespace TextAdventureCharacter
             Answers(player, talkPartner);
             Console.ForegroundColor = ConsoleColor.White;
         }
+
         private void Answers(PlayerCharacter player, NPC talkPartner)
         {
             if(_dialogChildren.Count != 0)
@@ -45,9 +50,7 @@ namespace TextAdventureCharacter
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("Answers: ");
                 for(int i = 0; i < _dialogChildren.Count; i++)
-                {
-                    Console.WriteLine("  " + (i+1) + ": " + _dialogChildren[i].GetPlayerText());
-                }
+                    Console.WriteLine("  " + (i + 1) + ": " + _dialogChildren[i].GetPlayerText());
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.Write("Type in a number for your answer: ");
                 string input = Console.ReadLine();
@@ -63,6 +66,7 @@ namespace TextAdventureCharacter
                 }
             }
         }
+
         public static DialogNode BuildFromXmlNode(XmlNode dialogNode)
         {
             XmlAttributeCollection attributes = dialogNode.Attributes;
