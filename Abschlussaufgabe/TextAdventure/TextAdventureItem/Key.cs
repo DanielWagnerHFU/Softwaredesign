@@ -37,7 +37,7 @@ namespace TextAdventureItem
                 user.SetIsOnMove(false);
                 UpdateItem(user);
             }
-            else
+            else if (user.GetType() == typeof(PlayerCharacter))
             {
                 Console.WriteLine("Thats the wrong key");
             }
@@ -52,7 +52,8 @@ namespace TextAdventureItem
             }
             else
             {
-                Console.WriteLine("ERROR: This is not a door");
+                if(user.GetType() == typeof(PlayerCharacter))
+                    Console.WriteLine("ERROR: This is not a door");
             }
         }
 
