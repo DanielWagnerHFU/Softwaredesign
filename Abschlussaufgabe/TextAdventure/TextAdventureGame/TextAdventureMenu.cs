@@ -20,7 +20,7 @@ namespace TextAdventureGame
         public void StartMenuLoop()
         {
             SetXmlGamepath();
-            while(_continueMenu)
+            while (_continueMenu)
             {
                 Console.Clear();
                 Console.WriteLine("Gamepath: " + _fileLoader.GetPath());
@@ -40,7 +40,7 @@ namespace TextAdventureGame
 
         private void Execute(int option)
         {
-            switch(option)
+            switch (option)
             {
                 case 1:
                     SetXmlGamepath();
@@ -56,10 +56,10 @@ namespace TextAdventureGame
 
         private void ShowOptions()
         {
-                Console.WriteLine("Type in one of the following option-numbers");
-                Console.WriteLine("1: change XML gamepath");
-                Console.WriteLine("2: start game");
-                Console.WriteLine("3: quit");
+            Console.WriteLine("Type in one of the following option-numbers");
+            Console.WriteLine("1: change XML gamepath");
+            Console.WriteLine("2: start game");
+            Console.WriteLine("3: quit");
         }
 
         private void Quit()
@@ -71,16 +71,16 @@ namespace TextAdventureGame
         {
             try
             {
-            Console.Write("Enter the xml filename: ");
-            string xmlpath = Directory.GetCurrentDirectory();
-            xmlpath += "/XML/";
-            string fileName = Console.ReadLine();
-            xmlpath += fileName + ".xml";
-            _fileLoader = new TextAdventureFileLoader(xmlpath);
-            _fileLoader.BuildGameObjects();
-            _game = new TextAdventureGame(_fileLoader.GetCharacters());
+                Console.Write("Enter the xml filename: ");
+                string xmlpath = Directory.GetCurrentDirectory();
+                xmlpath += "/XML/";
+                string fileName = Console.ReadLine();
+                xmlpath += fileName + ".xml";
+                _fileLoader = new TextAdventureFileLoader(xmlpath);
+                _fileLoader.BuildGameObjects();
+                _game = new TextAdventureGame(_fileLoader.GetCharacters());
             }
-            catch(System.IO.FileNotFoundException e)
+            catch (System.IO.FileNotFoundException e)
             {
                 Console.WriteLine(e.Message);
                 SetXmlGamepath();

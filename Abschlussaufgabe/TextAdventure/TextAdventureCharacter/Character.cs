@@ -32,10 +32,7 @@ namespace TextAdventureCharacter
             _location = null;
         }
 
-        public string GetName()
-        {
-            return _name;
-        }
+        public string GetName() => _name;
 
         public string GetStatus()
         {
@@ -50,40 +47,19 @@ namespace TextAdventureCharacter
             }
         }
 
-        public virtual string GetDescription()
-        {
-            return _description;
-        }
+        public virtual string GetDescription() => _description;
 
-        public Area GetLocation()
-        {
-            return _location;
-        }
+        public Area GetLocation() => _location;
 
-        public bool GetIsAlive()
-        {
-            return _isAlive;
-        }
+        public bool GetIsAlive() => _isAlive;
 
-        public void AddItem(Item item)
-        {
-            _inventory.Add(item);
-        }
+        public void AddItem(Item item) => _inventory.Add(item);
 
-        public void SetIsAlive(bool isAlive)
-        {
-            _isAlive = isAlive;
-        }
+        public void SetIsAlive(bool isAlive) => _isAlive = isAlive;
 
-        public void SetIsOnMove(bool isOnMove)
-        {
-            _isOnMove = isOnMove;
-        }
+        public void SetIsOnMove(bool isOnMove) => _isOnMove = isOnMove;
 
-        public void SetLocation(Area location)
-        {
-            _location = location;
-        }
+        public void SetLocation(Area location) => _location = location;
 
         public abstract void MakeAMove();
 
@@ -96,10 +72,7 @@ namespace TextAdventureCharacter
 
         public abstract void StartDialog(Character character);
 
-        public virtual void GetAttacked(double damage, Character attacker)
-        {
-            GetHarmed(damage);
-        }
+        public virtual void GetAttacked(double damage, Character attacker) => GetHarmed(damage);
 
         public virtual void GetHarmed(double damage)
         {
@@ -207,8 +180,7 @@ namespace TextAdventureCharacter
         {
             try
             {
-                itemIndex = CorrectIndex(itemIndex);
-                Item newActiveItem = FindItem(itemIndex);
+                Item newActiveItem = FindItem(CorrectIndex(itemIndex));
                 if (_equippedItem != null)
                 {
                     if (_inventory.Count <= _maxInventorySlots)
@@ -220,9 +192,7 @@ namespace TextAdventureCharacter
                 _inventory.Remove(newActiveItem);
                 _location.GetItems().Remove(newActiveItem);
                 if (GetType() == typeof(PlayerCharacter))
-                {
                     Console.WriteLine("You equipped: " + _equippedItem.GetName());
-                }
             }
             catch (System.ArgumentOutOfRangeException e)
             {
@@ -230,10 +200,7 @@ namespace TextAdventureCharacter
             }
         }
 
-        protected void UseEquippedItem()
-        {
-            _equippedItem.UseOnCharacter(this, this);
-        }
+        protected void UseEquippedItem() => _equippedItem.UseOnCharacter(this, this);
 
         protected void UseEquippedItemOnCharacter(int characterIndex)
         {
@@ -277,24 +244,13 @@ namespace TextAdventureCharacter
             }
         }
 
-        protected int CorrectIndex(int index)
-        {
-            return index - 1;
-        }
+        protected int CorrectIndex(int index) => index - 1;
 
         public void GetHealed(double hpBoost)
         {
             _healthPoints += hpBoost;
             if (_healthPoints > _maxHealthPoints)
-            {
                 _healthPoints = _maxHealthPoints;
-            }
-        }
-
-        private void CommandHandlerQuit(string[] args)
-        {
-            _isAlive = false;
-            _isOnMove = false;
         }
     }
 }

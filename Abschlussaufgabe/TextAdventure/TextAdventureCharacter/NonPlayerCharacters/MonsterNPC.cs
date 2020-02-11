@@ -22,10 +22,11 @@ namespace TextAdventureCharacter
             ChangeMood(attacker, _attackMoodChange);
         }
 
-        public override void MakeAMove(){
+        public override void MakeAMove()
+        {
             _isOnMove = true;
             ManageAttackBehaviour();
-            if(_isOnMove)
+            if (_isOnMove)
                 ManageRoamingBehaviour(20);
         }
 
@@ -33,7 +34,7 @@ namespace TextAdventureCharacter
         {
             List<Character> targets = GetSupportingCharacters();
             List<Character> aliveTargets = targets.FindAll(t => t.GetIsAlive());
-            if(aliveTargets.Count > 0)
+            if (aliveTargets.Count > 0)
             {
                 Random random = new Random();
                 Character target = aliveTargets[random.Next(aliveTargets.Count)];
@@ -45,10 +46,7 @@ namespace TextAdventureCharacter
             }
         }
 
-        public override void StartDialog(Character character)
-        {
-            Console.WriteLine("ARRRRRRRRG");
-        }
+        public override void StartDialog(Character character) => Console.WriteLine("ARRRRRRRRG");
 
         public static MonsterNPC BuildFromXmlNode(XmlNode characterNode)
         {

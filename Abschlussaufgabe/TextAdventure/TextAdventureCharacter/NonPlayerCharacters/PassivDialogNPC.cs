@@ -22,7 +22,7 @@ namespace TextAdventureCharacter
 
         public override void GetAttacked(double damage, Character attacker)
         {
-            if(attacker.GetType() == typeof(PlayerCharacter))
+            if (attacker.GetType() == typeof(PlayerCharacter))
             {
                 Console.WriteLine("This character cannot be harmed");
             }

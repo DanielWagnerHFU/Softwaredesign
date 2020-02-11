@@ -19,10 +19,7 @@ namespace TextAdventureCharacter
             _argumentsCount = argumentsCount;
         }
 
-        public string GetDescription()
-        {
-            return _description;
-        }
+        public string GetDescription() => _description;
 
         public bool IsEqualToCommand(string commandString)
         {
@@ -45,14 +42,8 @@ namespace TextAdventureCharacter
             return argsString.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
         }
 
-        public ParameterMethod<string> GetMethodToCall()
-        {
-            return _methodToCall;
-        }
+        public ParameterMethod<string> GetMethodToCall() => _methodToCall;
 
-        public int GetArgumentsCount()
-        {
-            return _argumentsCount;
-        }
+        public int GetArgumentsCount() => _argumentsCount;
     }
 }
