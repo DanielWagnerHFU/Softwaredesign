@@ -57,7 +57,10 @@
     <Gateway type="Door" uinA="100" uinB="4" name="Door of A-Building" keyHole="1" isOpen="true"></Gateway>
     <Gateway type="Door" uinA="100" uinB="5" name="Door of B-Building" keyHole="1" isOpen="true"></Gateway>
     <Gateway type="Door" uinA="100" uinB="6" name="Door of C-Building" keyHole="1" isOpen="true"></Gateway>
-    <Area type="Area" uin="4" name="HFU - A Building" description="You are in the HFU A Builing"></Area>
+    <Area type="Area" uin="4" name="HFU - A Building" description="You are in the HFU A Builing">
+        <Character type="HumanNPC" name="Professor Waldowski" description="This is a nice professor. But i think he will leave us next Semester... maybe go talk to him?">
+        </Character>
+    </Area>
     <Gateway type="Gateway" uinA="4" uinB="5"></Gateway>
     <!-- B Building Area with Daniel -->
     <Area type="Area" uin="5" name="HFU - B Building" description="You are in the HFU B Builing and you here wonderful piano music. Who might play?">
@@ -70,16 +73,41 @@
         <Character type="BigMonsterNPC" name="Professor Zydorek in Boss mode" description="kollegaaha alda" strength="5" hp="78" maxhp="100"></Character>
         <Item type="Text" name="old paper" description="There might be userful information on this paper..." text="People who have programmed with me or have seen my open-source work on GitHub know that I put a lot of effort in my coding style. I indeed consider programming a creative act, which necessarily involves aesthetics. And then, some people consider aesthetics the enemy of the pragmatic: ‘don’t spend time writing beautiful code when you can write effective code’. However, I argue that my sense of beauty serves pragmatism much better, because it leads to more concise and maintainable code, and is thereby far more effective.”[Ruben Verborgh]">
             <Item type="Key" name="Daniels lost HFU Card" description="i guess we can get to the AlteCafete with this... " key="3"></Item>
-        </Item>     
+        </Item>
     </Area>
     <!-- ENDBOSS-->
     <Gateway type="Door" uinA="51" uinB="5" name="Door of Alte Cafete" keyHole="3" isOpen="false"></Gateway>
-    <Area type="Area" uin="51" name="HFU - Alte Cafete" description="Be aware. Your final fight is there."></Area>
+    <Area type="Area" uin="51" name="HFU - Alte Cafete" description="Be aware. Your final fight is there.">
+        <Character type="DanielNPC" name="Daniel (the little shit you will destroy in this exam)" description="The little shit you will destroy in this exam!">
+            <DialogNode mood="0" playerText="You wanne talk about art?" npcText="You wanne talk about craft? Because thats what Art really is!">
+                <DialogNode mood="0" playerText="OK tell me more then! I am equipped with some nice arguments!" npcText="„Software Craftsmanship risks putting the software at the centre rather than the benefit the software is supposed to deliver, mostly because we are romantics with big egos. Programming is about automating work like crunching data, processing and presenting information, or controlling and automating machines. Non-programmers don’t care about the aesthetics of software in the same way non-plumbers don’t care about the aesthetics of plumbing – they just want their information in the right place or their hot water to work. (Although it’s fair to say they appreciate decent boiler controls.)„ ">
+                    <DialogNode mood="0" playerText="Hm that sounds interesting - tell me more. Maybe Ruben is wrong!" npcText="“With a craft, the product has intrinsic beauty in its own right. A cathedral is really a big hut for people to meet in and worship. Make it from stone by all means, so it lasts longer than a wooden hut, but why all the fancy decorative stuff? Of course it is there to engender a sense of majesty and wonder, and cause us to engage the part of ourselves that appreciates beauty and magnificence […]. What makes it a craft is the work above and beyond its basic utility to give it intrinsic, aesthetic beauty.” ">
+                        <DialogNode mood="-10000" playerText="Thats bullshit. I am right after all. " npcText="Then its time for a fight my friend!"></DialogNode>
+                        <DialogNode mood="-10000" playerText="Ok but whats the real point?" npcText="„There is a difference between the mindset of a master stonemason sculpting the expression on the face of a gargoyle and someone using the commodity blocks that make up a multi-storey car park. In the latter case the last thing I want is someone’s ‘personality’ causing some of the blocks to be different sizes and no longer interchangeable, never mind the added expense of having someone manually hew the stone rather than using machine tools. In the former the stonemason’s attitude is indulgent. He is putting his signature (and his ego, and his reputation) into this magnificent representation of Hell’s best. If you just wanted an oil-pouring spout you could get one from a DIY store. Software practitioners – especially, ironically, the good ones – often lose sight of this. They fall in love with the software itself and start thinking of themselves as craftsmen of software.” "></DialogNode>
+                    </DialogNode>
+                </DialogNode>
+            </DialogNode>
+        </Character>
+    </Area>
     <Gateway type="Portal" uin="51" name ="The way to everywhere and nowhere"></Gateway>
     <!-- B Building Area -->
     <Gateway type="Spawner" uinA="5" uinB="6"></Gateway>
     <Area type="Area" uin="6" name="HFU - C Building" description="You are in the HFU C Builing">
+        <Item type="Text" name="" description="" text="„Programming is an art and therefore, we are artists. However, we’re not the kind of artists that create purely for beauty. We are functional artists. We have a functional task as well as the duty to write beautiful code, because it is effective and thus lasts. […] Don’t pat yourself on the back because you can write complicated code. It’s likely you’re doing it wrong. Programming is understanding a problem well enough to be able to explain it as simple as possible to a machine. Defending sloppy code by claiming effectiveness is trying to hide what you don’t understand: the problem. [Ruben Verborgh]”">
+            <Item type="Key" name="Daniels lost HFU Card" description="i guess we can get to the AlteCafete with this... " key="3"></Item>
+        </Item>
+        <Character type="HumanNPC" name="Felix" description="This is Felix one of your students">
+            <DialogNode mood="0" playerText="Hi Felix" npcText="Have i got the 1?">
+                <DialogNode mood="-1000" playerText="Nop you actuelly just failed - The others where better... sry" npcText="Ok well i guess we are enemys now!"></DialogNode>
+                <DialogNode mood="0" playerText="yes" npcText="nice to hear!"></DialogNode>
+            </DialogNode>
+        </Character>
+        <Character type="HumanNPC" name="Salome" description="This is Salome one of your students">
+            <DialogNode mood="0" playerText="Hi Salome" npcText="Have i got the 2?">
+                <DialogNode mood="-1000" playerText="Nop you actuelly just failed - The others where better... sry" npcText="Ok well i guess we are enemys now!"></DialogNode>
+                <DialogNode mood="0" playerText="yes" npcText="nice to hear!"></DialogNode>
+            </DialogNode>
+        </Character>
     </Area>
-
     <!--  The player will have to find all texts to know which item is the one who can beat Daniel | Bye this way - your not dreaming-->
 </TextAdventureGame>
