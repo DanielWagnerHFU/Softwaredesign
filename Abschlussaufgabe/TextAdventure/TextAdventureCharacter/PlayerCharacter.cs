@@ -87,13 +87,9 @@ namespace TextAdventureCharacter
             {
                 string[] args = command.GetArgs(commandWithArgs);
                 if (command.GetArgumentsCount() <= args.Length)
-                {
                     command.GetMethodToCall()(args);
-                }
                 else
-                {
                     Console.WriteLine("Error: not enough arguments");
-                }
             }
         }
 
@@ -165,9 +161,7 @@ namespace TextAdventureCharacter
             {
                 Console.WriteLine("A list of gateways:");
                 for (int i = 0; i < gateways.Count; i++)
-                {
                     Console.WriteLine(" " + (i + 1) + ":" + gateways[i].GetDescription(_location));
-                }
             }
         }
 

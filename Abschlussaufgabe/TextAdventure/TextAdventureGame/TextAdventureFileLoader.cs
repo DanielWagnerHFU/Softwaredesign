@@ -98,9 +98,7 @@ namespace TextAdventureGame
             {
                 XmlNodeList itemNodeList = areaNode.SelectNodes("child::Item");
                 foreach (XmlNode itemNode in itemNodeList)
-                {
                     area.AddItem(BuildItemObject(itemNode));
-                }
             }
         }
 

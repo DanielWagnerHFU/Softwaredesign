@@ -11,8 +11,8 @@ namespace TextAdventureCharacter
         : base(name, description)
         {
             _moodAboutCharacters = new Dictionary<Character, double>();
-            _maxHealthPoints = 25;
-            _healthPoints = 25;
+            _maxHealthPoints = 20;
+            _healthPoints = 20;
             _strength = 5;
         }
 

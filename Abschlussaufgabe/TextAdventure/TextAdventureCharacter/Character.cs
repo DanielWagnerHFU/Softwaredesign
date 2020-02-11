@@ -38,13 +38,9 @@ namespace TextAdventureCharacter
         {
             String status = "|HP [" + _healthPoints + "/" + _maxHealthPoints + "]";
             if (_equippedItem == null)
-            {
                 return status += " item slot [empty]|";
-            }
             else
-            {
                 return status += " item slot [" + _equippedItem.GetName() + "]|";
-            }
         }
 
         public virtual string GetDescription() => _description;
