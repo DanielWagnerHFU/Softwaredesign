@@ -11,6 +11,7 @@ namespace TextAdventureMap
     {
         protected Area _areaA;
         protected Area _areaB;
+
         public Gateway(Area areaA, Area areaB)
         {
             _areaA = areaA;
@@ -18,33 +19,40 @@ namespace TextAdventureMap
             _areaB = areaB;
             areaB.AddGateway(this);
         }
+
         public Gateway(Area area)
         {
             _areaA = area;
             _areaB = area;
-            area.AddGateway(this);            
+            area.AddGateway(this);
         }
+
         public virtual void ChangeArea(Character character)
         {
             character.MoveToArea(GetDestination(character.GetLocation()));
             character.SetIsOnMove(false);
         }
+
         public virtual string GetName(Area callingArea)
         {
             return GetDestinationName(callingArea);
         }
+
         public virtual string GetDescription(Area callingArea)
         {
             return GetName(callingArea);
         }
+
         private string GetDestinationName(Area callingArea)
         {
             return (callingArea == _areaA)? _areaB.GetName() : _areaA.GetName();
         }
+
         protected Area GetDestination(Area callingArea)
         {
             return (callingArea == _areaA)? _areaB : _areaA;
         }
+
         public static Gateway BuildFromXmlNode(XmlNode gatewayNode, List<Area> areaList){
             XmlAttributeCollection attributes = gatewayNode.Attributes;
             int uinAreaA = Int32.Parse(attributes[1].Value);

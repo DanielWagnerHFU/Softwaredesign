@@ -5,20 +5,40 @@
         </Item>         
     </Area>
     <Gateway type="Door" uinA="1" uinB="2" name="Solid door" keyHole="1" isOpen="false"></Gateway>
-    <Area type="Area" uin="2" name="HFU L-building 2.floor" description="You are in the HFU L Building second floor.">
+    <Area type="Area" uin="2" name="HFU L-building 2.floor" description="You are in the HFU L Building second floor. Professor Schneider is here - you better go and talk to him now!">
         <Character type="PassivDialogNPC" name="Prof. Schneider" description="The phycision of the HFU to your service">
             <DialogNode mood="0" playerText="Hello Thomas" npcText="Hey!">
-                <DialogNode mood="0" playerText="I coded so beautifully today than i just fell asleep" npcText="Sounds ... nice. Not selfish at all ;D"></DialogNode>
-                <DialogNode mood="0" playerText="What are you doing?" npcText="Puh i just came from physics course with this annoying Student Daniel!">
-                    <DialogNode mood="0" playerText="Oh really? I love him!" npcText="Pah go away!"></DialogNode> 
-                    <DialogNode mood="0" playerText="Oh really? I hate him even more then you do!" npcText="Thats nice to here! I ll give you a tip: Take the energydrink before you go on. You might need it!"></DialogNode> 
-                </DialogNode>                     
+                <DialogNode mood="0" playerText="I coded so beautifully last night, but than i just fell asleep and woke up in my game labor..." npcText="Sounds ... weird. Byebye"></DialogNode>
+                <DialogNode mood="0" playerText="How are you Thomas?" npcText="Puh i just came from a physics course with this annoying student Daniel!">
+                    <DialogNode mood="0" playerText="Oh really? I like him!" npcText="Pah he just always wants to discuss stupid stuff. He knows nothing about nothing!">
+                        <DialogNode mood="0" playerText="Well said. I admit he is stupid and you know what? I will make sure he fails his exam in Softwaredesign." npcText="Thats what i wanne hear! See you Friedl."></DialogNode>
+                    </DialogNode>
+                    <DialogNode mood="0" playerText="I think i hate him even more then you do!" npcText="Thats refreshing to hear! Take the energydrink before you go on. You might need it!"></DialogNode> 
+                </DialogNode>                
             </DialogNode>
         </Character>
         <Character type="Player" name="Friedl" description="A professor of the HFU" strength="10" hp="100" maxhp="100"></Character>
         <Item type="Potion" name="RedBull-drink" description="You might be able to fly with this item! Or heal" heal="100"></Item>
     </Area>
     <Gateway type="Spawner" uinA="2" uinB="3"></Gateway>
-    <Area type="Area" uin="3" name="Floor" description="You are in the stairwell of the L-building.">
+    <Area type="Area" uin="3" name="The Stairwell of the HFU - L building" description="You are in the stairwell of the L-building. Dont forget to take stuff...">
+        <Item type="Text" name="Daniel's notebook" description="To be, or not the be an artist.." text="... its true. I have found proof that Code is indeed nothing special. Its not art! I think i will pin my arguments all over Furtwangen. Only who finds them all might have a chance to win against me!"></Item>
+        <Character type="HumanNPC" name="Sabine" description="Sabine is your student. She just showed your her code">
+            <DialogNode mood="0" playerText="Hello sabine." npcText="hi">
+                <DialogNode mood="-5" playerText="Well your code was not that good" npcText="So i havent passed?">
+                    <DialogNode mood="-15" playerText="Nop see you next! ;D" npcText="i will kill you!"></DialogNode>
+                    <DialogNode mood="-3" playerText="I dont wanne see you again so you passed" npcText="..."></DialogNode>
+                </DialogNode>
+                <DialogNode mood="2" playerText="Your code was actuelly really good! You passed!" npcText="Wow nice! But before you have your exam with Daniel i have to tell you something">
+                    <DialogNode mood="-3" playerText="I dont wanne see you again so you passed" npcText="..."></DialogNode>
+                </DialogNode>
+            </DialogNode>
+        </Character>
     </Area>
+    <Gateway type="Door" uinA="3" uinB="100" name="Door of L-Building" keyHole="1" isOpen="true"></Gateway>
+    <Area type="Area" uin="100" name="Furtwangen" description="Welcome to a Furtwangen. Your lucky - Sabine is over and the wind isnt blowing so hard anymore!"></Area>
+    <!-- introduction over -->
+    </Area>
+
+    <!--  The player will have to find all texts to know which item is the one who can beat Daniel | Bye this way - your not dreaming-->
 </TextAdventureGame>

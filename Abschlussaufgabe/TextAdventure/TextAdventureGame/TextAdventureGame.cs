@@ -30,10 +30,10 @@ namespace TextAdventureGame
                     characterOnMove = _characterList[i];
                     if(characterOnMove.GetIsAlive())
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.Write("|" + characterOnMove.GetName() + " on move|");
-                        Console.ForegroundColor = ConsoleColor.White;
-                        Console.WriteLine();
+                        // Console.ForegroundColor = ConsoleColor.Red;
+                        // Console.Write("|" + characterOnMove.GetName() + " on move|");
+                        // Console.ForegroundColor = ConsoleColor.White;
+                        // Console.WriteLine();
                         characterOnMove.MakeAMove();
                     }
                 }

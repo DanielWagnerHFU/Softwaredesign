@@ -9,17 +9,18 @@ namespace TextAdventureMap
 {
     public class Spawner : Gateway
     {
-        List<Character> _characters;
-        public Spawner(Area areaA, Area areaB, List<Character> characters) 
+        private readonly List<Character> _characters;
+        public Spawner(Area areaA, Area areaB, List<Character> characters)
         : base(areaA, areaB)
         {
             _characters = characters;
         }
+
         public override void ChangeArea(Character character)
         {
             Area destination = GetDestination(character.GetLocation());
             Random random = new Random();
-            int randomNumber = random.Next(0, 5);
+            int randomNumber = random.Next(0, 3);
             for(int i = 0; i <= randomNumber; i++)
             {
                 Character toSpawn = new MonsterNPC("Monster", "A Monster which will attack anyone! Be aware.");
@@ -27,8 +28,9 @@ namespace TextAdventureMap
                 _characters.Add(toSpawn);
             }
             character.MoveToArea(destination);
-            character.SetIsOnMove(false);            
+            character.SetIsOnMove(false);
         }
+
         public static Spawner BuildFromXmlNode(XmlNode gatewayNode, List<Area> areaList, List<Character> characters){
             XmlAttributeCollection attributes = gatewayNode.Attributes;
             int uinAreaA = Int32.Parse(attributes[1].Value);

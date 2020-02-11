@@ -9,9 +9,10 @@ namespace TextAdventureMap
 {
     public class Door : Gateway
     {
-        private int _keyHole;
-        private string _name;
+        private readonly int _keyHole;
+        private readonly string _name;
         private bool _isOpen;
+
         public Door(Area areaA, Area areaB, string name, int keyHole, bool isOpen) 
         : base(areaA, areaB)
         {
@@ -19,8 +20,9 @@ namespace TextAdventureMap
             _name = name;
             _isOpen = isOpen;
         }
+
         public override string GetDescription(Area callingArea){
-            if(_isOpen == true)
+            if(_isOpen)
             {
                 return "open " + _name;
             } 
@@ -29,17 +31,21 @@ namespace TextAdventureMap
                 return "closed " + _name;
             }
         }
+
         public override string GetName(Area callingArea){
             return _name;
         }
+
         public string GetName()
         {
             return _name;
         }
+
         public bool GetIsOpen()
         {
             return _isOpen;
         }
+
         public void SetIsOpen(bool isOpen)
         {
             _isOpen = isOpen;
@@ -48,6 +54,7 @@ namespace TextAdventureMap
         {
             return _keyHole;
         }
+
         public override void ChangeArea(Character character)
         {
             if(_isOpen)
@@ -60,6 +67,7 @@ namespace TextAdventureMap
                 Console.WriteLine("This door is closed");
             }
         }
+
         new public static Door BuildFromXmlNode(XmlNode gatewayNode, List<Area> areaList){
             XmlAttributeCollection attributes = gatewayNode.Attributes;
             int uinAreaA = Int32.Parse(attributes[1].Value);
