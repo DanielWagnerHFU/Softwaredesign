@@ -20,9 +20,9 @@ namespace TextAdventureMap
             Area destination = GetDestination(character.GetLocation());
             Random random = new Random();
             int randomNumber = random.Next(0, 5);
-            for(int i = 2; i <= randomNumber; i++)
+            for(int i = 0; i <= randomNumber; i++)
             {
-                Character toSpawn = new MonsterNPC("Monster", "A Monster which will atack anyone! Be aware.");
+                Character toSpawn = new MonsterNPC("Monster", "A Monster which will attack anyone! Be aware.");
                 destination.AddCharacter(toSpawn);
                 _characters.Add(toSpawn);
             }

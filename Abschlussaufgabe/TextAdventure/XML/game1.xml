@@ -1,12 +1,11 @@
 <TextAdventureGame>
-    <Area type="Area" uin="1" name="Dark room" description="You are in a dark room and there seems to be no way out because the door is closed">
+    <Area type="Area" uin="1" name="Game Labor" description="You are in a dark room and there seems to be no way out because the door is closed">
         <Item type="Text" name="paper" description="There might be userful information on this paper..." text="Welcome to this game Friedl. You think you cant get out of here? Well i think your blind! Look closer">
             <Item type="Key" name="Friedls HFUCard" description="I guess you know what to do with your HFUCard? Puhh" key="1"></Item>
         </Item>         
-        <Character type="Player" name="Friedl" description="A professor of the HFU" strength="10" hp="100" maxhp="100"></Character>
     </Area>
     <Gateway type="Door" uinA="1" uinB="2" name="Solid door" keyHole="1" isOpen="false"></Gateway>
-    <Area type="Area" uin="2" name="HFU L 2.floor" description="You are in the HFU L Building second floor.">
+    <Area type="Area" uin="2" name="HFU L-building 2.floor" description="You are in the HFU L Building second floor.">
         <Character type="PassivDialogNPC" name="Prof. Schneider" description="The phycision of the HFU to your service">
             <DialogNode mood="0" playerText="Hello Thomas" npcText="Hey!">
                 <DialogNode mood="0" playerText="I coded so beautifully today than i just fell asleep" npcText="Sounds ... nice. Not selfish at all ;D"></DialogNode>
@@ -16,9 +15,10 @@
                 </DialogNode>                     
             </DialogNode>
         </Character>
+        <Character type="Player" name="Friedl" description="A professor of the HFU" strength="10" hp="100" maxhp="100"></Character>
         <Item type="Potion" name="RedBull-drink" description="You might be able to fly with this item! Or heal" heal="100"></Item>
     </Area>
     <Gateway type="Spawner" uinA="2" uinB="3"></Gateway>
-    <Area type="Area" uin="3" name="Dark room" description="You are in a dark room and there seems to be no way out because the door is closed">
+    <Area type="Area" uin="3" name="Floor" description="You are in the stairwell of the L-building.">
     </Area>
 </TextAdventureGame>
