@@ -60,6 +60,7 @@ namespace TextAdventureCharacter
             if(_dialog != null)
             {
                 _dialog.UseDialogNode((PlayerCharacter)character, this);
+                Console.ReadKey(false);
             }
             else
             {

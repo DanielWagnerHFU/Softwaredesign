@@ -6,5 +6,19 @@
         <Character type="Player" name="Friedl" description="A professor of the HFU" strength="10" hp="100" maxhp="100"></Character>
     </Area>
     <Gateway type="Door" uinA="1" uinB="2" name="Solid door" keyHole="1" isOpen="false"></Gateway>
-    <Area type="Area" uin="2" name="HFU L building" description="You are in the HFU L Building second floor."></Area>
+    <Area type="Area" uin="2" name="HFU L 2.floor" description="You are in the HFU L Building second floor.">
+        <Character type="PassivDialogNPC" name="Prof. Schneider" description="The phycision of the HFU to your service">
+            <DialogNode mood="0" playerText="Hello Thomas" npcText="Hey!">
+                <DialogNode mood="0" playerText="I coded so beautifully today than i just fell asleep" npcText="Sounds ... nice. Not selfish at all ;D"></DialogNode>
+                <DialogNode mood="0" playerText="What are you doing?" npcText="Puh i just came from physics course with this annoying Student Daniel!">
+                    <DialogNode mood="0" playerText="Oh really? I love him!" npcText="Pah go away!"></DialogNode> 
+                    <DialogNode mood="0" playerText="Oh really? I hate him even more then you do!" npcText="Thats nice to here! I ll give you a tip: Take the energydrink before you go on. You might need it!"></DialogNode> 
+                </DialogNode>                     
+            </DialogNode>
+        </Character>
+        <Item type="Potion" name="RedBull-drink" description="You might be able to fly with this item! Or heal" heal="100"></Item>
+    </Area>
+    <Gateway type="Spawner" uinA="2" uinB="3"></Gateway>
+    <Area type="Area" uin="3" name="Dark room" description="You are in a dark room and there seems to be no way out because the door is closed">
+    </Area>
 </TextAdventureGame>

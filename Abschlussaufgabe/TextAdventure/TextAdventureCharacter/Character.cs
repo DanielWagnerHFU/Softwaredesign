@@ -193,10 +193,14 @@ namespace TextAdventureCharacter
                 Item newActiveItem = FindItem(itemIndex);
                 if (_equippedItem != null)
                 {
-                    _inventory.Add(_equippedItem);
+                    if (_inventory.Count <= _maxInventorySlots)
+                        _inventory.Add(_equippedItem);
+                    else
+                        _location.AddItem(_equippedItem);
                 }
                 _equippedItem = newActiveItem;
                 _inventory.Remove(newActiveItem);
+                _location.GetItems().Remove(newActiveItem);
                 if (GetType() == typeof(PlayerCharacter))
                 {
                     Console.WriteLine("You equipped: " + _equippedItem.GetName());

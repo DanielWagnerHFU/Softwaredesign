@@ -29,21 +29,26 @@ namespace TextAdventureCharacter
         public void UseDialogNode(PlayerCharacter player, NPC talkPartner)
         {
             talkPartner.ChangeMood(player, _moodChange);
+            Console.ForegroundColor = ConsoleColor.Cyan;
             if(_playerText != "")
                 Console.WriteLine(player.GetName() + ": " +_playerText);
+            Console.ForegroundColor = ConsoleColor.Gray;
             if(_npcText != "")
                 Console.WriteLine(talkPartner.GetName() + ": " +_npcText);
             Answers(player, talkPartner);
+            Console.ForegroundColor = ConsoleColor.White;
         }
         private void Answers(PlayerCharacter player, NPC talkPartner)
         {
             if(_dialogChildren.Count != 0)
             {
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("Answers: ");
                 for(int i = 0; i < _dialogChildren.Count; i++)
                 {
                     Console.WriteLine("  " + (i+1) + ": " + _dialogChildren[i].GetPlayerText());
                 }
+                Console.ForegroundColor = ConsoleColor.Gray;
                 Console.Write("Type in a number for your answer: ");
                 string input = Console.ReadLine();
                 try

@@ -165,8 +165,8 @@ namespace TextAdventureGame
                     character = HumanNPC.BuildFromXmlNode(characterNode);break;
                 case "MonsterNPC":
                     character = MonsterNPC.BuildFromXmlNode(characterNode);break;
-                case "PassicDialogNPC":
-                    character = PassicDialogNPC.BuildFromXmlNode(characterNode);break;
+                case "PassivDialogNPC":
+                    character = PassivDialogNPC.BuildFromXmlNode(characterNode);break;
                 default:
                     throw new Exception("Character build failed - No type");
             }
