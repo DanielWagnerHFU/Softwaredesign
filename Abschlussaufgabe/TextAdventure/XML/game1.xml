@@ -1,5 +1,7 @@
 <TextAdventureGame>
+    <!-- startarea -->
     <Area type="Area" uin="1" name="Game Labor" description="You are in a dark room and there seems to be no way out because the door is closed">
+        <!-- <Character type="Player" name="Friedl" description="A professor of the HFU" strength="10" hp="100" maxhp="100"></Character> -->
         <Item type="Text" name="paper" description="There might be userful information on this paper..." text="Welcome to this game Friedl. You think you cant get out of here? Well i think your blind! Look closer">
             <Item type="Key" name="Friedls HFUCard" description="I guess you know what to do with your HFUCard? Puhh" key="1"></Item>
         </Item>         
@@ -17,11 +19,10 @@
                 </DialogNode>                
             </DialogNode>
         </Character>
-        <Character type="Player" name="Friedl" description="A professor of the HFU" strength="10" hp="100" maxhp="100"></Character>
         <Item type="Potion" name="RedBull-drink" description="You might be able to fly with this item! Or heal" heal="100"></Item>
     </Area>
     <Gateway type="Spawner" uinA="2" uinB="3"></Gateway>
-    <Area type="Area" uin="3" name="The Stairwell of the HFU - L building" description="You are in the stairwell of the L-building. Dont forget to take stuff...">
+    <Area type="Area" uin="3" name="HFU - L building" description="You are in the stairwell of the L-building. Dont forget to take stuff...">
         <Item type="Text" name="Daniel's notebook" description="To be, or not the be an artist.." text="... its true. I have found proof that Code is indeed nothing special. Its not art! I think i will pin my arguments all over Furtwangen. Only who finds them all might have a chance to win against me!"></Item>
         <Character type="HumanNPC" name="Sabine" description="Sabine is your student. She just showed your her code">
             <DialogNode mood="0" playerText="Hello sabine." npcText="hi">
@@ -39,7 +40,15 @@
     <Area type="Area" uin="100" name="Furtwangen" description="Welcome to a Furtwangen. Your lucky - Sabine is over and the wind isnt blowing so hard anymore!"></Area>
     <!-- introduction over -->
     <Gateway type="Door" uinA="100" uinB="4" name="Door of A-Building" keyHole="1" isOpen="true"></Gateway>
-    <Area type="Area" uin="4" name="A-Building" description="HFU A Builing"></Area>
+    <Gateway type="Door" uinA="100" uinB="5" name="Door of B-Building" keyHole="1" isOpen="true"></Gateway>
+    <Gateway type="Door" uinA="100" uinB="6" name="Door of C-Building" keyHole="1" isOpen="true"></Gateway>
+    <Area type="Area" uin="4" name="HFU - A Building" description="You are in the HFU A Builing"></Area>
+    <Gateway type="Gateway" uinA="4" uinB="5"></Gateway>
+    <Area type="Area" uin="5" name="HFU - B Building" description="You are in the HFU B Builing"></Area>
+    <Gateway type="Gateway" uinA="5" uinB="6"></Gateway>
+    <Area type="Area" uin="6" name="HFU - C Building" description="You are in the HFU C Builing">
+    <Character type="Player" name="Friedl" description="A professor of the HFU" strength="10" hp="100" maxhp="100"></Character>
+    </Area>
 
     <!--  The player will have to find all texts to know which item is the one who can beat Daniel | Bye this way - your not dreaming-->
 </TextAdventureGame>
