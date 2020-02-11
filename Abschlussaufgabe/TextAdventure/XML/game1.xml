@@ -1,7 +1,6 @@
 <TextAdventureGame>
     <!-- startarea -->
     <Area type="Area" uin="1" name="Game Labor" description="You are in a dark room and there seems to be no way out because the door is closed">
-        <Character type="Player" name="Friedl" description="A professor of the HFU" strength="10" hp="100" maxhp="100"></Character>
         <Item type="Text" name="paper" description="There might be userful information on this paper..." text="Welcome to this game Friedl. You think you cant get out of here? Well i think your blind! Look closer">
             <Item type="Key" name="Friedls HFUCard" description="I guess you know what to do with your HFUCard? Puhh" key="1"></Item>
         </Item>
@@ -60,9 +59,11 @@
     <Area type="Area" uin="4" name="HFU - A Building" description="You are in the HFU A Builing"></Area>
     <Gateway type="Gateway" uinA="4" uinB="5"></Gateway>
     <!-- B Building Area with Daniel -->
-    <Area type="Area" uin="5" name="HFU - B Building" description="You are in the HFU B Builing and you here wonderful piano music. Who might play?"></Area>
+    <Area type="Area" uin="5" name="HFU - B Building" description="You are in the HFU B Builing and you here wonderful piano music. Who might play?"><Character type="Player" name="Friedl" description="A professor of the HFU" strength="10" hp="100" maxhp="100"></Character></Area>
     <Gateway type="Door" uinA="50" uinB="5" name="Door of Aula" keyHole="2" isOpen="false"></Gateway>
-    <Area type="Area" uin="50" name="HFU - B Aula" description="Welcome in the great Aula of the HFU"></Area>
+    <Area type="Area" uin="50" name="HFU - Aula" description="Welcome in the great Aula of the HFU">
+        <Character type="BigMonsterNPC" name="A huge agressiv professor" description="Be aware of this person!" strength="5" hp="78" maxhp="100"></Character>        
+    </Area>
     <!-- ENDBOSS-->
     <Gateway type="Door" uinA="51" uinB="5" name="Door of Alte Cafete" keyHole="3" isOpen="false"></Gateway>
     <Area type="Area" uin="51" name="HFU - Alte Cafete" description="Be aware. Your final fight is there."></Area>

@@ -5,7 +5,7 @@ using System.Xml;
 
 namespace TextAdventureCharacter
 {
-    public sealed class MonsterNPC : AttackerNPC
+    public class MonsterNPC : AttackerNPC
     {
         public MonsterNPC(string name, string description)
         : base(name, description)
@@ -19,7 +19,6 @@ namespace TextAdventureCharacter
         public override void GetAttacked(double damage, Character attacker)
         {
             GetHarmed(damage);
-            ChangeMood(attacker, _attackMoodChange);
         }
 
         public override void MakeAMove()

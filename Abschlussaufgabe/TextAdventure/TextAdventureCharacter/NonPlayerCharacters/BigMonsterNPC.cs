@@ -5,7 +5,7 @@ using System.Xml;
 
 namespace TextAdventureCharacter
 {
-    public sealed class BigMonsterNPC : AttackerNPC
+    public sealed class BigMonsterNPC : MonsterNPC
     {
         public BigMonsterNPC(string name, string description, double strength, double healthPoints, double maxHealthPoints)
         : base(name, description)
@@ -14,20 +14,6 @@ namespace TextAdventureCharacter
             _strength = strength;
             _maxHealthPoints = maxHealthPoints;
             _healthPoints = healthPoints;
-        }
-
-        public override void GetAttacked(double damage, Character attacker)
-        {
-            GetHarmed(damage);
-            ChangeMood(attacker, _attackMoodChange);
-        }
-
-        public override void MakeAMove()
-        {
-            _isOnMove = true;
-            ManageAttackBehaviour();
-            if (_isOnMove)
-                ManageRoamingBehaviour(20);
         }
 
         protected override Character GetAttackTarget()
@@ -49,7 +35,7 @@ namespace TextAdventureCharacter
 
         public override void StartDialog(Character character) => Console.WriteLine("ARRRRRRRRG");
 
-        public static BigMonsterNPC BuildFromXmlNode(XmlNode characterNode)
+        new public static BigMonsterNPC BuildFromXmlNode(XmlNode characterNode)
         {
             XmlAttributeCollection attributes = characterNode.Attributes;
             string name = attributes[1].Value;

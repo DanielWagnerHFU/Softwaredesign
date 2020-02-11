@@ -28,6 +28,7 @@ namespace TextAdventureCharacter
             _commandList.Add(new Command(new string[] { "commands", "c" }, CommandHandlerCommands, "commands(c)"));
             _commandList.Add(new Command(new string[] { "get item description", "gid" }, CommandHandlerGetItemDescription, "get item description(gid): <index>", 1));
             _commandList.Add(new Command(new string[] { "look", "l" }, CommandHandlerLook, "look(l)"));
+            _commandList.Add(new Command(new string[] { "next round", "-"}, CommandHandlerNextRound, "next round(-)"));
             _commandList.Add(new Command(new string[] { "inventory", "i" }, CommandHandlerInventory, "inventory(i)"));
             _commandList.Add(new Command(new string[] { "take", "t" }, CommandHandlerTake, "take(t): <index>", 1));
             _commandList.Add(new Command(new string[] { "drop", "d" }, CommandHandlerDrop, "drop(d): <index>", 1));
@@ -130,6 +131,7 @@ namespace TextAdventureCharacter
 
         private void CommandHandlerCommands(string[] args) => Console.WriteLine("[" + string.Join(", ", GetCommandDescriptions()) + "]");
 
+        private void CommandHandlerNextRound(string[] args) => _isOnMove = false;
         private string[] GetCommandDescriptions()
         {
             string[] commandDescriptions = new string[_commandList.Count];
