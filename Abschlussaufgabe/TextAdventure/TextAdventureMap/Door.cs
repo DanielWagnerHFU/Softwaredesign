@@ -13,7 +13,7 @@ namespace TextAdventureMap
         private readonly string _name;
         private bool _isOpen;
 
-        public Door(Area areaA, Area areaB, string name, int keyHole, bool isOpen) 
+        public Door(Area areaA, Area areaB, string name, int keyHole, bool isOpen)
         : base(areaA, areaB)
         {
             _keyHole = keyHole;
@@ -25,8 +25,8 @@ namespace TextAdventureMap
             if(_isOpen)
             {
                 return "open " + _name;
-            } 
-            else 
+            }
+            else
             {
                 return "closed " + _name;
             }

@@ -11,7 +11,8 @@ namespace TextAdventureMap
     {
         private readonly List<Area> _areas;
         private readonly string _name;
-        public Portal(Area area, string name, List<Area> areas) 
+
+        public Portal(Area area, string name, List<Area> areas)
         : base(area)
         {
             _areas = areas;

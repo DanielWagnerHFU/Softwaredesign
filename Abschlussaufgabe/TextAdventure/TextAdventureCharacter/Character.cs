@@ -7,9 +7,6 @@ namespace TextAdventureCharacter
 {
     public abstract class Character
     {
-        /*---------------------------------------
-        ---------------ATTRIBUTES---------------- 
-        ---------------------------------------*/
         protected string _name;
         protected string _description;
         protected bool _isOnMove;
@@ -21,10 +18,8 @@ namespace TextAdventureCharacter
         protected int _maxInventorySlots = 3;
         protected Item _equippedItem;
         protected Area _location;
-        /*---------------------------------------
-        ----------------METHODS------------------ 
-        ---------------------------------------*/
-        public Character(string name, string description, double strength = 0, double healthPoints = 1, double maxHealthPoints = 1)
+
+        protected Character(string name, string description, double strength = 0, double healthPoints = 1, double maxHealthPoints = 1)
         {
             _name = name;
             _description = description;
@@ -36,10 +31,12 @@ namespace TextAdventureCharacter
             _inventory = new List<Item>();
             _location = null;
         }
+
         public string GetName()
         {
             return _name;
         }
+
         public string GetStatus()
         {
             String status = "|HP [" + _healthPoints + "/" + _maxHealthPoints + "]";
@@ -52,51 +49,64 @@ namespace TextAdventureCharacter
                 return status += " item slot [" + _equippedItem.GetName() + "]|";
             }
         }
+
         public virtual string GetDescription()
         {
             return _description;
         }
+
         public Area GetLocation()
         {
             return _location;
         }
+
         public bool GetIsAlive()
         {
             return _isAlive;
         }
+
         public void AddItem(Item item)
         {
             _inventory.Add(item);
         }
+
         public void SetIsAlive(bool isAlive)
         {
             _isAlive = isAlive;
         }
+
         public void SetIsOnMove(bool isOnMove)
         {
             _isOnMove = isOnMove;
         }
+
         public void SetLocation(Area location)
         {
             _location = location;
         }
+
         public abstract void MakeAMove();
+
         public void MoveToArea(Area destination)
         {
             Area location = _location;
             destination.AddCharacter(this);
             location.RemoveCharacter(this);
         }
+
         public abstract void StartDialog(Character character);
+
         public virtual void GetAttacked(double damage, Character attacker)
         {
             GetHarmed(damage);
         }
+
         public virtual void GetHarmed(double damage)
         {
             _healthPoints -= damage;
             UpdateIsAlive();
         }
+
         protected virtual void UpdateIsAlive()
         {
             if (_healthPoints <= 0)
@@ -105,6 +115,7 @@ namespace TextAdventureCharacter
                 Console.WriteLine(_name + " died\n");
             }
         }
+
         protected void Attack(int characterIndex)
         {
             try

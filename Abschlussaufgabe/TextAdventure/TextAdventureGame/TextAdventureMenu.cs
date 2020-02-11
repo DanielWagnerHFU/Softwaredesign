@@ -9,12 +9,14 @@ namespace TextAdventureGame
         private TextAdventureFileLoader _fileLoader;
         private TextAdventureGame _game;
         private bool _continueMenu;
+
         public TextAdventureMenu()
         {
             _fileLoader = null;
             _game = null;
             _continueMenu = true;
         }
+
         public void StartMenuLoop()
         {
             SetXmlGamepath();
@@ -35,6 +37,7 @@ namespace TextAdventureGame
                 }
             }
         }
+
         private void Execute(int option)
         {
             switch(option)
@@ -47,9 +50,10 @@ namespace TextAdventureGame
                     break;
                 case 3:
                     Quit();
-                    break; 
+                    break;
             }
         }
+
         private void ShowOptions()
         {
                 Console.WriteLine("Type in one of the following option-numbers");
@@ -57,10 +61,12 @@ namespace TextAdventureGame
                 Console.WriteLine("2: start game");
                 Console.WriteLine("3: quit");
         }
+
         private void Quit()
         {
             _continueMenu = false;
         }
+
         private void SetXmlGamepath()
         {
             try
@@ -80,6 +86,7 @@ namespace TextAdventureGame
                 SetXmlGamepath();
             }
         }
+
         private void StartGame()
         {
             _game.StartGameLoop();

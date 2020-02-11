@@ -10,6 +10,7 @@ namespace TextAdventureMap
     public class Spawner : Gateway
     {
         private readonly List<Character> _characters;
+
         public Spawner(Area areaA, Area areaB, List<Character> characters)
         : base(areaA, areaB)
         {
