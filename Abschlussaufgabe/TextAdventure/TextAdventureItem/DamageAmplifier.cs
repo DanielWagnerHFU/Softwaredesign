@@ -15,10 +15,7 @@ namespace TextAdventureItem
             _multiplicity = multiplicity;
         }
 
-        public double GetMultiplicity()
-        {
-            return _multiplicity;
-        }
+        public double GetMultiplicity() => _multiplicity;
 
         public static DamageAmplifier BuildFromXmlNode(XmlNode itemNode)
         {

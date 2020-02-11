@@ -33,25 +33,13 @@ namespace TextAdventureMap
             character.SetIsOnMove(false);
         }
 
-        public virtual string GetName(Area callingArea)
-        {
-            return GetDestinationName(callingArea);
-        }
+        public virtual string GetName(Area callingArea) => GetDestinationName(callingArea);
 
-        public virtual string GetDescription(Area callingArea)
-        {
-            return GetName(callingArea);
-        }
+        public virtual string GetDescription(Area callingArea) => GetName(callingArea);
 
-        private string GetDestinationName(Area callingArea)
-        {
-            return (callingArea == _areaA)? _areaB.GetName() : _areaA.GetName();
-        }
+        private string GetDestinationName(Area callingArea) => (callingArea == _areaA) ? _areaB.GetName() : _areaA.GetName();
 
-        protected Area GetDestination(Area callingArea)
-        {
-            return (callingArea == _areaA)? _areaB : _areaA;
-        }
+        protected Area GetDestination(Area callingArea) => (callingArea == _areaA) ? _areaB : _areaA;
 
         public static Gateway BuildFromXmlNode(XmlNode gatewayNode, List<Area> areaList){
             XmlAttributeCollection attributes = gatewayNode.Attributes;

@@ -19,15 +19,9 @@ namespace TextAdventureMap
             _name = name;
         }
 
-        public override string GetName(Area callingArea)
-        {
-            return _name;
-        }
+        public override string GetName(Area callingArea) => _name;
 
-        public override string GetDescription(Area callingArea)
-        {
-            return _name;
-        }
+        public override string GetDescription(Area callingArea) => _name;
 
         public override void ChangeArea(Character character)
         {

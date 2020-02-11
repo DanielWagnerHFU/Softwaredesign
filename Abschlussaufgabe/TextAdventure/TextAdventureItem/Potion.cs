@@ -17,14 +17,10 @@ namespace TextAdventureItem
 
         public override void UseOnCharacter(Character character, Character user)
         {
-            if(_hpChange < 0)
-            {
-                character.GetAttacked(-_hpChange ,user);
-            }
+            if (_hpChange < 0)
+                character.GetAttacked(-_hpChange, user);
             else
-            {
                 character.GetHealed(_hpChange);
-            }
             UpdateItem(user);
             user.SetIsOnMove(false);
         }

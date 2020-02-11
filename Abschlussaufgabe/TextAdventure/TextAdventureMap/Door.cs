@@ -22,39 +22,21 @@ namespace TextAdventureMap
         }
 
         public override string GetDescription(Area callingArea){
-            if(_isOpen)
-            {
+            if (_isOpen)
                 return "open " + _name;
-            }
             else
-            {
                 return "closed " + _name;
-            }
         }
 
-        public override string GetName(Area callingArea){
-            return _name;
-        }
+        public override string GetName(Area callingArea) => _name;
 
-        public string GetName()
-        {
-            return _name;
-        }
+        public string GetName() => _name;
 
-        public bool GetIsOpen()
-        {
-            return _isOpen;
-        }
+        public bool GetIsOpen() => _isOpen;
 
-        public void SetIsOpen(bool isOpen)
-        {
-            _isOpen = isOpen;
-        }
+        public void SetIsOpen(bool isOpen) => _isOpen = isOpen;
 
-        public int GetKeyHole()
-        {
-            return _keyHole;
-        }
+        public int GetKeyHole() => _keyHole;
 
         public override void ChangeArea(Character character)
         {

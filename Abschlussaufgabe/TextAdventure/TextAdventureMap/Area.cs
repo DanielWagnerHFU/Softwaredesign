@@ -24,35 +24,17 @@ namespace TextAdventureMap
             _items = new List<Item>();
         }
 
-        public string GetDescription()
-        {
-            return _description;
-        }
+        public string GetDescription() => _description;
 
-        public string GetName()
-        {
-            return _name;
-        }
+        public string GetName() => _name;
 
-        public List<Gateway> GetGateways()
-        {
-            return _gateways;
-        }
+        public List<Gateway> GetGateways() => _gateways;
 
-        public void AddGateway(Gateway gateway)
-        {
-            _gateways.Add(gateway);
-        }
+        public void AddGateway(Gateway gateway) => _gateways.Add(gateway);
 
-        public void AddItem(Item item)
-        {
-            _items.Add(item);
-        }
+        public void AddItem(Item item) => _items.Add(item);
 
-        public void RemoveItem(Item item)
-        {
-            _items.Remove(item);
-        }
+        public void RemoveItem(Item item) => _items.Remove(item);
 
         public void AddCharacter(Character character)
         {
@@ -60,10 +42,7 @@ namespace TextAdventureMap
             character.SetLocation(this);
         }
 
-        public void RemoveCharacter(Character character)
-        {
-            _characters.Remove(character);
-        }
+        public void RemoveCharacter(Character character) => _characters.Remove(character);
 
         public List<Character> GetSupportingCharacters(Character mainCharacter)
         {
@@ -72,15 +51,9 @@ namespace TextAdventureMap
             return supportingCharacters;
         }
 
-        public List<Item> GetItems()
-        {
-            return _items;
-        }
+        public List<Item> GetItems() => _items;
 
-        public int GetUIN()
-        {
-            return _uniqueIdentificationNumber;
-        }
+        public int GetUIN() => _uniqueIdentificationNumber;
 
         public static Area BuildFromXmlNode(XmlNode areaNode)
         {
