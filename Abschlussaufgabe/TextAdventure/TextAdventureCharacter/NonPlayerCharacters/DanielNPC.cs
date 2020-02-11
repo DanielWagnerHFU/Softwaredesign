@@ -2,18 +2,20 @@ using System;
 using TextAdventureMap;
 using System.Collections.Generic;
 using System.Xml;
+using TextAdventureItem;
 
 namespace TextAdventureCharacter
 {
-    public class HumanNPC : AttackerNPC
+    public sealed class DanielNPC : HumanNPC
     {
-        public HumanNPC(string name, string description)
+        public DanielNPC(string name, string description)
         : base(name, description)
         {
             _moodAboutCharacters = new Dictionary<Character, double>();
-            _maxHealthPoints = 50;
-            _healthPoints = 50;
-            _strength = 10;
+            _maxHealthPoints = 420;
+            _healthPoints = 420;
+            _strength = 5;
+            _equippedItem = new DamageAmplifier("The argument of all arguments", "this argument is better then yours", 2);
         }
 
         public override void GetAttacked(double damage, Character attacker)
@@ -73,12 +75,12 @@ namespace TextAdventureCharacter
             return lowestMoodCharacter;
         }
 
-        public static HumanNPC BuildFromXmlNode(XmlNode characterNode)
+        new public static DanielNPC BuildFromXmlNode(XmlNode characterNode)
         {
             XmlAttributeCollection attributes = characterNode.Attributes;
             string name = attributes[1].Value;
             string description = attributes[2].Value;
-            return new HumanNPC(name, description);
+            return new DanielNPC(name, description);
         }
     }
 }

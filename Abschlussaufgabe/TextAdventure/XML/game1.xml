@@ -4,7 +4,7 @@
         <Item type="Text" name="paper" description="There might be userful information on this paper..." text="Welcome to this game Friedl. You think you cant get out of here? Well i think your blind! Look closer">
             <Item type="Key" name="Friedls HFUCard" description="I guess you know what to do with your HFUCard? Puhh" key="1"></Item>
         </Item>
-        
+        <Character type="Player" name="Friedl" description="A professor of the HFU" strength="10" hp="100" maxhp="100"></Character>
     </Area>
     <Gateway type="Door" uinA="1" uinB="2" name="Solid door" keyHole="1" isOpen="false"></Gateway>
     <Area type="Area" uin="2" name="HFU L-building 2.floor" description="You are in the HFU L Building second floor. Professor Schneider is here - you better go and talk to him now!">
@@ -64,11 +64,13 @@
         <Character type="GatekeeperNPC" name="Professor who can open the Aula" description="Guy who opens the Aula" key="2">
             <DialogNode mood="0" playerText="Please use your key on the Aula" npcText="ok, but you wont like whats in there"></DialogNode>
         </Character>
-        <Character type="Player" name="Friedl" description="A professor of the HFU" strength="10" hp="100" maxhp="100"></Character>
     </Area>
     <Gateway type="Door" uinA="50" uinB="5" name="Door of Aula" keyHole="2" isOpen="false"></Gateway>
     <Area type="Area" uin="50" name="HFU - Aula" description="Welcome in the great Aula of the HFU">
-        <Character type="BigMonsterNPC" name="Professor Zydorek in Boss mode" description="kollegaaha alda" strength="5" hp="78" maxhp="100"></Character>        
+        <Character type="BigMonsterNPC" name="Professor Zydorek in Boss mode" description="kollegaaha alda" strength="5" hp="78" maxhp="100"></Character>
+        <Item type="Text" name="old paper" description="There might be userful information on this paper..." text="People who have programmed with me or have seen my open-source work on GitHub know that I put a lot of effort in my coding style. I indeed consider programming a creative act, which necessarily involves aesthetics. And then, some people consider aesthetics the enemy of the pragmatic: ‘don’t spend time writing beautiful code when you can write effective code’. However, I argue that my sense of beauty serves pragmatism much better, because it leads to more concise and maintainable code, and is thereby far more effective.”[Ruben Verborgh]">
+            <Item type="Key" name="Daniels lost HFU Card" description="i guess we can get to the AlteCafete with this... " key="3"></Item>
+        </Item>     
     </Area>
     <!-- ENDBOSS-->
     <Gateway type="Door" uinA="51" uinB="5" name="Door of Alte Cafete" keyHole="3" isOpen="false"></Gateway>
