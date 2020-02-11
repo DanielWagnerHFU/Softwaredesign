@@ -10,27 +10,33 @@ namespace TextAdventureItem
         protected string _name;
         protected string _description;
         protected List<Item> _spawnOnUseItems;
-        public Item(string name, string description){
+
+        protected Item(string name, string description){
             _name = name;
             _description = description;
             _spawnOnUseItems = new List<Item>();
         }
+
         public string GetName()
         {
             return _name;
         }
+
         public void AddSpawnItem(Item item)
         {
             _spawnOnUseItems.Add(item);
         }
+
         public string GetDescription()
         {
             return _description;
         }
+
         protected bool CharacterIsPlayer(Character character)
         {
-            return(character.GetType() == typeof(PlayerCharacter))? true : false;
+            return character.GetType() == typeof(PlayerCharacter);
         }
+
         protected void UpdateItem(Character user)
         {
             if(user.GetType() == typeof(PlayerCharacter))
@@ -41,19 +47,21 @@ namespace TextAdventureItem
                 }
             }
         }
+
         public virtual void UseOnGateway(Gateway gateway, Character user)
         {
             if(CharacterIsPlayer(user))
             {
                 Console.WriteLine("You cannot use the item on this gateway");
-            }            
-        }        
+            }
+        }
+
         public virtual void UseOnCharacter(Character character, Character user)
         {
             if(CharacterIsPlayer(user))
             {
                 Console.WriteLine("ERROR: You cannot use the item on this character");
-            }   
+            }
         }
     }
 }

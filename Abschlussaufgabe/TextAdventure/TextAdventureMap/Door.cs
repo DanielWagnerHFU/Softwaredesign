@@ -50,6 +50,7 @@ namespace TextAdventureMap
         {
             _isOpen = isOpen;
         }
+
         public int GetKeyHole()
         {
             return _keyHole;

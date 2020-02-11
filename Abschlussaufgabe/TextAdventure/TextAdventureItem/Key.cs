@@ -5,14 +5,16 @@ using System.Xml;
 
 namespace TextAdventureItem
 {
-    public class Key : Item
+    public sealed class Key : Item
     {
-        private int _key;
-        public Key(string name, string description, int key) 
+        private readonly int _key;
+
+        public Key(string name, string description, int key)
         : base(name, description)
         {
             _key = key;
         }
+
         private void SwitchDoorIsOpen(Door door)
         {
             if(door.GetIsOpen())
@@ -26,6 +28,7 @@ namespace TextAdventureItem
                 Console.WriteLine(door.GetName() + " just opened");
             }
         }
+
         private void UseKey(Door door, Character user)
         {
             if(_key == door.GetKeyHole())
@@ -39,6 +42,7 @@ namespace TextAdventureItem
                 Console.WriteLine("Thats the wrong key");
             }
         }
+
         public override void UseOnGateway(Gateway gateway, Character user)
         {
             if(gateway.GetType() == typeof(Door))
@@ -51,6 +55,7 @@ namespace TextAdventureItem
                 Console.WriteLine("ERROR: This is not a door");
             }
         }
+
         public static Key BuildFromXmlNode(XmlNode itemNode)
         {
             XmlAttributeCollection attributes = itemNode.Attributes;

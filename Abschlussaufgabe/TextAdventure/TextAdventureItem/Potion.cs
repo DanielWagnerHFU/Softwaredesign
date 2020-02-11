@@ -5,14 +5,16 @@ using System.Xml;
 
 namespace TextAdventureItem
 {
-    public class Potion : Item
+    public sealed class Potion : Item
     {
-        private double _hpChange;
-        public Potion(string name, string description, double hpChange) 
+        private readonly double _hpChange;
+
+        public Potion(string name, string description, double hpChange)
         : base(name, description)
         {
             _hpChange = hpChange;
         }
+
         public override void UseOnCharacter(Character character, Character user)
         {
             if(_hpChange < 0)
@@ -26,6 +28,7 @@ namespace TextAdventureItem
             UpdateItem(user);
             user.SetIsOnMove(false);
         }
+
         public static Potion BuildFromXmlNode(XmlNode itemNode)
         {
             XmlAttributeCollection attributes = itemNode.Attributes;

@@ -77,11 +77,6 @@ namespace TextAdventureMap
             return _items;
         }
 
-        public List<Character> GetCharacters()
-        {
-            return _characters;
-        }
-
         public int GetUIN()
         {
             return _uniqueIdentificationNumber;

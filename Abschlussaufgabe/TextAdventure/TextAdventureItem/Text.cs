@@ -5,14 +5,16 @@ using System.Xml;
 
 namespace TextAdventureItem
 {
-    public class Text : Item
+    public sealed class Text : Item
     {
-        private string _text;
-        public Text(string name, string description, string text) 
+        private readonly string _text;
+
+        public Text(string name, string description, string text)
         : base(name, description)
         {
             _text = text;
         }
+
         public override void UseOnCharacter(Character character, Character user)
         {
             if(CharacterIsPlayer(character) && CharacterIsPlayer(user))

@@ -5,18 +5,21 @@ using System.Xml;
 
 namespace TextAdventureItem
 {
-    public class DamageAmplifier : Item
+    public sealed class DamageAmplifier : Item
     {
-        private double _multiplicity;
-        public DamageAmplifier(string name, string description, double multiplicity) 
+        private readonly double _multiplicity;
+
+        public DamageAmplifier(string name, string description, double multiplicity)
         : base(name, description)
         {
             _multiplicity = multiplicity;
         }
+
         public double GetMultiplicity()
         {
             return _multiplicity;
         }
+
         public static DamageAmplifier BuildFromXmlNode(XmlNode itemNode)
         {
             XmlAttributeCollection attributes = itemNode.Attributes;
