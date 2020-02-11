@@ -290,5 +290,11 @@ namespace TextAdventureCharacter
                 _healthPoints = _maxHealthPoints;
             }
         }
+
+        private void CommandHandlerQuit(string[] args)
+        {
+            _isAlive = false;
+            _isOnMove = false;
+        }
     }
 }

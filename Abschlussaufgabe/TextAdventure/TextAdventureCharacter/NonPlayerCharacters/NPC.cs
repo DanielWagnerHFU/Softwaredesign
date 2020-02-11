@@ -10,16 +10,19 @@ namespace TextAdventureCharacter
         protected double _attackMoodChange = -100;
         protected double _moodAgressionThreshold = -10;
         protected Dictionary<Character,double> _moodAboutCharacters;
-        public NPC(string name, string description) 
+
+        protected NPC(string name, string description)
         : base(name, description)
         {
             _moodAboutCharacters = new Dictionary<Character, double>();
         }
+
         public override void GetAttacked(double damage, Character attacker)
         {
             GetHarmed(damage);
             ChangeMood(attacker, -100);
         }
+
         public void ChangeMood(Character character, double moodChange)
         {
             if(_moodAboutCharacters.ContainsKey(character))
@@ -31,9 +34,11 @@ namespace TextAdventureCharacter
                 _moodAboutCharacters.Add(character, moodChange);
             }
         }
+
         public override void MakeAMove()
         {
         }
+
         protected virtual void ManageRoamingBehaviour(int changeProbability)
         {
            List<Gateway> gateways = _location.GetGateways();
@@ -47,14 +52,17 @@ namespace TextAdventureCharacter
                 }
            }
         }
+
         protected int CorrectIndexPlus(int index)
         {
             return index+1;
         }
+
         public void AddDialogNode(DialogNode dialogNode)
         {
             _dialog = dialogNode;
         }
+
         public override void StartDialog(Character character)
         {
             if(_dialog != null)

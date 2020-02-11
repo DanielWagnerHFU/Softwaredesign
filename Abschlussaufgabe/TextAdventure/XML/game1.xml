@@ -38,7 +38,8 @@
     <Gateway type="Door" uinA="3" uinB="100" name="Door of L-Building" keyHole="1" isOpen="true"></Gateway>
     <Area type="Area" uin="100" name="Furtwangen" description="Welcome to a Furtwangen. Your lucky - Sabine is over and the wind isnt blowing so hard anymore!"></Area>
     <!-- introduction over -->
-    </Area>
+    <Gateway type="Door" uinA="100" uinB="4" name="Door of A-Building" keyHole="1" isOpen="true"></Gateway>
+    <Area type="Area" uin="4" name="A-Building" description="HFU A Builing"></Area>
 
     <!--  The player will have to find all texts to know which item is the one who can beat Daniel | Bye this way - your not dreaming-->
 </TextAdventureGame>

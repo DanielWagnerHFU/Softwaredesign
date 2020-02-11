@@ -56,16 +56,21 @@ namespace TextAdventureCharacter
                 }
                 if (moodCharacters.Count > 0)
                 {
-                    Character lowestMoodCharacter = moodCharacters[0];
-                    foreach (Character character in moodCharacters)
-                    {
-                        if (_moodAboutCharacters[character] < _moodAboutCharacters[lowestMoodCharacter])
-                            lowestMoodCharacter = character;
-                    }
-                    return lowestMoodCharacter;
+                    return SearchLowestMoodCharacter(moodCharacters);
                 }
             }
             return null;
+        }
+
+        private Character SearchLowestMoodCharacter(List<Character> characters)
+        {
+            Character lowestMoodCharacter = characters[0];
+            foreach (Character character in characters)
+            {
+                if (_moodAboutCharacters[character] < _moodAboutCharacters[lowestMoodCharacter])
+                    lowestMoodCharacter = character;
+            }
+            return lowestMoodCharacter;
         }
 
         public static HumanNPC BuildFromXmlNode(XmlNode characterNode)

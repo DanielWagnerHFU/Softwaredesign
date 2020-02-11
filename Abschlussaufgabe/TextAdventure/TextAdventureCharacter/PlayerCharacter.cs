@@ -9,8 +9,9 @@ namespace TextAdventureCharacter
 {
     public sealed class PlayerCharacter : Character
     {
-        private List<Command> _commandList;
-        public PlayerCharacter(string name, string description, double strength = 10, double healthPoints = 100, double maxHealthPoints = 100) 
+        private readonly List<Command> _commandList;
+
+        public PlayerCharacter(string name, string description, double strength = 10, double healthPoints = 100, double maxHealthPoints = 100)
         : base(name, description, strength, healthPoints, maxHealthPoints)
         {
             _commandList = new List<Command>();
@@ -20,6 +21,7 @@ namespace TextAdventureCharacter
             _maxHealthPoints = maxHealthPoints;
             _healthPoints = healthPoints;
         }
+
         private void InitializeCommands()
         {
             //TODO - Add new Commands here
@@ -40,6 +42,7 @@ namespace TextAdventureCharacter
             _commandList.Add(new Command(new string[]{"quit","q"}, CommandHandlerQuit, "quit(q)"));
             _commandList.Add(new Command(new string[]{"status","s"}, CommandHandlerStatus, "status(s)"));
         }
+
         public override void MakeAMove(){
             _isOnMove = true;
             Console.WriteLine();
@@ -53,6 +56,7 @@ namespace TextAdventureCharacter
                 HandleCommand(userInput);
             }
         }
+
         private string EnterUserinput(string inputMessage)
         {
             Console.ForegroundColor = ConsoleColor.Magenta;
@@ -61,6 +65,7 @@ namespace TextAdventureCharacter
             string userInput = Console.ReadLine();
             return userInput;
         }
+
         private Command FindCommand(string commandWithArgs)
         {
             foreach(Command command in _commandList)
@@ -73,6 +78,7 @@ namespace TextAdventureCharacter
             Console.WriteLine("Command not found - try to use the correct Syntax");
             return null;
         }
+
         private void HandleCommand(string commandWithArgs)
         {
             Command command = FindCommand(commandWithArgs);
@@ -81,18 +87,20 @@ namespace TextAdventureCharacter
                 string[] args = command.GetArgs(commandWithArgs);
                 if(command.GetArgumentsCount() <= args.Length){
                     command.GetMethodToCall()(args);
-                } 
-                else 
+                }
+                else
                 {
                     Console.WriteLine("Error: not enough arguments");
                 }
             }
-        }        
+        }
+
         public override void GetHarmed(double damage)
         {
             _healthPoints -= damage;
             UpdateIsAlive();
         }
+
         protected override void UpdateIsAlive()
         {
             if (_healthPoints <= 0)
@@ -104,7 +112,8 @@ namespace TextAdventureCharacter
                 Console.ForegroundColor = ConsoleColor.White;
                 Thread.Sleep(10000);
             }
-        }        
+        }
+
         private void CommandHandlerTalkTo(string[] args)
         {
             try
@@ -118,14 +127,11 @@ namespace TextAdventureCharacter
                 Console.WriteLine(e.Message);
             }
         }
-        public override void StartDialog(Character character)
-        {
-            character.StartDialog(this);
-        }
-        private void CommandHandlerCommands(string[] args)
-        {
-            Console.WriteLine("[" + string.Join(", ", GetCommandDescriptions()) + "]");
-        }
+
+        public override void StartDialog(Character character) => character.StartDialog(this);
+
+        private void CommandHandlerCommands(string[] args) => Console.WriteLine("[" + string.Join(", ", GetCommandDescriptions()) + "]");
+
         private string[] GetCommandDescriptions()
         {
             string[] commandDescriptions = new string[_commandList.Count];
@@ -135,10 +141,9 @@ namespace TextAdventureCharacter
             }
             return commandDescriptions;
         }
-        private void CommandHandlerStatus(string[] args)
-        {
-            Console.WriteLine(GetStatus());
-        }
+
+        private void CommandHandlerStatus(string[] args) => Console.WriteLine(GetStatus());
+
         private void CommandHandlerLook(string[] args)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -150,6 +155,7 @@ namespace TextAdventureCharacter
             WriteAdjacenAreas();
             Console.ForegroundColor = ConsoleColor.White;
         }
+
         private void WriteAdjacenAreas()
         {
             List<Gateway> gateways = _location.GetGateways();
@@ -162,6 +168,7 @@ namespace TextAdventureCharacter
                 }
             }
         }
+
         private void WriteSupportingCharacters()
         {
             List<Character> supportingCharacters = GetSupportingCharacters();
@@ -170,17 +177,14 @@ namespace TextAdventureCharacter
                 Console.WriteLine("A list of characters:");
                 for(int i = 0; i < supportingCharacters.Count; i++)
                 {
-                    if(supportingCharacters[i].GetIsAlive())
-                    {
-                        Console.WriteLine(" " + (i+1) + ":" + supportingCharacters[i].GetName() + " " + supportingCharacters[i].GetStatus());
-                    } 
-                    else 
-                    {
-                        Console.WriteLine(" " + (i+1) + ":" + supportingCharacters[i].GetName() + " (dead)");
-                    }
+                    if (supportingCharacters[i].GetIsAlive())
+                        Console.WriteLine(" " + (i + 1) + ":" + supportingCharacters[i].GetName() + " " + supportingCharacters[i].GetStatus());
+                    else
+                        Console.WriteLine(" " + (i + 1) + ":" + supportingCharacters[i].GetName() + " (dead)");
                 }
             }
         }
+
         private void WriteItems()
         {
             List<Item> items = _location.GetItems();
@@ -193,6 +197,7 @@ namespace TextAdventureCharacter
                 }
             }
         }
+
         private void CommandHandlerInventory(string[] args)
         {
             Console.WriteLine("A list of items in your inventory:");
@@ -208,6 +213,7 @@ namespace TextAdventureCharacter
                 Console.WriteLine(" Empty - use command take to fill your inventory");
             }
         }
+
         private void CommandHandlerTake(string[] args)
         {
             if(_inventory.Count <= _maxInventorySlots)
@@ -226,6 +232,7 @@ namespace TextAdventureCharacter
                 Console.WriteLine("Your inventory is full. You only have " + _maxInventorySlots + " free itemslots!");
             }
         }
+
         private void CommandHandlerDrop(string[] args)
         {
             try
@@ -237,6 +244,7 @@ namespace TextAdventureCharacter
                 Console.WriteLine(e.Message);
             }
         }
+
         private void CommandHandlerGoTo(string[] args)
         {
             try
@@ -248,10 +256,9 @@ namespace TextAdventureCharacter
                 Console.WriteLine(e.Message);
             }
         }
-        private void CommandHandlerClearChat(string[] args)
-        {
-            Console.Clear();
-        }
+
+        private void CommandHandlerClearChat(string[] args) => Console.Clear();
+
         private void CommandHandlerGetItemDescription(string[] args)
         {
             try
@@ -263,6 +270,7 @@ namespace TextAdventureCharacter
                 Console.WriteLine(e.Message);
             }
         }
+
         private void CommandHandlerAttack(string[] args)
         {
             try
@@ -274,6 +282,7 @@ namespace TextAdventureCharacter
                 Console.WriteLine(e.Message);
             }
         }
+
         private void CommandHandlerEquip(string[] args)
         {
             try
@@ -285,6 +294,7 @@ namespace TextAdventureCharacter
                 Console.WriteLine(e.Message);
             }
         }
+
         public override void GetAttacked(double damage, Character attacker)
         {
             GetHarmed(damage);
@@ -294,6 +304,7 @@ namespace TextAdventureCharacter
                 Console.WriteLine("You just harmed yourself idiot");
             GetHarmed(damage);
         }
+
         private void CommandHandlerUseItemOnGateway(string[] args)
         {
             if(_equippedItem != null)
@@ -312,6 +323,7 @@ namespace TextAdventureCharacter
                 Console.WriteLine("No item equipped");
             }
         }
+
         private void CommandHandlerUseItemOnCharacter(string[] args)
         {
             if(_equippedItem != null)
@@ -330,6 +342,7 @@ namespace TextAdventureCharacter
                 Console.WriteLine("No item equipped");
             }
         }
+
         private void CommandHandlerUseItem(string[] args)
         {
             if(_equippedItem != null)
@@ -342,11 +355,13 @@ namespace TextAdventureCharacter
                 Console.WriteLine("No item equipped");
             }
         }
+
         private void CommandHandlerQuit(string[] args)
         {
             _isAlive = false;
             _isOnMove = false;
         }
+
         public static PlayerCharacter BuildFromXmlNode(XmlNode characterNode)
         {
             XmlAttributeCollection attributes = characterNode.Attributes;
@@ -356,6 +371,6 @@ namespace TextAdventureCharacter
             double healthPoints = Double.Parse(attributes[4].Value);
             double maxHealthPoints = Double.Parse(attributes[5].Value);
             return new PlayerCharacter(name, description, strength, healthPoints, maxHealthPoints);
-        }    
+        }
     }
 }

@@ -7,8 +7,7 @@ namespace TextAdventureCharacter
 {
     public sealed class PassivDialogNPC : NPC
     {
-        
-        public PassivDialogNPC(string name, string description) 
+        public PassivDialogNPC(string name, string description)
         : base(name, description)
         {
             _moodAboutCharacters = new Dictionary<Character, double>();
@@ -16,10 +15,11 @@ namespace TextAdventureCharacter
             _healthPoints = 25;
             _strength = 5;
         }
+
         public override void GetHarmed(double damage)
         {
-            //TAKES NO DMG
         }
+
         public override void GetAttacked(double damage, Character attacker)
         {
             if(attacker.GetType() == typeof(PlayerCharacter))
@@ -27,10 +27,11 @@ namespace TextAdventureCharacter
                 Console.WriteLine("This character cannot be harmed");
             }
         }
+
         public override void MakeAMove()
         {
-
         }
+
         public static PassivDialogNPC BuildFromXmlNode(XmlNode characterNode)
         {
             XmlAttributeCollection attributes = characterNode.Attributes;
