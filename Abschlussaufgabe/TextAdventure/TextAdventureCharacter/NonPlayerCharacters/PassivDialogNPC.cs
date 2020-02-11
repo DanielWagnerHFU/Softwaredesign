@@ -5,7 +5,7 @@ using System.Xml;
 
 namespace TextAdventureCharacter
 {
-    public sealed class PassivDialogNPC : NPC
+    public class PassivDialogNPC : NPC
     {
         public PassivDialogNPC(string name, string description)
         : base(name, description)
