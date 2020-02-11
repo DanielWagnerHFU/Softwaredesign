@@ -23,9 +23,9 @@ namespace TextAdventureMap
 
         public override string GetDescription(Area callingArea){
             if (_isOpen)
-                return "open " + _name;
+                return _name + ": open to " + GetDestination(callingArea).GetName();
             else
-                return "closed " + _name;
+                return _name + ": closed";
         }
 
         public override string GetName(Area callingArea) => _name;

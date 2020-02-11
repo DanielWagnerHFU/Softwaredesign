@@ -1,10 +1,10 @@
 <TextAdventureGame>
     <!-- startarea -->
     <Area type="Area" uin="1" name="Game Labor" description="You are in a dark room and there seems to be no way out because the door is closed">
-        <!-- <Character type="Player" name="Friedl" description="A professor of the HFU" strength="10" hp="100" maxhp="100"></Character> -->
+        <Character type="Player" name="Friedl" description="A professor of the HFU" strength="10" hp="100" maxhp="100"></Character>
         <Item type="Text" name="paper" description="There might be userful information on this paper..." text="Welcome to this game Friedl. You think you cant get out of here? Well i think your blind! Look closer">
             <Item type="Key" name="Friedls HFUCard" description="I guess you know what to do with your HFUCard? Puhh" key="1"></Item>
-        </Item>         
+        </Item>
     </Area>
     <Gateway type="Door" uinA="1" uinB="2" name="Solid door" keyHole="1" isOpen="false"></Gateway>
     <Area type="Area" uin="2" name="HFU L-building 2.floor" description="You are in the HFU L Building second floor. Professor Schneider is here - you better go and talk to him now!">
@@ -24,30 +24,52 @@
     <Gateway type="Spawner" uinA="2" uinB="3"></Gateway>
     <Area type="Area" uin="3" name="HFU - L building" description="You are in the stairwell of the L-building. Dont forget to take stuff...">
         <Item type="Text" name="Daniel's notebook" description="To be, or not the be an artist.." text="... its true. I have found proof that Code is indeed nothing special. Its not art! I think i will pin my arguments all over Furtwangen. Only who finds them all might have a chance to win against me!"></Item>
-        <Character type="HumanNPC" name="Sabine" description="Sabine is your student. She just showed your her code">
+        <Character type="HumanNPC" name="Sabine" description="Sabine is your student. She just showed your her code (SABINE IS NOT THE WEATHER)">
             <DialogNode mood="0" playerText="Hello sabine." npcText="hi">
                 <DialogNode mood="-5" playerText="Well your code was not that good" npcText="So i havent passed?">
                     <DialogNode mood="-15" playerText="Nop see you next! ;D" npcText="i will kill you!"></DialogNode>
                     <DialogNode mood="-3" playerText="I dont wanne see you again so you passed" npcText="..."></DialogNode>
                 </DialogNode>
                 <DialogNode mood="2" playerText="Your code was actuelly really good! You passed!" npcText="Wow nice! But before you have your exam with Daniel i have to tell you something">
-                    <DialogNode mood="-3" playerText="I dont wanne see you again so you passed" npcText="..."></DialogNode>
+                    <DialogNode mood="-10" playerText="Ah i understand... you hate him too!" npcText="No i love him! Fuck of"></DialogNode>
+                    <DialogNode mood="0" playerText="What? I have to know it! Is Professor Schneider right?" npcText="What should he be right about?">
+                        <DialogNode mood="-3" playerText="That he is a annoying Idiot!" npcText="Pah i wont trashtalk him with you. Bye!"></DialogNode>
+                        <DialogNode mood="-3" playerText="That he is a annoying Idiot!" npcText="Pah i wont trashtalk him with you. Bye!"></DialogNode>
+                        <DialogNode mood="1" playerText="Well... its not that important" npcText="So what i wanted to tell you: He hasnt slept well tonight. Actuelly he hasnt slept at all. But you know what? He had time to write this stupid dialog. Well you might aswell write some stupid stuff when you cant sleep right? And you know why he cant sleep? Exactly: Because of Sabine MUHAHAaaa. She just blows too strong. Yep i know this isnt funny"></DialogNode>
+                    </DialogNode>
                 </DialogNode>
             </DialogNode>
         </Character>
     </Area>
     <Gateway type="Door" uinA="3" uinB="100" name="Door of L-Building" keyHole="1" isOpen="true"></Gateway>
-    <Area type="Area" uin="100" name="Furtwangen" description="Welcome to a Furtwangen. Your lucky - Sabine is over and the wind isnt blowing so hard anymore!"></Area>
-    <!-- introduction over -->
+    <!-- Furtwangen -->
+    <Area type="Area" uin="100" name="Furtwangen" description="Welcome to a Furtwangen. Your lucky - Sabine is over and the wind isnt blowing so hard anymore!">
+        <Character type="PassivDialogNPC" name="Sabine the weather" description="Sabine but this time its the weather. [I know this is a low joke] - you can actuelly talk to the weather DO IT">
+            <DialogNode mood="0" playerText="Hello Wind!" npcText="Hello simpel human being.">
+                <DialogNode mood="0" playerText="Oh wind can you tell me where i can find Daniel?" npcText="I cannot. But i heared his wonderful piano music when i was flying over Furtwagen"></DialogNode>
+                <DialogNode mood="0" playerText="Oh mighty wind how are you? You can never stop. Must feel shitty right?" npcText="You know what feels shitty? When you know your activity diagrams suck, but you also have know idear which algorithm might be complex enought that you even need one! I mean really!!! WTF? Forloop here, Foreloop there. Some if and else stuff. Jup now i just made some so my Prof is happy. But i guess he isnt?">
+                    <DialogNode mood="0" playerText="Oh you are Daniel not Sabine!" npcText="You are goddamn right! I am sitting here writing this text in this very moment. But come and get me i am at the Alte Cafete! Art sucks Code sucks - thats how it is."></DialogNode>
+                    <DialogNode mood="0" playerText="You can speak for Daniel? Whats happening..." npcText="I speak for everyone and noone. You can find a hint to beat Daniel when you give him a good note. Its true i know everything"></DialogNode> 
+                </DialogNode>               
+            </DialogNode>
+        </Character>    
+    </Area>
     <Gateway type="Door" uinA="100" uinB="4" name="Door of A-Building" keyHole="1" isOpen="true"></Gateway>
     <Gateway type="Door" uinA="100" uinB="5" name="Door of B-Building" keyHole="1" isOpen="true"></Gateway>
     <Gateway type="Door" uinA="100" uinB="6" name="Door of C-Building" keyHole="1" isOpen="true"></Gateway>
     <Area type="Area" uin="4" name="HFU - A Building" description="You are in the HFU A Builing"></Area>
     <Gateway type="Gateway" uinA="4" uinB="5"></Gateway>
-    <Area type="Area" uin="5" name="HFU - B Building" description="You are in the HFU B Builing"></Area>
-    <Gateway type="Gateway" uinA="5" uinB="6"></Gateway>
+    <!-- B Building Area with Daniel -->
+    <Area type="Area" uin="5" name="HFU - B Building" description="You are in the HFU B Builing and you here wonderful piano music. Who might play?"></Area>
+    <Gateway type="Door" uinA="50" uinB="5" name="Door of Aula" keyHole="2" isOpen="false"></Gateway>
+    <Area type="Area" uin="50" name="HFU - B Aula" description="Welcome in the great Aula of the HFU"></Area>
+    <!-- ENDBOSS-->
+    <Gateway type="Door" uinA="51" uinB="5" name="Door of Alte Cafete" keyHole="3" isOpen="false"></Gateway>
+    <Area type="Area" uin="51" name="HFU - Alte Cafete" description="Be aware. Your final fight is there."></Area>
+    <Gateway type="Portal" uin="51" name ="The way to everywhere and nowhere"></Gateway>
+    <!-- B Building Area -->
+    <Gateway type="Spawner" uinA="5" uinB="6"></Gateway>
     <Area type="Area" uin="6" name="HFU - C Building" description="You are in the HFU C Builing">
-    <Character type="Player" name="Friedl" description="A professor of the HFU" strength="10" hp="100" maxhp="100"></Character>
     </Area>
 
     <!--  The player will have to find all texts to know which item is the one who can beat Daniel | Bye this way - your not dreaming-->
