@@ -8,7 +8,7 @@
     </Area>
     <Gateway type="Door" uinA="1" uinB="2" name="Solid door" keyHole="1" isOpen="false"></Gateway>
     <Area type="Area" uin="2" name="HFU L-building 2.floor" description="You are in the HFU L Building second floor. Professor Schneider is here - you better go and talk to him now!">
-        <Character type="PassivDialogNPC" name="Prof. Schneider" description="The phycision of the HFU to your service">
+        <Character type="GatekeeperNPC" name="Prof. Schneider" description="The phycision of the HFU to your service" key="11">
             <DialogNode mood="0" playerText="Hello Thomas" npcText="Hey!">
                 <DialogNode mood="0" playerText="I coded so beautifully last night, but than i just fell asleep and woke up in my game labor..." npcText="Sounds ... weird. Byebye"></DialogNode>
                 <DialogNode mood="0" playerText="How are you Thomas?" npcText="Puh i just came from a physics course with this annoying student Daniel!">
@@ -19,9 +19,11 @@
                 </DialogNode>                
             </DialogNode>
         </Character>
-        <Item type="Potion" name="RedBull-drink" description="You might be able to fly with this item! Or heal" heal="100"></Item>
+        <Item type="Potion" name="RedBull-drink" description="You might be able to fly with this item! Or heal" heal="25"></Item>
     </Area>
-    <Gateway type="Spawner" uinA="2" uinB="3"></Gateway>
+    <Gateway type="Door" uinA="2" uinB="22" name="Solid door" keyHole="11" isOpen="false"></Gateway>
+    <Area type="Area" uin="22" name="Just a floor in the L building" description="Just a room ;D"></Area>
+    <Gateway type="Spawner" uinA="22" uinB="3"></Gateway>
     <Area type="Area" uin="3" name="HFU - L building" description="You are in the stairwell of the L-building. Dont forget to take stuff...">
         <Item type="Text" name="Daniel's notebook" description="To be, or not the be an artist.." text="... its true. I have found proof that Code is indeed nothing special. Its not art! I think i will pin my arguments all over Furtwangen. Only who finds them all might have a chance to win against me!"></Item>
         <Character type="HumanNPC" name="Sabine" description="Sabine is your student. She just showed your her code (SABINE IS NOT THE WEATHER)">
@@ -52,7 +54,8 @@
                     <DialogNode mood="0" playerText="You can speak for Daniel? Whats happening..." npcText="I speak for everyone and noone. You can find a hint to beat Daniel when you give him a good note. Its true i know everything"></DialogNode> 
                 </DialogNode>               
             </DialogNode>
-        </Character>    
+        </Character>
+        <Item type="Potion" name="Coke" description="You might be able to fly with this item! Or die" heal="-20"></Item>
     </Area>
     <Gateway type="Door" uinA="100" uinB="4" name="Door of A-Building" keyHole="1" isOpen="true"></Gateway>
     <Gateway type="Door" uinA="100" uinB="5" name="Door of B-Building" keyHole="1" isOpen="true"></Gateway>
@@ -67,6 +70,7 @@
         <Character type="GatekeeperNPC" name="Professor who can open the Aula" description="Guy who opens the Aula" key="2">
             <DialogNode mood="0" playerText="Please use your key on the Aula" npcText="ok, but you wont like whats in there"></DialogNode>
         </Character>
+        <Item type="DamageAmplifier" name="axe" description="Amplifies your damage" amp="3"></Item>
     </Area>
     <Gateway type="Door" uinA="50" uinB="5" name="Door of Aula" keyHole="2" isOpen="false"></Gateway>
     <Area type="Area" uin="50" name="HFU - Aula" description="Welcome in the great Aula of the HFU">
@@ -88,8 +92,8 @@
                 </DialogNode>
             </DialogNode>
         </Character>
+        <Item type="DamageAmplifier" name="sword" description="Amplifies your damage" amp="2"></Item>
     </Area>
-    <Gateway type="Portal" uin="51" name ="The way to everywhere and nowhere"></Gateway>
     <!-- B Building Area -->
     <Gateway type="Spawner" uinA="5" uinB="6"></Gateway>
     <Area type="Area" uin="6" name="HFU - C Building" description="You are in the HFU C Builing">
@@ -109,5 +113,12 @@
             </DialogNode>
         </Character>
     </Area>
+    <Gateway type="Portal" uin="6" name ="The way to everywhere and nowhere"></Gateway>
+    <Area type="Area" uin="99" name="Room-B1.01" description="Just a room ;D">
+        <Character type="BigMonsterNPC" name="Professor Benyoucef in Boss mode" description="kollegaaha alda" strength="5" hp="50" maxhp="50"></Character>
+        <Character type="BigMonsterNPC" name="Professor Zydorek in Boss mode" description="kollegaaha alda" strength="5" hp="28" maxhp="100"></Character>
+    </Area>
+    <Gateway type="Portal" uin="99" name ="The way to everywhere and nowhere"></Gateway>
+
     <!--  The player will have to find all texts to know which item is the one who can beat Daniel | Bye this way - your not dreaming-->
 </TextAdventureGame>
